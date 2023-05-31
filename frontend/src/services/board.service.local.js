@@ -73,7 +73,7 @@ function getEmptyBoard() {
 
 async function createDemoBoard() {
   var boards = await storageService.query(STORAGE_KEY);
-  console.log(boards, 'HERE');
+
   if (!boards || boards.length === 0) {
     const board = {
       _id: 'b101',

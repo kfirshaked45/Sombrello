@@ -1,3 +1,3 @@
-export function BoardPreview() {
-  return <div>BOARD PREVIEW</div>;
+export function BoardPreview({ board }) {
+  return <div>Title: {board.title}</div>;
 }

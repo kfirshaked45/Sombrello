@@ -15,6 +15,7 @@
 @import 'views/AboutUs';
 @import 'views/HomePage';
 @import 'views/BoardIndex';
+@import 'views/BoardDetails';
 @import 'views/ReviewIndex';
 @import 'views/UserDetails';
 
@@ -22,3 +23,5 @@
 @import 'cmps/AppHeader';
 @import 'cmps/AppFooter';
 @import 'cmps/UserMsg';
+@import 'cmps/BoardHeader';
+@import 'cmps/GroupList';

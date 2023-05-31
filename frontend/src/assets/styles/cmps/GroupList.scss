@@ -1,0 +1,16 @@
+.group-list {
+  display: flex;
+}
+.group-list-header {
+  padding: 14px 8px 14px 8px;
+  display: flex;
+  justify-content: space-between;
+}
+.group-list-item {
+  width: 272px;
+  background-color: $list-item-clr;
+  color: #b6c2cf;
+  margin-inline-start: 6px;
+  margin-inline-end: 6px;
+  border-radius: 12px;
+}
