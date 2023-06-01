@@ -5,7 +5,7 @@ export function TaskPreview({ boardId, groupId, task }) {
   return (
     <div className="task-preview">
       <Link to={`${groupId}/${task.id}`} task={task}>
-        <h2>{task.title}</h2>
+        <span className="task-item-title">{task.title}</span>
       </Link>
     </div>
   );

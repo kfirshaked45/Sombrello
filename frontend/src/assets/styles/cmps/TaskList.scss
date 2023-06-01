@@ -1,0 +1,37 @@
+.task-item-title {
+  word-wrap: break-word;
+  clear: both;
+  color: $list-text-color;
+  display: block;
+  margin: 0 0 4px;
+  overflow: hidden;
+  text-decoration: none;
+}
+.task-list {
+  padding: 0px;
+}
+.task-list-item {
+  padding: 10px 8px;
+  margin-bottom: 7px;
+  background-color: white;
+  border-radius: 3px;
+  box-shadow: $ds-shadow-raised;
+}
+.task-list-item:hover {
+  background-color: inherit;
+}
+.list-header-name {
+  background: #0000;
+  border-radius: 3px;
+  border: none;
+  box-shadow: none;
+  color: $list-item-clr;
+  font-weight: 600;
+  height: 20px;
+  margin: -4px 0;
+  max-height: 256px;
+  min-height: 20px;
+  padding: 4px 8px;
+  resize: none;
+  overflow: hidden;
+}
