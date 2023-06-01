@@ -1,12 +1,18 @@
-import { Link } from 'react-router-dom';
-import { TaskDetails } from './task-details';
+import { Link } from "react-router-dom"
+import { TaskDetails } from "./task-details"
 
-export function TaskPreview({ boardId, groupId, task }) {
+export function TaskPreview({ groupId, task }) {
+  console.log('task: ',task);
   return (
     <div className="task-preview">
-      <Link to={`${groupId}/${task.id}`} task={task}>
-        <span className="task-item-title">{task.title}</span>
+      <Link
+        to={{
+          pathname: `${groupId}/${task.id}`,
+          state: { task },
+        }}
+      >
+        <h2>{task.title}</h2>
       </Link>
     </div>
-  );
+  )
 }
