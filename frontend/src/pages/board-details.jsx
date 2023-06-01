@@ -18,15 +18,15 @@ export function BoardDetails() {
   useEffect(() => {
     loadBoard();
   }, []);
-  function loadBoard() {
-    boardService
-      .getById(boardId)
-      .then((board) => setBoard(board))
-      .catch((err) => {
-        console.log('Had issues in board details', err);
-        showErrorMsg('Cannot load board');
-        navigate('/boards');
-      });
+  async function loadBoard() {
+    try {
+      const board = await boardService.getById(boardId);
+      setBoard(board);
+    } catch (err) {
+      console.log('Error loading board:', err);
+      showErrorMsg('Cannot load board');
+      navigate('/boards');
+    }
   }
   if (!board) return <div>Loading...</div>;
   return (

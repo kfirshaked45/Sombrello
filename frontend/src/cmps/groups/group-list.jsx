@@ -1,5 +1,6 @@
-import { updateBoard } from '../../store/board.actions';
+import { updateBoard, loadBoards } from '../../store/board.actions';
 import { GroupPreview } from './group-preview';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
@@ -7,7 +8,10 @@ export function GroupList({ board }) {
   const dispatch = useDispatch();
   const boards = useSelector((state) => state.boardModule.boards);
   const groups = boards.find((b) => b._id === board._id)?.groups || [];
-  console.log(boards, groups, 'HERE');
+
+  useEffect(() => {
+    dispatch(loadBoards());
+  }, [dispatch]);
 
   const handleDragEnd = (result) => {
     if (!result.destination) {
@@ -41,9 +45,7 @@ export function GroupList({ board }) {
                 <Draggable key={group.id} draggableId={group.id} index={index}>
                   {(provided) => (
                     <li className="group-list-item" {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
-                      {/* <Link to={group._id}> */}
                       <GroupPreview boardId={board._id} group={group} />
-                      {/* </Link> */}
                     </li>
                   )}
                 </Draggable>
