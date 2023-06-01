@@ -10,7 +10,6 @@ import { BoardDetails } from './pages/board-details';
 import { HomePage } from './pages/home-page';
 import { Workspace } from './pages/workspace';
 import { TaskDetails } from './cmps/task/task-details';
-import { TaskDetails } from './cmps/task/task-details'
 
 export function RootCmp() {
   return (
