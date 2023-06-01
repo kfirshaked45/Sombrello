@@ -46,8 +46,6 @@ export function BoardIndex() {
   // For each board  - render BoardPreview which contains BoardDetails
   return (
     <div className="board-index">
-      <p>HEADER</p>
-      <div>BOARD LIST</div>
       {/* <Link path=""></Link> */}
 
       <ul className="boards-list">
@@ -59,8 +57,6 @@ export function BoardIndex() {
           </li>
         ))}
       </ul>
-
-      <li>Board Previews</li>
     </div>
   );
 }
