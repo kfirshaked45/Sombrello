@@ -7,6 +7,7 @@ import { AppHeader } from './cmps/app-header';
 import { AppFooter } from './cmps/app-footer';
 import { UserDetails } from './pages/user-details';
 import { BoardDetails } from './pages/board-details';
+import { TaskDetails } from './cmps/task/task-details';
 
 export function RootCmp() {
   return (
@@ -19,6 +20,7 @@ export function RootCmp() {
           ))}
           <Route path="user/:id" element={<UserDetails />} />
           <Route path="board/:boardId" element={<BoardDetails />} />
+          <Route path="board/:boardId/:groupId/:taskId" element={<TaskDetails />} />
         </Routes>
       </main>
       <AppFooter />
