@@ -1,0 +1,65 @@
+.home-page {
+  background: rgba(250, 251, 252, 255);
+  width: 100%;
+  overflow: auto;
+
+  .link-container {
+    width: 130px;
+  }
+
+  a {
+    background-color: #0065ff;
+    font-family: CharlieText-regular;
+    padding: 0.9rem 1rem;
+    border-radius: 4.8px;
+    color: #fff;
+    transition: background-color 250ms ease-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      background-color: #0056d9;
+      cursor: pointer;
+    }
+  }
+
+  .main {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 100px 10px 0;
+
+    .main-content {
+      max-width: 650px;
+      align-self: center;
+      text-align: center;
+
+      h1 {
+        font-size: 2rem;
+        line-height: 1.25;
+        font-family: CharlieDisplay-semibold;
+        margin-block-end: 8px;
+      }
+
+      p {
+        font-size: 1.25rem;
+        line-height: 1.875rem;
+        font-family: CharlieText-regular;
+        margin-block-end: 24px;
+      }
+
+      .link-container {
+        margin: auto;
+      }
+    }
+
+    .main-img {
+      min-width: 230px;
+      align-self: center;
+      width: 230px;
+      margin-bottom: 30px;
+      order: -1;
+    }
+  }
+}
