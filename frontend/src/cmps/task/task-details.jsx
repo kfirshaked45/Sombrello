@@ -1,9 +1,20 @@
-import { useParams, useLocation } from "react-router-dom"
+import { useEffect, useState } from 'react';
+import { useParams, useLocation } from 'react-router-dom';
+import { boardService } from '../../services/board.service.local';
 
 export function TaskDetails() {
-  const { boardId, groupId, taskId } = useParams()
-  const location = useLocation()
-  const { task } = location.state || {} // Provide a default value for task if it is null
+  const { boardId, groupId, taskId } = useParams();
+  const [board, setBoard] = useState();
+  console.log(board);
+  const location = useLocation();
+  const { task } = location.state || {}; // Provide a default value for task if it is null
+  useEffect(() => {
+    loadBoard();
+  }, []);
+  async function loadBoard() {
+    const savedBoard = await boardService.getById(boardId);
+    setBoard(savedBoard);
+  }
 
   return (
     <div>
@@ -17,5 +28,5 @@ export function TaskDetails() {
         </div>
       )}
     </div>
-  )
+  );
 }
