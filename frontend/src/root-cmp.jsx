@@ -1,12 +1,14 @@
-import React from 'react';
-import { Routes, Route } from 'react-router';
+import React from 'react'
+import { Routes, Route } from 'react-router'
 
-import routes from './routes';
+import routes from './routes'
 
-import { AppHeader } from './cmps/app-header';
-import { AppFooter } from './cmps/app-footer';
-import { UserDetails } from './pages/user-details';
-import { BoardDetails } from './pages/board-details';
+import { AppHeader } from './cmps/app-header'
+import { AppFooter } from './cmps/app-footer'
+import { UserDetails } from './pages/user-details'
+import { BoardDetails } from './pages/board-details'
+import { HomePage } from './pages/home-page'
+import { Workspace } from './pages/workspace'
 
 export function RootCmp() {
   return (
@@ -14,8 +16,15 @@ export function RootCmp() {
       <AppHeader />
       <main>
         <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="workspace" element={<Workspace />} />
           {routes.map((route) => (
-            <Route key={route.path} exact={true} element={route.component} path={route.path} />
+            <Route
+              key={route.path}
+              exact={true}
+              element={route.component}
+              path={route.path}
+            />
           ))}
           <Route path="user/:id" element={<UserDetails />} />
           <Route path="board/:boardId" element={<BoardDetails />} />
@@ -23,5 +32,5 @@ export function RootCmp() {
       </main>
       <AppFooter />
     </div>
-  );
+  )
 }
