@@ -36,8 +36,8 @@ export function TaskDetails() {
       </div>
       <div className="task-grid">
         <div className="task-column">
-          <h1 className="task-title">{task.title}</h1>
-          <p className="group-id">Group ID: {groupId}</p>
+          <span className="task-title">{task.title}</span>
+          <p className="group-id">in list: {group.title}</p>
           <div className="attachments-section">
             <TaskAttachments></TaskAttachments>
           </div>

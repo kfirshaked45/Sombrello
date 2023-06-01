@@ -1,7 +1,9 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { faStar, faEllipsis } from '@fortawesome/free-solid-svg-icons';
 
 export function BoardHeader({ board }) {
+  const members = board.members;
+  console.log(members);
   return (
     <div className="border-header">
       <div>
@@ -13,8 +15,14 @@ export function BoardHeader({ board }) {
         {/* <button>People Icon</button> */}
         <button> Board</button>
       </div>
-      <div>
+      <div className="board-header-right-container">
         <button>Filter</button>
+        <div className="members-img">
+          {members.map((member) => (
+            <img src={`${member.imgUrl}`} alt="alter" />
+          ))}
+        </div>
+        <FontAwesomeIcon icon={faEllipsis} />
       </div>
     </div>
   );
