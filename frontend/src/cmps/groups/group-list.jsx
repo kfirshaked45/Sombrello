@@ -1,7 +1,7 @@
-import { GroupPreview } from './group-preview';
+import { GroupPreview } from './group-preview'
 
 export function GroupList({ board }) {
-  const groups = board.groups;
+  const groups = board.groups
 
   return (
     <div className="board-group-previews">
@@ -15,5 +15,5 @@ export function GroupList({ board }) {
         ))}
       </ul>
     </div>
-  );
+  )
 }
