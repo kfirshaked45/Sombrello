@@ -1,53 +1,81 @@
 .app-header {
-    background-color: $clr4;
-    padding: 10px;
+  background-color: #026aa7;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
+  transition: background-color 0.5s ease 0s, box-shadow 0.5s ease 0s;
+  transition-property: background-color, box-shadow;
+  transition-duration: 0.5s, 0.5s;
+  position: relative;
+  width: 100%;
+  color: white;
+  min-height: 44px;
+  border-bottom: 1px solid hsla(0, 0%, 100%, 0.16);
+  transition: background-color 300ms;
 
+  h1 {
+    color: #01284b;
+  }
 
-    .user-info {
-        // background-color: $clr2;
-        // padding: 2px 8px;
-        padding-left: 100px;
-        color: $clr1;
+  .user-info {
+    padding-left: 100px;
+    color: $clr1;
 
-        .score {
-            background-color: $clr2;
-            color: $clr6;
-            padding: 8px;
-            margin: 10px;
-            border-radius: 50%;
-        }
+    .score {
+      background-color: $clr2;
+      color: $clr6;
+      padding: 8px;
+      margin: 10px;
+      border-radius: 50%;
+    }
+  }
 
-        img {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
+  .user-info .btn-link {
+    color: $clr2;
+  }
+
+  nav a:first-child {
+    margin-right: 30px;
+  }
+
+  nav a:not(:first-child) {
+    border-top: 1px solid $clr1;
+    padding: 0 5px;
+    margin: 10px;
+  }
+
+  nav .active {
+    color: $clr1;
+  }
+
+  &.home-header {
+    background-color: #fff;
+
+    h1 {
+      color: black;
+      font-size: 30px;
+      margin-left: 11px;
     }
 
-    .user-info .btn-link {
-        color: $clr2;
+    &:hover {
+      box-shadow: rgb(9 30 66 / 15%) 0px 0.5rem 1rem 0px;
     }
+  }
+}
 
-    nav {
-        font-size: .8em;
-        background-color: $clr5;
-        padding: 5px;
-
+.main-logo {
+  display: flex;
+  align-items: center;
+  .main-img-container {
+    width: 32px;
+    height: 32px;
+    margin-right: 10px;
+    overflow: hidden;
+    .main-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
-
-    nav a:first-child {
-        margin-right: 30px;
-    }
-
-    nav a:not(:first-child) {
-        border-top: 1px solid $clr1;
-        padding: 0 5px;
-        margin: 10px;
-    }
-
-    nav .active {
-        color: $clr1;
-    }
-
+  }
 }

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import homePageHero from '../assets/img/homepage-hero.svg' // Import the logo as the default export
+import homePageHero from '../assets/img/homepage-hero.svg'
 
 export function HomePage() {
   return (
