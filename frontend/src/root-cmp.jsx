@@ -1,7 +1,7 @@
-import React from 'react';
-import { Routes, Route } from 'react-router';
+import React from 'react'
+import { Routes, Route } from 'react-router'
 
-import routes from './routes';
+import routes from './routes'
 
 import { AppHeader } from './cmps/general/app-header';
 import { AppFooter } from './cmps/general/app-footer';
@@ -20,14 +20,22 @@ export function RootCmp() {
           <Route path="/" element={<HomePage />} />
           <Route path="workspace" element={<Workspace />} />
           {routes.map((route) => (
-            <Route key={route.path} exact={true} element={route.component} path={route.path} />
+            <Route
+              key={route.path}
+              exact={true}
+              element={route.component}
+              path={route.path}
+            />
           ))}
           <Route path="user/:id" element={<UserDetails />} />
           <Route path="board/:boardId" element={<BoardDetails />} />
-          <Route path="board/:boardId/:groupId/:taskId" element={<TaskDetails />} />
+          <Route
+            path="board/:boardId/:groupId/:taskId"
+            element={<TaskDetails />}
+          />
         </Routes>
       </main>
       <AppFooter />
     </div>
-  );
+  )
 }

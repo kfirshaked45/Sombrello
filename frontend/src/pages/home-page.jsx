@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import homePageHero from '../assets/img/homepage-hero.svg' // Import the logo as the default export
 
 export function HomePage() {
   return (
@@ -17,6 +18,9 @@ export function HomePage() {
           <div className="link-container">
             <Link to={'/workspace'}>Start demo</Link>
           </div>
+        </div>
+        <div className="main-img">
+          <img src={homePageHero} alt="" />
         </div>
       </div>
     </section>
