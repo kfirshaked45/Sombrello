@@ -1,32 +1,51 @@
-import { useEffect, useState } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
-import { boardService } from '../../services/board.service.local';
+import { useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
+import { boardService } from "../../services/board.service.local"
+import { TaskCover } from "./task-cover"
+import { TaskAttachments } from "./task-attachments"
+import { TaskSidebar } from "./task-sidebar"
 
 export function TaskDetails() {
-  const { boardId, groupId, taskId } = useParams();
-  const [board, setBoard] = useState();
-  console.log(board);
-  const location = useLocation();
-  const { task } = location.state || {}; // Provide a default value for task if it is null
+  const { boardId, groupId, taskId } = useParams()
+
+  const [board, setBoard] = useState()
+  const [group, setGroup] = useState(null)
+  const [task, setTask] = useState(null)
+
   useEffect(() => {
-    loadBoard();
-  }, []);
-  async function loadBoard() {
-    const savedBoard = await boardService.getById(boardId);
-    setBoard(savedBoard);
+    loadTask()
+  }, [])
+
+  async function loadTask() {
+    const loadedBoard = await boardService.getById(boardId);
+    setBoard(loadedBoard);
+    const loadedGroup = loadedBoard.groups.find((group) => group.id === groupId);
+    setGroup(loadedGroup);
+    const loadedTask = loadedGroup.tasks?.find((task) => task.id === taskId);
+    setTask(loadedTask);
+  }
+
+  if (!task) {
+    return <div className="loading-text"><p>Loading...</p></div>;
   }
 
   return (
-    <div>
-      <h1>Task Details</h1>
-      {task && (
-        <div>
-          <h1>{task.id}</h1>
-          <p>Task ID: {taskId}</p>
-          <p>Group ID: {groupId}</p>
-          <p>Board ID: {boardId}</p>
+    <div className="task-details">
+      <div className="cover-component">
+        <TaskCover></TaskCover>
+      </div>
+      <div className="task-grid">
+        <div className="task-column">
+          <h1 className="task-title">{task.title}</h1>
+          <p className="group-id">Group ID: {groupId}</p>
+          <div className="attachments-section">
+            <TaskAttachments></TaskAttachments>
+          </div>
         </div>
-      )}
+        <div className="task-sidebar">
+          <TaskSidebar></TaskSidebar>
+        </div>
+      </div>
     </div>
   );
 }

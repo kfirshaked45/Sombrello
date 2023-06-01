@@ -18,6 +18,7 @@
 @import 'views/BoardDetails';
 @import 'views/ReviewIndex';
 @import 'views/UserDetails';
+@import 'views/_task-details';
 
 // Components
 @import 'cmps/AppHeader';
@@ -26,4 +27,6 @@
 @import 'cmps/BoardHeader';
 @import 'cmps/GroupList';
 @import 'cmps/TaskList';
-@import 'cmps/_task-details';
+@import 'cmps/_task-cover';
+@import 'cmps/_task-attachments';
+@import 'cmps/_task-sidebar';
