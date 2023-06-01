@@ -10,38 +10,7 @@ export function BoardIndex({ handleBoardClick }) {
     boardService.createDemoBoard();
     loadBoards();
   }, []);
-  //     async function onRemoveBoard(boardId) {
-  //         try {
-  //             await removeBoard(boardId)
-  //             showSuccessMsg('Board removed')
-  //         } catch (err) {
-  //             showErrorMsg('Cannot remove board')
-  //         }
-  //     }
 
-  //     async function onAddBoard() {
-  //         const board = boardService.getEmptyBoard()
-  //         board.vendor = prompt('Vendor?')
-  //         try {
-  //             const savedBoard = await addBoard(board)
-  //             showSuccessMsg(`Board added (id: ${savedBoard._id})`)
-  //         } catch (err) {
-  //             showErrorMsg('Cannot add board')
-  //         }
-  //     }
-
-  //     async function onUpdateBoard(board) {
-  //         const price = +prompt('New price?')
-  //         const boardToSave = { ...board, price }
-  //         try {
-  //             const savedBoard = await updateBoard(boardToSave)
-  //             showSuccessMsg(`Board updated, new price: ${savedBoard.price}`)
-  //         } catch (err) {
-  //             showErrorMsg('Cannot update board')
-  //         }
-  //     }
-  // GET BOARDS use selector
-  // For each board  - render BoardPreview which contains BoardDetails
   return (
     <div className="board-index">
       {/* <Link path=""></Link> */}

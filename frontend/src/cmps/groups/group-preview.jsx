@@ -1,7 +1,7 @@
 import { TaskList } from '../task/task-list';
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEllipsis, faPen } from '@fortawesome/free-solid-svg-icons';
+import { faEllipsis } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch } from 'react-redux';
 import { updateBoard } from '../../store/board.actions';
 import { boardService } from '../../services/board.service.local';
@@ -38,7 +38,6 @@ export function GroupPreview({ board, group }) {
         <textarea value={title} className="list-header-name" onChange={handleChange} onBlur={handleBlur}></textarea>
         <button className="list-header-extras-menu">
           <FontAwesomeIcon icon={faEllipsis} />
-     
         </button>
       </div>
 

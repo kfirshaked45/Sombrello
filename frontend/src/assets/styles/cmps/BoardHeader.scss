@@ -1,4 +1,16 @@
 .border-header {
   display: flex;
   justify-content: space-between;
+  padding: 12px 10px 12px 16px;
+}
+.border-header button:hover {
+  background-color: #a6c5e229;
+}
+.border-header button {
+  padding: 6px;
+}
+.board-header-right-container {
+  display: flex;
+  text-align: center;
+  align-items: center;
 }
