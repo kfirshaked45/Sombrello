@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom"
-import { TaskDetails } from "./task-details"
+import { Link } from 'react-router-dom';
+import { TaskDetails } from './task-details';
 
 export function TaskPreview({ groupId, task }) {
-  console.log('task: ',task);
+  console.log('task: ', task);
   return (
     <div className="task-preview">
       <Link
@@ -11,8 +11,8 @@ export function TaskPreview({ groupId, task }) {
           state: { task },
         }}
       >
-        <h2>{task.title}</h2>
+        <span className="task-item-title">{task.title}</span>
       </Link>
     </div>
-  )
+  );
 }

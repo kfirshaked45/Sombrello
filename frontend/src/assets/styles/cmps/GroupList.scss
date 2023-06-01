@@ -2,9 +2,14 @@
   display: flex;
 }
 .group-list-header {
-  padding: 10px 8px;
+  // padding: 10px 8px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+.list-header-extras-menu {
+  background-color: inherit;
+  color: $list-item-clr;
 }
 .group-list-item {
   width: 272px;
