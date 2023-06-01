@@ -28,6 +28,10 @@ export function RootCmp() {
           ))}
           <Route path="user/:id" element={<UserDetails />} />
           <Route path="board/:boardId" element={<BoardDetails />} />
+          <Route
+            path="board/:boardId/:groupId/:taskId"
+            element={<TaskDetails />}
+          />
         </Routes>
       </main>
       <AppFooter />

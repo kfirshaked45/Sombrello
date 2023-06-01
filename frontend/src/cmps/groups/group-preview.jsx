@@ -1,6 +1,7 @@
-import { GroupTask } from './group-task';
+import { TaskList } from '../task/task-list';
+// import { GroupTask } from './group-task';
 
-export function GroupPreview({ group }) {
+export function GroupPreview({ boardId, group }) {
   return (
     <div>
       <div className="group-list-header">
@@ -8,9 +9,7 @@ export function GroupPreview({ group }) {
         <p>...</p>
       </div>
 
-      {group.tasks.map((task) => (
-        <GroupTask task={task} />
-      ))}
+      <TaskList boardId={boardId} groupId={group.id} tasks={group.tasks}></TaskList>
     </div>
-  );
+  )
 }

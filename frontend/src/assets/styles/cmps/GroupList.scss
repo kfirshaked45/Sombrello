@@ -2,15 +2,36 @@
   display: flex;
 }
 .group-list-header {
-  padding: 14px 8px 14px 8px;
+  padding: 14px 8px;
   display: flex;
   justify-content: space-between;
 }
 .group-list-item {
   width: 272px;
-  background-color: $list-item-clr;
-  color: #b6c2cf;
+  background-color: $list-item-bgclr;
+  color: $list-item-clr;
   margin-inline-start: 6px;
   margin-inline-end: 6px;
   border-radius: 12px;
+  color: $list-text-color;
+}
+.group-task {
+  margin: 8px 8px 4px 8px;
+  background-color: white;
+  border-radius: 8px;
+  min-height: 54px;
+}
+
+.group-task textarea {
+  background: none;
+  border: none;
+  box-shadow: none;
+  height: auto;
+  margin-bottom: 4px;
+  max-height: 162px;
+  min-height: 54px;
+  overflow-y: auto;
+  padding: 0;
+  width: 100%;
+  color: $list-text-color;
 }
