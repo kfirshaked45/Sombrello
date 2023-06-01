@@ -5,7 +5,7 @@ import { boardService } from '../../services/board.service.local';
 export function TaskDetails() {
   const { boardId, groupId, taskId } = useParams();
   const [board, setBoard] = useState();
-  console.log(board);
+
   const location = useLocation();
   const { task } = location.state || {}; // Provide a default value for task if it is null
   useEffect(() => {

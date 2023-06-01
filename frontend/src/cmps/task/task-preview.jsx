@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { TaskDetails } from './task-details';
 
 export function TaskPreview({ groupId, task }) {
-  console.log('task: ', task);
+  // console.log('task: ', task);
   return (
     <div className="task-preview">
       <Link

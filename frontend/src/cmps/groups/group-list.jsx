@@ -1,7 +1,7 @@
-import { GroupPreview } from './group-preview'
+import { GroupPreview } from './group-preview';
 
 export function GroupList({ board }) {
-  const groups = board.groups
+  const groups = board.groups;
 
   return (
     <div className="board-group-previews">
@@ -9,11 +9,11 @@ export function GroupList({ board }) {
         {groups.map((group) => (
           <li className="group-list-item" key={group.id}>
             {/* <Link to={group._id}> */}
-            <GroupPreview boardId={board._id} group={group} />
+            <GroupPreview board={board} group={group} />
             {/* </Link> */}
           </li>
         ))}
       </ul>
     </div>
-  )
+  );
 }

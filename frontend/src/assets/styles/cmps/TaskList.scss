@@ -11,6 +11,9 @@
   padding: 0px;
 }
 .task-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 10px 8px;
   margin-bottom: 7px;
   background-color: white;
