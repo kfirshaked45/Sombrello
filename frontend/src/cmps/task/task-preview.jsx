@@ -4,9 +4,7 @@ import { Link } from 'react-router-dom';
 export function TaskPreview({ groupId, task }) {
   return (
     <div className="task-preview">
-      <Link to={`${groupId}/${task.id}`}>
-        <span className="task-item-title">{task.title}</span>
-      </Link>
+      <span className="task-item-title">{task.title}</span>
     </div>
   );
 }

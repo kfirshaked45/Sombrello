@@ -6,11 +6,10 @@ import { faPen } from '@fortawesome/free-solid-svg-icons';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { useDispatch } from 'react-redux';
 import { updateBoard } from '../../store/board.actions';
-
+import { Link } from 'react-router-dom';
 export function TaskList({ board, groupId, tasks }) {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const dispatch = useDispatch();
-
 
   const handleMouseEnter = (index) => {
     setHoveredIndex(index);
@@ -24,7 +23,7 @@ export function TaskList({ board, groupId, tasks }) {
     if (!result.destination) {
       return; // Item was dropped outside a valid droppable area
     }
-
+    console.log(board.groups, 'GROUPSS');
     const updatedGroups = board.groups.map((group) => {
       if (group.id === groupId) {
         const updatedTasks = Array.from(group.tasks);
@@ -51,17 +50,19 @@ export function TaskList({ board, groupId, tasks }) {
             {tasks.map((task, index) => (
               <Draggable key={task.id} draggableId={task.id} index={index}>
                 {(provided) => (
-                  <li
-                    className="task-list-item"
-                    {...provided.draggableProps}
-                    {...provided.dragHandleProps}
-                    ref={provided.innerRef}
-                    onMouseEnter={() => handleMouseEnter(index)}
-                    onMouseLeave={handleMouseLeave}
-                  >
-                    <TaskPreview groupId={groupId} task={task} />
-                    {hoveredIndex === index && <FontAwesomeIcon icon={faPen} />}
-                  </li>
+                  <Link to={`${groupId}/${task.id}`}>
+                    <li
+                      className="task-list-item"
+                      {...provided.draggableProps}
+                      {...provided.dragHandleProps}
+                      ref={provided.innerRef}
+                      onMouseEnter={() => handleMouseEnter(index)}
+                      onMouseLeave={handleMouseLeave}
+                    >
+                      <TaskPreview groupId={groupId} task={task} />
+                      {hoveredIndex === index && <FontAwesomeIcon icon={faPen} />}
+                    </li>
+                  </Link>
                 )}
               </Draggable>
             ))}
