@@ -2,7 +2,8 @@
   display: flex;
 }
 .group-list-header {
-  // padding: 10px 8px;
+  padding: 14px 8px;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -19,7 +20,7 @@
   margin-inline-end: 6px;
   border-radius: 12px;
   color: $list-text-color;
-  padding: 10px;
+  // padding: 10px;
 }
 
 // .group-task {

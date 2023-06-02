@@ -1,17 +1,11 @@
 import { updateBoard, loadBoards } from '../../store/board.actions';
 import { GroupPreview } from './group-preview';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
 export function GroupList({ board }) {
   const dispatch = useDispatch();
-  const boards = useSelector((state) => state.boardModule.boards);
-  const groups = boards.find((b) => b._id === board._id)?.groups || [];
-
-  useEffect(() => {
-    dispatch(loadBoards());
-  }, [dispatch]);
 
   const handleDragEnd = (result) => {
     if (!result.destination) {
@@ -21,7 +15,7 @@ export function GroupList({ board }) {
     const { source, destination } = result;
 
     // Reorder the groups based on the drag and drop result
-    const updatedGroups = Array.from(groups);
+    const updatedGroups = Array.from(board.groups);
     const [removed] = updatedGroups.splice(source.index, 1);
     updatedGroups.splice(destination.index, 0, removed);
 
@@ -41,11 +35,11 @@ export function GroupList({ board }) {
         <Droppable droppableId="group-list">
           {(provided) => (
             <ul className="group-list" {...provided.droppableProps} ref={provided.innerRef}>
-              {groups.map((group, index) => (
+              {board.groups.map((group, index) => (
                 <Draggable key={group.id} draggableId={group.id} index={index}>
                   {(provided) => (
-                    <li className="group-list-item" {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
-                      <GroupPreview boardId={board._id} group={group} />
+                    <li className="group-list-item" {...provided.draggableProps} ref={provided.innerRef}>
+                      <GroupPreview board={board} group={group} provided={provided} />
                     </li>
                   )}
                 </Draggable>

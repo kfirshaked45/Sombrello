@@ -1,15 +1,18 @@
 import { TaskPreview } from './task-preview';
-
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { updateBoard } from '../../store/board.actions';
 import { Link } from 'react-router-dom';
-export function TaskList({ board, groupId, tasks }) {
+
+export function TaskList({ board, groupId }) {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const dispatch = useDispatch();
+  const boards = useSelector((state) => state.boardModule.boards);
+  const currentGroup = boards.find((b) => b._id === board._id)?.groups.find((group) => group.id === groupId);
+  const currentTasks = currentGroup ? currentGroup.tasks : [];
 
   const handleMouseEnter = (index) => {
     setHoveredIndex(index);
@@ -23,10 +26,10 @@ export function TaskList({ board, groupId, tasks }) {
     if (!result.destination) {
       return; // Item was dropped outside a valid droppable area
     }
-    console.log(board.groups, 'GROUPSS');
+
     const updatedGroups = board.groups.map((group) => {
       if (group.id === groupId) {
-        const updatedTasks = Array.from(group.tasks);
+        const updatedTasks = Array.from(currentGroup.tasks);
         const [removed] = updatedTasks.splice(result.source.index, 1);
         updatedTasks.splice(result.destination.index, 0, removed);
         return { ...group, tasks: updatedTasks };
@@ -34,6 +37,7 @@ export function TaskList({ board, groupId, tasks }) {
       return group;
     });
 
+    
     const updatedBoard = {
       ...board,
       groups: updatedGroups,
@@ -47,7 +51,7 @@ export function TaskList({ board, groupId, tasks }) {
       <Droppable droppableId="task-list">
         {(provided) => (
           <ul className="task-list" {...provided.droppableProps} ref={provided.innerRef}>
-            {tasks.map((task, index) => (
+            {currentTasks.map((task, index) => (
               <Draggable key={task.id} draggableId={task.id} index={index}>
                 {(provided) => (
                   <Link to={`${groupId}/${task.id}`}>

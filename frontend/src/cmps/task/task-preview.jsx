@@ -1,6 +1,4 @@
-import { Link } from 'react-router-dom';
-// import { TaskDetails } from './task-details';
-
+// import { TaskDetails } from './task-details
 export function TaskPreview({ groupId, task }) {
   return (
     <div className="task-preview">
