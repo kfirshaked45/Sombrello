@@ -7,6 +7,13 @@
   color: $clr6;
 }
 
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 html {
   font-family: montserrat;
   line-height: 1.6;

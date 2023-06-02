@@ -1,18 +1,27 @@
-import { Link, NavLink, useLocation } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { Link, NavLink } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import routes from '../../routes'
-import { useEffect, useRef, useState } from 'react'
-import { showErrorMsg, showSuccessMsg } from '../../services/event-bus.service'
+import sombrelloLogo from '../../assets/img/sombrello-logo.jpg'
 import { login, logout, signup } from '../../store/user.actions.js'
 import { LoginSignup } from '../login-signup.jsx'
-import Sombrellologo from '../../assets/img/sombrello-logo.jpg'
+import { useSelector } from 'react-redux'
+// import { ActionModal } from './action-modal'
+import { useEffect, useRef, useState } from 'react'
+import { utilService } from '../../services/util.service'
+import { MdKeyboardArrowDown } from 'react-icons/md'
+import { Fragment } from 'react'
 
-export function AppHeader() {
+export const AppHeader = () => {
   const [headerStatus, setHeaderStatus] = useState()
+  const [actionModal, setActionModal] = useState(null)
 
-  const user = useSelector((storeState) => storeState.userModule.user)
+  const board = useSelector((state) => state.boardModule.board)
+  const user = useSelector((state) => state.userModule.user)
 
   const location = useLocation()
+  const userImgRef = useRef()
+  const boardsRef = useRef()
+  const starredRef = useRef()
 
   useEffect(() => {
     let status
@@ -44,62 +53,90 @@ export function AppHeader() {
     return styleClass
   }
 
-  async function onLogin(credentials) {
-    try {
-      const user = await login(credentials)
-      showSuccessMsg(`Welcome: ${user.fullname}`)
-    } catch (err) {
-      showErrorMsg('Cannot login')
+  const getStyleColor = () => {
+    if (headerStatus === 'board') {
+      const backgroundColor = board?.style?.backgroundColor
+      return backgroundColor ? { backgroundColor } : {}
     }
   }
-  async function onSignup(credentials) {
-    try {
-      const user = await signup(credentials)
-      showSuccessMsg(`Welcome new user: ${user.fullname}`)
-    } catch (err) {
-      showErrorMsg('Cannot signup')
+
+  const onOpenActionModal = (type, ref) => {
+    if (actionModal?.type === type) return setActionModal(null)
+    const pos = utilService.getModalPosition(type, ref)
+    setActionModal({ type, pos })
+  }
+
+  const getFontColor = () => {
+    if (headerStatus === 'board') {
+      return !utilService.isBackgroundDark(board?.style?.backgroundColor)
+        ? 'dark'
+        : ''
     }
   }
-  async function onLogout() {
-    try {
-      await logout()
-      showSuccessMsg(`Bye now`)
-    } catch (err) {
-      showErrorMsg('Cannot logout')
-    }
-  }
+
+  const styleClass = getHeaderStyleClass()
+  const isUserImgDisplayed = user?.fullname !== 'Guest'
+  const fontColor = getFontColor()
 
   return (
     <header className="app-header">
-      <nav>
-        {routes.map((route) => (
-          <NavLink key={route.path} to={route.path}>
-            {route.label}
-          </NavLink>
-        ))}
-
-        {user && (
+      <section className={`app-header ${styleClass}`} style={getStyleColor()}>
+        <section className="left">
+          <Link to="/workspace">
+            <div className={`main-logo ${fontColor}`}>
+              <img src={sombrelloLogo} alt="" />
+              <h1>Sombrello</h1>
+            </div>
+          </Link>
+          {headerStatus === 'board' && (
+            <Fragment>
+              <div
+                className={`boards ${fontColor}`}
+                onClick={() => onOpenActionModal('Boards', boardsRef)}
+                ref={boardsRef}
+              >
+                <p>Boards</p>
+                <div className="svg-container">
+                  <MdKeyboardArrowDown />
+                </div>
+              </div>
+              <div
+                className={`boards ${fontColor}`}
+                onClick={() => onOpenActionModal('Starred boards', starredRef)}
+                ref={starredRef}
+              >
+                <p>Starred</p>
+                <div className="svg-container">
+                  <MdKeyboardArrowDown />
+                </div>
+              </div>
+            </Fragment>
+          )}
+        </section>
+        <nav>
+          {routes.map((route) => (
+            <NavLink key={route.path} to={route.path}>
+              {route.label}
+            </NavLink>
+          ))}
+          {/* {user && (
           <span className="user-info">
             <Link to={`user/${user._id}`}>
               {user.imgUrl && <img src={user.imgUrl} />}
               {user.fullname}
             </Link>
             <span className="score">{user.score?.toLocaleString()}</span>
-            <button onClick={onLogout}>Logout</button>
+            <button onClick={logout}>Logout</button>
           </span>
         )}
         {!user && (
           <section className="user-info">
-            <LoginSignup onLogin={onLogin} onSignup={onSignup} />
+            <LoginSignup onLogin={login} onSignup={signup} />
           </section>
-        )}
-      </nav>
-      <div className="main-logo">
-        <div className="main-img-container">
-          <img className="main-img" src={Sombrellologo} alt="" />
-        </div>
-        <h1>Sombrello</h1>
-      </div>
+        )} */}
+        </nav>
+      </section>
+      {/* ... */}
     </header>
   )
 }

@@ -1,7 +1,9 @@
 .home-page {
   background: rgba(250, 251, 252, 255);
   width: 100%;
-  overflow: auto;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 
   .link-container {
     width: 130px;
@@ -28,7 +30,9 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    margin: 100px 10px 0;
+    flex: 1 1 0%;
+    overflow-y: auto;
+    margin: 100px 10px 0 0;
 
     .main-content {
       max-width: 650px;
@@ -47,6 +51,7 @@
         line-height: 1.875rem;
         font-family: CharlieText-regular;
         margin-block-end: 24px;
+        text-align: left;
       }
 
       .link-container {
@@ -55,11 +60,24 @@
     }
 
     .main-img {
-      min-width: 230px;
-      align-self: center;
-      width: 230px;
-      margin-bottom: 30px;
-      order: -1;
+      position: absolute;
+      width: 351px;
+      height: 332px;
+      bottom: 48px;
+      right: 66px;
+      max-width: 30%;
+    }
+    .design-img {
+      position: absolute;
+      bottom: 0;
+      z-index: -1;
+      left: 0;
+
+      .design {
+        width: 1440px;
+        position: absolute;
+        bottom: 0;
+      }
     }
   }
 }

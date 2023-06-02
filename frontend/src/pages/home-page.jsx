@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import homePageHero from '../assets/img/homepage-hero.svg'
+import homePageDesign from '../assets/img/homePageDesign.png'
 
 export function HomePage() {
   return (
@@ -21,6 +22,9 @@ export function HomePage() {
         </div>
         <div className="main-img">
           <img src={homePageHero} alt="" />
+        </div>
+        <div className="design-img">
+          <img className="design" src={homePageDesign} alt="" />
         </div>
       </div>
     </section>

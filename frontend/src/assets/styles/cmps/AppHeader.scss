@@ -1,7 +1,7 @@
 .app-header {
+  font-family: CharlieText-regular;
   background-color: #026aa7;
   display: flex;
-  flex-direction: row-reverse;
   align-items: center;
   justify-content: space-between;
   transition: background-color 0.5s ease 0s, box-shadow 0.5s ease 0s;
@@ -14,68 +14,172 @@
   border-bottom: 1px solid hsla(0, 0%, 100%, 0.16);
   transition: background-color 300ms;
 
-  h1 {
-    color: #01284b;
-  }
+  position: fixed;
 
-  .user-info {
-    padding-left: 100px;
-    color: $clr1;
+  .left {
+    display: flex;
 
-    .score {
-      background-color: $clr2;
-      color: $clr6;
-      padding: 8px;
-      margin: 10px;
-      border-radius: 50%;
+    .main-logo {
+      border-radius: 3px;
+      font-family: CharlieDisplay-bold;
+      display: flex;
+
+      align-items: center;
+      padding: 0 6px;
+      margin-left: 6px;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.3);
+      }
+
+      h1 {
+        margin-left: 6px;
+        font-size: 1.4rem;
+        line-height: 30px;
+      }
+
+      img {
+        margin-right: 7px;
+        width: 22px;
+      }
+
+      &.dark {
+        color: #172b4d;
+
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.2);
+        }
+      }
+    }
+
+    .boards {
+      height: 30px;
+      border-radius: 3px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+        'Noto Sans', 'Ubuntu', 'Droid Sans', 'Helvetica Neue', sans-serif;
+      display: flex;
+      align-items: center;
+      padding: 8px 32px 6px 12px;
+      margin-left: 6px;
+      font-size: 14px;
+      position: relative;
+
+      .svg-container {
+        position: absolute;
+        right: 8px;
+        top: 6px;
+        font-size: 20px;
+      }
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.3);
+        cursor: pointer;
+      }
+
+      &.dark {
+        color: #172b4d;
+
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.2);
+        }
+      }
     }
   }
 
-  .user-info .btn-link {
-    color: $clr2;
-  }
+  .home-nav {
+    font-size: 1.25em;
+    display: flex;
+    align-items: center;
+    gap: 4px;
 
-  nav a:first-child {
-    margin-right: 30px;
-  }
+    &.none {
+      display: none;
+    }
 
-  nav a:not(:first-child) {
-    border-top: 1px solid $clr1;
-    padding: 0 5px;
-    margin: 10px;
-  }
+    & > * {
+      padding: 0px 10px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      font-size: 1rem;
+    }
 
-  nav .active {
-    color: $clr1;
+    .login {
+      color: #172a4d;
+    }
+
+    .signup {
+      background-color: $blue-main;
+      color: white;
+
+      &:hover {
+        background-color: #0747a6;
+      }
+    }
   }
 
   &.home-header {
     background-color: #fff;
 
-    h1 {
-      color: black;
-      font-size: 30px;
-      margin-left: 11px;
+    .home-nav > * {
+      height: 60px;
+    }
+
+    .main-logo {
+      font-size: 22px;
+      margin-left: 10px;
+      color: #095ed8;
+
+      h1 {
+        color: black;
+        font-size: 30px;
+        margin-left: 11px;
+      }
     }
 
     &:hover {
       box-shadow: rgb(9 30 66 / 15%) 0px 0.5rem 1rem 0px;
     }
   }
-}
 
-.main-logo {
-  display: flex;
-  align-items: center;
-  .main-img-container {
-    width: 32px;
+  &.login-header {
+    display: none;
+  }
+
+  .user-img {
     height: 32px;
-    margin-right: 10px;
-    overflow: hidden;
-    .main-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    object-fit: cover;
+    width: 32px;
+    margin-inline-end: 8px;
+    cursor: pointer;
+
+    img {
+      border-radius: 25em;
     }
   }
 }
+
+// // MEDIA QUERIES
+
+// //////////////////////////////////////////// 640px ////////////////////////////////////////////
+// @include for-narrow-layout {
+//   .app-header {
+//     .home-nav {
+//       & > * {
+//         font-size: 1.2rem;
+//         padding: 0px 22px;
+//       }
+//     }
+//   }
+// }
+
+// //////////////////////////////////////////// 780px ////////////////////////////////////////////
+// @include for-small-layout {
+// }
+
+// //////////////////////////////////////////// 980px ////////////////////////////////////////////
+// @include for-normal-layout {
+// }
+
+// @include for-wide-layout {
+// }
