@@ -14,8 +14,6 @@
   border-bottom: 1px solid hsla(0, 0%, 100%, 0.16);
   transition: background-color 300ms;
 
-  position: fixed;
-
   .left {
     display: flex;
 
@@ -56,8 +54,8 @@
     .boards {
       height: 30px;
       border-radius: 3px;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
-        'Noto Sans', 'Ubuntu', 'Droid Sans', 'Helvetica Neue', sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Noto Sans', 'Ubuntu', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
       display: flex;
       align-items: center;
       padding: 8px 32px 6px 12px;

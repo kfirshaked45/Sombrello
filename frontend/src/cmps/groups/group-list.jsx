@@ -1,23 +1,45 @@
-import { updateBoard, loadBoards } from '../../store/board.actions';
+import { updateBoard } from '../../store/board.actions';
 import { GroupPreview } from './group-preview';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import { utilService } from '../../services/util.service';
 
 export function GroupList({ board }) {
   const dispatch = useDispatch();
 
   const handleDragEnd = (result) => {
+    // console.log(result, 'DESTINATION');
     if (!result.destination) {
       return; // Item was dropped outside a valid droppable area
     }
+    if (result.type === 'GROUP') {
+      handleDragGroup(result);
+    }
+    if (result.type === 'TASK') {
+      handleDragTask(result);
+    }
+  };
 
+  const handleDragTask = (result) => {
+    const sourceGroupId = result.source.droppableId;
+    const destinationGroupId = result.destination.droppableId;
+    const sourceGroup = { ...toGroup(sourceGroupId) };
+
+    if (sourceGroupId !== destinationGroupId) {
+      const destinationGroup = { ...toGroup(destinationGroupId) };
+
+      handleMoveDifferentTaskList(sourceGroup, destinationGroup, result.source.index, result.destination.index);
+      return;
+    }
+    handleMoveSameTaskList(sourceGroup, result.source.index, result.destination.index);
+  };
+
+  const handleDragGroup = (result) => {
     const { source, destination } = result;
-
     // Reorder the groups based on the drag and drop result
     const updatedGroups = Array.from(board.groups);
-    const [removed] = updatedGroups.splice(source.index, 1);
-    updatedGroups.splice(destination.index, 0, removed);
+    utilService.reorder(updatedGroups, source.index, destination.index);
 
     // Create an updated board object with the reordered groups
     const updatedBoard = {
@@ -29,12 +51,56 @@ export function GroupList({ board }) {
     dispatch(updateBoard(updatedBoard));
   };
 
+  const toGroup = (groupId) => {
+    const group = board.groups.find((group) => group.id === groupId);
+    return group;
+  };
+
+  const handleMoveSameTaskList = (group, sourceIndex, destinationIndex) => {
+    utilService.reorder(group.tasks, sourceIndex, destinationIndex);
+    const updatedGroups = board.groups.map((g) => {
+      if (g.id === group.id) {
+        return group;
+      }
+      return g;
+    });
+
+    const updatedBoard = {
+      ...board,
+      groups: updatedGroups,
+    };
+
+    dispatch(updateBoard(updatedBoard));
+  };
+
+  const handleMoveDifferentTaskList = (sourceGroup, destinationGroup, sourceIndex, destinationIndex) => {
+    const [removed] = sourceGroup.tasks.splice(sourceIndex, 1);
+    destinationGroup.tasks.splice(destinationIndex, 0, removed);
+    // current Greoup id , current index remove , add to destrrionation group
+    const updatedGroups = board.groups.map((g) => {
+      if (g.id === sourceGroup.id) {
+        return sourceGroup;
+      }
+      if (g.id === destinationGroup.id) {
+        return destinationGroup;
+      }
+      return g;
+    });
+    const updatedBoard = {
+      ...board,
+      groups: updatedGroups,
+    };
+
+    dispatch(updateBoard(updatedBoard));
+    return;
+  };
+
   return (
     <div className="board-group-previews">
       <DragDropContext onDragEnd={handleDragEnd}>
-        <Droppable droppableId="group-list">
+        <Droppable droppableId="group-list" direction="horizontal" type="GROUP">
           {(provided) => (
-            <ul className="group-list" {...provided.droppableProps} ref={provided.innerRef}>
+            <ul className="group-list-container" {...provided.droppableProps} ref={provided.innerRef}>
               {board.groups.map((group, index) => (
                 <Draggable key={group.id} draggableId={group.id} index={index}>
                   {(provided) => (
