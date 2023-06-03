@@ -40,10 +40,13 @@ export function TaskDetails() {
       <TaskCover className="cover-component"></TaskCover>
       <div className="task-grid">
         <div className="task-column">
-          <IoIosCard className="icon-title" />
+          
           <div className="div-task-title">
+            <IoIosCard className="icon-title" />
             {task ? <h2>{task.title}</h2> : "Loading"}
-            <p className="group-id">in list: {group.title}</p>
+            <div className="group-id">
+              <p>in list: {group.title}</p>
+            </div>
           </div>
 
           <div className="attachments-section">
