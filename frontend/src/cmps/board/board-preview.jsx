@@ -10,7 +10,7 @@ export const BoardPreview = ({ board, onToggleStarred }) => {
       }
     else if (board?.style.backgroundColor)
       return { backgroundColor: `${board.style.backgroundColor}` }
-    return { backgroundColor: `blue` }
+    return { backgroundColor: `#5ba4cf` }
   }
 
   const boardStyle = getBoardStyle()
