@@ -1,8 +1,9 @@
 .task-details {
-    margin-top: 100px;
     display: flex;
     flex-direction: column;
     max-width: $narrow-breakpoint;
+    background-color: #f1f2f4;
+    color: $list-text-color;
   }
   
   .task-grid {
