@@ -1,15 +1,16 @@
 .task-details {
+    margin-top: 100px;
     display: flex;
     flex-direction: column;
     max-width: $narrow-breakpoint;
   }
   
   .task-grid {
+    max-width: 576px;
     display: grid;
     grid-template-columns: 3fr 1fr;
     grid-gap: 20px;
     margin-top: 20px;
-    padding: 10px;
   }
   
   .task-column {

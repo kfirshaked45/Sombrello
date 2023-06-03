@@ -1,23 +1,25 @@
 import React from "react"
-import { GrAttachment } from 'react-icons/gr'
-import { AttachmentPreview } from './attachment-preview'
 
-export const TaskAttachments = ({ task, groupId }) => {
-  const { attachments } = task
+export function TaskAttachments() {
+  // demo attachment data
+  const attachments = [
+    { id: 1, name: "Attachment 1" },
+    { id: 2, name: "Attachment 2" },
+    { id: 3, name: "Attachment 3" },
+  ]
 
   return (
-    <section className="task-attachments">
-      <div className="attachments-header">
-        <GrAttachment />
-        <h3>Attachments</h3>
-      </div>
-
-      <div className="attachments-body">
-        {attachments &&
-          attachments.map((attachment) => (
-            <AttachmentPreview key={attachment.id} task={task} attachment={attachment} groupId={groupId} />
+    <div className="task-attachments">
+      <h3>Attachments</h3>
+      {attachments.length > 0 ? (
+        <ul>
+          {attachments.map((attachment) => (
+            <li key={attachment.id}>{attachment.name}</li>
           ))}
-      </div>
-    </section>
+        </ul>
+      ) : (
+        <p>No attachments</p>
+      )}
+    </div>
   )
 }
