@@ -121,6 +121,10 @@ async function createDemoBoard() {
               id: 'c102',
               title: 'Add Samples',
             },
+            {
+              id: 'c103',
+              title: 'Complete task 1',
+            },
           ],
           style: {},
         },
@@ -129,53 +133,41 @@ async function createDemoBoard() {
           title: 'Group 2',
           tasks: [
             {
-              id: 'c103',
-              title: 'Do that',
-              archivedAt: 1589983468418,
+              id: 'c104',
+              title: 'Complete task 2',
+              status: 'in-progress',
             },
             {
-              id: 'c104',
-              title: 'Help me',
-              status: 'in-progress', // monday
-              priority: 'high',
-              description: 'description',
-              comments: [
-                {
-                  id: 'ZdPnm',
-                  txt: 'also @yaronb please CR this',
-                  createdAt: 1590999817436,
-                  byMember: {
-                    _id: 'u101',
-                    fullname: 'Tal Tarablus',
-                    imgUrl: 'http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg',
-                  },
-                },
-              ],
-              checklists: [
-                {
-                  id: 'YEhmF',
-                  title: 'Checklist',
-                  todos: [
-                    {
-                      id: '212jX',
-                      title: 'To Do 1',
-                      isDone: false,
-                    },
-                  ],
-                },
-              ],
-              memberIds: ['u101'],
-              labelIds: ['l101', 'l102'],
-              dueDate: 16156215211,
-              byMember: {
-                _id: 'u101',
-                username: 'Tal',
-                fullname: 'Tal Tarablus',
-                imgUrl: 'http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg',
-              },
-              style: {
-                bgColor: '#26de81',
-              },
+              id: 'c105',
+              title: 'Complete task 3',
+              status: 'in-progress',
+            },
+            {
+              id: 'c106',
+              title: 'Complete task 4',
+              status: 'in-progress',
+            },
+          ],
+          style: {},
+        },
+        {
+          id: 'g103',
+          title: 'Group 3',
+          tasks: [
+            {
+              id: 'c107',
+              title: 'Complete task 5',
+              status: 'done',
+            },
+            {
+              id: 'c108',
+              title: 'Complete task 6',
+              status: 'done',
+            },
+            {
+              id: 'c109',
+              title: 'Complete task 7',
+              status: 'done',
             },
           ],
           style: {},

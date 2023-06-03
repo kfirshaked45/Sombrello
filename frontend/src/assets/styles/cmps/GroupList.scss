@@ -1,4 +1,4 @@
-.group-list {
+.group-list-container {
   display: flex;
 }
 .group-list-header {
@@ -8,6 +8,7 @@
   justify-content: space-between;
   align-items: center;
 }
+
 .list-header-extras-menu {
   background-color: inherit;
   color: $list-item-clr;

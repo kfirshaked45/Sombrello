@@ -3,9 +3,9 @@ import { faStar, faEllipsis } from '@fortawesome/free-solid-svg-icons';
 
 export function BoardHeader({ board }) {
   const members = board.members;
-  // console.log(members);
+  console.log(members);
   return (
-    <div className="border-header">
+    <div className="board-header">
       <div>
         {board.title}
         <button>

@@ -80,6 +80,20 @@ export function updateBoard(board) {
       throw err;
     });
 }
+// export async function updateBoard(board) {
+
+//   return boardService
+//     .save(board)
+//     .then((savedBoard) => {
+//       console.log('Updated Board:', savedBoard);
+//       store.dispatch(getActionUpdateBoard(savedBoard));
+//       return savedBoard;
+//     })
+//     .catch((err) => {
+//       console.log('Cannot save board', err);
+//       throw err;
+//     });
+// }
 
 // Demo for Optimistic Mutation
 // (IOW - Assuming the server call will work, so updating the UI first)
