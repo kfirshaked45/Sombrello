@@ -1,13 +1,43 @@
 .task-cover {
-    max-width: 576px;
-    height: 116px;
-    background-color: $green;
-    display: flex;
-    padding: 20px;
-    color: white;
-    font-size: 20px;
+  height: 116px;
+  background-color: $green;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  font-size: 16px;
+  position: relative;
+}
+
+.close-task-details-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    border-radius: 50%; 
+    background-color: rgba(0, 0, 0, 0.1);
   }
-  
-  .close-task-details-btn {
-    margin-left: auto;
+}
+
+.call-to-action {
+  display: flex;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  padding: 6px 12px 6px 6px;
+  align-items: center;
+
+  .cta-icon {
+    margin-right: 5px;
   }
+
+  .cta-text {
+    margin-left: 5px;
+  }
+}
