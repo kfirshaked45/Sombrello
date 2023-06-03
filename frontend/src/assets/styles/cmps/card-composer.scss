@@ -1,0 +1,44 @@
+.card-composer-add-btn {
+  padding: 6px 12px;
+  background-color: #0c66e4;
+  color: white;
+  border-radius: 3px;
+  line-height: 20px;
+}
+.card-composer-textarea-container {
+  border: none;
+  padding: 4px 4px;
+  margin: 4px 4px;
+  height: 54px;
+
+  margin-bottom: 8px;
+  display: flex;
+}
+.card-composer-textarea {
+  padding: 8px 8px 4px 12px;
+  box-shadow: $ds-shadow-raised;
+  border: none;
+  flex-grow: 1;
+}
+.card-composer {
+  display: flex;
+  flex-direction: column;
+}
+.card-composer-buttons {
+  display: flex;
+}
+.open-card-composer-btn {
+  margin: 8px;
+  padding: 4px 8px 4px 6px;
+  text-align: left;
+  flex-grow: 1;
+  color: rgb(68, 84, 111);
+  text-align: left;
+}
+.open-card-composer-btn:hover {
+  background-color: #091e4224;
+  border-radius: 8px;
+}
+.open-card-plus {
+  margin-inline-end: 8px;
+}

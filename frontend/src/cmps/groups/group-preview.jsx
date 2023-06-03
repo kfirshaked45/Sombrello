@@ -5,6 +5,7 @@ import { faEllipsis } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch } from 'react-redux';
 import { updateBoard } from '../../store/board.actions';
 import { boardService } from '../../services/board.service.local';
+import { TaskAdd } from '../task/task-add';
 
 export function GroupPreview({ board, group, provided }) {
   const [title, setTitle] = useState(group.title);
@@ -39,7 +40,7 @@ export function GroupPreview({ board, group, provided }) {
       const updatedBoard = { ...board, groups: updatedGroups };
 
       dispatch(updateBoard(updatedBoard));
-      boardService.updateBoard(updatedBoard);
+      // boardService.updateBoard(updatedBoard);
     }
   }
 
@@ -62,7 +63,7 @@ export function GroupPreview({ board, group, provided }) {
         </div>
       </div>
       <TaskList board={board} group={group} tasks={group.tasks}></TaskList>
-      <button>Add Card</button>
+      <TaskAdd board={board} group={group} />
     </div>
   );
 }

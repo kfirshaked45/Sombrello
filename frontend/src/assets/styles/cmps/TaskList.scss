@@ -8,7 +8,8 @@
   text-decoration: none;
 }
 .task-list {
-  padding: 0px;
+  padding: 0px 4px;
+  margin: 0px 4px;
 }
 .task-list-item {
   display: flex;
@@ -34,7 +35,7 @@
   margin: -4px 0;
   max-height: 256px;
   min-height: 20px;
-  padding: 4px 8px;
+  padding: 4px 8px 4px 12px;
   resize: none;
   overflow: hidden;
 }
