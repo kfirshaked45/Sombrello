@@ -104,7 +104,17 @@ async function createDemoBoard() {
         {
           _id: 'u101',
           fullname: 'Tal Tarablus',
-          imgUrl: 'https://www.google.com',
+          imgUrl: 'https://trello-members.s3.amazonaws.com/647734a4a5064966da66d1ff/fe934ab149781128aee1cf07052df42a/original.png',
+        },
+        {
+          _id: 'u102',
+          fullname: 'John Smith',
+          imgUrl: 'https://trello-members.s3.amazonaws.com/6477341a7c73ea6a6522a0bf/e4ccab819753313eb1cad1c7d6158cd7/original.png',
+        },
+        {
+          _id: 'u103',
+          fullname: 'Emma Johnson',
+          imgUrl: 'https://trello-members.s3.amazonaws.com/64770c06c6132f81928b9788/efeedf2ef41cde391f77cd8dbeca21e8/original.png',
         },
       ],
       groups: [

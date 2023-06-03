@@ -1,9 +1,21 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar, faEllipsis } from '@fortawesome/free-solid-svg-icons';
+import { faStar, faEllipsis, faSliders } from '@fortawesome/free-solid-svg-icons';
+import { useState } from 'react';
+import { MemberModal } from './member-modal';
 
 export function BoardHeader({ board }) {
   const members = board.members;
-  console.log(members);
+  const [selectedMember, setSelectedMember] = useState(null);
+
+  const openModal = (member) => {
+    setSelectedMember(member);
+    // Logic to open the modal
+  };
+
+  const closeModal = () => {
+    setSelectedMember(null);
+    // Logic to close the modal
+  };
   return (
     <div className="board-header">
       <div>
@@ -16,12 +28,18 @@ export function BoardHeader({ board }) {
         <button> Board</button>
       </div>
       <div className="board-header-right-container">
-        <button>Filter</button>
+        <button className="filter-button">
+          <FontAwesomeIcon icon={faSliders} />
+          <span>Filter</span>
+        </button>
         <div className="members-img">
           {members.map((member) => (
-            <img src={`${member.imgUrl}`} alt="alter" />
+            <div key={member._id} onClick={() => openModal(member)}>
+              <img src={member.imgUrl} alt="Member" />
+            </div>
           ))}
         </div>
+        {selectedMember && <MemberModal member={selectedMember} onClose={closeModal} />}
         <FontAwesomeIcon icon={faEllipsis} />
       </div>
     </div>

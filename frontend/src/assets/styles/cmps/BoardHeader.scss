@@ -14,3 +14,23 @@
   text-align: center;
   align-items: center;
 }
+.members-img img {
+  height: 28px;
+}
+.members-img {
+  display: flex;
+}
+.member-modal {
+  position: absolute;
+
+  top: 100px;
+  right: -80px;
+  width: 304px;
+  height: 221px;
+}
+
+.member-modal-content img {
+  object-fit: cover;
+  height: 86px;
+  width: 86px;
+}
