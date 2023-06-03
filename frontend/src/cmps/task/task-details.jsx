@@ -5,6 +5,8 @@ import { TaskCover } from "./task-cover"
 import { TaskAttachments } from "./task-attachments"
 import { TaskSidebar } from "./task-sidebar"
 
+import { IoIosCard } from "react-icons/io"
+
 export function TaskDetails() {
   const { boardId, groupId, taskId } = useParams()
 
@@ -17,27 +19,33 @@ export function TaskDetails() {
   }, [])
 
   async function loadTask() {
-    const loadedBoard = await boardService.getById(boardId);
-    setBoard(loadedBoard);
-    const loadedGroup = loadedBoard.groups.find((group) => group.id === groupId);
-    setGroup(loadedGroup);
-    const loadedTask = loadedGroup.tasks?.find((task) => task.id === taskId);
-    setTask(loadedTask);
+    const loadedBoard = await boardService.getById(boardId)
+    setBoard(loadedBoard)
+    const loadedGroup = loadedBoard.groups.find((group) => group.id === groupId)
+    setGroup(loadedGroup)
+    const loadedTask = loadedGroup.tasks?.find((task) => task.id === taskId)
+    setTask(loadedTask)
   }
 
   if (!task) {
-    return <div className="loading-text"><p>Loading...</p></div>;
+    return (
+      <div className="loading-text">
+        <p>Loading...</p>
+      </div>
+    )
   }
 
   return (
-    <div className="task-details">
-      <div className="cover-component">
-        <TaskCover></TaskCover>
-      </div>
+    <section className="task-details">
+      <TaskCover className="cover-component"></TaskCover>
       <div className="task-grid">
         <div className="task-column">
-          <span className="task-title">{task.title}</span>
-          <p className="group-id">in list: {group.title}</p>
+          <IoIosCard className="icon-title" />
+          <div className="div-task-title">
+            {task ? <h2>{task.title}</h2> : "Loading"}
+            <p className="group-id">in list: {group.title}</p>
+          </div>
+
           <div className="attachments-section">
             <TaskAttachments></TaskAttachments>
           </div>
@@ -46,6 +54,6 @@ export function TaskDetails() {
           <TaskSidebar></TaskSidebar>
         </div>
       </div>
-    </div>
-  );
+    </section>
+  )
 }

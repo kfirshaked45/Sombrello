@@ -1,6 +1,13 @@
 .task-cover {
+    max-width: 576px;
+    height: 116px;
     background-color: $green;
+    display: flex;
     padding: 20px;
     color: white;
     font-size: 20px;
-}
+  }
+  
+  .close-task-details-btn {
+    margin-left: auto;
+  }

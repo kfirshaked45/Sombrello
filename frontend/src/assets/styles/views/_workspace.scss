@@ -1,0 +1,25 @@
+.workspace {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin: auto;
+  padding: 40px 0;
+  padding-top: 47px;
+  min-height: calc(100vh - 44px);
+  max-width: 330px;
+
+  .title {
+    display: flex;
+    align-items: center;
+    color: #172b4d;
+    font-size: 0.8547rem;
+    padding: 0 0 11px;
+    margin-inline-start: 2px;
+
+    .title-icon {
+      color: #42526e;
+      font-size: 1.5rem;
+      margin-inline-end: 12px;
+    }
+  }
+}
