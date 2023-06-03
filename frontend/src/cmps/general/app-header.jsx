@@ -113,28 +113,28 @@ export const AppHeader = () => {
             </Fragment>
           )}
         </section>
-        <nav>
-          {routes.map((route) => (
-            <NavLink key={route.path} to={route.path}>
-              {route.label}
-            </NavLink>
-          ))}
-          {/* {user && (
-          <span className="user-info">
-            <Link to={`user/${user._id}`}>
-              {user.imgUrl && <img src={user.imgUrl} />}
-              {user.fullname}
-            </Link>
-            <span className="score">{user.score?.toLocaleString()}</span>
-            <button onClick={logout}>Logout</button>
-          </span>
-        )}
-        {!user && (
-          <section className="user-info">
-            <LoginSignup onLogin={login} onSignup={signup} />
-          </section>
-        )} */}
+        <nav className={`home-nav ${styleClass ? '' : 'none'}`}>
+          <Link className="login" to={'user/login'}>
+            Log in
+          </Link>
+          <Link className="signup" to={'user/signup'}>
+            Get Frello for free
+          </Link>
         </nav>
+        {/*  */}
+        {!styleClass && user && isUserImgDisplayed && (
+          <div className="user-img">
+            <img
+              referrerPolicy="no-referrer"
+              src={user.imgUrl}
+              alt=""
+              ref={userImgRef}
+              onClick={() => {
+                onOpenActionModal('Account', userImgRef)
+              }}
+            />
+          </div>
+        )}
       </section>
       {/* ... */}
     </header>
