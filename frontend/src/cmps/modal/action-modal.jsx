@@ -7,19 +7,69 @@ import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { ImgUploader } from '../img-uploader';
 import { updateBoard } from '../../store/board.actions';
+// const addByAction= (action, board, group, task, input)=> {
+//   const dispatch = useDispatch();
+//   const updateBoardData = (updatedData) => {
+//     const updatedGroups = board.groups.map((g) => {
+//       if (g.id === group.id) {
+//         const updatedTasks = g.tasks.map((t) => {
+//           if (t.id === task.id) {
+//             return {
+//               ...t,
+//               ...updatedData,
+//             };
+//           }
+//           return t;
+//         });
+
+//         return {
+//           ...g,
+//           tasks: updatedTasks,
+//         };
+//       }
+//       return g;
+//     });
+
+//     const updatedBoard = {
+//       ...board,
+//       groups: updatedGroups,
+//     };
+
+//     dispatch(updateBoard(updatedBoard));
+
+//     console.log(board.members, task.members);
+//   };
+
+//   if (action === 'Members') {
+//     if (task && task.members) {
+//       if (!task.members.includes(input)) {
+//         task.members.push(input);
+//         updateBoardData({ members: task.members });
+//       }
+//     } else {
+//       task.members = [input];
+//       updateBoardData({ members: task.members });
+//     }
+//   } else if (action === 'Labels') {
+//     // Add your logic for adding labels here
+//   } else if (action === 'Dates') {
+//     // Add your logic for adding dates here
+//   } else if (action === 'Attachments') {
+//     // Add your logic for adding attachments here
+//   } else {
+//     console.log('Invalid action.');
+//   }
+// }
 
 function MemberContent({ board, task, group }) {
   console.log(group);
   const dispatch = useDispatch();
   const addMember = (member) => {
     if (task && task.members) {
-      // Check if task.members exists
       if (!task.members.includes(member)) {
-        // Add member to the task.members array if it doesn't already exist
         task.members.push(member);
       }
     } else {
-      // Create task.members array and add the member
       task.members = [member];
     }
     const updatedGroups = board.groups.map((g) => {
@@ -29,7 +79,6 @@ function MemberContent({ board, task, group }) {
           if (t.id === task.id) {
             return {
               ...t,
-              title: task.title,
               members: task.members || [],
             };
           }
@@ -45,8 +94,6 @@ function MemberContent({ board, task, group }) {
     });
     const updatedBoard = { ...board, groups: updatedGroups };
     dispatch(updateBoard(updatedBoard));
-    // Save the updated task to the board or perform any necessary actions
-    // You can replace the console.log with the actual code to save the changes to the board
 
     console.log(board.members, task.members);
   };
@@ -73,14 +120,51 @@ function MemberContent({ board, task, group }) {
   );
 }
 
-function LabelsContent({ board }) {
+function LabelsContent({ board, group, task }) {
+  const dispatch = useDispatch();
+  const addLabel = (label) => {
+    if (task && task.labels) {
+      if (!task.labels.includes(label)) {
+        task.labels.push(label);
+      }
+    } else {
+      task.labels = [label];
+    }
+    const updatedGroups = board.groups.map((g) => {
+      console.log(g.id, group.id);
+      if (g.id === group.id) {
+        const updatedTasks = g.tasks.map((t) => {
+          if (t.id === task.id) {
+            return {
+              ...t,
+              labels: task.labels || [],
+            };
+          }
+          return t;
+        });
+
+        return {
+          ...g,
+          tasks: updatedTasks,
+        };
+      }
+      return g;
+    });
+    const updatedBoard = { ...board, groups: updatedGroups };
+    dispatch(updateBoard(updatedBoard));
+  };
   return (
     <div>
       <input type="text" placeholder="Search members" className="search-labels-input" />
       <div>
         {board.labels.map((label) => (
           <div className="action-label-container">
-            <input type="checkbox" />
+            <input
+              type="checkbox"
+              onClick={() => {
+                addLabel(label);
+              }}
+            />
             <div key={label.id} style={{ backgroundColor: label.color }}>
               {label.title}
             </div>
@@ -127,7 +211,7 @@ function ActionContent({ action, board, task, group }) {
   if (action === 'Members') {
     contentComponent = <MemberContent board={board} task={task} group={group} />;
   } else if (action === 'Labels') {
-    contentComponent = <LabelsContent board={board} />;
+    contentComponent = <LabelsContent board={board} task={task} group={group} />;
   } else if (action === 'Dates') {
     contentComponent = <DateContent />;
   } else if (action === 'Attachments') {

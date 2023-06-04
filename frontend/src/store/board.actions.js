@@ -33,6 +33,7 @@ export function getActionUpdateBoard(board) {
 }
 
 export function loadBoards() {
+  console.log('LOADINGGGGGG');
   return async (dispatch) => {
     try {
       const boards = await boardService.query();
