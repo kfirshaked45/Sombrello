@@ -4,7 +4,7 @@ import { boardService } from '../../services/board.service.local';
 import { TaskCover } from './task-cover';
 import { TaskAttachments } from './task-attachments';
 import { TaskSidebar } from './task-sidebar';
-import { MemberModal } from '../board/member-modal';
+import { MemberModal } from '../modal/member-modal';
 
 import { IoIosCard } from 'react-icons/io';
 import { BsPlus } from 'react-icons/bs';
@@ -13,17 +13,11 @@ import { TaskLabels } from './task-labels';
 
 export function TaskDetails() {
   const { boardId, groupId, taskId } = useParams();
-  const [selectedAction, setSelectedAction] = useState(null);
+
   const [board, setBoard] = useState();
   const [group, setGroup] = useState(null);
   const [task, setTask] = useState(null);
-  const openActionModal = (action) => {
-    setSelectedAction(action);
-  };
 
-  const closeActionModal = () => {
-    setSelectedAction(null);
-  };
   useEffect(() => {
     loadTask();
   }, []);
@@ -76,7 +70,7 @@ export function TaskDetails() {
           <div className="labels-wrapper">
             <h5>Labels</h5>
             <div className="labels">
-              <TaskLabels labels={task?.labels}/>
+              <TaskLabels labels={task?.labels} />
               <button className="add-label">
                 <BsPlus />
               </button>
@@ -106,7 +100,7 @@ export function TaskDetails() {
           </div>
         </div>
         <div className="task-sidebar">
-          <TaskSidebar></TaskSidebar>
+          <TaskSidebar board={board} />
         </div>
       </div>
     </section>
