@@ -13,39 +13,18 @@ import { BsPlus } from 'react-icons/bs';
 import { RxActivityLog } from 'react-icons/rx';
 import { TaskLabels } from './task-labels';
 import { TaskDescription } from './task-description';
+import { loadBoards } from '../../store/board.actions';
 
 export function TaskDetails() {
   const { boardId, groupId, taskId } = useParams();
 
-  const [board, setBoard] = useState();
-  const [group, setGroup] = useState(null);
-  const [task, setTask] = useState(null);
-
-  useEffect(() => {
-    loadTask();
-  }, []);
-
+  const boards = useSelector((state) => state.boardModule.boards);
+  const board = boards.find((b) => b._id === boardId);
+  const group = board.groups.find((g) => g.id === groupId);
+  const task = group.tasks.find((t) => t.id === taskId);
   const members = task?.members ?? null;
 
   const [selectedMember, setSelectedMember] = useState(null);
-
-  async function loadTask() {
-    const loadedBoard = await boardService.getById(boardId);
-    setBoard(loadedBoard);
-    const loadedGroup = loadedBoard.groups.find((group) => group.id === groupId);
-    setGroup(loadedGroup);
-    const loadedTask = loadedGroup.tasks?.find((task) => task.id === taskId);
-    setTask(loadedTask);
-  }
-
-  if (!task) {
-    return (
-      <div className="loading-text">
-        <p>Loading...</p>
-      </div>
-    );
-  }
-  console.log(task.labels);
 
   return (
     <section className="task-details">
@@ -96,7 +75,7 @@ export function TaskDetails() {
           <TaskDescription description={task?.description} />
 
           <div className="attachments-section">
-            <TaskAttachments></TaskAttachments>
+            <TaskAttachments />
           </div>
 
           <div className="div-activity">

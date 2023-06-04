@@ -7,6 +7,7 @@ export const BoardPreview = ({ board, onToggleStarred }) => {
     if (board?.style.background)
       return {
         background: `url('${board.style.thumbnail}') center center / cover`,
+        
       }
     else if (board?.style.backgroundColor)
       return { backgroundColor: `${board.style.backgroundColor}` }

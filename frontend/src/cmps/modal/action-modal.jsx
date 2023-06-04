@@ -7,73 +7,19 @@ import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { ImgUploader } from '../img-uploader';
 import { updateBoard } from '../../store/board.actions';
-// const addByAction= (action, board, group, task, input)=> {
-//   const dispatch = useDispatch();
-//   const updateBoardData = (updatedData) => {
-//     const updatedGroups = board.groups.map((g) => {
-//       if (g.id === group.id) {
-//         const updatedTasks = g.tasks.map((t) => {
-//           if (t.id === task.id) {
-//             return {
-//               ...t,
-//               ...updatedData,
-//             };
-//           }
-//           return t;
-//         });
-
-//         return {
-//           ...g,
-//           tasks: updatedTasks,
-//         };
-//       }
-//       return g;
-//     });
-
-//     const updatedBoard = {
-//       ...board,
-//       groups: updatedGroups,
-//     };
-
-//     dispatch(updateBoard(updatedBoard));
-
-//     console.log(board.members, task.members);
-//   };
-
-//   if (action === 'Members') {
-//     if (task && task.members) {
-//       if (!task.members.includes(input)) {
-//         task.members.push(input);
-//         updateBoardData({ members: task.members });
-//       }
-//     } else {
-//       task.members = [input];
-//       updateBoardData({ members: task.members });
-//     }
-//   } else if (action === 'Labels') {
-//     // Add your logic for adding labels here
-//   } else if (action === 'Dates') {
-//     // Add your logic for adding dates here
-//   } else if (action === 'Attachments') {
-//     // Add your logic for adding attachments here
-//   } else {
-//     console.log('Invalid action.');
-//   }
-// }
 
 function MemberContent({ board, task, group }) {
-  console.log(group);
   const dispatch = useDispatch();
   const addMember = (member) => {
-    if (task && task.members) {
-      if (!task.members.includes(member)) {
-        task.members.push(member);
-      }
-    } else {
+    if (!task.members) {
       task.members = [member];
+    } else {
+      const alreadyMember = task.members.find((m) => m._id === member._id);
+      if (alreadyMember) return;
+      task.members.push(member);
     }
+
     const updatedGroups = board.groups.map((g) => {
-      console.log(g.id, group.id);
       if (g.id === group.id) {
         const updatedTasks = g.tasks.map((t) => {
           if (t.id === task.id) {
@@ -94,8 +40,6 @@ function MemberContent({ board, task, group }) {
     });
     const updatedBoard = { ...board, groups: updatedGroups };
     dispatch(updateBoard(updatedBoard));
-
-    console.log(board.members, task.members);
   };
   return (
     <div className="action-modal-content">
@@ -123,13 +67,14 @@ function MemberContent({ board, task, group }) {
 function LabelsContent({ board, group, task }) {
   const dispatch = useDispatch();
   const addLabel = (label) => {
-    if (task && task.labels) {
-      if (!task.labels.includes(label)) {
-        task.labels.push(label);
-      }
-    } else {
+    if (!task.labels) {
       task.labels = [label];
+    } else {
+      const alreadyLabeled = task.labels.find((l) => l.id === label.id);
+      if (alreadyLabeled) return;
+      task.labels.push(label);
     }
+
     const updatedGroups = board.groups.map((g) => {
       console.log(g.id, group.id);
       if (g.id === group.id) {
@@ -177,30 +122,86 @@ function LabelsContent({ board, group, task }) {
   );
 }
 
-function DateContent() {
+function DateContent({ task, group, board }) {
   const [dateRange, setDateRange] = useState({
     startDate: null,
     endDate: null,
     key: 'selection',
   });
 
+  const dispatch = useDispatch();
+
   const handleSelect = (ranges) => {
     setDateRange(ranges.selection);
+  };
+
+  const handleSave = () => {
+    const updatedGroups = board.groups.map((g) => {
+      if (g.id === group.id) {
+        const updatedTasks = g.tasks.map((t) => {
+          if (t.id === task.id) {
+            return {
+              ...t,
+              dates: {
+                startDate: dateRange.startDate,
+                endDate: dateRange.endDate,
+              },
+            };
+          }
+          return t;
+        });
+
+        return {
+          ...g,
+          tasks: updatedTasks,
+        };
+      }
+      return g;
+    });
+
+    const updatedBoard = { ...board, groups: updatedGroups };
+    dispatch(updateBoard(updatedBoard));
   };
 
   return (
     <div>
       <DateRange ranges={[dateRange]} onChange={handleSelect} className="date-range" />
-      <button>Save</button>
+      <button onClick={handleSave}>Save</button>
       <button>Remove</button>
     </div>
   );
 }
 
-function AttachmentsContent() {
+function AttachmentsContent({ task, group, board }) {
+  const dispatch = useDispatch();
+  const handleAddAttachment = (attachment) => {
+    const updatedGroups = board.groups.map((g) => {
+      if (g.id === group.id) {
+        const updatedTasks = g.tasks.map((t) => {
+          if (t.id === task.id) {
+            return {
+              ...t,
+              attachments: [...(t.attachments || []), attachment],
+            };
+          }
+          return t;
+        });
+
+        return {
+          ...g,
+          tasks: updatedTasks,
+        };
+      }
+      return g;
+    });
+
+    const updatedBoard = { ...board, groups: updatedGroups };
+    dispatch(updateBoard(updatedBoard));
+  };
+
   return (
     <div>
-      <ImgUploader />
+      <ImgUploader onUploaded={handleAddAttachment} />
     </div>
   );
 }
@@ -213,9 +214,9 @@ function ActionContent({ action, board, task, group }) {
   } else if (action === 'Labels') {
     contentComponent = <LabelsContent board={board} task={task} group={group} />;
   } else if (action === 'Dates') {
-    contentComponent = <DateContent />;
+    contentComponent = <DateContent board={board} task={task} group={group} />;
   } else if (action === 'Attachments') {
-    contentComponent = <AttachmentsContent />;
+    contentComponent = <AttachmentsContent board={board} task={task} group={group} />;
   } else {
     contentComponent = <div>Invalid action.</div>;
   }
