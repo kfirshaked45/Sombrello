@@ -44,7 +44,9 @@ main,
 footer {
   padding: 5px;
 }
-
+button:hover {
+  background-color: $dynamic-button-hovered;
+}
 // img {
 //   width: 100%;
 // }

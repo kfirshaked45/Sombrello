@@ -1,6 +1,7 @@
 import { updateBoard } from '../../store/board.actions';
 import { GroupPreview } from './group-preview';
 import { useEffect } from 'react';
+import { ReactComponent as Plus } from '../../assets/img/task/plus-icon.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { utilService } from '../../services/util.service';
@@ -94,6 +95,19 @@ export function GroupList({ board }) {
     dispatch(updateBoard(updatedBoard));
     return;
   };
+  const addGroup = () => {
+    const newGroup = {
+      id: utilService.makeId(),
+      title: 'New List',
+      tasks: [],
+      style: {},
+    };
+
+    const updatedGroups = [...board.groups, newGroup];
+    const updatedBoard = { ...board, groups: updatedGroups };
+
+    dispatch(updateBoard(updatedBoard));
+  };
 
   return (
     <div className="board-group-previews">
@@ -115,6 +129,12 @@ export function GroupList({ board }) {
           )}
         </Droppable>
       </DragDropContext>
+      <button className="add-list-btn" onClick={addGroup}>
+        <span>
+          <Plus />
+        </span>
+        Add another list
+      </button>
     </div>
   );
 }

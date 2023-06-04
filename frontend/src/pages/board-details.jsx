@@ -2,6 +2,7 @@ import { showErrorMsg } from '../services/event-bus.service';
 import { BoardHeader } from '../cmps/board/board-header';
 import { GroupList } from '../cmps/groups/group-list';
 import { boardService } from '../services/board.service.local';
+
 import { loadBoards } from '../store/board.actions';
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useEffect, useState } from 'react';
@@ -21,10 +22,13 @@ export function BoardDetails() {
 
   if (!board) return <div>Loading...</div>;
   return (
-    <div className="board-details">
+    <div>
       <BoardHeader board={board} />
-      <div>
-        <GroupList board={board} />
+
+      <div className="board-details">
+        <div>
+          <GroupList board={board} />
+        </div>
       </div>
     </div>
   );

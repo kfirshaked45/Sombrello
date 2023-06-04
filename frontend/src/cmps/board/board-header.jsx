@@ -1,6 +1,13 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faEllipsis, faSliders } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
+import { ReactComponent as BoardIcon } from '../../assets/img/board/board-icon.svg';
+import { ReactComponent as FilterIcon } from '../../assets/img/board/filter-icon.svg';
+import { ReactComponent as EmptyStarIcon } from '../../assets/img/board/empty-star.svg';
+import { ReactComponent as Member } from '../../assets/img/board/member-icon.svg';
+import { ReactComponent as MembersIcon } from '../../assets/img/board/members-icon.svg';
+import { ReactComponent as Pen } from '../../assets/img/board/pen-icon.svg';
+import { ReactComponent as ShareIcon } from '../../assets/img/board/share-icon.svg';
 import { MemberModal } from './member-modal';
 
 export function BoardHeader({ board }) {
@@ -16,18 +23,21 @@ export function BoardHeader({ board }) {
   };
   return (
     <div className="board-header">
-      <div>
+      <div className='board-header-left'>
         {board.title}
         <button>
-          {/* <i class="fa-regular fa-star"></i> */}
-          <FontAwesomeIcon icon={faStar} />
+          <EmptyStarIcon />
         </button>
-        {/* <button>People Icon</button> */}
-        <button> Board</button>
+        <button>
+          <MembersIcon />
+        </button>
+        <button>
+          <BoardIcon /> Board
+        </button>
       </div>
       <div className="board-header-right-container">
         <button className="filter-button">
-          <FontAwesomeIcon icon={faSliders} />
+          <FilterIcon />
           <span>Filter</span>
         </button>
         <div className="members-img">
@@ -38,6 +48,10 @@ export function BoardHeader({ board }) {
           ))}
         </div>
         {selectedMember && <MemberModal member={selectedMember} onClose={closeModal} />}
+        <button className="share-btn">
+          <ShareIcon />
+          Share
+        </button>
         <FontAwesomeIcon icon={faEllipsis} />
       </div>
     </div>
