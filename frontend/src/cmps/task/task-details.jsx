@@ -11,6 +11,7 @@ import { TfiAlignLeft } from "react-icons/tfi"
 import { BsPlus } from "react-icons/bs"
 import { RxActivityLog } from "react-icons/rx"
 import { TaskLabels } from "./task-labels"
+import { TaskDescription } from "./task-description"
 
 export function TaskDetails() {
   const { boardId, groupId, taskId } = useParams()
@@ -90,18 +91,7 @@ export function TaskDetails() {
             </div>
           </header>
 
-          <div className="description">
-            <div className="description-title">
-              <TfiAlignLeft className="icon-description" />
-              <h2>Description</h2>
-            </div>
-            <div>
-              <textarea
-                placeholder="Add a more detailed description.."
-                className="main-content-text-area"
-              ></textarea>
-            </div>
-          </div>
+          <TaskDescription description={task?.description}/>
 
           <div className="attachments-section">
             <TaskAttachments></TaskAttachments>
