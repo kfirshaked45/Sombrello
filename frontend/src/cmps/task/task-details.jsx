@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import { boardService } from '../../services/board.service.local'
-import { TaskCover } from './task-cover'
-import { TaskAttachments } from './task-attachments'
-import { TaskSidebar } from './task-sidebar'
-import { MemberModal } from '../modal/member-modal'
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { boardService } from '../../services/board.service.local';
+import { TaskCover } from './task-cover';
+import { TaskAttachments } from './task-attachments';
+import { TaskSidebar } from './task-sidebar';
+import { MemberModal } from '../modal/member-modal';
 
 import { IoIosCard } from 'react-icons/io';
 import { TfiAlignLeft } from 'react-icons/tfi';
@@ -16,7 +16,7 @@ import { TaskDescription } from './task-description';
 import { loadBoards } from '../../store/board.actions';
 
 export function TaskDetails() {
-  const { boardId, groupId, taskId } = useParams()
+  const { boardId, groupId, taskId } = useParams();
 
   const boards = useSelector((state) => state.boardModule.boards);
   const board = boards.find((b) => b._id === boardId);
@@ -24,25 +24,7 @@ export function TaskDetails() {
   const task = group.tasks.find((t) => t.id === taskId);
   const members = task?.members ?? null;
 
-  const [selectedMember, setSelectedMember] = useState(null)
-
-  async function loadTask() {
-    const loadedBoard = await boardService.getById(boardId);
-    setBoard(loadedBoard);
-    const loadedGroup = loadedBoard.groups.find((group) => group.id === groupId);
-    setGroup(loadedGroup);
-    const loadedTask = loadedGroup.tasks?.find((task) => task.id === taskId);
-    setTask(loadedTask);
-  }
-
-  if (!task) {
-    return (
-      <div className="loading-text">
-        <p>Loading...</p>
-      </div>
-    );
-  }
-  console.log(task.labels);
+  const [selectedMember, setSelectedMember] = useState(null);
 
   return (
     <section className="task-details">
@@ -99,17 +81,13 @@ export function TaskDetails() {
           <div className="div-activity">
             <RxActivityLog />
             <h2>Activity</h2>
-            <input
-              className="input-task-activity"
-              placeholder="Write a comment..."
-            ></input>
+            <input className="input-task-activity" placeholder="Write a comment..."></input>
           </div>
         </div>
         <div className="task-sidebar">
-          <h3>Add to card</h3>
           <TaskSidebar board={board} group={group} task={task} />
         </div>
       </div>
     </section>
-  )
+  );
 }
