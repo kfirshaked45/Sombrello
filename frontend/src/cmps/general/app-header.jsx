@@ -1,21 +1,23 @@
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useParams } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
 import routes from '../../routes'
 import sombrelloLogo from '../../assets/img/sombrello-logo.jpg'
 import { login, logout, signup } from '../../store/user.actions.js'
 import { LoginSignup } from '../login-signup.jsx'
 import { useSelector } from 'react-redux'
-// import { ActionModal } from './action-modal'
+// import { ActionModal } from './action-modal';
 import { useEffect, useRef, useState } from 'react'
 import { utilService } from '../../services/util.service'
 import { MdKeyboardArrowDown } from 'react-icons/md'
 import { Fragment } from 'react'
 
-export const AppHeader = () => {
+export const AppHeader = ({ boardId }) => {
   const [headerStatus, setHeaderStatus] = useState()
   const [actionModal, setActionModal] = useState(null)
-
-  const board = useSelector((state) => state.boardModule.board)
+  // const { boardId } = useParams()
+  console.log('🚀 ~ file: app-header.jsx:18 ~ AppHeader ~ boardId:', boardId)
+  const boards = useSelector((state) => state.boardModule.boards)
+  const board = boards.find((b) => b._id === boardId)
   const user = useSelector((state) => state.userModule.user)
 
   const location = useLocation()
@@ -36,7 +38,7 @@ export const AppHeader = () => {
   }, [location.pathname])
 
   const getHeaderStyleClass = () => {
-    let styleClass
+    let styleClass = ''
 
     switch (headerStatus) {
       case 'home':
@@ -72,6 +74,7 @@ export const AppHeader = () => {
         ? 'dark'
         : ''
     }
+    return ''
   }
 
   const styleClass = getHeaderStyleClass()
@@ -79,64 +82,60 @@ export const AppHeader = () => {
   const fontColor = getFontColor()
 
   return (
-    <header className="app-header">
-      <section className={`app-header ${styleClass}`} style={getStyleColor()}>
-        <section className="left">
-          <Link to="/workspace">
-            <div className={`main-logo ${fontColor}`}>
-              <img src={sombrelloLogo} alt="" />
-              <h1>Sombrello</h1>
-            </div>
-          </Link>
-          {headerStatus === 'board' && (
-            <Fragment>
-              <div
-                className={`boards ${fontColor}`}
-                onClick={() => onOpenActionModal('Boards', boardsRef)}
-                ref={boardsRef}
-              >
-                <p>Boards</p>
-                <div className="svg-container">
-                  <MdKeyboardArrowDown />
-                </div>
-              </div>
-              <div
-                className={`boards ${fontColor}`}
-                onClick={() => onOpenActionModal('Starred boards', starredRef)}
-                ref={starredRef}
-              >
-                <p>Starred</p>
-                <div className="svg-container">
-                  <MdKeyboardArrowDown />
-                </div>
-              </div>
-            </Fragment>
-          )}
-        </section>
-        <nav className={`home-nav ${styleClass ? '' : 'none'}`}>
-          <Link className="login" to={'user/login'}>
-            Log in
-          </Link>
-          <Link className="signup" to={'user/signup'}>
-            Get Frello for free
-          </Link>
-        </nav>
-        {/*  */}
-        {!styleClass && user && isUserImgDisplayed && (
-          <div className="user-img">
-            <img
-              referrerPolicy="no-referrer"
-              src={user.imgUrl}
-              alt=""
-              ref={userImgRef}
-              onClick={() => {
-                onOpenActionModal('Account', userImgRef)
-              }}
-            />
+    <header className={`app-header ${styleClass}`} style={getStyleColor()}>
+      <section className="left">
+        <Link to="/workspace">
+          <div className={`main-logo ${fontColor}`}>
+            <img src={sombrelloLogo} alt="" />
+            <h1>Sombrello</h1>
           </div>
+        </Link>
+        {headerStatus === 'board' && (
+          <Fragment>
+            <div
+              className={`boards ${fontColor}`}
+              onClick={() => onOpenActionModal('Boards', boardsRef)}
+              ref={boardsRef}
+            >
+              <p>Boards</p>
+              <div className="svg-container">
+                <MdKeyboardArrowDown />
+              </div>
+            </div>
+            <div
+              className={`boards ${fontColor}`}
+              onClick={() => onOpenActionModal('Starred boards', starredRef)}
+              ref={starredRef}
+            >
+              <p>Starred</p>
+              <div className="svg-container">
+                <MdKeyboardArrowDown />
+              </div>
+            </div>
+          </Fragment>
         )}
       </section>
-      {/* ... */}
+      <nav className={`home-nav ${styleClass ? '' : 'none'}`}>
+        <Link className="login" to={'/user/login'}>
+          Log in
+        </Link>
+        <Link className="signup" to={'/user/signup'}>
+          Get Sombrello for free
+        </Link>
+      </nav>
+      {!styleClass && user && isUserImgDisplayed && (
+        <div className="user-img">
+          <img
+            referrerPolicy="no-referrer"
+            src={user.imgUrl}
+            alt=""
+            ref={userImgRef}
+            onClick={() => {
+              onOpenActionModal('Account', userImgRef)
+            }}
+          />
+        </div>
+      )}
     </header>
   )
 }

@@ -83,7 +83,7 @@ async function createDemoBoard() {
       style: {
         background:
           'https://images.unsplash.com/photo-1532703108233-69111d554cb4?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzNjU5OTZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NjQwMzQ0ODI&ixlib=rb-1.2.1&q=80',
-        backgroundColor: '#f3f3f3',
+        backgroundColor: '#030504',
         thumbnail:
           'https://images.unsplash.com/photo-1532703108233-69111d554cb4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjU5OTZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NjQwMzQ0ODI&ixlib=rb-1.2.1&q=80&w=400',
       },
@@ -118,39 +118,42 @@ async function createDemoBoard() {
               title: 'Replace logo',
               id: 'c101',
               style: {},
-              labels:[
-              {
-                id: 'l101',
-                title: 'Done',
-                color: '#ef7564',
-              },
-              {
-                id: 'l102',
-                title: 'Progress',
-                color: '#61bd33',
-              },]
+              labels: [
+                {
+                  id: 'l101',
+                  title: 'Done',
+                  color: '#ef7564',
+                },
+                {
+                  id: 'l102',
+                  title: 'Progress',
+                  color: '#61bd33',
+                },
+              ],
             },
             {
               title: 'Add Samples',
               id: 'c102',
               style: {},
-              labels:[
+              labels: [
                 {
                   id: 'l102',
                   title: 'Progress',
                   color: '#61bd33',
-                },]
+                },
+              ],
             },
             {
               title: 'Complete task 1',
               id: 'c103',
               style: {},
-              labels:[
+              labels: [
                 {
                   id: 'l102',
                   title: 'Progress',
                   color: '#61bd33',
-                },]
+                },
+              ],
             },
           ],
           style: {},
@@ -247,10 +250,10 @@ async function createDemoBoard() {
       title: 'Design project',
       style: {
         background:
-          'https://images.unsplash.com/photo-1495127280742-47f59274e2db?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzNjU5OTZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2ODU3NTUyNDZ8&ixlib=rb-4.0.3&q=80&w=400',
-        backgroundColor: '#f3f3f3',
+          'https://images.unsplash.com/photo-1685556636541-b141d0a09746?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80',
+        backgroundColor: '#edaabc',
         thumbnail:
-          'https://images.unsplash.com/photo-1495127280742-47f59274e2db?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzNjU5OTZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2ODU3NTUyNDZ8&ixlib=rb-4.0.3&q=80&w=400',
+          'https://images.unsplash.com/photo-1685556636541-b141d0a09746?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80',
       },
       isStarred: false,
       members: [
@@ -384,10 +387,10 @@ async function createDemoBoard() {
       title: 'Design project',
       style: {
         background:
-          'https://images.unsplash.com/photo-1671955100937-6c551efa6e15?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjU5OTZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzQyMjMxMjU&ixlib=rb-4.0.3&q=80&w=400',
-        backgroundColor: '#f3f3f3',
+          'https://images.unsplash.com/photo-1684265915928-ddcfee1df6ad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+        backgroundColor: '#eef3ef',
         thumbnail:
-          'https://images.unsplash.com/photo-1671955100937-6c551efa6e15?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjU5OTZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzQyMjMxMjU&ixlib=rb-4.0.3&q=80&w=400',
+          'https://images.unsplash.com/photo-1684265915928-ddcfee1df6ad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
       },
       isStarred: false,
       members: [
