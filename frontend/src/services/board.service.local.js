@@ -147,7 +147,6 @@ async function createDemoBoard() {
               labels: ['l102'],
               description: 'This task is here to remind me to complete task 1'
             },
-
             {
               id: 'c112',
               title: 'Complete task 1',
