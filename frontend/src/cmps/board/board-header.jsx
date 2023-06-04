@@ -9,12 +9,10 @@ export function BoardHeader({ board }) {
 
   const openModal = (member) => {
     setSelectedMember(member);
-    // Logic to open the modal
   };
 
   const closeModal = () => {
     setSelectedMember(null);
-    // Logic to close the modal
   };
   return (
     <div className="board-header">
