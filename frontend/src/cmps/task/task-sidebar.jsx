@@ -5,7 +5,7 @@ import { AiOutlineClockCircle } from 'react-icons/ai';
 import { RiAttachment2 } from 'react-icons/ri';
 import { ActionModal } from '../modal/action-modal';
 
-export function TaskSidebar({ board }) {
+export function TaskSidebar({ board, task, group }) {
   const [selectedAction, setSelectedAction] = useState(null);
   const compsToDoLater = [
     { id: 1, name: 'Members', icon: <IoPersonOutline /> },
@@ -35,7 +35,7 @@ export function TaskSidebar({ board }) {
             <span className="sidebar-title">{comp.name}</span>
           </li>
         ))}
-        {selectedAction && <ActionModal action={selectedAction} onClose={closeActionModal} board={board} />}
+        {selectedAction && <ActionModal action={selectedAction} onClose={closeActionModal} board={board} task={task} group={group} />}
       </ul>
     </div>
   );
