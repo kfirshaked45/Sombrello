@@ -1,13 +1,14 @@
 .group-list-container {
   display: flex;
+  height: 100%;
 }
 .group-list-header {
   padding: 14px 8px;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 
 .list-header-extras-menu {
   background-color: inherit;

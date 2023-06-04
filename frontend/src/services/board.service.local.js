@@ -390,17 +390,19 @@ async function createDemoBoard() {
             {
               title: 'Design logo',
               id: 'c101',
-              style: {},
+              title: 'Replace logo',
             },
             {
               title: 'Create mockups',
               id: 'c102',
               style: {},
+              labels: ['l101', 'l102'],
+              description: 'This task is here to remind me to add samples',
             },
             {
               title: 'Finalize design',
               id: 'c103',
-              style: {},
+              title: 'Complete task 1',
             },
           ],
           style: {},
@@ -426,6 +428,10 @@ async function createDemoBoard() {
               id: 'c106',
               status: 'in-progress',
               style: {},
+            },
+            {
+              id: 'c111',
+              title: 'Complete task 1',
             },
           ],
           style: {},

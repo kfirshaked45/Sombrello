@@ -50,7 +50,23 @@
     }
   }
 }
+.board-group-previews {
+  display: flex;
+}
+.add-list-btn {
+  align-self: baseline;
+  margin-top: rem(14px);
+  width: rem(240px);
+  padding: rem(8px);
+  border-radius: rem(12px);
+  display: flex;
 
+  align-items: center;
+  background-color: $bgcolor-hover-color;
+}
+.add-list-btn:hover {
+  background-color: rgba($color: $bgcolor-hover-color, $alpha: 0.05);
+}
 // MEDIA QUERIES
 
 @media (max-width: 700px) {
