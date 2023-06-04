@@ -1,0 +1,17 @@
+.task-labels {
+  display: flex;
+
+  .label {
+    width: 24px;
+    height: 32px;
+    padding: 0 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+  }
+}
