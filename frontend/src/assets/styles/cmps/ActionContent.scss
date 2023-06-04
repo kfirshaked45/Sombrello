@@ -1,0 +1,52 @@
+.action-member img {
+  border-radius: 25em;
+  height: 32px;
+  object-fit: cover;
+  width: 32px;
+}
+.action-member {
+  display: flex;
+}
+.action-modal {
+  position: fixed;
+  width: 304px;
+  will-change: top, left;
+  background-color: white;
+
+  background: var(--ds-surface-overlay, #fff);
+  border-radius: 3px;
+  box-shadow: var(--ds-shadow-overlay, 0 8px 16px -4px #091e4240, 0 0 0 1px var(--ds-border, #091e4214));
+}
+.action-header {
+  margin-bottom: 8px;
+  padding: 0 12px;
+  position: relative;
+  text-align: center;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 12px 1fr 12px;
+}
+.action-header div {
+  color: var(--ds-text, #172b4d);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Noto Sans', 'Ubuntu', 'Droid Sans', 'Helvetica Neue', sans-serif;
+
+  border-bottom: 1px solid rgba(9, 30, 66, 0.13);
+  color: var(--ds-text-subtle, #5e6c84);
+  height: 40px;
+  display: block;
+  line-height: 40px;
+  margin: 0;
+  overflow: hidden;
+  padding: 0 32px;
+  position: relative;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  grid-column: 1 / span 3;
+  grid-row: 1;
+}
+
+.action-header span {
+  grid-column: 3;
+  grid-row: 1;
+  cursor: pointer;
+}

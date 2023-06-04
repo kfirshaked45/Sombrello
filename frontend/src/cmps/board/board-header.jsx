@@ -8,7 +8,7 @@ import { ReactComponent as Member } from '../../assets/img/board/member-icon.svg
 import { ReactComponent as MembersIcon } from '../../assets/img/board/members-icon.svg';
 import { ReactComponent as Pen } from '../../assets/img/board/pen-icon.svg';
 import { ReactComponent as ShareIcon } from '../../assets/img/board/share-icon.svg';
-import { MemberModal } from './member-modal';
+import { MemberModal } from '../modal/member-modal';
 
 export function BoardHeader({ board }) {
   const members = board.members;
@@ -23,7 +23,7 @@ export function BoardHeader({ board }) {
   };
   return (
     <div className="board-header">
-      <div className='board-header-left'>
+      <div className="board-header-left">
         {board.title}
         <button>
           <EmptyStarIcon />
