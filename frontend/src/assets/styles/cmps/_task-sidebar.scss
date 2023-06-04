@@ -1,13 +1,23 @@
-// .task-sidebar {
-//   background-color: #f2f2f2;
-// }
+.task-sidebar {
+  padding: 10px;
 
-.task-sidebar ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
+  .sidebar-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
 
-.task-sidebar li {
-  margin-bottom: 10px;
+    .sidebar-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+
+      .sidebar-icon {
+        margin-right: 10px;
+      }
+
+      .sidebar-title {
+        font-weight: bold;
+      }
+    }
+  }
 }

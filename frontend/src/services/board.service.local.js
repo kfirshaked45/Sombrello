@@ -118,16 +118,39 @@ async function createDemoBoard() {
               title: 'Replace logo',
               id: 'c101',
               style: {},
+              labels:[
+              {
+                id: 'l101',
+                title: 'Done',
+                color: '#ef7564',
+              },
+              {
+                id: 'l102',
+                title: 'Progress',
+                color: '#61bd33',
+              },]
             },
             {
               title: 'Add Samples',
               id: 'c102',
               style: {},
+              labels:[
+                {
+                  id: 'l102',
+                  title: 'Progress',
+                  color: '#61bd33',
+                },]
             },
             {
               title: 'Complete task 1',
               id: 'c103',
               style: {},
+              labels:[
+                {
+                  id: 'l102',
+                  title: 'Progress',
+                  color: '#61bd33',
+                },]
             },
           ],
           style: {},

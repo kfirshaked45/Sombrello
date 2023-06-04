@@ -77,7 +77,7 @@ export function TaskDetails() {
           <div className="labels-wrapper">
             <h5>Labels</h5>
             <div className="labels">
-              {/* <TaskLabels labels={task?.labels}/> */}
+              <TaskLabels labels={task?.labels}/>
               <button className="add-label">
                 <BsPlus />
               </button>
