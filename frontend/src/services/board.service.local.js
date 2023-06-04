@@ -135,6 +135,15 @@ async function createDemoBoard() {
               id: 'c103',
               title: 'Complete task 1',
             },
+            {
+              id: 'c110',
+              title: 'Complete task 1',
+            },
+
+            {
+              id: 'c112',
+              title: 'Complete task 1',
+            },
           ],
           style: {},
         },
@@ -156,6 +165,10 @@ async function createDemoBoard() {
               id: 'c106',
               title: 'Complete task 4',
               status: 'in-progress',
+            },
+            {
+              id: 'c111',
+              title: 'Complete task 1',
             },
           ],
           style: {},

@@ -67,21 +67,19 @@ export async function addBoard(board) {
   }
 }
 
-export function updateBoard(board) {
-  return boardService
-    .save(board)
-    .then((savedBoard) => {
-      console.log('Updated Board:', savedBoard);
-      store.dispatch(getActionUpdateBoard(savedBoard));
-      return savedBoard;
-    })
-    .catch((err) => {
-      console.log('Cannot save board', err);
-      throw err;
-    });
+export async function updateBoard(board) {
+  try {
+    const savedBoard = await boardService.save(board);
+    console.log('Updated Board:', savedBoard);
+    store.dispatch(getActionUpdateBoard(savedBoard));
+    return savedBoard;
+  } catch (err) {
+    console.log('Cannot save board', err);
+    throw err;
+  }
 }
-// export async function updateBoard(board) {
 
+// export function updateBoard(board) {
 //   return boardService
 //     .save(board)
 //     .then((savedBoard) => {
@@ -97,23 +95,41 @@ export function updateBoard(board) {
 
 // Demo for Optimistic Mutation
 // (IOW - Assuming the server call will work, so updating the UI first)
-export function onRemoveBoardOptimistic(boardId) {
-  store.dispatch({
-    type: REMOVE_BOARD,
-    boardId,
-  });
-  showSuccessMsg('Board removed');
+// export function onRemoveBoardOptimistic(boardId) {
+//   store.dispatch({
+//     type: REMOVE_BOARD,
+//     boardId,
+//   });
+//   showSuccessMsg('Board removed');
 
-  boardService
-    .remove(boardId)
-    .then(() => {
-      console.log('Server Reported - Deleted Succesfully');
-    })
-    .catch((err) => {
-      showErrorMsg('Cannot remove board');
-      console.log('Cannot load boards', err);
-      store.dispatch({
-        type: UNDO_REMOVE_BOARD,
-      });
+//   boardService
+//     .remove(boardId)
+//     .then(() => {
+//       console.log('Server Reported - Deleted Succesfully');
+//     })
+//     .catch((err) => {
+//       showErrorMsg('Cannot remove board');
+//       console.log('Cannot load boards', err);
+//       store.dispatch({
+//         type: UNDO_REMOVE_BOARD,
+//       });
+//     });
+// }
+export async function onRemoveBoardOptimistic(boardId) {
+  try {
+    store.dispatch({
+      type: REMOVE_BOARD,
+      boardId,
     });
+    showSuccessMsg('Board removed');
+
+    await boardService.remove(boardId);
+    console.log('Server Reported - Deleted Successfully');
+  } catch (err) {
+    showErrorMsg('Cannot remove board');
+    console.log('Cannot load boards', err);
+    store.dispatch({
+      type: UNDO_REMOVE_BOARD,
+    });
+  }
 }
