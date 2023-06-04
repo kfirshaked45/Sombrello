@@ -26,15 +26,7 @@ export function TaskDetails() {
   const members = board?.members
   const [selectedMember, setSelectedMember] = useState(null)
 
-  const openModal = (member) => {
-    setSelectedMember(member)
-    // Logic to open the modal
-  }
 
-  const closeModal = () => {
-    setSelectedMember(null)
-    // Logic to close the modal
-  }
 
   async function loadTask() {
     const loadedBoard = await boardService.getById(boardId)
@@ -69,7 +61,7 @@ export function TaskDetails() {
                 ))}
               </div>
               {selectedMember && (
-                <MemberModal member={selectedMember} onClose={closeModal} />
+                <MemberModal member={selectedMember}/>
               )}
               <button className="add-member">
                 <BsPlus />

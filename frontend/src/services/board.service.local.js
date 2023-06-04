@@ -126,18 +126,26 @@ async function createDemoBoard() {
             {
               id: 'c101',
               title: 'Replace logo',
+              labels: ['l101', 'l102'],
+              description: 'This task is here to remind me to replace the app logo'
             },
             {
               id: 'c102',
               title: 'Add Samples',
+              labels: ['l101', 'l102'],
+              description: 'This task is here to remind me to add samples'
             },
             {
               id: 'c103',
               title: 'Complete task 1',
+              labels: ['l101'],
+              description: 'This task is here to remind me to complete task 1'
             },
             {
               id: 'c110',
               title: 'Complete task 1',
+              labels: ['l102'],
+              description: 'This task is here to remind me to complete task 1'
             },
 
             {
