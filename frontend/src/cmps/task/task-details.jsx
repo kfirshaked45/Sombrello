@@ -9,6 +9,7 @@ import { MemberModal } from "../board/member-modal"
 import { IoIosCard } from "react-icons/io"
 import { BsPlus } from "react-icons/bs"
 import { RxActivityLog } from "react-icons/rx"
+import { TaskLabels } from "./task-labels"
 
 
 
@@ -44,6 +45,8 @@ export function TaskDetails() {
       </div>
     )
   }
+  console.log(task.labels);
+
 
   return (
     <section className="task-details">
@@ -74,6 +77,7 @@ export function TaskDetails() {
           <div className="labels-wrapper">
             <h5>Labels</h5>
             <div className="labels">
+              {/* <TaskLabels labels={task?.labels}/> */}
               <button className="add-label">
                 <BsPlus />
               </button>
