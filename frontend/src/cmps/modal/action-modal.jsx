@@ -1,9 +1,9 @@
 import React from 'react';
+import { ReactComponent as XIcon } from '../../assets/img/board/x-icon.svg';
+import { ReactComponent as PenIcon } from '../../assets/img/board/pen-icon.svg';
 
 function ActionContent({ action, board }) {
   if (action === 'Members') {
-    console.log(board.members);
-
     return (
       <div className="action-modal-content">
         <input type="text" placeholder="Search members" className="search-members-input" />
@@ -21,9 +21,30 @@ function ActionContent({ action, board }) {
       </div>
     );
   } else if (action === 'Labels') {
-    return <div>Labels Content</div>;
+    console.log(board);
+    return (
+      <div>
+        <input type="text" placeholder="Search members" className="search-labels-input" />
+        <div>
+          {board.labels.map((label) => (
+            <div className="action-label-container">
+              <input type="checkbox" />
+              <div key={label.id} style={{ backgroundColor: label.color }}>
+                {label.title}
+              </div>
+              <PenIcon />
+            </div>
+          ))}
+        </div>
+        <button>Create a new label</button>
+      </div>
+    );
   } else if (action === 'Dates') {
-    return <div>Dates Content</div>;
+    return (
+      <div className="action-modal-content">
+        <input type="date" className="date-input" />
+      </div>
+    );
   } else if (action === 'Attachments') {
     return <div>Attachments Content</div>;
   } else {
@@ -36,7 +57,8 @@ export function ActionModal({ action, onClose, board }) {
     <div className="action-modal">
       <div className="action-header">
         <div>{action}</div>
-        <span onClick={onClose}>X</span>
+
+        <XIcon onClick={onClose} className="action-modal-x" />
       </div>
 
       <ActionContent action={action} board={board} />
