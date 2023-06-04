@@ -1,37 +1,38 @@
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { boardService } from '../../services/board.service.local';
-import { TaskCover } from './task-cover';
-import { TaskAttachments } from './task-attachments';
-import { TaskSidebar } from './task-sidebar';
-import { MemberModal } from '../modal/member-modal';
+import { useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
+import { boardService } from "../../services/board.service.local"
+import { TaskCover } from "./task-cover"
+import { TaskAttachments } from "./task-attachments"
+import { TaskSidebar } from "./task-sidebar"
+import { MemberModal } from "../modal/member-modal"
 
-import { IoIosCard } from 'react-icons/io';
-import { BsPlus } from 'react-icons/bs';
-import { RxActivityLog } from 'react-icons/rx';
-import { TaskLabels } from './task-labels';
+import { IoIosCard } from "react-icons/io"
+import { TfiAlignLeft } from "react-icons/tfi"
+import { BsPlus } from "react-icons/bs"
+import { RxActivityLog } from "react-icons/rx"
+import { TaskLabels } from "./task-labels"
 
 export function TaskDetails() {
-  const { boardId, groupId, taskId } = useParams();
+  const { boardId, groupId, taskId } = useParams()
 
-  const [board, setBoard] = useState();
-  const [group, setGroup] = useState(null);
-  const [task, setTask] = useState(null);
+  const [board, setBoard] = useState()
+  const [group, setGroup] = useState(null)
+  const [task, setTask] = useState(null)
 
   useEffect(() => {
-    loadTask();
-  }, []);
+    loadTask()
+  }, [])
 
-  const members = board?.members;
-  const [selectedMember, setSelectedMember] = useState(null);
+  const members = board?.members
+  const [selectedMember, setSelectedMember] = useState(null)
 
   async function loadTask() {
-    const loadedBoard = await boardService.getById(boardId);
-    setBoard(loadedBoard);
-    const loadedGroup = loadedBoard.groups.find((group) => group.id === groupId);
-    setGroup(loadedGroup);
-    const loadedTask = loadedGroup.tasks?.find((task) => task.id === taskId);
-    setTask(loadedTask);
+    const loadedBoard = await boardService.getById(boardId)
+    setBoard(loadedBoard)
+    const loadedGroup = loadedBoard.groups.find((group) => group.id === groupId)
+    setGroup(loadedGroup)
+    const loadedTask = loadedGroup.tasks?.find((task) => task.id === taskId)
+    setTask(loadedTask)
   }
 
   if (!task) {
@@ -39,9 +40,9 @@ export function TaskDetails() {
       <div className="loading-text">
         <p>Loading...</p>
       </div>
-    );
+    )
   }
-  console.log(task.labels);
+  console.log(task.labels)
 
   return (
     <section className="task-details">
@@ -83,11 +84,24 @@ export function TaskDetails() {
         <div className="task-column">
           <header className="div-task-title">
             <IoIosCard className="icon-title" />
-            {task ? <h2 className="task title">{task.title}</h2> : 'Loading'}
+            {task ? <h2 className="task title">{task.title}</h2> : "Loading"}
             <div className="group-id">
               <p>in list: {group.title}</p>
             </div>
           </header>
+
+          <div className="description">
+            <div className="description-title">
+              <TfiAlignLeft className="icon-description" />
+              <h2>Description</h2>
+            </div>
+            <div>
+              <textarea
+                placeholder="Add a more detailed description.."
+                className="main-content-text-area"
+              ></textarea>
+            </div>
+          </div>
 
           <div className="attachments-section">
             <TaskAttachments></TaskAttachments>
@@ -96,7 +110,10 @@ export function TaskDetails() {
           <div className="div-activity">
             <RxActivityLog />
             <h2>Activity</h2>
-            <input className="input-task-activity" placeholder="Write a comment..."></input>
+            <input
+              className="input-task-activity"
+              placeholder="Write a comment..."
+            ></input>
           </div>
         </div>
         <div className="task-sidebar">
@@ -104,5 +121,5 @@ export function TaskDetails() {
         </div>
       </div>
     </section>
-  );
+  )
 }
