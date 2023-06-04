@@ -1,4 +1,5 @@
 import React from "react"
+import { RiAttachment2 } from "react-icons/ri"
 
 export function TaskAttachments() {
   // demo attachment data
@@ -10,7 +11,10 @@ export function TaskAttachments() {
 
   return (
     <div className="task-attachments">
-      <h3>Attachments</h3>
+      <div className="attachment-header">
+        <RiAttachment2 className="attachment-icon" />
+        <h2 className="attachment-title">Attachments</h2>
+      </div>
       {attachments.length > 0 ? (
         <ul>
           {attachments.map((attachment) => (
