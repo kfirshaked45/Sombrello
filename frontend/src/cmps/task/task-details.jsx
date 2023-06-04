@@ -1,41 +1,41 @@
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { boardService } from '../../services/board.service.local';
-import { TaskCover } from './task-cover';
-import { TaskAttachments } from './task-attachments';
-import { TaskSidebar } from './task-sidebar';
-import { MemberModal } from '../modal/member-modal';
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import { boardService } from '../../services/board.service.local'
+import { TaskCover } from './task-cover'
+import { TaskAttachments } from './task-attachments'
+import { TaskSidebar } from './task-sidebar'
+import { MemberModal } from '../modal/member-modal'
 
-import { IoIosCard } from 'react-icons/io';
-import { TfiAlignLeft } from 'react-icons/tfi';
-import { useSelector } from 'react-redux';
-import { BsPlus } from 'react-icons/bs';
-import { RxActivityLog } from 'react-icons/rx';
-import { TaskLabels } from './task-labels';
-import { TaskDescription } from './task-description';
+import { IoIosCard } from 'react-icons/io'
+import { TfiAlignLeft } from 'react-icons/tfi'
+import { useSelector } from 'react-redux'
+import { BsPlus } from 'react-icons/bs'
+import { RxActivityLog } from 'react-icons/rx'
+import { TaskLabels } from './task-labels'
+import { TaskDescription } from './task-description'
 
 export function TaskDetails() {
-  const { boardId, groupId, taskId } = useParams();
+  const { boardId, groupId, taskId } = useParams()
 
-  const [board, setBoard] = useState();
-  const [group, setGroup] = useState(null);
-  const [task, setTask] = useState(null);
+  const [board, setBoard] = useState()
+  const [group, setGroup] = useState(null)
+  const [task, setTask] = useState(null)
 
   useEffect(() => {
-    loadTask();
-  }, []);
+    loadTask()
+  }, [])
 
-  const members = task?.members ?? null;
+  const members = task?.members ?? null
 
-  const [selectedMember, setSelectedMember] = useState(null);
+  const [selectedMember, setSelectedMember] = useState(null)
 
   async function loadTask() {
-    const loadedBoard = await boardService.getById(boardId);
-    setBoard(loadedBoard);
-    const loadedGroup = loadedBoard.groups.find((group) => group.id === groupId);
-    setGroup(loadedGroup);
-    const loadedTask = loadedGroup.tasks?.find((task) => task.id === taskId);
-    setTask(loadedTask);
+    const loadedBoard = await boardService.getById(boardId)
+    setBoard(loadedBoard)
+    const loadedGroup = loadedBoard.groups.find((group) => group.id === groupId)
+    setGroup(loadedGroup)
+    const loadedTask = loadedGroup.tasks?.find((task) => task.id === taskId)
+    setTask(loadedTask)
   }
 
   if (!task) {
@@ -43,9 +43,9 @@ export function TaskDetails() {
       <div className="loading-text">
         <p>Loading...</p>
       </div>
-    );
+    )
   }
-  console.log(task.labels);
+  console.log(task.labels)
 
   return (
     <section className="task-details">
@@ -102,13 +102,17 @@ export function TaskDetails() {
           <div className="div-activity">
             <RxActivityLog />
             <h2>Activity</h2>
-            <input className="input-task-activity" placeholder="Write a comment..."></input>
+            <input
+              className="input-task-activity"
+              placeholder="Write a comment..."
+            ></input>
           </div>
         </div>
         <div className="task-sidebar">
+          <h3>Add to card</h3>
           <TaskSidebar board={board} group={group} task={task} />
         </div>
       </div>
     </section>
-  );
+  )
 }
