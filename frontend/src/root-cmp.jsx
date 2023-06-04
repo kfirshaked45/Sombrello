@@ -1,5 +1,5 @@
 import React from 'react'
-import { Routes, Route } from 'react-router'
+import { Routes, Route, useMatch } from 'react-router'
 
 import routes from './routes'
 
@@ -12,9 +12,11 @@ import { Workspace } from './pages/workspace'
 import { TaskDetails } from './cmps/task/task-details'
 
 export function RootCmp() {
+  const match = useMatch('/board/:boardId')
+
   return (
     <div>
-      <AppHeader />
+      <AppHeader boardId={match?.params?.boardId} />
       <main>
         <Routes>
           <Route path="/" element={<HomePage />} />
