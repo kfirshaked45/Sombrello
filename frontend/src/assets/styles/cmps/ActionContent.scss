@@ -3,13 +3,19 @@
   height: 32px;
   object-fit: cover;
   width: 32px;
+  margin-block-end: 4px;
+  margin-inline-end: 8px;
 }
 .action-member {
   display: flex;
+  width: 100%;
+  align-items: center;
+  padding: 4px;
 }
 .action-modal {
-  position: fixed;
+  position: absolute;
   width: 304px;
+  top: 10px;
   will-change: top, left;
   background-color: white;
 
@@ -49,4 +55,16 @@
   grid-column: 3;
   grid-row: 1;
   cursor: pointer;
+}
+.search-members-input {
+  margin: 4px 0 12px;
+  width: 100%;
+}
+.action-modal-content {
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 0 12px 12px;
+}
+.action-member-list {
+  padding: 0;
 }

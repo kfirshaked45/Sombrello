@@ -5,9 +5,10 @@ function ActionContent({ action, board }) {
     console.log(board.members);
 
     return (
-      <div>
-        <span>Board members</span>
-        <ul>
+      <div className="action-modal-content">
+        <input type="text" placeholder="Search members" className="search-members-input" />
+        <ul className="action-member-list">
+          <h4>Board members</h4>
           {board.members.map((member) => (
             <li key={member._id}>
               <button className="action-member">

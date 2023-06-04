@@ -15,7 +15,7 @@ body {
 }
 
 html {
-  font-family: montserrat;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Noto Sans', 'Ubuntu', 'Droid Sans', 'Helvetica Neue', sans-serif;
   line-height: 1.6;
   color: $clr2;
 }
@@ -34,7 +34,6 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: caveat;
   margin: 0 0 0.6em;
   line-height: 1;
 }
@@ -63,4 +62,23 @@ a:hover {
 }
 ul {
   list-style-type: none;
+}
+input {
+  -webkit-appearance: none;
+
+  border: none;
+  border-radius: 3px;
+  box-shadow: inset 0 0 0 2px var(--ds-border-input, #dfe1e6);
+  box-sizing: border-box;
+  display: block;
+  line-height: 20px;
+  margin-bottom: 12px;
+  outline: none;
+  padding: 8px 12px;
+  // transition-duration: 85ms;
+  // transition-property: background-color, border-color, box-shadow;
+  // transition-timing-function: ease;
+}
+input:hover {
+  background-color: var(--ds-background-input, #fafbfc);
 }
