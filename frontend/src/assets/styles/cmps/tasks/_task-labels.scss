@@ -1,17 +1,15 @@
 .task-labels {
   display: flex;
+  gap: 5px;
 
   .label {
-    width: 48px;
-    height: 32px;
-    padding: 0 12px;
-    display: flex;
     align-items: center;
-    justify-content: center;
-    margin-right: 12px;
+    display: flex;
     font-size: 14px;
-    font-weight: bold;
-    color: $list-item-bgclr;
-    text-align: center;
+    font-weight: 400;
+    height: 32px;
+    padding-inline-end: 12px;
+    padding-inline-start: 7px;
+    border-radius: 5px;
   }
 }
