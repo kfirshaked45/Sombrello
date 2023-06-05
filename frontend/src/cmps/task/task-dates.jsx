@@ -1,13 +1,11 @@
 export function TaskDates({ dates }) {
-  const endDate = new Date(dates.endDate);
-  const startDate = new Date(dates.startDate);
-
+  if (!dates) return;
   return (
     <div className="task-dates">
       <h3>Due Dates</h3>
-      <div key={dates.id}>
-        {dates.startDate && <p>Start Date: {startDate.toLocaleString()}</p>}
-        {dates.endDate && <p>Due Date: {endDate.toLocaleString()}</p>}
+      <div>
+        {dates.startDate && <p>Start Date: {dates.startDate}</p>}
+        {dates.endDate && <p>Due Date: {dates.endDate}</p>}
       </div>
     </div>
   );
