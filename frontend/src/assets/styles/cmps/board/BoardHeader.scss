@@ -24,21 +24,23 @@
 }
 .member-modal {
   position: absolute;
-
+  background-color: white;
+  color: black;
+  z-index: 1;
   top: rem(100px);
   right: rem(-80px);
   width: rem(304px);
   height: rem(221px);
 }
-
+.member-modal button {
+  color: black !important;
+}
 .member-modal-content img {
   object-fit: cover;
   height: 86px;
   width: 86px;
 }
-.board-header {
-  border-bottom: 1px solid gray;
-}
+
 .filter-button {
   display: flex;
   align-items: center;
@@ -50,4 +52,16 @@
 .board-header-left {
   display: flex;
   align-items: center;
+}
+.board-header svg {
+  color: white;
+}
+.board-header button {
+  color: white;
+  display: flex;
+  align-items: center;
+}
+.board-header {
+  color: white;
+  border-bottom: 1px solid gray;
 }

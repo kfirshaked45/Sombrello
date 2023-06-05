@@ -4,12 +4,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsis } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch } from 'react-redux';
 import { updateBoard } from '../../store/board.actions';
+
 import { boardService } from '../../services/board.service.local';
 import { TaskAdd } from '../task/task-add';
-
+import { ActionModal } from '../modal/action-modal.jsx';
 export function GroupPreview({ board, group, provided }) {
   const [title, setTitle] = useState(group.title);
-  const [isEditable, setIsEditable] = useState(false);
+  const [isTitleEditable, setIsTitleEditable] = useState(false);
+  const [modalValue, setModalValue] = useState(null);
+
   const textAreaInput = useRef(null);
   const dispatch = useDispatch();
 
@@ -17,7 +20,7 @@ export function GroupPreview({ board, group, provided }) {
     setTitle(ev.target.value);
   }
   function handleHeaderClick() {
-    setIsEditable(true);
+    setIsTitleEditable(true);
     textAreaInput.current.focus();
     textAreaInput.current.select();
   }
@@ -27,7 +30,7 @@ export function GroupPreview({ board, group, provided }) {
     }
   }
   function handleBlur() {
-    setIsEditable(false);
+    setIsTitleEditable(false);
     if (title !== group.title) {
       const updatedGroup = { ...group, title: title };
       const updatedGroups = board.groups.map((g) => {
@@ -44,6 +47,12 @@ export function GroupPreview({ board, group, provided }) {
     }
   }
 
+  const openEditModal = (action) => {
+    setModalValue(action);
+  };
+  const closeEditModal = () => {
+    setModalValue(null);
+  };
   return (
     <div>
       <div className="drag-handle" {...provided.dragHandleProps}>
@@ -53,17 +62,23 @@ export function GroupPreview({ board, group, provided }) {
             className="list-header-name"
             onChange={handleChange}
             onBlur={handleBlur}
-            style={{ pointerEvents: isEditable ? 'auto' : 'none' }}
+            style={{ pointerEvents: isTitleEditable ? 'auto' : 'none' }}
             ref={textAreaInput}
             onKeyDown={handleExitKeys}
           ></textarea>
-          <button className="list-header-extras-menu">
-            <FontAwesomeIcon icon={faEllipsis} />
-          </button>
         </div>
+        <button
+          className="list-header-extras-menu"
+          onClick={() => {
+            openEditModal('Group');
+          }}
+        >
+          <FontAwesomeIcon icon={faEllipsis} />
+        </button>
       </div>
       <TaskList board={board} group={group} tasks={group.tasks}></TaskList>
       <TaskAdd board={board} group={group} />
+      {modalValue && <ActionModal action={modalValue} onClose={closeEditModal} board={board} group={group} />}
     </div>
   );
 }

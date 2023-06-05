@@ -215,6 +215,31 @@ function AttachmentsContent({ task, group, board }) {
   );
 }
 
+function GroupsContent({ group, board }) {
+  const dispatch = useDispatch();
+
+  async function deleteGroup() {
+    const updatedGroups = board.groups.filter((g) => g.id !== group.id);
+    const updatedBoard = { ...board, groups: updatedGroups };
+
+    await dispatch(updateBoard(updatedBoard));
+  }
+
+  return (
+    <div className="group-edit-modal">
+      <button>Add card...</button>
+      <button>Copy list...</button>
+      <button>Move list...</button>
+      <button>Watch</button>
+      <div>
+        <button>Sort by</button>
+      </div>
+      <button onClick={deleteGroup}>Delete this list</button>
+      <button>Add card...</button>
+    </div>
+  );
+}
+
 function ActionContent({ action, board, task, group }) {
   let contentComponent = null;
 
@@ -226,6 +251,8 @@ function ActionContent({ action, board, task, group }) {
     contentComponent = <DateContent board={board} task={task} group={group} />;
   } else if (action === 'Attachments') {
     contentComponent = <AttachmentsContent board={board} task={task} group={group} />;
+  } else if (action === 'Group') {
+    contentComponent = <GroupsContent board={board} task={task} group={group} />;
   } else {
     contentComponent = <div>Invalid action.</div>;
   }
