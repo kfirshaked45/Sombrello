@@ -1,8 +1,8 @@
-import { storageService } from './async-storage.service.js';
-import { utilService } from './util.service.js';
-import { userService } from './user.service.js';
+import { storageService } from './async-storage.service.js'
+import { utilService } from './util.service.js'
+import { userService } from './user.service.js'
 
-const STORAGE_KEY = 'board';
+const STORAGE_KEY = 'board'
 
 export const boardService = {
   query,
@@ -12,67 +12,69 @@ export const boardService = {
   getEmptyBoard,
   addBoardMsg,
   createDemoBoard,
-};
-window.cs = boardService;
+}
+window.cs = boardService
 
 async function query(filterBy = { txt: '', price: 0 }) {
-  var boards = await storageService.query(STORAGE_KEY);
+  var boards = await storageService.query(STORAGE_KEY)
   if (filterBy.txt) {
-    const regex = new RegExp(filterBy.txt, 'i');
-    boards = boards.filter((board) => regex.test(board.vendor) || regex.test(board.description));
+    const regex = new RegExp(filterBy.txt, 'i')
+    boards = boards.filter(
+      (board) => regex.test(board.vendor) || regex.test(board.description)
+    )
   }
   if (filterBy.price) {
-    boards = boards.filter((board) => board.price <= filterBy.price);
+    boards = boards.filter((board) => board.price <= filterBy.price)
   }
-  return boards;
+  return boards
 }
 
 function getById(boardId) {
-  return storageService.get(STORAGE_KEY, boardId);
+  return storageService.get(STORAGE_KEY, boardId)
 }
 
 async function remove(boardId) {
   // throw new Error('Nope')
-  await storageService.remove(STORAGE_KEY, boardId);
+  await storageService.remove(STORAGE_KEY, boardId)
 }
 
 async function save(board) {
-  var savedBoard;
+  var savedBoard
   if (board._id) {
-    savedBoard = await storageService.put(STORAGE_KEY, board);
+    savedBoard = await storageService.put(STORAGE_KEY, board)
   } else {
     // Later, owner is set by the backend
-    board.owner = userService.getLoggedinUser();
-    savedBoard = await storageService.post(STORAGE_KEY, board);
+    board.owner = userService.getLoggedinUser()
+    savedBoard = await storageService.post(STORAGE_KEY, board)
   }
-  return savedBoard;
+  return savedBoard
 }
 
 async function addBoardMsg(boardId, txt) {
   // Later, this is all done by the backend
-  const board = await getById(boardId);
-  if (!board.msgs) board.msgs = [];
+  const board = await getById(boardId)
+  if (!board.msgs) board.msgs = []
 
   const msg = {
     id: utilService.makeId(),
     by: userService.getLoggedinUser(),
     txt,
-  };
-  board.msgs.push(msg);
-  await storageService.put(STORAGE_KEY, board);
+  }
+  board.msgs.push(msg)
+  await storageService.put(STORAGE_KEY, board)
 
-  return msg;
+  return msg
 }
 
 function getEmptyBoard() {
   return {
     vendor: 'Susita-' + (Date.now() % 1000),
     price: utilService.getRandomIntInclusive(1000, 9000),
-  };
+  }
 }
 
 async function createDemoBoard() {
-  var boards = await storageService.query(STORAGE_KEY);
+  var boards = await storageService.query(STORAGE_KEY)
 
   if (!boards || boards.length === 0) {
     const board1 = {
@@ -81,7 +83,7 @@ async function createDemoBoard() {
       style: {
         background:
           'https://images.unsplash.com/photo-1532703108233-69111d554cb4?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzNjU5OTZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NjQwMzQ0ODI&ixlib=rb-1.2.1&q=80',
-        backgroundColor: '#f3f3f3',
+        backgroundColor: '#030504',
         thumbnail:
           'https://images.unsplash.com/photo-1532703108233-69111d554cb4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjU5OTZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NjQwMzQ0ODI&ixlib=rb-1.2.1&q=80&w=400',
       },
@@ -90,17 +92,20 @@ async function createDemoBoard() {
         {
           _id: 'u101',
           fullname: 'Kfir Shaked',
-          imgUrl: 'https://trello-members.s3.amazonaws.com/647734a4a5064966da66d1ff/fe934ab149781128aee1cf07052df42a/original.png',
+          imgUrl:
+            'https://trello-members.s3.amazonaws.com/647734a4a5064966da66d1ff/fe934ab149781128aee1cf07052df42a/original.png',
         },
         {
           _id: 'u102',
           fullname: 'Ofek Rashti',
-          imgUrl: 'https://trello-members.s3.amazonaws.com/6477341a7c73ea6a6522a0bf/e4ccab819753313eb1cad1c7d6158cd7/original.png',
+          imgUrl:
+            'https://trello-members.s3.amazonaws.com/6477341a7c73ea6a6522a0bf/e4ccab819753313eb1cad1c7d6158cd7/original.png',
         },
         {
           _id: 'u103',
           fullname: 'Omer Hassin',
-          imgUrl: 'https://trello-members.s3.amazonaws.com/64770c06c6132f81928b9788/efeedf2ef41cde391f77cd8dbeca21e8/original.png',
+          imgUrl:
+            'https://trello-members.s3.amazonaws.com/64770c06c6132f81928b9788/efeedf2ef41cde391f77cd8dbeca21e8/original.png',
         },
       ],
       groups: [
@@ -116,7 +121,8 @@ async function createDemoBoard() {
                 {
                   _id: 'u103',
                   fullname: 'Omer Hassin',
-                  imgUrl: 'https://trello-members.s3.amazonaws.com/64770c06c6132f81928b9788/efeedf2ef41cde391f77cd8dbeca21e8/original.png',
+                  imgUrl:
+                    'https://trello-members.s3.amazonaws.com/64770c06c6132f81928b9788/efeedf2ef41cde391f77cd8dbeca21e8/original.png',
                 },
               ],
               style: {},
@@ -133,14 +139,17 @@ async function createDemoBoard() {
                 {
                   _id: 'u103',
                   fullname: 'Omer Hassin',
-                  imgUrl: 'https://trello-members.s3.amazonaws.com/64770c06c6132f81928b9788/efeedf2ef41cde391f77cd8dbeca21e8/original.png',
+                  imgUrl:
+                    'https://trello-members.s3.amazonaws.com/64770c06c6132f81928b9788/efeedf2ef41cde391f77cd8dbeca21e8/original.png',
                 },
               ],
               style: {},
               desc: '',
               dueDate: '',
               labels: [],
-              attachments: ["https://res.cloudinary.com/djrnw05sb/image/upload/v1685953579/trello/routing-directory_i7iskr.jpg"],
+              attachments: [
+                'https://res.cloudinary.com/djrnw05sb/image/upload/v1685953579/trello/routing-directory_i7iskr.jpg',
+              ],
               comments: [],
             },
             {
@@ -179,7 +188,8 @@ async function createDemoBoard() {
                 {
                   _id: 'u102',
                   fullname: 'Ofek Rashti',
-                  imgUrl: 'https://trello-members.s3.amazonaws.com/6477341a7c73ea6a6522a0bf/e4ccab819753313eb1cad1c7d6158cd7/original.png',
+                  imgUrl:
+                    'https://trello-members.s3.amazonaws.com/6477341a7c73ea6a6522a0bf/e4ccab819753313eb1cad1c7d6158cd7/original.png',
                 },
               ],
               style: {},
@@ -197,7 +207,9 @@ async function createDemoBoard() {
               desc: '',
               dueDate: 1672608000000,
               labels: [],
-              attachments: ['https://res.cloudinary.com/djrnw05sb/image/upload/v1685953580/trello/asset_6_ey9fby.jpg'],
+              attachments: [
+                'https://res.cloudinary.com/djrnw05sb/image/upload/v1685953580/trello/asset_6_ey9fby.jpg',
+              ],
               comments: [],
             },
           ],
@@ -214,17 +226,20 @@ async function createDemoBoard() {
                 {
                   _id: 'u101',
                   fullname: 'Kfir Shaked',
-                  imgUrl: 'https://trello-members.s3.amazonaws.com/647734a4a5064966da66d1ff/fe934ab149781128aee1cf07052df42a/original.png',
+                  imgUrl:
+                    'https://trello-members.s3.amazonaws.com/647734a4a5064966da66d1ff/fe934ab149781128aee1cf07052df42a/original.png',
                 },
                 {
                   _id: 'u102',
                   fullname: 'Ofek Rashti',
-                  imgUrl: 'https://trello-members.s3.amazonaws.com/6477341a7c73ea6a6522a0bf/e4ccab819753313eb1cad1c7d6158cd7/original.png',
+                  imgUrl:
+                    'https://trello-members.s3.amazonaws.com/6477341a7c73ea6a6522a0bf/e4ccab819753313eb1cad1c7d6158cd7/original.png',
                 },
                 {
                   _id: 'u103',
                   fullname: 'Omer Hassin',
-                  imgUrl: 'https://trello-members.s3.amazonaws.com/64770c06c6132f81928b9788/efeedf2ef41cde391f77cd8dbeca21e8/original.png',
+                  imgUrl:
+                    'https://trello-members.s3.amazonaws.com/64770c06c6132f81928b9788/efeedf2ef41cde391f77cd8dbeca21e8/original.png',
                 },
               ],
               style: {},
@@ -310,7 +325,9 @@ async function createDemoBoard() {
                   //blue
                 },
               ],
-              attachments: ['https://res.cloudinary.com/djrnw05sb/image/upload/v1685953581/trello/asset_7_wmthnj.png'],
+              attachments: [
+                'https://res.cloudinary.com/djrnw05sb/image/upload/v1685953581/trello/asset_7_wmthnj.png',
+              ],
               comments: [],
             },
             {
@@ -345,7 +362,9 @@ async function createDemoBoard() {
               desc: '',
               dueDate: '',
               labels: [],
-              attachments: ['https://res.cloudinary.com/djrnw05sb/image/upload/v1685953581/trello/asset_8_qxvvvi.jpg'],
+              attachments: [
+                'https://res.cloudinary.com/djrnw05sb/image/upload/v1685953581/trello/asset_8_qxvvvi.jpg',
+              ],
               comments: [],
             },
             {
@@ -356,7 +375,9 @@ async function createDemoBoard() {
               desc: '',
               dueDate: '',
               labels: [],
-              attachments: ['https://res.cloudinary.com/djrnw05sb/image/upload/v1685953581/trello/asset_9_ho1voy.jpg'],
+              attachments: [
+                'https://res.cloudinary.com/djrnw05sb/image/upload/v1685953581/trello/asset_9_ho1voy.jpg',
+              ],
               comments: [],
             },
           ],
@@ -373,7 +394,8 @@ async function createDemoBoard() {
                 {
                   _id: 'u102',
                   fullname: 'Ofek Rashti',
-                  imgUrl: 'https://trello-members.s3.amazonaws.com/6477341a7c73ea6a6522a0bf/e4ccab819753313eb1cad1c7d6158cd7/original.png',
+                  imgUrl:
+                    'https://trello-members.s3.amazonaws.com/6477341a7c73ea6a6522a0bf/e4ccab819753313eb1cad1c7d6158cd7/original.png',
                 },
               ],
               style: { coverColor: '#4bce97' },
@@ -422,7 +444,9 @@ async function createDemoBoard() {
               desc: '',
               dueDate: 1685760000000,
               labels: [],
-              attachments: ['https://res.cloudinary.com/djrnw05sb/image/upload/v1685953581/trello/asset_10_mxuike.jpg'],
+              attachments: [
+                'https://res.cloudinary.com/djrnw05sb/image/upload/v1685953581/trello/asset_10_mxuike.jpg',
+              ],
               comments: [],
             },
           ],
@@ -439,7 +463,8 @@ async function createDemoBoard() {
                 {
                   _id: 'u101',
                   fullname: 'Kfir Shaked',
-                  imgUrl: 'https://trello-members.s3.amazonaws.com/647734a4a5064966da66d1ff/fe934ab149781128aee1cf07052df42a/original.png',
+                  imgUrl:
+                    'https://trello-members.s3.amazonaws.com/647734a4a5064966da66d1ff/fe934ab149781128aee1cf07052df42a/original.png',
                 },
               ],
               style: { coverColor: '#579dff' },
@@ -469,7 +494,8 @@ async function createDemoBoard() {
                 {
                   _id: 'u103',
                   fullname: 'Omer Hassin',
-                  imgUrl: 'https://trello-members.s3.amazonaws.com/64770c06c6132f81928b9788/efeedf2ef41cde391f77cd8dbeca21e8/original.png',
+                  imgUrl:
+                    'https://trello-members.s3.amazonaws.com/64770c06c6132f81928b9788/efeedf2ef41cde391f77cd8dbeca21e8/original.png',
                 },
               ],
               style: {},
@@ -498,7 +524,9 @@ async function createDemoBoard() {
               desc: '',
               dueDate: '',
               labels: [],
-              attachments: ['https://res.cloudinary.com/djrnw05sb/image/upload/v1685953571/trello/asset_12_akveuk.jpg'],
+              attachments: [
+                'https://res.cloudinary.com/djrnw05sb/image/upload/v1685953571/trello/asset_12_akveuk.jpg',
+              ],
               comments: [],
             },
             {
@@ -508,17 +536,20 @@ async function createDemoBoard() {
                 {
                   _id: 'u101',
                   fullname: 'Kfir Shaked',
-                  imgUrl: 'https://trello-members.s3.amazonaws.com/647734a4a5064966da66d1ff/fe934ab149781128aee1cf07052df42a/original.png',
+                  imgUrl:
+                    'https://trello-members.s3.amazonaws.com/647734a4a5064966da66d1ff/fe934ab149781128aee1cf07052df42a/original.png',
                 },
                 {
                   _id: 'u102',
                   fullname: 'Ofek Rashti',
-                  imgUrl: 'https://trello-members.s3.amazonaws.com/6477341a7c73ea6a6522a0bf/e4ccab819753313eb1cad1c7d6158cd7/original.png',
+                  imgUrl:
+                    'https://trello-members.s3.amazonaws.com/6477341a7c73ea6a6522a0bf/e4ccab819753313eb1cad1c7d6158cd7/original.png',
                 },
                 {
                   _id: 'u103',
                   fullname: 'Omer Hassin',
-                  imgUrl: 'https://trello-members.s3.amazonaws.com/64770c06c6132f81928b9788/efeedf2ef41cde391f77cd8dbeca21e8/original.png',
+                  imgUrl:
+                    'https://trello-members.s3.amazonaws.com/64770c06c6132f81928b9788/efeedf2ef41cde391f77cd8dbeca21e8/original.png',
                 },
               ],
               style: {},
@@ -549,7 +580,9 @@ async function createDemoBoard() {
               desc: '',
               dueDate: '',
               labels: [],
-              attachments: ['https://res.cloudinary.com/djrnw05sb/image/upload/v1685953581/trello/asset_7_wmthnj.png'],
+              attachments: [
+                'https://res.cloudinary.com/djrnw05sb/image/upload/v1685953581/trello/asset_7_wmthnj.png',
+              ],
               comments: [],
             },
             {
@@ -560,7 +593,9 @@ async function createDemoBoard() {
               desc: '',
               dueDate: '',
               labels: [],
-              attachments: ['https://res.cloudinary.com/djrnw05sb/image/upload/v1685953571/trello/asset_11_xjhkai.jpg'],
+              attachments: [
+                'https://res.cloudinary.com/djrnw05sb/image/upload/v1685953571/trello/asset_11_xjhkai.jpg',
+              ],
               comments: [],
             },
           ],
@@ -601,17 +636,20 @@ async function createDemoBoard() {
                 {
                   _id: 'u101',
                   fullname: 'Kfir Shaked',
-                  imgUrl: 'https://trello-members.s3.amazonaws.com/647734a4a5064966da66d1ff/fe934ab149781128aee1cf07052df42a/original.png',
+                  imgUrl:
+                    'https://trello-members.s3.amazonaws.com/647734a4a5064966da66d1ff/fe934ab149781128aee1cf07052df42a/original.png',
                 },
                 {
                   _id: 'u102',
                   fullname: 'Ofek Rashti',
-                  imgUrl: 'https://trello-members.s3.amazonaws.com/6477341a7c73ea6a6522a0bf/e4ccab819753313eb1cad1c7d6158cd7/original.png',
+                  imgUrl:
+                    'https://trello-members.s3.amazonaws.com/6477341a7c73ea6a6522a0bf/e4ccab819753313eb1cad1c7d6158cd7/original.png',
                 },
                 {
                   _id: 'u103',
                   fullname: 'Omer Hassin',
-                  imgUrl: 'https://trello-members.s3.amazonaws.com/64770c06c6132f81928b9788/efeedf2ef41cde391f77cd8dbeca21e8/original.png',
+                  imgUrl:
+                    'https://trello-members.s3.amazonaws.com/64770c06c6132f81928b9788/efeedf2ef41cde391f77cd8dbeca21e8/original.png',
                 },
               ],
               style: { coverColor: '#579dff' },
@@ -655,7 +693,9 @@ async function createDemoBoard() {
                   //red
                 },
               ],
-              attachments: ['https://res.cloudinary.com/djrnw05sb/image/upload/v1685953571/trello/asset_13_q3o5uw.jpg'],
+              attachments: [
+                'https://res.cloudinary.com/djrnw05sb/image/upload/v1685953571/trello/asset_13_q3o5uw.jpg',
+              ],
               comments: [],
             },
             {
@@ -665,7 +705,8 @@ async function createDemoBoard() {
                 {
                   _id: 'u103',
                   fullname: 'Omer Hassin',
-                  imgUrl: 'https://trello-members.s3.amazonaws.com/64770c06c6132f81928b9788/efeedf2ef41cde391f77cd8dbeca21e8/original.png',
+                  imgUrl:
+                    'https://trello-members.s3.amazonaws.com/64770c06c6132f81928b9788/efeedf2ef41cde391f77cd8dbeca21e8/original.png',
                 },
               ],
               style: { coverColor: '#faa53d' },
@@ -696,12 +737,14 @@ async function createDemoBoard() {
                 {
                   _id: 'u101',
                   fullname: 'Kfir Shaked',
-                  imgUrl: 'https://trello-members.s3.amazonaws.com/647734a4a5064966da66d1ff/fe934ab149781128aee1cf07052df42a/original.png',
+                  imgUrl:
+                    'https://trello-members.s3.amazonaws.com/647734a4a5064966da66d1ff/fe934ab149781128aee1cf07052df42a/original.png',
                 },
                 {
                   _id: 'u103',
                   fullname: 'Omer Hassin',
-                  imgUrl: 'https://trello-members.s3.amazonaws.com/64770c06c6132f81928b9788/efeedf2ef41cde391f77cd8dbeca21e8/original.png',
+                  imgUrl:
+                    'https://trello-members.s3.amazonaws.com/64770c06c6132f81928b9788/efeedf2ef41cde391f77cd8dbeca21e8/original.png',
                 },
               ],
               style: {},
@@ -721,7 +764,9 @@ async function createDemoBoard() {
                   //blue
                 },
               ],
-              attachments: ['https://res.cloudinary.com/djrnw05sb/image/upload/v1685953571/trello/asset_14_jdfund.jpg'],
+              attachments: [
+                'https://res.cloudinary.com/djrnw05sb/image/upload/v1685953571/trello/asset_14_jdfund.jpg',
+              ],
               comments: [],
             },
           ],
@@ -783,28 +828,30 @@ async function createDemoBoard() {
           //blue
         },
       ],
-    };
+    }
     const board2 = {
       _id: 'b103',
       title: 'Design project',
       style: {
         background:
-          'https://images.unsplash.com/photo-1495127280742-47f59274e2db?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzNjU5OTZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2ODU3NTUyNDZ8&ixlib=rb-4.0.3&q=80&w=400',
-        backgroundColor: '#f3f3f3',
+          'https://images.unsplash.com/photo-1685556636541-b141d0a09746?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80',
+        backgroundColor: '#edaabc',
         thumbnail:
-          'https://images.unsplash.com/photo-1495127280742-47f59274e2db?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzNjU5OTZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2ODU3NTUyNDZ8&ixlib=rb-4.0.3&q=80&w=400',
+          'https://images.unsplash.com/photo-1685556636541-b141d0a09746?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80',
       },
       isStarred: false,
       members: [
         {
           _id: 'u101',
           fullname: 'Tal Tarablus',
-          imgUrl: 'https://trello-members.s3.amazonaws.com/647734a4a5064966da66d1ff/fe934ab149781128aee1cf07052df42a/original.png',
+          imgUrl:
+            'https://trello-members.s3.amazonaws.com/647734a4a5064966da66d1ff/fe934ab149781128aee1cf07052df42a/original.png',
         },
         {
           _id: 'u102',
           fullname: 'John Smith',
-          imgUrl: 'https://trello-members.s3.amazonaws.com/6477341a7c73ea6a6522a0bf/e4ccab819753313eb1cad1c7d6158cd7/original.png',
+          imgUrl:
+            'https://trello-members.s3.amazonaws.com/6477341a7c73ea6a6522a0bf/e4ccab819753313eb1cad1c7d6158cd7/original.png',
         },
       ],
       groups: [
@@ -917,29 +964,31 @@ async function createDemoBoard() {
           color: '#61bd33',
         },
       ],
-    };
+    }
 
     const board3 = {
       _id: 'b102',
       title: 'Design project',
       style: {
         background:
-          'https://images.unsplash.com/photo-1671955100937-6c551efa6e15?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjU5OTZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzQyMjMxMjU&ixlib=rb-4.0.3&q=80&w=400',
-        backgroundColor: '#f3f3f3',
+          'https://images.unsplash.com/photo-1684265915928-ddcfee1df6ad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
+        backgroundColor: '#eef3ef',
         thumbnail:
-          'https://images.unsplash.com/photo-1671955100937-6c551efa6e15?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjU5OTZ8MHwxfHJhbmRvbXx8fHx8fHx8fDE2NzQyMjMxMjU&ixlib=rb-4.0.3&q=80&w=400',
+          'https://images.unsplash.com/photo-1684265915928-ddcfee1df6ad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80',
       },
       isStarred: false,
       members: [
         {
           _id: 'u101',
           fullname: 'Tal Tarablus',
-          imgUrl: 'https://trello-members.s3.amazonaws.com/647734a4a5064966da66d1ff/fe934ab149781128aee1cf07052df42a/original.png',
+          imgUrl:
+            'https://trello-members.s3.amazonaws.com/647734a4a5064966da66d1ff/fe934ab149781128aee1cf07052df42a/original.png',
         },
         {
           _id: 'u102',
           fullname: 'John Smith',
-          imgUrl: 'https://trello-members.s3.amazonaws.com/6477341a7c73ea6a6522a0bf/e4ccab819753313eb1cad1c7d6158cd7/original.png',
+          imgUrl:
+            'https://trello-members.s3.amazonaws.com/6477341a7c73ea6a6522a0bf/e4ccab819753313eb1cad1c7d6158cd7/original.png',
         },
       ],
       groups: [
@@ -1057,11 +1106,11 @@ async function createDemoBoard() {
           color: '#61bd33',
         },
       ],
-    };
+    }
 
-    await storageService.post(STORAGE_KEY, board1);
-    await storageService.post(STORAGE_KEY, board2);
-    await storageService.post(STORAGE_KEY, board3);
+    await storageService.post(STORAGE_KEY, board1)
+    await storageService.post(STORAGE_KEY, board2)
+    await storageService.post(STORAGE_KEY, board3)
     // storageService.post(STORAGE_KEY, board);
   }
 }

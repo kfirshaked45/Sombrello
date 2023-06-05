@@ -25,6 +25,18 @@
       padding: 0 6px;
       margin-left: 6px;
 
+      &.dark h1 {
+        color: #172b4d;
+
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.2);
+        }
+      }
+
+      &.light h1 {
+        color: white;
+      }
+
       &:hover {
         background-color: rgba(255, 255, 255, 0.3);
       }
@@ -81,6 +93,10 @@
         &:hover {
           background-color: rgba(0, 0, 0, 0.2);
         }
+      }
+
+      &.light {
+        color: white;
       }
     }
   }
