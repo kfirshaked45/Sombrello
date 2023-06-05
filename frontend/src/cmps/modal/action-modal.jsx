@@ -3,6 +3,7 @@ import { ReactComponent as XIcon } from '../../assets/img/board/x-icon.svg';
 import { ReactComponent as PenIcon } from '../../assets/img/board/pen-icon.svg';
 import { useDispatch } from 'react-redux';
 import { Calendar, DateRange } from 'react-date-range';
+import { utilService } from '../../services/util.service';
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { ImgUploader } from '../img-uploader';
@@ -14,9 +15,12 @@ function MemberContent({ board, task, group }) {
     if (!task.members) {
       task.members = [member];
     } else {
-      const alreadyMember = task.members.find((m) => m._id === member._id);
-      if (alreadyMember) return;
-      task.members.push(member);
+      const alreadyMemberIndex = task.members.findIndex((m) => m._id === member._id);
+      if (alreadyMemberIndex !== -1) {
+        task.members.splice(alreadyMemberIndex, 1);
+      } else {
+        task.members.push(member);
+      }
     }
 
     const updatedGroups = board.groups.map((g) => {
@@ -70,13 +74,15 @@ function LabelsContent({ board, group, task }) {
     if (!task.labels) {
       task.labels = [label];
     } else {
-      const alreadyLabeled = task.labels.find((l) => l.id === label.id);
-      if (alreadyLabeled) return;
-      task.labels.push(label);
+      const alreadyLabeledIndex = task.labels.findIndex((l) => l.id === label.id);
+      if (alreadyLabeledIndex !== -1) {
+        task.labels.splice(alreadyLabeledIndex, 1);
+      } else {
+        task.labels.push(label);
+      }
     }
 
     const updatedGroups = board.groups.map((g) => {
-      console.log(g.id, group.id);
       if (g.id === group.id) {
         const updatedTasks = g.tasks.map((t) => {
           if (t.id === task.id) {
@@ -95,9 +101,11 @@ function LabelsContent({ board, group, task }) {
       }
       return g;
     });
+
     const updatedBoard = { ...board, groups: updatedGroups };
     dispatch(updateBoard(updatedBoard));
   };
+
   return (
     <div>
       <input type="text" placeholder="Search members" className="search-labels-input" />
@@ -109,8 +117,9 @@ function LabelsContent({ board, group, task }) {
               onClick={() => {
                 addLabel(label);
               }}
+              className="action-checkbox-input"
             />
-            <div key={label.id} style={{ backgroundColor: label.color }}>
+            <div key={label.id} style={{ backgroundColor: label.color }} className="label-color-container">
               {label.title}
             </div>
             <PenIcon />
@@ -225,8 +234,19 @@ function ActionContent({ action, board, task, group }) {
 }
 
 export function ActionModal({ action, onClose, board, task, group }) {
+  let modalTopPos = { top: '' };
+  if (action === 'Members') {
+    modalTopPos.top = '340px';
+  } else if (action === 'Labels') {
+    modalTopPos.top = '200px';
+  } else if (action === 'Dates') {
+    modalTopPos.top = '200px';
+  } else if (action === 'Attachments') {
+    modalTopPos.top = '475px';
+  }
+
   return (
-    <div className="action-modal">
+    <div className="action-modal" style={modalTopPos}>
       <div className="action-header">
         <div>{action}</div>
         <XIcon onClick={onClose} className="action-modal-x" />

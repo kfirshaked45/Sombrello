@@ -94,6 +94,9 @@ export function TaskDetails() {
                 <div className="attachments-section">
                   <TaskAttachments />
                 </div>
+                <div className="attachments-section">
+                  <TaskAttachments attachments={task.attachments} />
+                </div>
 
                 <div className="div-activity">
                   <RxActivityLog />
