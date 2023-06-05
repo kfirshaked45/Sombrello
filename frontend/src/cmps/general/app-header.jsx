@@ -68,9 +68,10 @@ export const AppHeader = ({ boardId }) => {
 
   const getFontColor = () => {
     if (headerStatus === 'board') {
-      return !utilService.isBackgroundDark(board?.style?.backgroundColor)
-        ? 'dark'
-        : ''
+      const isDarkBackground = utilService.isBackgroundDark(
+        board?.style?.backgroundColor
+      )
+      return isDarkBackground ? 'light' : 'dark'
     }
     return ''
   }
@@ -83,7 +84,9 @@ export const AppHeader = ({ boardId }) => {
     <header className={`app-header ${styleClass}`} style={getStyleColor()}>
       <section className="left">
         <Link to="/workspace">
-          <div className={`main-logo ${fontColor}`}>
+          <div
+            className={`main-logo ${fontColor === 'dark' ? 'dark' : 'light'}`}
+          >
             <img src={sombrelloLogo} alt="" />
             <h1>Sombrello</h1>
           </div>
@@ -91,7 +94,7 @@ export const AppHeader = ({ boardId }) => {
         {headerStatus === 'board' && (
           <Fragment>
             <div
-              className={`boards ${fontColor}`}
+              className={`boards ${fontColor === 'dark' ? 'dark' : 'light'}`}
               onClick={() => onOpenActionModal('Boards', boardsRef)}
               ref={boardsRef}
             >
