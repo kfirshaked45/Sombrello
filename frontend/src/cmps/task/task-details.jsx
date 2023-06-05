@@ -23,11 +23,10 @@ export function TaskDetails() {
   const board = boards.find((b) => b._id === boardId);
   const group = board.groups.find((g) => g.id === groupId);
   const task = group.tasks.find((t) => t.id === taskId);
-
   const members = task?.members ?? null;
   const screenRef = useRef();
-
   const [selectedMember, setSelectedMember] = useState(null);
+  if (!task) return <div>'NO TASK FOUND'</div>;
 
   const onGoBack = (ev) => {
     Navigate(-1);
