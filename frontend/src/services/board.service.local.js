@@ -140,7 +140,7 @@ async function createDemoBoard() {
               desc: '',
               dueDate: '',
               labels: [],
-              attachments: ['../assets/img/all assets/routing-directory.jpeg'],
+              attachments: ["https://res.cloudinary.com/djrnw05sb/image/upload/v1685953579/trello/routing-directory_i7iskr.jpg"],
               comments: [],
             },
             {
@@ -197,7 +197,7 @@ async function createDemoBoard() {
               desc: '',
               dueDate: 1672608000000,
               labels: [],
-              attachments: ['../assets/img/all assets/asset 6.jpeg'],
+              attachments: ['https://res.cloudinary.com/djrnw05sb/image/upload/v1685953580/trello/asset_6_ey9fby.jpg'],
               comments: [],
             },
           ],
@@ -310,7 +310,7 @@ async function createDemoBoard() {
                   //blue
                 },
               ],
-              attachments: ['../assets/img/all assets/asset 7.png'],
+              attachments: ['https://res.cloudinary.com/djrnw05sb/image/upload/v1685953581/trello/asset_7_wmthnj.png'],
               comments: [],
             },
             {
@@ -345,7 +345,7 @@ async function createDemoBoard() {
               desc: '',
               dueDate: '',
               labels: [],
-              attachments: ['../assets/img/all assets/asset 8.jpeg'],
+              attachments: ['https://res.cloudinary.com/djrnw05sb/image/upload/v1685953581/trello/asset_8_qxvvvi.jpg'],
               comments: [],
             },
             {
@@ -356,7 +356,7 @@ async function createDemoBoard() {
               desc: '',
               dueDate: '',
               labels: [],
-              attachments: ['../assets/img/all assets/asset 9.jpeg'],
+              attachments: ['https://res.cloudinary.com/djrnw05sb/image/upload/v1685953581/trello/asset_9_ho1voy.jpg'],
               comments: [],
             },
           ],
@@ -422,7 +422,7 @@ async function createDemoBoard() {
               desc: '',
               dueDate: 1685760000000,
               labels: [],
-              attachments: ['../assets/img/all assets/asset 10.jpeg'],
+              attachments: ['https://res.cloudinary.com/djrnw05sb/image/upload/v1685953581/trello/asset_10_mxuike.jpg'],
               comments: [],
             },
           ],
@@ -498,7 +498,7 @@ async function createDemoBoard() {
               desc: '',
               dueDate: '',
               labels: [],
-              attachments: ['../assets/img/all assets/asset 12.jpeg'],
+              attachments: ['https://res.cloudinary.com/djrnw05sb/image/upload/v1685953571/trello/asset_12_akveuk.jpg'],
               comments: [],
             },
             {
@@ -549,7 +549,7 @@ async function createDemoBoard() {
               desc: '',
               dueDate: '',
               labels: [],
-              attachments: ['../assets/img/all assets/asset 7.png'],
+              attachments: ['https://res.cloudinary.com/djrnw05sb/image/upload/v1685953581/trello/asset_7_wmthnj.png'],
               comments: [],
             },
             {
@@ -560,7 +560,7 @@ async function createDemoBoard() {
               desc: '',
               dueDate: '',
               labels: [],
-              attachments: ['../assets/img/all assets/asset 11.jpeg'],
+              attachments: ['https://res.cloudinary.com/djrnw05sb/image/upload/v1685953571/trello/asset_11_xjhkai.jpg'],
               comments: [],
             },
           ],
@@ -655,7 +655,7 @@ async function createDemoBoard() {
                   //red
                 },
               ],
-              attachments: ['../assets/img/all assets/asset 13.jpeg'],
+              attachments: ['https://res.cloudinary.com/djrnw05sb/image/upload/v1685953571/trello/asset_13_q3o5uw.jpg'],
               comments: [],
             },
             {
@@ -721,7 +721,7 @@ async function createDemoBoard() {
                   //blue
                 },
               ],
-              attachments: ['../assets/img/all assets/asset 14.jpeg'],
+              attachments: ['https://res.cloudinary.com/djrnw05sb/image/upload/v1685953571/trello/asset_14_jdfund.jpg'],
               comments: [],
             },
           ],

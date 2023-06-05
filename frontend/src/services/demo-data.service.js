@@ -72,7 +72,7 @@ async function createDemoBoard() {
               desc: "",
               dueDate: "",
               labels: [],
-              attachments: ["../assets/img/all assets/routing-directory.jpeg"],
+              attachments: ["https://unsplash.com/photos/6hLQxM3RDQ0"],
               comments: [],
             },
             {

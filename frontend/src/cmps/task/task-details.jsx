@@ -1,5 +1,6 @@
 import { useEffect, useState, Fragment, useRef } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
+import 'animate.css';
 import { boardService } from '../../services/board.service.local';
 import { TaskCover } from './task-cover';
 import { TaskAttachments } from './task-attachments';
@@ -37,7 +38,7 @@ export function TaskDetails() {
       <BoardDetails />
       <section className="screen">
         <div onClick={onGoBack} className="backdrop"></div>
-        <section className="task-details">
+        <section className="task-details animate__animated animate__fadeIn">
           <section ref={screenRef} className="task-details" onClick={(ev) => ev.stopPropagation()}>
             <TaskCover className="cover-component" />
             <section className="task-props">

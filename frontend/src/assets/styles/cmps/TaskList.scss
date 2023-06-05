@@ -12,19 +12,28 @@
   margin: 0px 4px;
 }
 .task-list-item {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
+
   padding: 8px 8px 4px 12px;
   margin-bottom: 7px;
   background-color: white;
   border-radius: 3px;
   box-shadow: $ds-shadow-raised;
 }
+
+.task-list-item img{
+  border-radius: 3%;
+  max-width: 248px;
+  max-height: 145px;
+}
+
 .task-list-item:hover {
   background-color: inherit;
 }
+
 .list-header-name {
   background: #0000;
   border-radius: 3px;
