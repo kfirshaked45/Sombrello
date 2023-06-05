@@ -12,7 +12,16 @@
     padding: 0;
     margin: 0;
 
+    .has-attachments {
+      .sidebar-item {
+        width: calc(
+          165px - 50px - 40px
+        ); /* Subtract an additional 40px for attachment icon and margin */
+      }
+    }
+
     .sidebar-item {
+      font-size: 12px;
       display: flex;
       align-items: center;
       margin-bottom: 10px;
@@ -21,8 +30,7 @@
       border-radius: 4px;
       transition: background-color 0.2s ease, color 0.2s ease, cursor 0.2s ease;
       cursor: pointer;
-      width: 165px;
-
+      width: calc(165px - 50px);
       &:hover {
         background-color: #e1e4e9;
       }
