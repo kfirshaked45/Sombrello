@@ -6,6 +6,7 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { useDispatch } from 'react-redux';
 import { updateBoard } from '../../store/board.actions';
 import { Link } from 'react-router-dom';
+import { TaskAdd } from './task-add';
 
 export function TaskList({ board, group }) {
   const [hoveredIndex, setHoveredIndex] = useState(null);
@@ -42,6 +43,7 @@ export function TaskList({ board, group }) {
               )}
             </Draggable>
           ))}
+          <TaskAdd board={board} group={group} />
           {provided.placeholder}
         </ul>
       )}

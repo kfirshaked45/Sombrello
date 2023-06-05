@@ -76,7 +76,6 @@ export function GroupPreview({ board, group, provided }) {
         </button>
       </div>
       <TaskList board={board} group={group} tasks={group.tasks}></TaskList>
-      <TaskAdd board={board} group={group} />
       {modalValue && <ActionModal action={modalValue} onClose={closeEditModal} board={board} group={group} />}
     </div>
   );
