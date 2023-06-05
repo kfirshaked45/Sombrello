@@ -233,9 +233,10 @@ function GroupsContent({ group, board }) {
         <button>Move list...</button>
         <button>Watch</button>
       </div>
-      <div>
-        <button>Sort by</button>
-      </div>
+      {/* <div> */}
+     
+      <button>Sort by</button>
+      {/* </div> */}
       <button onClick={deleteGroup}>Delete this list</button>
       <button>Add card...</button>
     </div>
