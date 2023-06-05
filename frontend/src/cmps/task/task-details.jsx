@@ -75,7 +75,7 @@ export function TaskDetails() {
           <TaskDescription description={task?.description} />
 
           <div className="attachments-section">
-            <TaskAttachments />
+            <TaskAttachments attachments={task.attachments} />
           </div>
 
           <div className="div-activity">

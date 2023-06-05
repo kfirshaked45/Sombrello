@@ -1,13 +1,9 @@
-import React from "react"
-import { RiAttachment2 } from "react-icons/ri"
+import React from 'react';
+import { RiAttachment2 } from 'react-icons/ri';
 
-export function TaskAttachments() {
+export function TaskAttachments({ attachments }) {
+  console.log(attachments);
   // demo attachment data
-  const attachments = [
-    { id: 1, name: "Attachment 1" },
-    { id: 2, name: "Attachment 2" },
-    { id: 3, name: "Attachment 3" },
-  ]
 
   return (
     <div className="task-attachments">
@@ -15,15 +11,15 @@ export function TaskAttachments() {
         <RiAttachment2 className="attachment-icon" />
         <h2 className="attachment-title">Attachments</h2>
       </div>
-      {attachments.length > 0 ? (
+      {attachments ? (
         <ul>
           {attachments.map((attachment) => (
-            <li key={attachment.id}>{attachment.name}</li>
+            <li>{attachment}</li>
           ))}
         </ul>
       ) : (
         <p>No attachments</p>
       )}
     </div>
-  )
+  );
 }
