@@ -55,18 +55,17 @@ export function GroupPreview({ board, group, provided }) {
   };
   return (
     <div>
-      <div className="drag-handle" {...provided.dragHandleProps}>
-        <div className="group-list-header" onClick={handleHeaderClick}>
-          <textarea
-            value={title}
-            className="list-header-name"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            style={{ pointerEvents: isTitleEditable ? 'auto' : 'none' }}
-            ref={textAreaInput}
-            onKeyDown={handleExitKeys}
-          ></textarea>
-        </div>
+      <div className="group-list-header" onClick={handleHeaderClick} {...provided.dragHandleProps}>
+        <textarea
+          value={title}
+          className="list-header-name"
+          onChange={handleChange}
+          onBlur={handleBlur}
+          style={{ pointerEvents: isTitleEditable ? 'auto' : 'none' }}
+          ref={textAreaInput}
+          onKeyDown={handleExitKeys}
+        ></textarea>
+
         <button
           className="list-header-extras-menu"
           onClick={() => {

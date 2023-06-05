@@ -36,7 +36,7 @@ export function TaskList({ board, group }) {
                     onMouseLeave={handleMouseLeave}
                   >
                     <TaskPreview groupId={group.id} task={task} />
-                    {hoveredIndex === index && <FontAwesomeIcon icon={faPen} />}
+                    {hoveredIndex === index && <FontAwesomeIcon icon={faPen} className="task-pen" />}
                   </li>
                 </Link>
               )}

@@ -5,14 +5,32 @@
 .group-list-header {
   padding: 14px 8px;
   display: flex;
-  justify-content: space-between;
+  min-height: 20px;
+  height: 48px;
   align-items: center;
+}
+.group-list-header textarea {
+  background: #0000;
+  border-radius: 3px;
+  box-shadow: none;
+  color: var(--list-title-color);
+
+  overflow: hidden;
+  overflow-wrap: break-word;
+  height: 28px;
+  padding: 4px 8px 4px 12px;
+  width: 224px;
 }
 .drag-handle {
   display: flex;
   justify-content: space-between;
 }
-
+.card-composer-buttons {
+  padding: 0px 4px 0px 4px;
+  margin-left: 4px;
+  margin-right: 4px;
+  margin-bottom: 7px;
+}
 .list-header-extras-menu {
   background-color: inherit;
   color: $list-item-clr;

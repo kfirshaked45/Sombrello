@@ -8,6 +8,13 @@
 }
 
 @font-face {
+  font-family: SegoeUI Regular;
+  font-style: normal;
+  font-weight: normal;
+  src: local('Segoe UI Regular'), url('../../fonts/Segoe-UI-Font/SegoeUI.woff') format('woff');
+}
+
+@font-face {
   font-family: CharlieText-regular;
   src: url(../../fonts/Charlie/CharlieDisplay-Regular.ttf);
 }
