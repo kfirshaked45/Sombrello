@@ -1,6 +1,5 @@
 export function TaskPreview({ groupId, task }) {
-  if (!task.attachments) return;
-  const imageUrl = task.attachments[0];
+  const imageUrl = task.attachments && task.attachments[0];
 
   return (
     <div className="task-preview">
