@@ -14,8 +14,6 @@ import { Fragment } from 'react'
 export const AppHeader = ({ boardId }) => {
   const [headerStatus, setHeaderStatus] = useState()
   const [actionModal, setActionModal] = useState(null)
-  // const { boardId } = useParams()
-  console.log('🚀 ~ file: app-header.jsx:18 ~ AppHeader ~ boardId:', boardId)
   const boards = useSelector((state) => state.boardModule.boards)
   const board = boards.find((b) => b._id === boardId)
   const user = useSelector((state) => state.userModule.user)
