@@ -16,14 +16,15 @@ import { TaskLabels } from './task-labels'
 import { TaskDescription } from './task-description'
 import { loadBoards } from '../../store/board.actions'
 import { BoardDetails } from '../../pages/board-details'
+import { TaskDates } from './task-dates'
 
 export function TaskDetails() {
   const { boardId, groupId, taskId } = useParams()
-
   const boards = useSelector((state) => state.boardModule.boards)
   const board = boards.find((b) => b._id === boardId)
   const group = board.groups.find((g) => g.id === groupId)
   const task = group.tasks.find((t) => t.id === taskId)
+
   const members = task?.members ?? null
   const screenRef = useRef()
 
@@ -74,6 +75,11 @@ export function TaskDetails() {
                   </button>
                 </div>
               </div>
+              <div className="dates-wrapper">
+                <div className="dates">
+                  <TaskDates dates={task?.dates} />
+                </div>
+              </div>
             </section>
 
             <div className="task-grid">
@@ -92,9 +98,6 @@ export function TaskDetails() {
 
                 <TaskDescription description={task?.description} />
 
-                <div className="attachments-section">
-                  <TaskAttachments />
-                </div>
                 <div className="attachments-section">
                   <TaskAttachments attachments={task.attachments} />
                 </div>
