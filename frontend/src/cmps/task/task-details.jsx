@@ -41,13 +41,20 @@ export function TaskDetails() {
       <BoardDetails />
       <section className="screen">
         <div onClick={onGoBack} className="backdrop"></div>
-        <section className="task-details animate__animated animate__fadeIn">
+        <section className="task-details">
           <section
             ref={screenRef}
             className="task-details"
             onClick={(ev) => ev.stopPropagation()}
           >
             <TaskCover className="cover-component" />
+            <header className="div-task-title">
+              <IoIosCard className="icon-title" />
+              {task ? <h2 className="task title">{task.title}</h2> : 'Loading'}
+              <div className="group-id">
+                <p>in list: {group.title}</p>
+              </div>
+            </header>
             <section className="task-props">
               {members && (
                 <div className="members-wrapper">
@@ -86,18 +93,6 @@ export function TaskDetails() {
 
             <div className="task-grid">
               <div className="task-column">
-                <header className="div-task-title">
-                  <IoIosCard className="icon-title" />
-                  {task ? (
-                    <h2 className="task title">{task.title}</h2>
-                  ) : (
-                    'Loading'
-                  )}
-                  <div className="group-id">
-                    <p>in list: {group.title}</p>
-                  </div>
-                </header>
-
                 <TaskDescription description={task?.description} />
 
                 <div className="attachments-section">
@@ -105,8 +100,12 @@ export function TaskDetails() {
                 </div>
 
                 <div className="div-activity">
-                  <RxActivityLog />
-                  <h2>Activity</h2>
+                  <div className="activity">
+                    <div className="icon">
+                      <RxActivityLog />
+                    </div>
+                    <h2>Activity</h2>
+                  </div>
                   <input
                     className="input-task-activity"
                     placeholder="Write a comment..."

@@ -5,6 +5,8 @@
     display: flex;
     align-items: center;
     margin-bottom: 8px;
+    margin-left: -5px;
+    gap: 5px;
 
     .icon-description {
       margin-right: 10px;
@@ -23,6 +25,7 @@
     border: 1px solid #ccc;
     font-size: 14px;
     resize: vertical;
+    margin-left: 20px;
 
     &:focus {
       outline: none;

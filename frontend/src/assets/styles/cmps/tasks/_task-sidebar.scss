@@ -1,5 +1,6 @@
 .task-sidebar {
   padding: 10px 0;
+  margin-bottom: 100px;
 
   h3 {
     font-size: 12px;
@@ -11,6 +12,9 @@
     list-style-type: none;
     padding: 0;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 
     .has-attachments {
       .sidebar-item {
