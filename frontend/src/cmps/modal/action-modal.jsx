@@ -227,10 +227,12 @@ function GroupsContent({ group, board }) {
 
   return (
     <div className="group-edit-modal">
-      <button>Add card...</button>
-      <button>Copy list...</button>
-      <button>Move list...</button>
-      <button>Watch</button>
+      <div className="group-modal-top">
+        <button>Copy list...</button>
+        <button>Add card...</button>
+        <button>Move list...</button>
+        <button>Watch</button>
+      </div>
       <div>
         <button>Sort by</button>
       </div>
@@ -270,6 +272,9 @@ export function ActionModal({ action, onClose, board, task, group }) {
     modalTopPos.top = '200px';
   } else if (action === 'Attachments') {
     modalTopPos.top = '475px';
+  } else if (action === 'Group') {
+    modalTopPos.top = '160px';
+    modalTopPos.marginLeft = '230px';
   }
 
   return (

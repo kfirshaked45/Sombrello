@@ -3,3 +3,18 @@
   flex-direction: column;
   z-index: 1;
 }
+.group-modal-top {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+.group-edit-modal button {
+  color: var(--ds-text, inherit);
+  cursor: pointer;
+  display: block;
+  font-weight: 400;
+  margin: 0 -12px;
+  padding: 6px 12px;
+  position: relative;
+  text-decoration: none;
+}

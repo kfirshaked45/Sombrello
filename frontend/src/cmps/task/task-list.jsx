@@ -19,35 +19,6 @@ export function TaskList({ board, group }) {
     setHoveredIndex(null);
   };
 
-  // const handleDragEnd = (result) => {
-  //   console.log(result, 'DESTINATIONDOFIHNSDFGOINHI');
-  //   if (!result.destination) {
-  //     return; // Item was dropped outside a valid droppable area
-  //   }
-  //   const sourceGroup = group;
-  //   const destinationGroup = board.groups.find((g) => g.id === result.destination.droppableId);
-  //   console.log(sourceGroup, destinationGroup, 'GROUPS');
-  //   const updatedGroup = { ...group };
-  //   const updatedTasks = updatedGroup.tasks;
-  //   const [removed] = updatedTasks.splice(result.source.index, 1);
-  //   updatedTasks.splice(result.destination.index, 0, removed);
-  //   updatedGroup.tasks = updatedTasks;
-
-  //   const updatedGroups = board.groups.map((g) => {
-  //     if (g.id === group.id) {
-  //       return updatedGroup;
-  //     }
-  //     return g;
-  //   });
-
-  //   const updatedBoard = {
-  //     ...board,
-  //     groups: updatedGroups,
-  //   };
-
-  //   dispatch(updateBoard(updatedBoard));
-  // };
-
   return (
     <Droppable droppableId={`${group.id}`} type="TASK">
       {(provided) => (
