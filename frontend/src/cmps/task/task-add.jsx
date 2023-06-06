@@ -13,7 +13,7 @@ export function TaskAdd({ board, group }) {
   function handleChange(ev) {
     setTask(ev.target.value);
   }
-  console.log(task);
+
   function handleSubmit() {
     if (!task) return;
     const updatedGroups = board.groups.map((g) => {

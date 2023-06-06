@@ -130,10 +130,9 @@ export function GroupList({ board }) {
         </Droppable>
       </DragDropContext>
       <button className="add-list-btn" onClick={addGroup}>
-        <span>
-          <Plus />
+        <span className="add-list-btn-span">
+          <Plus /> Add another list
         </span>
-        Add another list
       </button>
     </div>
   );

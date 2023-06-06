@@ -1,11 +1,9 @@
 import { RiAttachment2 } from 'react-icons/ri';
 import { AiOutlineClockCircle } from 'react-icons/ai';
-import { TfiAlignLeft } from "react-icons/tfi";
-import { GoComment } from "react-icons/go"; 
-
+import { TfiAlignLeft } from 'react-icons/tfi';
+import { GoComment } from 'react-icons/go';
 
 export function TaskPreview({ groupId, task }) {
-  console.log(task);
   const imageUrl = task.attachments && task.attachments[0];
   const labels = task.labels;
   const color = task.style && task.style.coverColor;
@@ -20,15 +18,16 @@ export function TaskPreview({ groupId, task }) {
       <div className="task-preview">
         {labels && labels.length !== 0 && (
           <div className="task-preview-labels">
-            {labels && labels.map((label, index) => <button key={index} style={{ backgroundColor: label.color }} className="group-label"></button>)}
+            {labels &&
+              labels.map((label, index) => <button key={index} style={{ backgroundColor: label.color }} className="group-label"></button>)}
           </div>
         )}
         <span className="task-item-title">{task.title}</span>
-        <div className='task-item-footer'>
-          {dueDate && <AiOutlineClockCircle/>}
-          {description && <TfiAlignLeft/>}
-          {comments && <GoComment/>}
-          {imageUrl && <RiAttachment2/>}
+        <div className="task-item-footer">
+          {dueDate && <AiOutlineClockCircle />}
+          {description && <TfiAlignLeft />}
+          {comments && <GoComment />}
+          {imageUrl && <RiAttachment2 />}
         </div>
       </div>
     </div>

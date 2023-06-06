@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { ReactComponent as XIcon } from '../../assets/img/board/x-icon.svg';
 import { ReactComponent as PenIcon } from '../../assets/img/board/pen-icon.svg';
 import { useDispatch } from 'react-redux';
@@ -234,7 +234,7 @@ function GroupsContent({ group, board }) {
         <button>Watch</button>
       </div>
       {/* <div> */}
-     
+
       <button>Sort by</button>
       {/* </div> */}
       <button onClick={deleteGroup}>Delete this list</button>
@@ -263,23 +263,22 @@ function ActionContent({ action, board, task, group }) {
   return contentComponent;
 }
 
-export function ActionModal({ action, onClose, board, task, group }) {
-  let modalTopPos = { top: '' };
-  if (action === 'Members') {
-    modalTopPos.top = '340px';
-  } else if (action === 'Labels') {
-    modalTopPos.top = '200px';
-  } else if (action === 'Dates') {
-    modalTopPos.top = '200px';
-  } else if (action === 'Attachments') {
-    modalTopPos.top = '475px';
-  } else if (action === 'Group') {
-    modalTopPos.top = '160px';
-    modalTopPos.marginLeft = '230px';
-  }
+export function ActionModal({ action, onClose, board, task, group, triggerRef }) {
+  const modalRef = useRef(null);
+  const modalTopPos = useRef({ top: '', left: '', marginLeft: '' });
+
+  useEffect(() => {
+    if (triggerRef.current && modalRef.current) {
+      modalTopPos.current = utilService.getModalPosition(action, triggerRef);
+      console.log(modalTopPos);
+      modalRef.current.style.top = modalTopPos.current.top;
+      modalRef.current.style.left = modalTopPos.current.left;
+      modalRef.current.style.marginLeft = modalTopPos.current.marginLeft;
+    }
+  }, [action, triggerRef]);
 
   return (
-    <div className="action-modal" style={modalTopPos}>
+    <div className="action-modal" ref={modalRef} style={{ top: modalTopPos.current.top }}>
       <div className="action-header">
         <div>{action}</div>
         <XIcon onClick={onClose} className="action-modal-x" />

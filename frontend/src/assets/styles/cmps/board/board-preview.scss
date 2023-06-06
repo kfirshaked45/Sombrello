@@ -59,13 +59,18 @@
   width: rem(240px);
   padding: rem(8px);
   border-radius: rem(12px);
-  display: flex;
+
   background-color: #ffffff3d;
   cursor: pointer;
-  align-items: center;
+
   color: white;
   height: auto;
   min-height: 32px;
+}
+.add-list-btn-span {
+  width: 240px;
+  display: flex;
+  align-items: center;
 }
 .add-list-btn:hover {
   background-color: $dynamic-button-pressed;

@@ -8,6 +8,7 @@ export const utilService = {
   loadFromStorage,
   isBackgroundDark,
   reorder,
+  getModalPosition,
 };
 
 function makeId(length = 6) {
@@ -130,4 +131,39 @@ function isBackgroundDark(color) {
 function reorder(array, index1, index2) {
   const [removed] = array.splice(index1, 1);
   array.splice(index2, 0, removed);
+}
+function getModalPosition(type, ref) {
+  const rect = ref.current.getBoundingClientRect();
+  const pos = { top: rect.top, left: rect.left };
+
+  if (type === 'Members') {
+    pos.top = rect.bottom + 8;
+    if (window.innerWidth - rect.right < 150) {
+      pos.left -= 130;
+    }
+    if (window.innerHeight - rect.bottom < 450) {
+      pos.top = rect.top - 100;
+    }
+  } else if (type === 'Labels') {
+    pos.top = rect.top + 40;
+    if (window.innerWidth - rect.right < 150) {
+      pos.left -= 130;
+    }
+  } else if (type === 'Dates') {
+    pos.top = rect.top + 40;
+    if (window.innerWidth - rect.right < 150) {
+      pos.left -= 130;
+    }
+  } else if (type === 'Attachments') {
+    pos.top = rect.bottom + 8;
+    if (window.innerWidth - rect.right < 150) {
+      pos.left -= 130;
+    }
+  } else if (type === 'Group') {
+    pos.top = rect.top + 40;
+    pos.left = rect.left + 200;
+  }
+  console.log(pos, rect, 'POSITION');
+
+  return pos;
 }
