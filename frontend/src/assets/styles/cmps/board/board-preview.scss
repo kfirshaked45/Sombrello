@@ -60,12 +60,16 @@
   padding: rem(8px);
   border-radius: rem(12px);
   display: flex;
-
+  background-color: #ffffff3d;
+  cursor: pointer;
   align-items: center;
-  background-color: $bgcolor-hover-color;
+  color: white;
+  height: auto;
+  min-height: 32px;
 }
 .add-list-btn:hover {
-  background-color: rgba($color: $bgcolor-hover-color, $alpha: 0.05);
+  background-color: $dynamic-button-pressed;
+  color: $dynamic-text;
 }
 .board {
   width: 100%;

@@ -49,11 +49,13 @@
   object-fit: cover;
 }
 .task-list-item img {
-  border-radius: 3%;
+  border-top-left-radius: 3%;
+  border-top-right-radius: 3%;
 }
 
 .task-list-item:hover {
   background-color: inherit;
+  cursor: pointer;
 }
 .task-pen {
   position: absolute;
@@ -61,6 +63,7 @@
   right: 10px;
   top: 10px;
 }
+
 .list-header-name {
   background: #0000;
   border-radius: 3px;

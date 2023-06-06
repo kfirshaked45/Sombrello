@@ -1,6 +1,7 @@
 .group-list-container {
   display: flex;
   height: 100%;
+  padding: 0;
 }
 .group-list-header {
   padding: 14px 8px;
@@ -25,12 +26,7 @@
   display: flex;
   justify-content: space-between;
 }
-.card-composer-buttons {
-  padding: 0px 4px 0px 4px;
-  margin-left: 4px;
-  margin-right: 4px;
-  margin-bottom: 7px;
-}
+
 .list-header-extras-menu {
   background-color: inherit;
   color: $list-item-clr;
