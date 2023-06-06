@@ -9,6 +9,8 @@ export const utilService = {
   isBackgroundDark,
   reorder,
   getModalPosition,
+  getModalPosition,
+  dueDateFormat,
 };
 
 function makeId(length = 6) {
@@ -166,4 +168,11 @@ function getModalPosition(type, ref) {
   console.log(pos, rect, 'POSITION');
 
   return pos;
+}
+
+function dueDateFormat(dueDate) {
+  const date = new Date(dueDate);
+  const options = { day: 'numeric', month: 'short' };
+  const formattedDate = date.toLocaleString('en-US', options);
+  return formattedDate;
 }

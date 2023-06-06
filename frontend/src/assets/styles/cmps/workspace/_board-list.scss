@@ -1,0 +1,36 @@
+.board-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 17px;
+  padding: 0 0 11px;
+
+  .new-board {
+    width: 194px;
+    height: 96px;
+    background-color: #091e420a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    border-radius: 3px;
+    color: #172b4d;
+
+    &:hover {
+      cursor: pointer;
+      background-color: #091e4214;
+    }
+  }
+}
+
+// MEDIA QUERIES
+
+@media (max-width: 700px) {
+  .board-list {
+    gap: 8px;
+
+    .new-board {
+      width: 161px;
+    }
+  }
+}

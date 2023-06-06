@@ -10,16 +10,18 @@ import { ImgUploader } from '../img-uploader';
 import { updateBoard } from '../../store/board.actions';
 
 function MemberContent({ board, task, group }) {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   const addMember = (member) => {
     if (!task.members) {
-      task.members = [member];
+      task.members = [member]
     } else {
-      const alreadyMemberIndex = task.members.findIndex((m) => m._id === member._id);
+      const alreadyMemberIndex = task.members.findIndex(
+        (m) => m._id === member._id
+      )
       if (alreadyMemberIndex !== -1) {
-        task.members.splice(alreadyMemberIndex, 1);
+        task.members.splice(alreadyMemberIndex, 1)
       } else {
-        task.members.push(member);
+        task.members.push(member)
       }
     }
 
@@ -30,24 +32,28 @@ function MemberContent({ board, task, group }) {
             return {
               ...t,
               members: task.members || [],
-            };
+            }
           }
-          return t;
-        });
+          return t
+        })
 
         return {
           ...g,
           tasks: updatedTasks,
-        };
+        }
       }
-      return g;
-    });
-    const updatedBoard = { ...board, groups: updatedGroups };
-    dispatch(updateBoard(updatedBoard));
-  };
+      return g
+    })
+    const updatedBoard = { ...board, groups: updatedGroups }
+    dispatch(updateBoard(updatedBoard))
+  }
   return (
     <div className="action-modal-content">
-      <input type="text" placeholder="Search members" className="search-members-input" />
+      <input
+        type="text"
+        placeholder="Search members"
+        className="search-members-input"
+      />
       <ul className="action-member-list">
         <h4>Board members</h4>
         {board.members.map((member) => (
@@ -55,7 +61,7 @@ function MemberContent({ board, task, group }) {
             <button
               className="action-member"
               onClick={() => {
-                addMember(member);
+                addMember(member)
               }}
             >
               <img src={`${member.imgUrl}`} alt="picture" />
@@ -65,20 +71,22 @@ function MemberContent({ board, task, group }) {
         ))}
       </ul>
     </div>
-  );
+  )
 }
 
 function LabelsContent({ board, group, task }) {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   const addLabel = (label) => {
     if (!task.labels) {
-      task.labels = [label];
+      task.labels = [label]
     } else {
-      const alreadyLabeledIndex = task.labels.findIndex((l) => l.id === label.id);
+      const alreadyLabeledIndex = task.labels.findIndex(
+        (l) => l.id === label.id
+      )
       if (alreadyLabeledIndex !== -1) {
-        task.labels.splice(alreadyLabeledIndex, 1);
+        task.labels.splice(alreadyLabeledIndex, 1)
       } else {
-        task.labels.push(label);
+        task.labels.push(label)
       }
     }
 
@@ -89,37 +97,45 @@ function LabelsContent({ board, group, task }) {
             return {
               ...t,
               labels: task.labels || [],
-            };
+            }
           }
-          return t;
-        });
+          return t
+        })
 
         return {
           ...g,
           tasks: updatedTasks,
-        };
+        }
       }
-      return g;
-    });
+      return g
+    })
 
-    const updatedBoard = { ...board, groups: updatedGroups };
-    dispatch(updateBoard(updatedBoard));
-  };
+    const updatedBoard = { ...board, groups: updatedGroups }
+    dispatch(updateBoard(updatedBoard))
+  }
 
   return (
     <div>
-      <input type="text" placeholder="Search members" className="search-labels-input" />
+      <input
+        type="text"
+        placeholder="Search members"
+        className="search-labels-input"
+      />
       <div>
         {board.labels.map((label) => (
           <div className="action-label-container">
             <input
               type="checkbox"
               onClick={() => {
-                addLabel(label);
+                addLabel(label)
               }}
               className="action-checkbox-input"
             />
-            <div key={label.id} style={{ backgroundColor: label.color }} className="label-color-container">
+            <div
+              key={label.id}
+              style={{ backgroundColor: label.color }}
+              className="label-color-container"
+            >
               {label.title}
             </div>
             <PenIcon />
@@ -128,7 +144,7 @@ function LabelsContent({ board, group, task }) {
       </div>
       <button>Create a new label</button>
     </div>
-  );
+  )
 }
 
 function DateContent({ task, group, board }) {
@@ -136,13 +152,13 @@ function DateContent({ task, group, board }) {
     startDate: null,
     endDate: null,
     key: 'selection',
-  });
+  })
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   const handleSelect = (ranges) => {
-    setDateRange(ranges.selection);
-  };
+    setDateRange(ranges.selection)
+  }
 
   const handleSave = () => {
     const updatedGroups = board.groups.map((g) => {
@@ -155,34 +171,38 @@ function DateContent({ task, group, board }) {
                 startDate: dateRange.startDate,
                 endDate: dateRange.endDate,
               },
-            };
+            }
           }
-          return t;
-        });
+          return t
+        })
 
         return {
           ...g,
           tasks: updatedTasks,
-        };
+        }
       }
-      return g;
-    });
+      return g
+    })
 
-    const updatedBoard = { ...board, groups: updatedGroups };
-    dispatch(updateBoard(updatedBoard));
-  };
+    const updatedBoard = { ...board, groups: updatedGroups }
+    dispatch(updateBoard(updatedBoard))
+  }
 
   return (
     <div>
-      <DateRange ranges={[dateRange]} onChange={handleSelect} className="date-range" />
+      <DateRange
+        ranges={[dateRange]}
+        onChange={handleSelect}
+        className="date-range"
+      />
       <button onClick={handleSave}>Save</button>
       <button>Remove</button>
     </div>
-  );
+  )
 }
 
 function AttachmentsContent({ task, group, board }) {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   const handleAddAttachment = (attachment) => {
     const updatedGroups = board.groups.map((g) => {
       if (g.id === group.id) {
@@ -191,38 +211,38 @@ function AttachmentsContent({ task, group, board }) {
             return {
               ...t,
               attachments: [...(t.attachments || []), attachment],
-            };
+            }
           }
-          return t;
-        });
+          return t
+        })
 
         return {
           ...g,
           tasks: updatedTasks,
-        };
+        }
       }
-      return g;
-    });
+      return g
+    })
 
-    const updatedBoard = { ...board, groups: updatedGroups };
-    dispatch(updateBoard(updatedBoard));
-  };
+    const updatedBoard = { ...board, groups: updatedGroups }
+    dispatch(updateBoard(updatedBoard))
+  }
 
   return (
     <div>
       <ImgUploader onUploaded={handleAddAttachment} />
     </div>
-  );
+  )
 }
 
 function GroupsContent({ group, board }) {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   async function deleteGroup() {
-    const updatedGroups = board.groups.filter((g) => g.id !== group.id);
-    const updatedBoard = { ...board, groups: updatedGroups };
+    const updatedGroups = board.groups.filter((g) => g.id !== group.id)
+    const updatedBoard = { ...board, groups: updatedGroups }
 
-    await dispatch(updateBoard(updatedBoard));
+    await dispatch(updateBoard(updatedBoard))
   }
 
   return (
@@ -240,27 +260,29 @@ function GroupsContent({ group, board }) {
       <button onClick={deleteGroup}>Delete this list</button>
       <button>Add card...</button>
     </div>
-  );
+  )
 }
 
 function ActionContent({ action, board, task, group }) {
-  let contentComponent = null;
+  let contentComponent = null
 
   if (action === 'Members') {
-    contentComponent = <MemberContent board={board} task={task} group={group} />;
+    contentComponent = <MemberContent board={board} task={task} group={group} />
   } else if (action === 'Labels') {
-    contentComponent = <LabelsContent board={board} task={task} group={group} />;
+    contentComponent = <LabelsContent board={board} task={task} group={group} />
   } else if (action === 'Dates') {
-    contentComponent = <DateContent board={board} task={task} group={group} />;
+    contentComponent = <DateContent board={board} task={task} group={group} />
   } else if (action === 'Attachments') {
-    contentComponent = <AttachmentsContent board={board} task={task} group={group} />;
+    contentComponent = (
+      <AttachmentsContent board={board} task={task} group={group} />
+    )
   } else if (action === 'Group') {
-    contentComponent = <GroupsContent board={board} task={task} group={group} />;
+    contentComponent = <GroupsContent board={board} task={task} group={group} />
   } else {
-    contentComponent = <div>Invalid action.</div>;
+    contentComponent = <div>Invalid action.</div>
   }
 
-  return contentComponent;
+  return contentComponent
 }
 
 export function ActionModal({ action, onClose, board, task, group, triggerRef }) {
@@ -285,5 +307,5 @@ export function ActionModal({ action, onClose, board, task, group, triggerRef })
       </div>
       <ActionContent action={action} board={board} task={task} group={group} />
     </div>
-  );
+  )
 }

@@ -57,6 +57,18 @@
   background-color: inherit;
   cursor: pointer;
 }
+
+.task-item-footer {
+  color: $light-gray;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+
 .task-pen {
   position: absolute;
   color: black;
