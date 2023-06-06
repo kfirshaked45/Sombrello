@@ -22,6 +22,7 @@
   border-radius: 3px;
   box-shadow: var(--ds-shadow-overlay, 0 8px 16px -4px #091e4240, 0 0 0 1px var(--ds-border, #091e4214));
 }
+
 .action-header {
   margin-bottom: 8px;
   padding: 0 12px;
@@ -77,21 +78,73 @@
   width: 100%;
   cursor: pointer;
 }
+.action-labels-container {
+  padding: 4px 0 8px;
+}
 .action-label-container div {
   width: 100%;
 }
-// .action-label-container input {
-//   position: relative;
-//   flex-shrink: 0;
-//   border-radius: 2px;
-//   height: 16px;
-//   width: 16px;
-//   overflow: hidden;
-//   white-space: nowrap;
-//   transition: all 0.2s ease-in-out;
-//   background-color: var(--ds-background-input, #fafbfc);
-//   box-shadow: inset 0 0 0 2px var(--ds-border-input, #dfe1e6);
-// }
+.create-label {
+  margin: 4px 0;
+  width: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Noto Sans', 'Ubuntu', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  cursor: pointer;
+  padding: 6px 12px;
+  text-decoration: none;
+  white-space: normal;
+  background-color: var(--ds-background-neutral, rgba(9, 30, 66, 0.04));
+  box-shadow: none;
+  border: none;
+  color: var(--ds-text, inherit);
+  transition-property: background-color, border-color, box-shadow;
+  transition-duration: 85ms;
+  transition-timing-function: ease;
+}
+.labels-modal-container {
+  -webkit-overflow-scrolling: touch;
+  -webkit-transform: translate3d(0, 0, 0);
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 12px;
+  padding-top: 0;
+}
+
+.rdrMonths {
+  box-sizing: border-box;
+  appearance: none;
+  border: none;
+  display: inline-block;
+  padding: var(--ds-space-200, 16px);
+  position: relative;
+}
+.dates-btn-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+.save-date-btn:hover {
+  background-color: #026aa7;
+  box-shadow: none;
+  border: none;
+  color: var(--ds-text-inverse, #ffffff);
+  text-decoration: none;
+}
+.remove-date-btn {
+}
+.save-date-btn {
+  background-color: #0079bf;
+  color: var(--ds-text-inverse, #ffffff);
+}
+
 .date-range {
   width: 100%;
 }
@@ -136,4 +189,27 @@
 }
 .search-labels-input {
   width: 100%;
+}
+.general-btn-styling {
+  color: var(--ds-text, #172b4d);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Noto Sans', 'Ubuntu', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  cursor: pointer;
+  padding: 6px 12px;
+  text-decoration: none;
+  white-space: normal;
+  background-color: var(--ds-background-neutral, rgba(9, 30, 66, 0.04));
+  box-shadow: none;
+  border: none;
+  color: var(--ds-text, inherit);
+  transition-property: background-color, border-color, box-shadow;
+  transition-duration: 85ms;
+  transition-timing-function: ease;
 }
