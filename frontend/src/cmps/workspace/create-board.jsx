@@ -3,6 +3,7 @@ import boardPreview from '../../assets/img/board-preview.svg'
 import { MdOutlineDone } from 'react-icons/md'
 import { useDispatch } from 'react-redux'
 import { addBoard } from '../../store/board.actions'
+import { AiOutlineClose } from 'react-icons/ai'
 
 export const CreateBoard = ({ setActionModal }) => {
   const images = [
@@ -70,8 +71,18 @@ export const CreateBoard = ({ setActionModal }) => {
     setActionModal(null)
   }
 
+  const handleCloseModal = () => {
+    setActionModal(null)
+  }
+
   return (
     <section className="create-board">
+      <div className="title-container">
+        <p>Create Board</p>
+        <span>
+          <AiOutlineClose onClick={handleCloseModal} />
+        </span>
+      </div>
       <div
         className="new-board-container"
         style={{
@@ -92,7 +103,7 @@ export const CreateBoard = ({ setActionModal }) => {
               <li className="image-button" key={img.thumbnail}>
                 <button
                   onClick={() => setBoardBackground(undefined, img.thumbnail)}
-                  style={{ backgroundImage: 'url(' + img.thumbnail + ')' }}
+                  style={{ backgroundImage: `url(${img.thumbnail})` }}
                 >
                   {backgroundImage === img.thumbnail && (
                     <div className="selected">

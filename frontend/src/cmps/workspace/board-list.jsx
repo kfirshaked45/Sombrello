@@ -1,5 +1,6 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { BoardPreview } from './board-preview'
+import { CreateBoard } from './create-board'
 
 export const BoardList = ({
   boards,
@@ -8,19 +9,25 @@ export const BoardList = ({
   onOpenActionModal,
 }) => {
   const btnAddBoardRef = useRef()
+  const [showCreateBoard, setShowCreateBoard] = useState(false)
+
+  const handleCreateBoardClick = () => {
+    setShowCreateBoard(true)
+  }
+
+  const handleCreateBoardClose = () => {
+    setShowCreateBoard(false)
+  }
 
   return (
     <section className="board-list">
       {newBoardPlaceholder && (
-        <div
-          ref={btnAddBoardRef}
-          onClick={() => {
-            onOpenActionModal('Create board', btnAddBoardRef)
-          }}
-          className="new-board"
-        >
+        <div onClick={handleCreateBoardClick} className="new-board">
           Create new board
         </div>
+      )}
+      {showCreateBoard && (
+        <CreateBoard setActionModal={handleCreateBoardClose} />
       )}
       {boards.map((board) => (
         <BoardPreview

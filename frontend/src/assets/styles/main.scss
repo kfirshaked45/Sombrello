@@ -24,6 +24,10 @@
 // Components
 @import 'cmps/AppHeader';
 @import 'cmps/AppFooter';
+@import 'cmps/loader';
+@import 'cmps/workspace/board-list';
+@import 'cmps/workspace/board-preview';
+@import 'cmps/workspace/create-board';
 @import 'cmps/ActionContent.scss';
 @import 'cmps/UserMsg';
 @import 'cmps/board/BoardHeader';

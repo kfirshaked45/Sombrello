@@ -22,4 +22,46 @@
       margin-inline-end: 12px;
     }
   }
+
+  .starred-boards {
+    margin-bottom: 45px;
+  }
+}
+
+// MEDIA QUERIES
+
+@media (max-width: 330px) {
+  .workspace {
+    max-width: 180px;
+  }
+}
+
+@media (min-width: 525px) {
+  .workspace {
+    max-width: 499px;
+  }
+}
+
+@media (min-width: 600px) {
+  .workspace {
+    max-width: 499px;
+  }
+}
+
+@media (min-width: 701px) {
+  .workspace {
+    max-width: 616px;
+  }
+}
+
+@media (min-width: 860px) {
+  .workspace {
+    max-width: 827px;
+  }
+}
+
+@media (min-width: 1118px) {
+  .workspace {
+    max-width: 1038px;
+  }
 }
