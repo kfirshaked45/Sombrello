@@ -53,7 +53,9 @@ export function TaskPreview({ groupId, task }) {
                 <span className="clock-icon">
                   <AiOutlineClockCircle />
                 </span>
-                <span>{utilService.dueDateFormat(dueDate)}</span>
+                <span className="due-date">
+                  {utilService.dueDateFormat(dueDate)}
+                </span>
               </section>
             )}
 
@@ -64,16 +66,18 @@ export function TaskPreview({ groupId, task }) {
             )}
 
             {task.comments && task.comments.length !== 0 && (
-              <section className={`comments-icon`}>
+              <section className="comments-icon">
                 <GoComment />
-                <span>{task.comments.length}</span>
+                <span className="comments-count">{task.comments.length}</span>
               </section>
             )}
 
             {task.attachments && task.attachments.length !== 0 && (
               <section className="attachments-icon">
                 <RiAttachment2 />
-                {task.attachments.length}
+                <span className="attachments-count">
+                  {task.attachments.length}
+                </span>
               </section>
             )}
           </div>
