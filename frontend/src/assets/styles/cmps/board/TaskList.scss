@@ -86,13 +86,19 @@
   align-items: flex-end;
   gap: 3px;
   flex-wrap: wrap;
+  margin-top: 5px;
 }
 
 .members-img {
   display: flex;
+  align-items: center;
+  gap: 3px;
   flex-wrap: wrap;
-  justify-content: flex-end;
-  margin-top: 5px;
+}
+
+.member-img img {
+  height: 24px;
+  width: 24px;
 }
 
 .task-pen {
