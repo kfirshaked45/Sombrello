@@ -1,5 +1,9 @@
-import { utilService } from "../../services/util.service"
+import { utilService } from '../../services/util.service';
 
+import { RiAttachment2 } from 'react-icons/ri';
+import { AiOutlineClockCircle } from 'react-icons/ai';
+import { TfiAlignLeft } from 'react-icons/tfi';
+import { GoComment } from 'react-icons/go';
 import { RiAttachment2 } from "react-icons/ri"
 import { AiOutlineClockCircle } from "react-icons/ai"
 import { TfiAlignLeft } from "react-icons/tfi"
@@ -46,6 +50,8 @@ export function TaskPreview({ groupId, task }) {
       <div className="task-preview">
         {labels && labels.length !== 0 && (
           <div className="task-preview-labels">
+            {labels &&
+              labels.map((label, index) => <button key={index} style={{ backgroundColor: label.color }} className="group-label"></button>)}
             {labels &&
               labels.map((label, index) => (
                 <button

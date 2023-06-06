@@ -8,6 +8,7 @@ import { updateBoard } from '../../store/board.actions';
 import { boardService } from '../../services/board.service.local';
 import { TaskAdd } from '../task/task-add';
 import { ActionModal } from '../modal/action-modal.jsx';
+
 export function GroupPreview({ board, group, provided }) {
   const [title, setTitle] = useState(group.title);
   const [isTitleEditable, setIsTitleEditable] = useState(false);
@@ -19,16 +20,19 @@ export function GroupPreview({ board, group, provided }) {
   function handleChange(ev) {
     setTitle(ev.target.value);
   }
+
   function handleHeaderClick() {
     setIsTitleEditable(true);
     textAreaInput.current.focus();
     textAreaInput.current.select();
   }
+
   function handleExitKeys(ev) {
     if (ev.key === 'Escape' || ev.key === 'Enter') {
       textAreaInput.current.blur();
     }
   }
+
   function handleBlur() {
     setIsTitleEditable(false);
     if (title !== group.title) {
@@ -47,12 +51,15 @@ export function GroupPreview({ board, group, provided }) {
     }
   }
 
-  const openEditModal = (action) => {
+  const openEditModal = (action, ev) => {
+    ev.stopPropagation();
     setModalValue(action);
   };
+
   const closeEditModal = () => {
     setModalValue(null);
   };
+
   return (
     <div>
       <div className="group-list-header" onClick={handleHeaderClick} {...provided.dragHandleProps}>
@@ -68,15 +75,15 @@ export function GroupPreview({ board, group, provided }) {
 
         <button
           className="list-header-extras-menu"
-          onClick={() => {
-            openEditModal('Group');
+          onClick={(ev) => {
+            openEditModal('Group', ev);
           }}
         >
           <FontAwesomeIcon icon={faEllipsis} />
         </button>
       </div>
       <TaskList board={board} group={group} tasks={group.tasks}></TaskList>
-      {modalValue && <ActionModal action={modalValue} onClose={closeEditModal} board={board} group={group} />}
+      {modalValue && <ActionModal action={modalValue} onClose={closeEditModal} board={board} group={group} triggerRef={textAreaInput} />}
     </div>
   );
 }
