@@ -7,14 +7,16 @@ export function TaskAttachments({ attachments }) {
 
   return (
     <div className="task-attachments">
-      <div className="attachment-header">
+      <div className="attachment-header details-grid">
         <RiAttachment2 className="attachment-icon" />
         <h2 className="attachment-title">Attachments</h2>
       </div>
       {attachments ? (
         <ul>
           {attachments.map((attachment) => (
-            <li>{attachment}</li>
+            <li>
+              <img src={`${attachment}`} className="attachment-img" />
+            </li>
           ))}
         </ul>
       ) : (

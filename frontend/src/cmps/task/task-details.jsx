@@ -42,48 +42,53 @@ export function TaskDetails() {
       <BoardDetails />
       <section className="screen">
         <div onClick={onGoBack} className="backdrop"></div>
-        <section className="task-details">
-          <section ref={screenRef} className="task-details" onClick={(ev) => ev.stopPropagation()}>
+        <div className="task-details">
+          <div ref={screenRef} className="task-details" onClick={(ev) => ev.stopPropagation()}>
             <TaskCover className="cover-component" />
-            <header className="div-task-title">
-              <IoIosCard className="icon-title" />
-              {task ? <h2 className="task title">{task.title}</h2> : 'Loading'}
-              <div className="group-id">
-                <p>in list: {group.title}</p>
-              </div>
-            </header>
-            <TaskProps members={members} selectedMember={selectedMember} task={task} />
-
-            <div className="task-grid">
-              <div className="task-column">
-                <TaskDescription description={task?.description} />
-
-                <div className="attachments-section">
-                  <TaskAttachments attachments={task.attachments} />
-                </div>
-
-                <div className="div-activity">
-                  <div className="activity">
-                    <div className="icon">
-                      <RxActivityLog />
-                    </div>
-                    <h2>Activity</h2>
+            <div className="grid-all">
+              <div>
+                <div className="window-header details-grid">
+                  <span>
+                    <IoIosCard className="icon-title" />
+                  </span>
+                  <div>
+                    {task ? <textarea className="task-title-textarea">{task.title}</textarea> : 'Loading'}
+                    <p>in list: {group.title}</p>
                   </div>
-                  <input className="input-task-activity" placeholder="Write a comment..." />
+                  {/* <div className="group-id"></div> */}
+                </div>
+                <TaskProps members={members} selectedMember={selectedMember} task={task} />
+                {/* <div className="task-grid"> */}
+                <div className="grid-layout">
+                  <div className="task-column">
+                    <TaskDescription description={task?.description} />
+                    <div className="attachments-section">
+                      <TaskAttachments attachments={task.attachments} />
+                    </div>
+
+                    <div className="div-activity">
+                      <div className="details-grid activity-head-container">
+                        <div className="icon">
+                          <RxActivityLog />
+                        </div>
+                        <h2>Activity</h2>
+                      </div>
+                      <input className="input-task-activity" placeholder="Write a comment..." />
+                    </div>
+                  </div>
+                  <div className="task-sidebar"></div>
                 </div>
               </div>
-              <div className="task-sidebar">
-                <TaskSidebar
-                  board={board}
-                  group={group}
-                  task={task}
-                  hasAttachments={task.attachments.length > 0}
-                  width={hasAttachments ? '100px' : '165px'}
-                />
-              </div>
+              <TaskSidebar
+                board={board}
+                group={group}
+                task={task}
+                hasAttachments={task.attachments.length > 0}
+                width={hasAttachments ? '100px' : '165px'}
+              />
             </div>
-          </section>
-        </section>
+          </div>
+        </div>
       </section>
     </Fragment>
   );
