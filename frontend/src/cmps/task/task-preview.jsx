@@ -58,57 +58,62 @@ export function TaskPreview({ groupId, task }) {
 
         <span className="task-item-title">{task.title}</span>
 
-        <section className="task-item-footer">
-          <div className="props-icons">
-          {dueDate && (
-  <section className={`date-container ${getDateClass(task)}`}>
-    <span className="clock-icon">
-      <AiOutlineClockCircle />
-    </span>
-    <span className="due-date">{utilService.dueDateFormat(dueDate)}</span>
-  </section>
-)}
+        {(dueDate ||
+          description ||
+          (task.comments && task.comments.length !== 0) ||
+          (task.attachments && task.attachments.length !== 0)) && (
+          <section className="task-item-footer">
+            <div className="props-icons">
+              {dueDate && (
+                <section className={`date-container ${getDateClass(task)}`}>
+                  <span className="clock-icon">
+                    <AiOutlineClockCircle />
+                  </span>
+                  <span className="due-date">
+                    {utilService.dueDateFormat(dueDate)}
+                  </span>
+                </section>
+              )}
 
+              {description && (
+                <section className="description-icon">
+                  <TfiAlignLeft />
+                </section>
+              )}
 
-            {description && (
-              <section className="description-icon">
-                <TfiAlignLeft />
-              </section>
-            )}
+              {task.comments && task.comments.length !== 0 && (
+                <section className="comments-icon">
+                  <GoComment />
+                  <span className="comments-count">{task.comments.length}</span>
+                </section>
+              )}
 
-            {task.comments && task.comments.length !== 0 && (
-              <section className="comments-icon">
-                <GoComment />
-                <span className="comments-count">{task.comments.length}</span>
-              </section>
-            )}
-
-            {task.attachments && task.attachments.length !== 0 && (
-              <section className="attachments-icon">
-                <RiAttachment2 />
-                <span className="attachments-count">
-                  {task.attachments.length}
-                </span>
-              </section>
-            )}
-
-          </div>
-          <div className="members-icons">
-            {task.members && task.members.length !== 0 && (
-              <section className="members-img">
-                {task.members.map((member) => (
-                  <div className="member-img" key={member._id}>
-                    <img
-                      src={member.imgUrl}
-                      alt=""
-                      referrerPolicy="no-referrer"
-                    />
-                  </div>
-                ))}
-              </section>
-            )}
-          </div>
-        </section>
+              {task.attachments && task.attachments.length !== 0 && (
+                <section className="attachments-icon">
+                  <RiAttachment2 />
+                  <span className="attachments-count">
+                    {task.attachments.length}
+                  </span>
+                </section>
+              )}
+            </div>
+            <div className="members-icons">
+              {task.members && task.members.length !== 0 && (
+                <section className="members-img">
+                  {task.members.map((member) => (
+                    <div className="member-img" key={member._id}>
+                      <img
+                        src={member.imgUrl}
+                        alt=""
+                        referrerPolicy="no-referrer"
+                      />
+                    </div>
+                  ))}
+                </section>
+              )}
+            </div>
+          </section>
+        )}
       </div>
     </div>
   )

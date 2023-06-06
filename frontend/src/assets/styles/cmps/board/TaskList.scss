@@ -199,12 +199,4 @@
   background-color: var(--collapsed-background-color, var(--ds-text, #172b4d));
   color: transparent;
   border-radius: 4px;
-  transition: all 0.3s ease;
-}
-
-.group-label.expanded {
-  height: 16px;
-  width: 40px;
-  padding-right: 8px;
-  padding-left: 8px;
 }
