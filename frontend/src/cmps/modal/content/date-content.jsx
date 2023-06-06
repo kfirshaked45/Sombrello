@@ -44,7 +44,7 @@ export function DateContent({ task, group, board, dispatch }) {
   };
 
   return (
-    <div>
+    <div className="date-modal-container">
       <DateRange ranges={[dateRange]} onChange={handleSelect} className="date-range" />
       <div className="dates-btn-container">
         <button onClick={handleSave} className="save-date-btn general-btn-styling">
