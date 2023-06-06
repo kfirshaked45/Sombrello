@@ -4,10 +4,6 @@ import { RiAttachment2 } from 'react-icons/ri';
 import { AiOutlineClockCircle } from 'react-icons/ai';
 import { TfiAlignLeft } from 'react-icons/tfi';
 import { GoComment } from 'react-icons/go';
-import { RiAttachment2 } from "react-icons/ri"
-import { AiOutlineClockCircle } from "react-icons/ai"
-import { TfiAlignLeft } from "react-icons/tfi"
-import { GoComment } from "react-icons/go"
 
 export function TaskPreview({ groupId, task }) {
   console.log(task)
@@ -52,14 +48,6 @@ export function TaskPreview({ groupId, task }) {
           <div className="task-preview-labels">
             {labels &&
               labels.map((label, index) => <button key={index} style={{ backgroundColor: label.color }} className="group-label"></button>)}
-            {labels &&
-              labels.map((label, index) => (
-                <button
-                  key={index}
-                  style={{ backgroundColor: label.color }}
-                  className="group-label"
-                ></button>
-              ))}
           </div>
         )}
 
