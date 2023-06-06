@@ -130,7 +130,7 @@ async function createDemoBoard() {
               dueDate: '',
               labels: [],
               attachments: [],
-              comments: [],
+              comments: [{txt: "great job!", by: 'u103', at: Date.now()}],
             },
             {
               title: 'Routing Directory',
@@ -266,7 +266,7 @@ async function createDemoBoard() {
                 },
               ],
               attachments: [],
-              comments: [],
+              comments: [{txt: "add labels", by: 'u101', at: Date.now() - 200000}, {txt: "done that", by: 'u103', at: Date.now()}],
             },
             {
               title: 'Add TaskDetails',
@@ -485,7 +485,7 @@ async function createDemoBoard() {
                 },
               ],
               attachments: [],
-              comments: [],
+              comments: [{txt: "add description", by: 'u101', at: Date.now()}],
             },
             {
               title: 'making functions and mixins',
@@ -570,7 +570,7 @@ async function createDemoBoard() {
                 },
               ],
               attachments: [],
-              comments: [],
+              comments: [{txt: "add due date!", by: 'u102', at: Date.now()}],
             },
             {
               title: '',
