@@ -55,7 +55,9 @@ export function LabelsContent({ board, group, task, dispatch }) {
             <div key={label.id} style={{ backgroundColor: label.color }} className="label-color-container">
               {label.title}
             </div>
-            <PenIcon />
+            <button className="pen-btn general-btn-styling">
+              <PenIcon />
+            </button>
           </div>
         ))}
       </div>

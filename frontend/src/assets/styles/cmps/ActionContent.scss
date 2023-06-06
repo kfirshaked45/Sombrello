@@ -122,7 +122,7 @@
   appearance: none;
   border: none;
   display: inline-block;
-  padding: var(--ds-space-200, 16px);
+
   position: relative;
 }
 .dates-btn-container {
@@ -130,19 +130,6 @@
   flex-direction: column;
   justify-content: space-between;
   margin-top: 8px;
-}
-.save-date-btn:hover {
-  background-color: #026aa7;
-  box-shadow: none;
-  border: none;
-  color: var(--ds-text-inverse, #ffffff);
-  text-decoration: none;
-}
-.remove-date-btn {
-}
-.save-date-btn {
-  background-color: #0079bf;
-  color: var(--ds-text-inverse, #ffffff);
 }
 
 .date-range {
@@ -153,6 +140,7 @@
 }
 .label-color-container {
   display: inline-block;
+  margin-left: 12px;
   position: relative;
   margin-bottom: 0;
   border-radius: 3px;
@@ -212,4 +200,42 @@
   transition-property: background-color, border-color, box-shadow;
   transition-duration: 85ms;
   transition-timing-function: ease;
+}
+.general-btn-styling:hover {
+  background-color: var(--ds-background-neutral-hovered, rgba(9, 30, 66, 0.08));
+}
+.pen-btn {
+  flex-shrink: 0;
+  margin-bottom: 0;
+  padding: 8px;
+  margin-left: 4px;
+}
+.pen-btn svg {
+  width: 16px;
+  height: 16px;
+}
+.rdrDateInput input {
+  margin-bottom: 0px;
+  box-shadow: 0px 0px 0px;
+}
+.save-date-btn:hover {
+  background-color: #026aa7;
+  box-shadow: none;
+  border: none;
+  color: var(--ds-text-inverse, #ffffff);
+  text-decoration: none;
+}
+.remove-date-btn {
+}
+.save-date-btn {
+  background-color: #0079bf;
+  color: var(--ds-text-inverse, #ffffff);
+}
+.date-modal-container {
+  -webkit-overflow-scrolling: touch;
+  -webkit-transform: translate3d(0, 0, 0);
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 12px;
+  padding-top: 0;
 }
