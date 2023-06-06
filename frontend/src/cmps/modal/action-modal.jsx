@@ -1,29 +1,21 @@
 import { ReactComponent as XIcon } from '../../assets/img/board/x-icon.svg';
-
-import { useDispatch } from 'react-redux';
-import { Calendar, DateRange } from 'react-date-range';
 import { utilService } from '../../services/util.service';
-import React, { useState, useRef, useEffect } from 'react';
-import 'react-date-range/dist/styles.css'; // main style file
-import 'react-date-range/dist/theme/default.css'; // theme css file
+import React, { useState, useRef, useLayoutEffect } from 'react';
 import { ActionContent } from './content/action-content';
 
 export function ActionModal({ action, onClose, board, task, group, triggerRef }) {
-  const modalRef = useRef(null);
-  const modalTopPos = useRef({ top: '', left: '', marginLeft: '' });
+  const [modalTopPos, setModalTopPos] = useState(null);
 
-  useEffect(() => {
-    if (triggerRef.current && modalRef.current) {
-      modalTopPos.current = utilService.getModalPosition(action, triggerRef);
-      console.log(modalTopPos);
-      modalRef.current.style.top = modalTopPos.current.top;
-      modalRef.current.style.left = modalTopPos.current.left;
-      modalRef.current.style.marginLeft = modalTopPos.current.marginLeft;
+  useLayoutEffect(() => {
+    if (triggerRef.current && triggerRef) {
+      const { top, left, marginLeft } = utilService.getModalPosition(action, triggerRef);
+      setModalTopPos({ top, left, marginLeft });
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }
-  }, [action, triggerRef]);
-
+  }, [action]);
+  // if (!modalTopPos) return;
   return (
-    <div className="action-modal" ref={modalRef} style={{ top: modalTopPos.current.top }}>
+    <div className="action-modal" style={modalTopPos}>
       <div className="action-header">
         <div>{action}</div>
         <XIcon onClick={onClose} className="action-modal-x" />

@@ -8,7 +8,7 @@ export const utilService = {
   loadFromStorage,
   isBackgroundDark,
   reorder,
-  getModalPosition,
+
   getModalPosition,
   dueDateFormat,
 };
@@ -165,7 +165,6 @@ function getModalPosition(type, ref) {
     pos.top = rect.top + 40;
     pos.left = rect.left + 200;
   }
-  console.log(pos, rect, 'POSITION');
 
   return pos;
 }

@@ -3,7 +3,7 @@
   clear: both;
   color: $list-text-color;
   display: block;
-  margin: 0 0 4px;
+  margin: 4px 0 8px;
   overflow: hidden;
   text-decoration: none;
 }
@@ -59,7 +59,8 @@
 }
 
 .task-item-footer {
-  margin-top: 5px;
+  margin-top: 4px;
+  margin-bottom: 8px;
   display: flex;
   color: $light-gray;
   font-size: 16px;
@@ -124,7 +125,6 @@
   }
 }
 
-
 .props-icons {
   display: flex;
   align-items: center;
@@ -185,8 +185,9 @@
   display: flex;
   flex-wrap: wrap;
   gap: 4px;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
 }
+
 .group-label {
   margin-top: 4px;
   margin-bottom: 4px;
