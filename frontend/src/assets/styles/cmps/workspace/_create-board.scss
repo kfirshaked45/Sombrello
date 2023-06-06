@@ -4,7 +4,8 @@
   flex-direction: column;
   position: absolute;
   background-color: #fff;
-  left: 110px;
+  left: 120px;
+  z-index: 100;
 
   .new-board-container {
     width: 200px;
