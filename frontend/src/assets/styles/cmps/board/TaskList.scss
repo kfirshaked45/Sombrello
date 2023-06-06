@@ -54,6 +54,7 @@
 
 .task-list-item:hover {
   background-color: inherit;
+  cursor: pointer;
 }
 .task-pen {
   position: absolute;
@@ -61,6 +62,7 @@
   right: 10px;
   top: 10px;
 }
+
 .list-header-name {
   background: #0000;
   border-radius: 3px;
