@@ -59,6 +59,7 @@
 }
 
 .task-item-footer {
+  margin-top: 5px;
   display: flex;
   color: $light-gray;
   font-size: 16px;
@@ -68,6 +69,61 @@
   gap: 5px;
   flex-wrap: wrap;
 }
+
+.date-container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  .clock-icon {
+    display: flex;
+    align-items: center;
+    svg {
+      height: 16px;
+      width: 16px;
+      vertical-align: middle;
+    }
+  }
+
+  .due-date {
+    font-size: 16px;
+    line-height: 1;
+    vertical-align: middle;
+  }
+}
+
+.attachments-icon {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  svg {
+    height: 16px;
+    width: 16px;
+  }
+
+  .attachments-count {
+    font-size: 16px;
+    line-height: 1;
+  }
+}
+
+.comments-icon {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  svg {
+    height: 16px;
+    width: 16px;
+  }
+
+  .comments-count {
+    font-size: 16px;
+    line-height: 1;
+  }
+}
+
 
 .props-icons {
   display: flex;
