@@ -1,4 +1,5 @@
 import { utilService } from "../../services/util.service"
+import { useState } from "react"
 
 import { RiAttachment2 } from "react-icons/ri"
 import { AiOutlineClockCircle } from "react-icons/ai"
@@ -6,7 +7,8 @@ import { TfiAlignLeft } from "react-icons/tfi"
 import { GoComment } from "react-icons/go"
 
 export function TaskPreview({ groupId, task }) {
-  console.log(task)
+  const [areLabelsExpanded, setAreLabelsExpanded] = useState(false)
+
   const imageUrl = task.attachments && task.attachments[0]
   const labels = task.labels
   const color = task.style && task.style.coverColor
@@ -50,7 +52,8 @@ export function TaskPreview({ groupId, task }) {
               <button
                 key={index}
                 style={{ backgroundColor: label.color }}
-                className="group-label"
+                className={`group-label ${areLabelsExpanded ? "expanded" : ""}`}
+                onClick={() => setAreLabelsExpanded(!areLabelsExpanded)}
               ></button>
             ))}
           </div>
