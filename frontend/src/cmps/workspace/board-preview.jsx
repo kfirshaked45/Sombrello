@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { AiOutlineStar, AiFillStar } from 'react-icons/ai'
+import 'animate.css'
 
 export const BoardPreview = ({ board, onToggleStarred }) => {
   const getBoardStyle = () => {
@@ -15,23 +16,31 @@ export const BoardPreview = ({ board, onToggleStarred }) => {
 
   const boardStyle = getBoardStyle()
   return (
-    <Link key={board._id} to={`/board/${board._id}`}>
-      <section className="board-preview" style={boardStyle}>
-        <span className="board-hover">
-          <div className="board-preview-details">
-            <h3>{board.title}</h3>
-            <div className={`board-star ${board.isStarred ? 'starred' : ''}`}>
-              {board.isStarred ? (
-                <AiFillStar onClick={(ev) => onToggleStarred(ev, board._id)} />
-              ) : (
-                <AiOutlineStar
-                  onClick={(ev) => onToggleStarred(ev, board._id)}
-                />
-              )}
+    <div>
+      <Link key={board._id} to={`/board/${board._id}`}>
+        <section className="board-preview" style={boardStyle}>
+          <span className="board-hover">
+            <div className="board-preview-details">
+              <h3>{board.title}</h3>
+              <div
+                className={`board-star ${
+                  board.isStarred ? 'starred' : ''
+                } animate__animated animate__fadeInRight `}
+              >
+                {board.isStarred ? (
+                  <AiFillStar
+                    onClick={(ev) => onToggleStarred(ev, board._id)}
+                  />
+                ) : (
+                  <AiOutlineStar
+                    onClick={(ev) => onToggleStarred(ev, board._id)}
+                  />
+                )}
+              </div>
             </div>
-          </div>
-        </span>
-      </section>
-    </Link>
+          </span>
+        </section>
+      </Link>
+    </div>
   )
 }

@@ -62,13 +62,16 @@ export const CreateBoard = ({ setActionModal }) => {
   const onCreateBoard = (ev) => {
     ev.preventDefault()
     let style
-    if (backgroundImage)
+    if (backgroundImage) {
       style = images.find((image) => image.thumbnail === backgroundImage)
-    else style = { backgroundColor }
+      handleCloseModal()
+    } else {
+      style = { backgroundColor }
+      handleCloseModal()
+    }
 
     const board = { title, style }
     dispatch(addBoard(board))
-    setActionModal(null)
   }
 
   const handleCloseModal = () => {

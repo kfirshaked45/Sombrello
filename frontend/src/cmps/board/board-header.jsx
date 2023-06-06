@@ -45,11 +45,12 @@ export function BoardHeader({ board }) {
           <span>Filter</span>
         </button>
         <div className="members-img">
-          {members.map((member) => (
-            <div key={member._id} onClick={() => openModal(member)}>
-              <img src={member.imgUrl} alt="Member" />
-            </div>
-          ))}
+          {members &&
+            members.map((member) => (
+              <div key={member._id} onClick={() => openModal(member)}>
+                <img src={member.imgUrl} alt="Member" />
+              </div>
+            ))}
         </div>
         {selectedMember && (
           <MemberModal member={selectedMember} onClose={closeModal} />
