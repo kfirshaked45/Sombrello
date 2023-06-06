@@ -4,12 +4,12 @@ import 'animate.css'
 
 export const BoardPreview = ({ board, onToggleStarred }) => {
   const getBoardStyle = () => {
-    if (!board) return
-    if (board?.style.background)
+    if (!board || !board.style) return {}
+    if (board.style.background)
       return {
         background: `url('${board.style.thumbnail}') center center / cover`,
       }
-    else if (board?.style.backgroundColor)
+    else if (board.style.backgroundColor)
       return { backgroundColor: `${board.style.backgroundColor}` }
     return { backgroundColor: `#5ba4cf` }
   }
