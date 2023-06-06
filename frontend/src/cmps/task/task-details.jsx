@@ -92,7 +92,7 @@ export function TaskDetails() {
                     board={board}
                     group={group}
                     task={task}
-                    hasAttachments={task.attachments.length > 0}
+                    hasAttachments={task?.attachments?.length > 0}
                     width={hasAttachments ? '100px' : '165px'}
                   />
                 </div>
