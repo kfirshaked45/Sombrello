@@ -36,6 +36,10 @@ h6 {
   margin: 0 0 0.6em;
   line-height: 1;
 }
+textarea {
+  color: var(--ds-text, #172b4d);
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
+}
 
 section,
 main,

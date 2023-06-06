@@ -42,7 +42,6 @@
   .task-column {
     display: flex;
     flex-direction: column;
-    margin-left: 40px;
 
     .task-title {
       font-size: 24px;
@@ -50,10 +49,6 @@
     }
 
     .attachments-section {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      margin-left: -10px;
       margin-bottom: 10px;
 
       .icon-title {
