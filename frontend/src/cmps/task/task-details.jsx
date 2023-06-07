@@ -40,65 +40,58 @@ export function TaskDetails() {
     <Fragment>
       <BoardDetails />
       <section className="screen">
-        <div onClick={onGoBack} className="backdrop"></div>
-        <section className="task-details">
-          <section
-            ref={screenRef}
-            className="task-details"
-            onClick={(ev) => ev.stopPropagation()}
-          >
-            <div className="task-details">
-              <TaskCover className="cover-component" />
-              <header className="div-task-title">
-                <IoIosCard className="icon-title" />
-                {task ? (
-                  <h2 className="task title">{task.title}</h2>
-                ) : (
-                  'Loading'
-                )}
-                <div className="group-id">
-                  <p>in list: {group.title}</p>
-                </div>
-              </header>
-              <TaskProps
-                members={members}
-                selectedMember={selectedMember}
-                task={task}
-              />
+        {/* <div onClick={onGoBack} className="backdrop"></div> */}
+        <section
+          ref={screenRef}
+          className="task-details"
+          onClick={(ev) => ev.stopPropagation()}
+          ariaLabel={task.title}
+        >
+          <TaskCover className="cover-component" />
+          <header className="div-task-title">
+            <IoIosCard className="icon-title" />
+            {task ? <h2 className="task title">{task.title}</h2> : 'Loading'}
+            <div className="group-id">
+              <p>in list: {group.title}</p>
+            </div>
+          </header>
+          <TaskProps
+            members={members}
+            selectedMember={selectedMember}
+            task={task}
+          />
 
-              <div className="task-grid">
-                <div className="task-column">
-                  <TaskDescription description={task?.description} />
+          <div className="task-grid">
+            <div className="task-column">
+              <TaskDescription description={task?.description} />
 
-                  <div className="attachments-section">
-                    <TaskAttachments attachments={task.attachments} />
+              <div className="attachments-section">
+                <TaskAttachments attachments={task.attachments} />
+              </div>
+
+              <div className="div-activity">
+                <div className="activity">
+                  <div className="icon">
+                    <RxActivityLog />
                   </div>
-
-                  <div className="div-activity">
-                    <div className="activity">
-                      <div className="icon">
-                        <RxActivityLog />
-                      </div>
-                      <h2>Activity</h2>
-                    </div>
-                    <input
-                      className="input-task-activity"
-                      placeholder="Write a comment..."
-                    />
-                  </div>
+                  <h2>Activity</h2>
                 </div>
-                <div className="task-sidebar">
-                  <TaskSidebar
-                    board={board}
-                    group={group}
-                    task={task}
-                    hasAttachments={task?.attachments?.length > 0}
-                    width={hasAttachments ? '100px' : '165px'}
-                  />
-                </div>
+                <input
+                  className="input-task-activity"
+                  placeholder="Write a comment..."
+                />
               </div>
             </div>
-          </section>
+            <div className="task-sidebar">
+              <TaskSidebar
+                board={board}
+                group={group}
+                task={task}
+                hasAttachments={task?.attachments?.length > 0}
+                width={hasAttachments ? '100px' : '165px'}
+              />
+            </div>
+          </div>
         </section>
       </section>
     </Fragment>

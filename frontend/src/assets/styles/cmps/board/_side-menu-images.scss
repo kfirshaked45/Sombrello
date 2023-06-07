@@ -1,0 +1,45 @@
+.side-menu-photos {
+  height: 100%;
+  &.main-layout {
+    padding-left: 12px;
+  }
+
+  form {
+    margin-right: 7px;
+    margin-left: 1px;
+    line-height: 20px;
+  }
+
+  .input-holder {
+    position: relative;
+
+    .input {
+      height: 36px;
+      width: 319px;
+      padding: 8px 12px;
+      padding-left: 32px;
+      padding-bottom: 10px;
+    }
+
+    .icon {
+      font-size: 17px;
+      position: absolute;
+      left: 5px;
+      top: 50%;
+      translate: 30% -85%;
+    }
+  }
+
+  .photo-list {
+    overflow: auto;
+    height: 1000px;
+    padding-right: 6px;
+    height: calc(100% - 98px);
+    padding-bottom: 12px;
+    grid-auto-rows: max-content;
+
+    & > *:hover {
+      cursor: pointer;
+    }
+  }
+}

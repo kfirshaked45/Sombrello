@@ -1,9 +1,8 @@
-import { utilService } from "../../services/util.service"
-
-import { RiAttachment2 } from "react-icons/ri"
-import { AiOutlineClockCircle } from "react-icons/ai"
-import { TfiAlignLeft } from "react-icons/tfi"
-import { GoComment } from "react-icons/go"
+import { utilService } from '../../services/util.service'
+import { RiAttachment2 } from 'react-icons/ri'
+import { AiOutlineClockCircle } from 'react-icons/ai'
+import { TfiAlignLeft } from 'react-icons/tfi'
+import { GoComment } from 'react-icons/go'
 
 export function TaskPreview({ groupId, task }) {
   console.log(task)
@@ -24,9 +23,9 @@ export function TaskPreview({ groupId, task }) {
     var hoursBetweenDates = msBetweenDates / (60 * 60 * 1000)
 
     if (hoursBetweenDates < 0) {
-      return "overdue"
+      return 'overdue'
     } else if (hoursBetweenDates < 24) {
-      return "duesoon"
+      return 'duesoon'
     } else {
       return null
     }
@@ -61,7 +60,8 @@ export function TaskPreview({ groupId, task }) {
         {(dueDate ||
           description ||
           (task.comments && task.comments.length !== 0) ||
-          (task.attachments && task.attachments.length !== 0)) && (
+          (task.attachments && task.attachments.length !== 0) ||
+          (task.members && task.members.length !== 0)) && (
           <section className="task-item-footer">
             <div className="props-icons">
               {dueDate && (
