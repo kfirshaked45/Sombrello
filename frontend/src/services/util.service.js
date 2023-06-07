@@ -8,7 +8,6 @@ export const utilService = {
   loadFromStorage,
   isBackgroundDark,
   reorder,
-
   getModalPosition,
   dueDateFormat,
   formatDate,
@@ -149,12 +148,12 @@ function getModalPosition(type, ref) {
       pos.top = rect.top - 100;
     }
   } else if (type === 'Labels') {
-    pos.top = rect.top + 40;
+    pos.top = rect.top - 300;
     if (window.innerWidth - rect.right < 150) {
       pos.left -= 130;
     }
   } else if (type === 'Dates') {
-    pos.top = rect.top + 40;
+    pos.top = rect.top - 200;
     if (window.innerWidth - rect.right < 150) {
       pos.left -= 130;
     }
@@ -166,22 +165,34 @@ function getModalPosition(type, ref) {
   } else if (type === 'Group') {
     pos.top = rect.top + 40;
     pos.left = rect.left + 240;
+  } else if (type === 'Labels ') {
+    // This is for the plus button, till i find a better soluation
+    pos.top = rect.bottom + 10;
+    if (window.innerWidth - rect.right < 150) {
+      pos.left -= 130;
+    }
   }
 
   return pos;
 }
 
-function formatDate(timestamp) {
-  const date = new Date(timestamp)
-  const month = date.toLocaleString('default', { month: 'short' })
-  const day = date.getDate()
+function formatDate(dateString) {
+  const date = new Date(dateString);
+  const now = new Date();
 
-  return `${month} ${day}`
+  const options = {};
+  if (date.getFullYear() !== now.getFullYear()) {
+    options.year = 'numeric';
+  }
+  options.month = 'short';
+  options.day = 'numeric';
+
+  return date.toLocaleDateString(undefined, options);
 }
 
 function hasTimestampPassed(timestamp) {
   // console.log(Date.now() >= timestamp);
-  return Date.now() >= timestamp
+  return Date.now() >= timestamp;
 }
 
 function dueDateFormat(dueDate) {

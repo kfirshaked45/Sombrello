@@ -1,18 +1,16 @@
-import { updateBoard } from '../../../store/board.actions'
-import { ReactComponent as PenIcon } from '../../../assets/img/board/pen-icon.svg'
+import { updateBoard } from '../../../store/board.actions';
+import { ReactComponent as PenIcon } from '../../../assets/img/board/pen-icon.svg';
 
 export function LabelsContent({ board, group, task, dispatch }) {
   const addLabel = (label) => {
     if (!task.labels) {
-      task.labels = [label]
+      task.labels = [label];
     } else {
-      const alreadyLabeledIndex = task.labels.findIndex(
-        (l) => l.id === label.id
-      )
+      const alreadyLabeledIndex = task.labels.findIndex((l) => l.id === label.id);
       if (alreadyLabeledIndex !== -1) {
-        task.labels.splice(alreadyLabeledIndex, 1)
+        task.labels.splice(alreadyLabeledIndex, 1);
       } else {
-        task.labels.push(label)
+        task.labels.push(label);
       }
     }
 
@@ -23,30 +21,26 @@ export function LabelsContent({ board, group, task, dispatch }) {
             return {
               ...t,
               labels: task.labels || [],
-            }
+            };
           }
-          return t
-        })
+          return t;
+        });
 
         return {
           ...g,
           tasks: updatedTasks,
-        }
+        };
       }
-      return g
-    })
+      return g;
+    });
 
-    const updatedBoard = { ...board, groups: updatedGroups }
-    dispatch(updateBoard(updatedBoard))
-  }
+    const updatedBoard = { ...board, groups: updatedGroups };
+    dispatch(updateBoard(updatedBoard));
+  };
 
   return (
     <div className="labels-modal-container">
-      <input
-        type="text"
-        placeholder="Search members"
-        className="search-labels-input"
-      />
+      <input type="text" placeholder="Search labels..." className="search-labels-input" />
       <p>Labels</p>
       <div className="action-labels-container">
         {board.labels &&
@@ -55,7 +49,7 @@ export function LabelsContent({ board, group, task, dispatch }) {
               <input
                 type="checkbox"
                 onClick={() => {
-                  addLabel(label)
+                  addLabel(label);
                 }}
                 className="action-checkbox-input"
               />
@@ -63,6 +57,9 @@ export function LabelsContent({ board, group, task, dispatch }) {
                 key={label.id}
                 style={{ backgroundColor: label.color }}
                 className="label-color-container"
+                onClick={() => {
+                  addLabel(label);
+                }}
               >
                 {label.title}
               </div>
@@ -74,5 +71,5 @@ export function LabelsContent({ board, group, task, dispatch }) {
       </div>
       <button className="create-label">Create a new label</button>
     </div>
-  )
+  );
 }

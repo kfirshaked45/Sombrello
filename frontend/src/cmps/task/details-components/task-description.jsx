@@ -8,7 +8,6 @@ import { updateBoard } from '../../../store/board.actions';
 export function TaskDescription({ description, task, group, board }) {
   const [isEditing, setIsEditing] = useState(false);
 
-  console.log(task.style.coverColor);
   const dispatch = useDispatch();
   const [editorValue, setEditorValue] = useState(description);
 

@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 export function TaskTitleEdit({ task, group, taskId, board }) {
-  console.log(task, group);
   const [taskTitle, setTaskTitle] = useState(null);
   const dispatch = useDispatch();
   function handleChange(ev) {

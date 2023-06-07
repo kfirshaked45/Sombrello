@@ -7,7 +7,7 @@ import { MdCallToAction } from 'react-icons/md';
 
 export function TaskCover({ color }) {
   const backgroundColor = color.coverColor;
-  console.log(backgroundColor);
+
   const navigate = useNavigate();
 
   function onTaskClose() {
@@ -15,7 +15,7 @@ export function TaskCover({ color }) {
   }
 
   return (
-    <div className="task-cover" style={{ backgroundColor: backgroundColor }} >
+    <div className="task-cover" style={{ backgroundColor: backgroundColor }}>
       <div className="call-to-action">
         <MdCallToAction className="cta-icon" />
         <span className="cta-text">Cover</span>

@@ -140,3 +140,44 @@
 .task-sidebar {
   font-weight: 500;
 }
+.date-wrapper {
+  display: flex;
+  align-items: center;
+}
+.date-wrapper input {
+  box-shadow: inset 0 0 0 2px var(--ds-border-selected, #0079bf);
+  flex-shrink: 0;
+  height: 16px;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.2s ease-in-out;
+  white-space: nowrap;
+  width: 16px;
+
+  background-color: var(--ds-background-selected-bold, #0079bf);
+}
+.dates-container {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Noto Sans', 'Ubuntu', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+}
+.date-completed {
+  font-size: 12px;
+  line-height: 16px;
+  padding: 0 4px;
+
+  border-radius: 2px;
+  margin: auto 0 auto 8px;
+  color: #ffffff;
+  background-color: #1f845a;
+}
+.arrow-down-icon {
+  margin-left: 4px;
+  width: 16px;
+  height: 16px;
+  font-size: 16px;
+  text-align: center;
+  align-self: center;
+  display: flex;
+}
