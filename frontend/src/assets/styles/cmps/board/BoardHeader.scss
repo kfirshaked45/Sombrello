@@ -63,8 +63,12 @@
   color: #172b4d;
 }
 
-.board-header-left.dark svg {
+.board-header-left.dark svg:not(.yellow-star) {
   color: #172b4d;
+}
+
+.board-header-left.dark svg .yellow-star {
+  color: #f2d600;
 }
 
 .board-header-right-container.dark {
@@ -124,18 +128,19 @@
   line-height: 32px;
   border-radius: 3px;
   color: #fff;
-  background-color: #ffffff3d;
 
   .yellow-star {
     color: #f2d600;
+    font-size: 20px;
   }
 
   &:hover {
     cursor: pointer;
     color: #f2d600;
+    background-color: #ffffff3d;
 
     & > * {
-      transform: scale(1.2);
+      transform: scale(1.1);
     }
   }
 }
