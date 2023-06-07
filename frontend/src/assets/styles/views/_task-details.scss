@@ -50,11 +50,6 @@
     .attachments-section {
       margin-bottom: 10px;
 
-      .icon-title {
-        font-size: 24px;
-        margin-right: 10px;
-      }
-
       h2 {
         font-size: 16px;
         margin-right: 10px;
@@ -110,8 +105,7 @@
 
   .task-props {
     display: flex;
-    margin-top: 20px;
-    margin-left: 32px;
+    margin-left: 70px;
     flex-wrap: wrap;
     .members-wrapper,
     .labels-wrapper {
@@ -208,11 +202,6 @@
   margin-left: 30px;
   margin-top: 15px;
 
-  .icon-title {
-    font-size: 24px;
-    margin-right: 10px;
-  }
-
   h2 {
     font-size: 24px;
     margin-right: 18px;
@@ -229,5 +218,8 @@
   }
 }
 .input-task-activity {
-  margin-left: 60px;
+  margin-left: 70px;
+}
+.grid-details-margin {
+  margin-left: 70px;
 }
