@@ -11,6 +11,8 @@ export const utilService = {
 
   getModalPosition,
   dueDateFormat,
+  formatDate,
+  hasTimestampPassed,
 };
 
 function makeId(length = 6) {
@@ -167,6 +169,19 @@ function getModalPosition(type, ref) {
   }
 
   return pos;
+}
+
+function formatDate(timestamp) {
+  const date = new Date(timestamp)
+  const month = date.toLocaleString('default', { month: 'short' })
+  const day = date.getDate()
+
+  return `${month} ${day}`
+}
+
+function hasTimestampPassed(timestamp) {
+  // console.log(Date.now() >= timestamp);
+  return Date.now() >= timestamp
 }
 
 function dueDateFormat(dueDate) {
