@@ -62,7 +62,7 @@ export function TaskDetails() {
                   <div className="icon">
                     <RxActivityLog />
                   </div>
-                  <h2>Activity</h2>
+                  <h2 className="align-text">Activity</h2>
                 </div>
                 <input className="input-task-activity" placeholder="Write a comment..." />
               </div>
