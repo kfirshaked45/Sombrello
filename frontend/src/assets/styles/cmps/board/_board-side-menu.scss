@@ -31,25 +31,29 @@
     transition: margin 0.12s ease-in;
     white-space: nowrap;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     font-size: 14px;
     font-weight: 600;
     padding-left: 6px;
+  }
 
-    a {
-      text-decoration: underline;
-    }
+  .header a {
+    text-decoration: underline;
+  }
 
-    .svg-holder {
-      position: absolute;
-      right: 4%;
-      bottom: 45%;
-      transform: translate(0, 50%);
+  .header h3 {
+    transform: translate(0, 25%);
+  }
 
-      &:hover {
-        cursor: pointer;
-      }
+  .header .svg-holder {
+    position: absolute;
+    right: 4%;
+    bottom: 45%;
+    transform: translate(0, 50%);
+
+    &:hover {
+      cursor: pointer;
     }
   }
 
