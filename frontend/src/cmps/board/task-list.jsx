@@ -36,7 +36,7 @@ export function TaskList({ board, group }) {
                     onMouseEnter={() => handleMouseEnter(index)}
                     onMouseLeave={handleMouseLeave}
                   >
-                    <TaskPreview groupId={group.id} task={task} />
+                    <TaskPreview board={board} groupId={group.id} task={task} />
                     {hoveredIndex === index && <FontAwesomeIcon icon={faPen} className="task-pen" />}
                   </li>
                 </Link>

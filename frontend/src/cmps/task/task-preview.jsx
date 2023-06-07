@@ -1,34 +1,39 @@
-import { utilService } from '../../services/util.service'
+import { utilService } from "../../services/util.service"
+import { useDispatch } from "react-redux"
+import { updateBoard } from "../../store/board.actions"
+import { RiAttachment2 } from "react-icons/ri"
+import { AiOutlineClockCircle } from "react-icons/ai"
+import { TfiAlignLeft } from "react-icons/tfi"
+import { GoComment } from "react-icons/go"
+import { TaskDueDate } from "./task-due-date"
+import { useParams } from "react-router"
+import { boardService } from "../../services/board.service.local"
 
-import { RiAttachment2 } from 'react-icons/ri'
-import { AiOutlineClockCircle } from 'react-icons/ai'
-import { TfiAlignLeft } from 'react-icons/tfi'
-import { GoComment } from 'react-icons/go'
-
-export function TaskPreview({ groupId, task }) {
+export function TaskPreview({ board, groupId, task }) {
   const imageUrl = task.attachments && task.attachments[0]
   const labels = task.labels
   const color = task.style && task.style.coverColor
   const description = task.desc
-  const dueDate = task.dueDate
 
-  function getDateClass(task) {
-    if (!task || !task.dueDate) {
-      return null
-    }
+  const dispatch = useDispatch()
 
-    var then = new Date(dueDate)
-    var now = new Date()
-    var msBetweenDates = then.getTime() - now.getTime()
-    var hoursBetweenDates = msBetweenDates / (60 * 60 * 1000)
+  function toggleIsDone(e) {
+    e.stopPropagation() // Stop event propagation
 
-    if (hoursBetweenDates < 0) {
-      return 'overdue'
-    } else if (hoursBetweenDates < 24) {
-      return 'duesoon'
-    } else {
-      return null
-    }
+    const updatedDueDate = { ...task.dueDate, isDone: !task.dueDate.isDone }
+    const updatedTask = { ...task, dueDate: updatedDueDate }
+    const updatedGroups = board.groups.map((g) => {
+      if (g.id === groupId) {
+        const updatedGroup = {
+          ...g,
+          tasks: g.tasks.map((t) => (t.id === task.id ? updatedTask : t)),
+        }
+        return updatedGroup
+      }
+      return g
+    })
+    const updatedBoard = { ...board, groups: updatedGroups }
+    dispatch(updateBoard(updatedBoard))
   }
 
   return (
@@ -57,22 +62,15 @@ export function TaskPreview({ groupId, task }) {
 
         <span className="task-item-title">{task.title}</span>
 
-        {(dueDate ||
+        {(task.dueDate.timeStamp ||
           description ||
           (task.comments && task.comments.length !== 0) ||
           (task.attachments && task.attachments.length !== 0) ||
           (task.members && task.members.length !== 0)) && (
           <section className="task-item-footer">
             <div className="props-icons">
-              {dueDate && (
-                <section className={`date-container ${getDateClass(task)}`}>
-                  <span className="clock-icon">
-                    <AiOutlineClockCircle />
-                  </span>
-                  <span className="due-date">
-                    {utilService.dueDateFormat(dueDate)}
-                  </span>
-                </section>
+              {task.dueDate && (
+                <TaskDueDate dueDate={task.dueDate} onClick={(e) => toggleIsDone(e)} />
               )}
 
               {description && (

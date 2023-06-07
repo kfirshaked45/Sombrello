@@ -49,7 +49,7 @@ export function TaskAdd({ board, group }) {
           </div>
           <div className="card-composer-buttons">
             <button onClick={handleSubmit} className="card-composer-add-btn">
-              Add Card
+              Add card
             </button>
             <button onClick={handleCancel}>
               <FontAwesomeIcon icon={faX} />
