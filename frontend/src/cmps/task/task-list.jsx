@@ -45,7 +45,6 @@ export function TaskList({ board, group }) {
           ))}
           {provided.placeholder}
         </ul>
-   
       )}
     </Droppable>
   );
