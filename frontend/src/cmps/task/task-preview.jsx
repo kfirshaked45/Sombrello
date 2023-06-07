@@ -1,7 +1,4 @@
-import { utilService } from "../../services/util.service"
-
 import { RiAttachment2 } from "react-icons/ri"
-import { AiOutlineClockCircle } from "react-icons/ai"
 import { TfiAlignLeft } from "react-icons/tfi"
 import { GoComment } from "react-icons/go"
 import { TaskDueDate } from "./task-due-date"
@@ -11,26 +8,6 @@ export function TaskPreview({ groupId, task }) {
   const labels = task.labels
   const color = task.style && task.style.coverColor
   const description = task.desc
-  const dueDate = task.dueDate.timeStamp
-
-  // function getDateClass(task) {
-  //   if (!task || !task.dueDate.timeStamp) {
-  //     return null
-  //   }
-
-  //   var then = new Date(dueDate)
-  //   var now = new Date()
-  //   var msBetweenDates = then.getTime() - now.getTime()
-  //   var hoursBetweenDates = msBetweenDates / (60 * 60 * 1000)
-
-  //   if (hoursBetweenDates < 0) {
-  //     return "overdue"
-  //   } else if (hoursBetweenDates < 24) {
-  //     return "duesoon"
-  //   } else {
-  //     return null
-  //   }
-  // }
 
   return (
     <div className="cover-img-section">
@@ -58,7 +35,7 @@ export function TaskPreview({ groupId, task }) {
 
         <span className="task-item-title">{task.title}</span>
 
-        {(task.dueDate ||
+        {(task.dueDate.timeStamp ||
           description ||
           (task.comments && task.comments.length !== 0) ||
           (task.attachments && task.attachments.length !== 0) ||

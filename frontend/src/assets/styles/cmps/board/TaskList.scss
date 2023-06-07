@@ -65,10 +65,10 @@
 
 .task-item-footer {
   margin-top: 4px;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
   display: flex;
   color: $light-gray;
-  font-size: 16px;
+  // font-size: 12px;
   justify-content: space-between;
   align-items: center;
   width: 100%;
@@ -92,7 +92,7 @@
   }
 
   .due-date {
-    font-size: 16px;
+    font-size: 12px;
     line-height: 1;
     vertical-align: middle;
   }
@@ -108,10 +108,10 @@
     width: 16px;
   }
 
-  .attachments-count {
-    font-size: 16px;
-    line-height: 1;
-  }
+  // .attachments-count {
+  //   font-size: 12px;
+  //   line-height: 1;
+  // }
 }
 
 .comments-icon {
@@ -125,7 +125,7 @@
   }
 
   .comments-count {
-    font-size: 16px;
+    font-size: 12px;
     line-height: 1;
   }
 }
@@ -190,7 +190,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 4px;
-  margin-bottom: 8px;
+  margin-bottom: 0px;
 }
 
 .group-label {

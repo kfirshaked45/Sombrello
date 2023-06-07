@@ -5,32 +5,31 @@ import { utilService } from "../../services/util.service"
 
 export function TaskDueDate({ dueDate }) {
   const [isHovered, setIsHovered] = useState(false)
-  let indicatorClass
-  if (dueDate.isDone) {
-    indicatorClass = "complete"
-  } else if (utilService.hasTimestampPassed(dueDate.timeStamp)) {
-    indicatorClass = "overdue"
-  } else{
-    indicatorClass = "due-soon"
+
+  const getIndicatorClass = () => {
+    if (dueDate.isDone) return "complete"
+    if (utilService.hasTimestampPassed(dueDate.timeStamp)) return "overdue"
+    return "due-soon"
   }
 
-  console.log(indicatorClass);
+  const indicatorClass = getIndicatorClass()
+
+  if (dueDate.timeStamp === "") return null
 
   return (
-    dueDate.timeStamp !== "" && (
-      <li
-        className={`indicator-due-date ${indicatorClass}`}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
-        <span className="flex">
-          {isHovered && <BsStop className="indicator-icon square" />}
-          {!isHovered && (
-            <AiOutlineClockCircle className="indicator-icon clock" />
-          )}
-          <label>{utilService.formatDate(dueDate.timeStamp)}</label>
-        </span>
-      </li>
-    )
+    <li
+      className={`indicator-due-date ${indicatorClass}`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <span className="flex">
+        {isHovered ? (
+          <BsStop className="indicator-icon square" />
+        ) : (
+          <AiOutlineClockCircle className="indicator-icon clock" />
+        )}
+        <label>{utilService.formatDate(dueDate.timeStamp)}</label>
+      </span>
+    </li>
   )
 }

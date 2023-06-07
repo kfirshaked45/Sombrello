@@ -1,14 +1,15 @@
 .indicator-due-date {
     display: flex;
-    margin-block-end: 4px;
+    // margin-block-end: 4px;
     align-items: start;
     border-radius: 3px;
   
     span {
       min-height: 20px;
-      padding: 3px 6px;
+      min-width: 60px;
       gap: 4px;
       align-items: center;
+      justify-content: center;
   
       .indicator-icon {
         display: block;
@@ -32,7 +33,7 @@
     &:hover {
       background-color: $bold-gray;
       &.overdue {
-        background-color: lighten($color: $light-red, $amount: 10%);
+        background-color: $light-red;
       }
       &.due-soon {
         background-color: lighten($color: $bold-gray, $amount: 40%);
@@ -43,7 +44,7 @@
     }
   
     &.overdue {
-      background-color: $light-red;
+      background-color: $lightest-red;
       color: $bold-red;
     }
   
