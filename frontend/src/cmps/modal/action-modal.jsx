@@ -5,7 +5,7 @@ import { ActionContent } from './content/action-content';
 
 export function ActionModal({ action, onClose, board, task, group, triggerRef }) {
   const [modalTopPos, setModalTopPos] = useState(null);
-
+  console.log(triggerRef, action);
   useLayoutEffect(() => {
     if (triggerRef.current && triggerRef) {
       const { top, left, marginLeft } = utilService.getModalPosition(action, triggerRef);

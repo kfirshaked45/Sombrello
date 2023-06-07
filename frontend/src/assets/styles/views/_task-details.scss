@@ -1,11 +1,16 @@
 .screen {
-  position: absolute;
-  top: 45px;
+  position: fixed;
+  top: 0px;
   bottom: 0;
   left: 0;
   right: 0;
   overflow-y: auto;
   z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 48px 0 80px;
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 .backdrop {
@@ -18,21 +23,15 @@
 }
 
 .task-details {
-  padding-right: 50px;
-  width: 768px;
-  height: max-content;
-  margin: auto;
+  max-width: 768px;
   background-color: #f1f2f4;
   color: $list-text-color;
   font-family: CharlieText-regular;
   display: inline-block;
   left: 50%;
   border-radius: 3px;
-  position: relative;
-  transform: translate(-50%);
 
   .task-grid {
-    max-width: 576px;
     display: grid;
     grid-template-columns: 3fr 1fr;
     grid-gap: 50px;
@@ -64,6 +63,9 @@
     }
 
     .div-activity {
+      margin: 0 0 4px 20px;
+      padding: 8px 0;
+      position: relative;
       .activity {
         display: flex;
         flex-direction: row;
@@ -84,7 +86,7 @@
       .input-task-activity {
         width: 512px;
         height: 36px;
-        margin-left: 20px;
+        margin-left: 60px;
         padding: 8px;
         border: none;
         border-radius: 4px;
@@ -110,14 +112,14 @@
     display: flex;
     margin-top: 20px;
     margin-left: 32px;
-
+    flex-wrap: wrap;
     .members-wrapper,
     .labels-wrapper {
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: flex-start;
       margin-bottom: 20px;
-
+      margin-right: 10px;
       h6 {
         margin-bottom: 10px;
       }
@@ -170,7 +172,7 @@
       .labels {
         display: flex;
         flex-wrap: wrap;
-        margin-left: 40px;
+
         gap: 5px;
 
         .add-label {
@@ -225,4 +227,7 @@
       margin-left: 33px;
     }
   }
+}
+.input-task-activity {
+  margin-left: 60px;
 }

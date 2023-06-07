@@ -1,57 +1,45 @@
-import { utilService } from "../../services/util.service"
+import { utilService } from '../../services/util.service';
 
-import { RiAttachment2 } from "react-icons/ri"
-import { AiOutlineClockCircle } from "react-icons/ai"
-import { TfiAlignLeft } from "react-icons/tfi"
-import { GoComment } from "react-icons/go"
+import { RiAttachment2 } from 'react-icons/ri';
+import { AiOutlineClockCircle } from 'react-icons/ai';
+import { TfiAlignLeft } from 'react-icons/tfi';
+import { GoComment } from 'react-icons/go';
 
 export function TaskPreview({ groupId, task }) {
-  console.log(task)
-  const imageUrl = task.attachments && task.attachments[0]
-  const labels = task.labels
-  const color = task.style && task.style.coverColor
-  const description = task.desc
-  const dueDate = task.dueDate
+  const imageUrl = task.attachments && task.attachments[0];
+  const labels = task.labels;
+  const color = task.style && task.style.coverColor;
+  const description = task.desc;
+  const dueDate = task.dueDate;
 
   function getDateClass(task) {
     if (!task || !task.dueDate) {
-      return null
+      return null;
     }
 
-    var then = new Date(dueDate)
-    var now = new Date()
-    var msBetweenDates = then.getTime() - now.getTime()
-    var hoursBetweenDates = msBetweenDates / (60 * 60 * 1000)
+    var then = new Date(dueDate);
+    var now = new Date();
+    var msBetweenDates = then.getTime() - now.getTime();
+    var hoursBetweenDates = msBetweenDates / (60 * 60 * 1000);
 
     if (hoursBetweenDates < 0) {
-      return "overdue"
+      return 'overdue';
     } else if (hoursBetweenDates < 24) {
-      return "duesoon"
+      return 'duesoon';
     } else {
-      return null
+      return null;
     }
   }
 
   return (
     <div className="cover-img-section">
-      {color && !imageUrl && (
-        <div
-          className="task-list-cover"
-          style={{ backgroundColor: color }}
-        ></div>
-      )}
-      {imageUrl && (
-        <img src={imageUrl} alt="Task Image" className="task-image" />
-      )}
+      {color && !imageUrl && <div className="task-list-cover" style={{ backgroundColor: color }}></div>}
+      {imageUrl && <img src={imageUrl} alt="Task Image" className="task-image" />}
       <div className="task-preview">
         {labels && labels.length !== 0 && (
           <div className="task-preview-labels">
             {labels.map((label, index) => (
-              <button
-                key={index}
-                style={{ backgroundColor: label.color }}
-                className="group-label"
-              ></button>
+              <button key={index} style={{ backgroundColor: label.color }} className="group-label"></button>
             ))}
           </div>
         )}
@@ -69,9 +57,7 @@ export function TaskPreview({ groupId, task }) {
                   <span className="clock-icon">
                     <AiOutlineClockCircle />
                   </span>
-                  <span className="due-date">
-                    {utilService.dueDateFormat(dueDate)}
-                  </span>
+                  <span className="due-date">{utilService.dueDateFormat(dueDate)}</span>
                 </section>
               )}
 
@@ -91,9 +77,7 @@ export function TaskPreview({ groupId, task }) {
               {task.attachments && task.attachments.length !== 0 && (
                 <section className="attachments-icon">
                   <RiAttachment2 />
-                  <span className="attachments-count">
-                    {task.attachments.length}
-                  </span>
+                  <span className="attachments-count">{task.attachments.length}</span>
                 </section>
               )}
             </div>
@@ -102,11 +86,7 @@ export function TaskPreview({ groupId, task }) {
                 <section className="members-img">
                   {task.members.map((member) => (
                     <div className="member-img" key={member._id}>
-                      <img
-                        src={member.imgUrl}
-                        alt=""
-                        referrerPolicy="no-referrer"
-                      />
+                      <img src={member.imgUrl} alt="" referrerPolicy="no-referrer" />
                     </div>
                   ))}
                 </section>
@@ -116,5 +96,5 @@ export function TaskPreview({ groupId, task }) {
         )}
       </div>
     </div>
-  )
+  );
 }

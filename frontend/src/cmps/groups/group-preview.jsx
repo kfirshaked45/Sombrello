@@ -61,7 +61,7 @@ export function GroupPreview({ board, group, provided }) {
   };
 
   return (
-    <div>
+    <div className="group-preview-container">
       <div className="group-list-header" onClick={handleHeaderClick} {...provided.dragHandleProps}>
         <textarea
           value={title}
