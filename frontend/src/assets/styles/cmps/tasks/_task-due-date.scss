@@ -45,7 +45,7 @@
   
     &.overdue {
       background-color: $lightest-red;
-      color: $bold-red;
+      color:  darken($bold-red, 40%);
     }
   
     &.complete {
