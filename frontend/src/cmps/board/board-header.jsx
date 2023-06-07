@@ -155,8 +155,7 @@ export function BoardHeader({ board, changeBackground }) {
         </button>
         {!sideMenuClass && (
           <button onClick={renderSideMenu}>
-            <BsThreeDots />
-            Show menu
+            <BsThreeDots style={{ fontSize: '16px' }} />
           </button>
         )}
         <BoardSideMenu

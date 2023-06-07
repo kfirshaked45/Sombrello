@@ -21,7 +21,7 @@
 
   input.board-title-input {
     height: 2em;
-    margin-top: 10px;
+    margin-top: 15px;
   }
 
   .board-title-input {
@@ -32,8 +32,7 @@
     font-size: inherit;
     font-weight: inherit;
     color: inherit;
-    width: 35%;
-    // height: 70%;
+    width: 40%;
     resize: none;
   }
 
@@ -156,7 +155,7 @@
 .board-header-left {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 10px;
 }
 .board-header svg {
   color: white;
