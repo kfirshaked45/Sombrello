@@ -1,11 +1,11 @@
 import { utilService } from '../../services/util.service'
+
 import { RiAttachment2 } from 'react-icons/ri'
 import { AiOutlineClockCircle } from 'react-icons/ai'
 import { TfiAlignLeft } from 'react-icons/tfi'
 import { GoComment } from 'react-icons/go'
 
 export function TaskPreview({ groupId, task }) {
-  console.log(task)
   const imageUrl = task.attachments && task.attachments[0]
   const labels = task.labels
   const color = task.style && task.style.coverColor

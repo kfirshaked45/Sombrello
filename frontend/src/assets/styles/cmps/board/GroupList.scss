@@ -3,6 +3,8 @@
   height: 100%;
   padding: 0;
   padding-left: 10px;
+  margin: 0;
+  align-items: flex-start;
 }
 .group-list-header {
   padding: 14px 8px;
@@ -38,7 +40,6 @@
   height: 32px;
 }
 .group-list-item {
-  height: 100%;
   width: 272px;
   background-color: $list-item-bgclr;
   color: $list-item-clr;
@@ -47,8 +48,11 @@
   border-radius: 12px;
   color: $list-text-color;
   // padding: 10px;
+  max-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  overflow: hidden;
 }
-
 
 // .group-task {
 //   margin: 8px 8px 4px 8px;
@@ -70,3 +74,9 @@
 //   width: 100%;
 //   color: $list-text-color;
 // }
+.group-preview-container {
+  max-height: 100%;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}

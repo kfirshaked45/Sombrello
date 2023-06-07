@@ -61,7 +61,7 @@ export function GroupPreview({ board, group, provided }) {
   };
 
   return (
-    <div>
+    <div className="group-preview-container">
       <div className="group-list-header" onClick={handleHeaderClick} {...provided.dragHandleProps}>
         <textarea
           value={title}
@@ -83,6 +83,7 @@ export function GroupPreview({ board, group, provided }) {
         </button>
       </div>
       <TaskList board={board} group={group} tasks={group.tasks}></TaskList>
+      <TaskAdd board={board} group={group} />
       {modalValue && <ActionModal action={modalValue} onClose={closeEditModal} board={board} group={group} triggerRef={textAreaInput} />}
     </div>
   );

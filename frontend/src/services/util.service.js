@@ -137,9 +137,9 @@ function reorder(array, index1, index2) {
 function getModalPosition(type, ref) {
   const rect = ref.current.getBoundingClientRect();
   const pos = { top: rect.top, left: rect.left };
-
+  console.log(type, 'HERRE', pos);
   if (type === 'Members') {
-    pos.top = rect.bottom + 8;
+    pos.top = rect.bottom + 10;
     if (window.innerWidth - rect.right < 150) {
       pos.left -= 130;
     }

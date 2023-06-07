@@ -80,13 +80,13 @@ export function TaskSidebar({ board, task, group, hasAttachments, width }) {
         )}
 
         <button
-          className="sidebar-item"
+          className="sidebar-item general-btn-styling"
           style={{ width: width }}
           onClick={() => {
             deleteTask();
           }}
         >
-          Delete Task
+          Delete
         </button>
       </ul>
     </div>
