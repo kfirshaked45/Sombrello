@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { ReactComponent as BoardIcon } from '../../assets/img/board/board-icon.svg'
 import { useLocation } from 'react-router-dom'
 import { TiStarOutline, TiStarFullOutline } from 'react-icons/ti'
@@ -24,6 +24,7 @@ export function BoardHeader({ board, changeBackground }) {
   const [isEditingTitle, setIsEditingTitle] = useState(false)
   const [editedTitle, setEditedTitle] = useState(board.title)
   const [headerStatus, setHeaderStatus] = useState()
+  const textAreaInput = useRef(null)
 
   useEffect(() => {
     let status
@@ -39,21 +40,30 @@ export function BoardHeader({ board, changeBackground }) {
     setSideMenuClass(sideMenuClass === '' ? 'open' : '')
   }
 
+  function handleHeaderClick() {
+    setIsEditingTitle(true)
+    textAreaInput.current.focus()
+    textAreaInput.current.select()
+  }
+
   const toggleStarBoard = () => {
     board.isStarred = !board.isStarred
     dispatch(updateBoard(board))
+  }
+
+  function resizeInput() {
+    const input = textAreaInput.current
+    input.style.width = input.scrollWidth + 'px'
+    input.style.height = input.scrollHeight + 'px'
   }
 
   const closeModal = () => {
     setSelectedMember(null)
   }
 
-  const handleTitleClick = () => {
-    setIsEditingTitle(true)
-  }
-
   const handleTitleChange = (e) => {
     setEditedTitle(e.target.value)
+    resizeInput()
   }
 
   const handleTitleBlur = () => {
@@ -73,6 +83,12 @@ export function BoardHeader({ board, changeBackground }) {
     return ''
   }
 
+  function handleExitKeys(ev) {
+    if (ev.key === 'Escape' || ev.key === 'Enter') {
+      textAreaInput.current.blur()
+    }
+  }
+
   const fontColor = getFontColor()
 
   return (
@@ -84,14 +100,21 @@ export function BoardHeader({ board, changeBackground }) {
       >
         {isEditingTitle ? (
           <input
+            className="board-title-input"
             type="text"
             value={editedTitle}
             onChange={handleTitleChange}
             onBlur={handleTitleBlur}
             autoFocus
+            onKeyDown={handleExitKeys}
+            ref={textAreaInput}
           />
         ) : (
-          <span className="title" onClick={handleTitleClick}>
+          <span
+            className="group-list-header"
+            onClick={handleHeaderClick}
+            tabIndex={0}
+          >
             {editedTitle}
           </span>
         )}

@@ -19,6 +19,30 @@
     cursor: pointer;
   }
 
+  input.board-title-input {
+    height: 2em;
+    margin-top: 10px;
+  }
+
+  .board-title-input {
+    border: none;
+    background-color: transparent;
+    outline: none;
+    cursor: text;
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+    width: 35%;
+    // height: 70%;
+    resize: none;
+  }
+
+  .group-list-header {
+    display: inline-block;
+    cursor: pointer;
+    user-select: none;
+  }
+
   span {
     .title {
       .dark {
@@ -127,7 +151,7 @@
 .board-header-left {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 15px;
 }
 .board-header svg {
   color: white;
