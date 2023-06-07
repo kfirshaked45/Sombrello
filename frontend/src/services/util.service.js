@@ -163,7 +163,7 @@ function getModalPosition(type, ref) {
     }
   } else if (type === 'Group') {
     pos.top = rect.top + 40;
-    pos.left = rect.left + 200;
+    pos.left = rect.left + 240;
   }
 
   return pos;

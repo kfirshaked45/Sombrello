@@ -27,7 +27,7 @@ export function TaskDetails() {
       <section className="screen">
         <section ref={screenRef} className="task-details" onClick={(ev) => ev.stopPropagation()} ariaLabel={task.title}>
           <div className="task-details">
-            <TaskCover className="cover-component" />
+            <TaskCover className="cover-component" color={task.style} />
             <TaskTitleEdit task={task} board={board} taskId={taskId} group={group} />
             <TaskGrid
               members={members}

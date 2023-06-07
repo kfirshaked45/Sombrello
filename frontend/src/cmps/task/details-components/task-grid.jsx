@@ -3,25 +3,19 @@ import { TaskAttachments } from '../details/task-attachments';
 import { TaskProps } from '../details/task-props';
 import { TaskDescription } from './task-description';
 import { TaskSidebar } from './task-sidebar';
+import { TaskActivity } from './task-activity';
 
 export function TaskGrid({ members, selectedMember, task, board, group, hasAttachments }) {
   return (
     <div className="task-grid ">
       <div className="task-column">
         <TaskProps members={members} selectedMember={selectedMember} task={task} />
-        <TaskDescription description={task?.description} />
+        <TaskDescription description={task?.desc} task={task} board={board} group={group} />
 
         <div className="attachments-section">
           <TaskAttachments attachments={task.attachments} />
         </div>
-
-        <div className="div-activity details-grid ">
-          <div className="icon">
-            <RxActivityLog />
-          </div>
-          <h2 className="align-text">Activity</h2>
-        </div>
-        <input className="input-task-activity" placeholder="Write a comment..." />
+        <TaskActivity task={task} board={board} group={group} />
       </div>
       <div className="task-sidebar">
         <TaskSidebar

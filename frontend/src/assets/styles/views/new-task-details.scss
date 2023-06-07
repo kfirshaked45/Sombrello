@@ -53,7 +53,7 @@
 .main-content-text-area {
   background-color: var(--ds-background-neutral, #091e420a);
   border: none;
-  width: 90%;
+  width: 95%;
   margin-left: 70px;
   border-radius: 3px;
   box-shadow: none;
@@ -99,4 +99,44 @@
 .task-title-textarea:focus {
   box-shadow: inset 0 0 0 2px #0079bf;
   background-color: #fff;
+}
+.quill {
+  width: 95%;
+  margin-left: 70px;
+  background-color: #fff;
+}
+.quill-container .ql-editor:focus {
+  outline: none;
+}
+
+.quill-container:focus-within {
+  box-shadow: inset 0 0 0 2px #0079bf;
+}
+.quill-save-btn {
+  padding: 6px 12px;
+  background-color: #0c66e4;
+  color: white;
+  border-radius: 3px;
+  line-height: 20px;
+  margin-inline-end: 4px;
+}
+.quill-save-btn:hover {
+  background-color: $btn-hovered;
+}
+.quill-cancel-btn {
+  padding: 6px 12px;
+
+  border-radius: 3px;
+  line-height: 20px;
+  margin-inline-end: 4px;
+}
+.quill-btns-container {
+  margin-top: 8px;
+  margin-left: 70px;
+}
+.activity-comments {
+  margin-top: 8px;
+}
+.task-sidebar {
+  font-weight: 500;
 }

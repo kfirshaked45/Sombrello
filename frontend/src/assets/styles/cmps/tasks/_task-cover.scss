@@ -1,6 +1,5 @@
 .task-cover {
   height: 116px;
-  background-color: $green;
 
   color: white;
 
@@ -40,6 +39,7 @@
 
 .call-to-action {
   display: flex;
+  color: black;
   position: absolute;
   bottom: 10px;
   right: 10px;
