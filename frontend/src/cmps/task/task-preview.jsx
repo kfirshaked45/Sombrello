@@ -1,17 +1,17 @@
-import { utilService } from "../../services/util.service"
+import { utilService } from '../../services/util.service'
 
-import { RiAttachment2 } from "react-icons/ri"
-import { AiOutlineClockCircle } from "react-icons/ai"
-import { TfiAlignLeft } from "react-icons/tfi"
-import { GoComment } from "react-icons/go"
-import { TaskDueDate } from "./task-due-date"
+import { RiAttachment2 } from 'react-icons/ri'
+import { AiOutlineClockCircle } from 'react-icons/ai'
+import { TfiAlignLeft } from 'react-icons/tfi'
+import { GoComment } from 'react-icons/go'
+import { TaskDueDate } from './task-due-date'
 
 export function TaskPreview({ groupId, task }) {
   const imageUrl = task.attachments && task.attachments[0]
   const labels = task.labels
   const color = task.style && task.style.coverColor
   const description = task.desc
-  const dueDate = task.dueDate.timeStamp
+  const dueDate = task.dueDate && task.dueDate.timeStamp
 
   // function getDateClass(task) {
   //   if (!task || !task.dueDate.timeStamp) {
