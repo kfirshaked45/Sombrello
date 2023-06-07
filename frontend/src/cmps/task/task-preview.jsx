@@ -1,7 +1,10 @@
-import { RiAttachment2 } from "react-icons/ri"
-import { TfiAlignLeft } from "react-icons/tfi"
-import { GoComment } from "react-icons/go"
-import { TaskDueDate } from "./task-due-date"
+import { utilService } from '../../services/util.service'
+
+import { RiAttachment2 } from 'react-icons/ri'
+import { AiOutlineClockCircle } from 'react-icons/ai'
+import { TfiAlignLeft } from 'react-icons/tfi'
+import { GoComment } from 'react-icons/go'
+import { TaskDueDate } from './task-due-date'
 
 export function TaskPreview({ groupId, task }) {
   const imageUrl = task.attachments && task.attachments[0]
