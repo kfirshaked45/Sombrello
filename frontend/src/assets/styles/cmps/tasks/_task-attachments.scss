@@ -5,8 +5,8 @@
     position: relative;
 
     .attachment-icon {
-      font-size: 24px;
-      height: 32px;
+      font-size: 20px;
+      height: 24px;
       line-height: 32px;
       width: 32px;
     }
@@ -38,7 +38,8 @@
   }
 }
 .icon svg {
-  font-size: 24px;
+  font-size: 20px;
+  width: 32px;
 }
 .align-text {
   display: flex;

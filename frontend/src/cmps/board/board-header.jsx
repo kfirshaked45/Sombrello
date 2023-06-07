@@ -1,37 +1,104 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-  faStar,
-  faEllipsis,
-  faSliders,
-} from '@fortawesome/free-solid-svg-icons'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { ReactComponent as BoardIcon } from '../../assets/img/board/board-icon.svg'
+import { useLocation } from 'react-router-dom'
+import { TiStarOutline, TiStarFullOutline } from 'react-icons/ti'
+import { useDispatch } from 'react-redux'
 import { ReactComponent as FilterIcon } from '../../assets/img/board/filter-icon.svg'
+import { BsThreeDots } from 'react-icons/bs'
+import { updateBoard } from '../../store/board.actions'
 import { ReactComponent as EmptyStarIcon } from '../../assets/img/board/empty-star.svg'
 import { ReactComponent as Member } from '../../assets/img/board/member-icon.svg'
 import { ReactComponent as MembersIcon } from '../../assets/img/board/members-icon.svg'
 import { ReactComponent as Pen } from '../../assets/img/board/pen-icon.svg'
 import { ReactComponent as ShareIcon } from '../../assets/img/board/share-icon.svg'
 import { MemberModal } from '../modal/member-modal'
+import { BoardSideMenu } from './side-menu/board-side-menu'
+import { utilService } from '../../services/util.service'
 
-export function BoardHeader({ board }) {
+export function BoardHeader({ board, changeBackground }) {
+  const dispatch = useDispatch()
+  const location = useLocation()
   const members = board.members
   const [selectedMember, setSelectedMember] = useState(null)
+  const [sideMenuClass, setSideMenuClass] = useState('')
+  const [isEditingTitle, setIsEditingTitle] = useState(false)
+  const [editedTitle, setEditedTitle] = useState(board.title)
+  const [headerStatus, setHeaderStatus] = useState()
+
+  useEffect(() => {
+    let status
+    if (location.pathname.includes('/board')) status = 'board'
+    setHeaderStatus(status)
+  }, [location.pathname])
 
   const openModal = (member) => {
     setSelectedMember(member)
   }
 
+  const renderSideMenu = () => {
+    setSideMenuClass(sideMenuClass === '' ? 'open' : '')
+  }
+
+  const toggleStarBoard = () => {
+    board.isStarred = !board.isStarred
+    dispatch(updateBoard(board))
+  }
+
   const closeModal = () => {
     setSelectedMember(null)
   }
+
+  const handleTitleClick = () => {
+    setIsEditingTitle(true)
+  }
+
+  const handleTitleChange = (e) => {
+    setEditedTitle(e.target.value)
+  }
+
+  const handleTitleBlur = () => {
+    setIsEditingTitle(false)
+
+    const updatedBoard = { ...board, title: editedTitle }
+    dispatch(updateBoard(updatedBoard))
+  }
+
+  const getFontColor = () => {
+    if (headerStatus === 'board') {
+      const isDarkBackground = utilService.isBackgroundDark(
+        board?.style?.backgroundColor
+      )
+      return isDarkBackground ? 'light' : 'dark'
+    }
+    return ''
+  }
+
+  const fontColor = getFontColor()
+
   return (
     <div className="board-header">
-      <div className="board-header-left">
-        {board.title}
-        <button>
-          <EmptyStarIcon />
-        </button>
+      <div
+        className={`board-header-left ${
+          fontColor === 'dark' ? 'dark' : 'light'
+        }`}
+      >
+        {isEditingTitle ? (
+          <input
+            type="text"
+            value={editedTitle}
+            onChange={handleTitleChange}
+            onBlur={handleTitleBlur}
+            autoFocus
+          />
+        ) : (
+          <span className="title" onClick={handleTitleClick}>
+            {editedTitle}
+          </span>
+        )}
+        <span className={`star-container`} onClick={toggleStarBoard}>
+          {!board.isStarred && <TiStarOutline />}
+          {board.isStarred && <TiStarFullOutline className="yellow-star" />}
+        </span>
         <button>
           <MembersIcon />
         </button>
@@ -39,7 +106,11 @@ export function BoardHeader({ board }) {
           <BoardIcon /> Board
         </button>
       </div>
-      <div className="board-header-right-container">
+      <div
+        className={`board-header-right-container ${
+          fontColor === 'dark' ? 'dark' : 'light'
+        }`}
+      >
         <button className="filter-button">
           <FilterIcon />
           <span>Filter</span>
@@ -59,7 +130,17 @@ export function BoardHeader({ board }) {
           <ShareIcon />
           Share
         </button>
-        <FontAwesomeIcon icon={faEllipsis} />
+        {!sideMenuClass && (
+          <button onClick={renderSideMenu}>
+            <BsThreeDots />
+            Show menu
+          </button>
+        )}
+        <BoardSideMenu
+          isOpen={sideMenuClass}
+          onCloseSideMenu={renderSideMenu}
+          changeBackground={changeBackground}
+        />
       </div>
     </div>
   )

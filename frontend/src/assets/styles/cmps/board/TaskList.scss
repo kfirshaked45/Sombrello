@@ -8,11 +8,16 @@
   text-decoration: none;
 }
 .task-list {
+  max-width: 260px;
   flex: 1 1 auto;
   margin-left: 4px;
   margin-right: 4px;
   min-height: 0;
-
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  justify-content: space-between;
+  margin: 0 4px;
   overflow-x: hidden;
   overflow-y: auto;
   padding: 1px 4px 0;

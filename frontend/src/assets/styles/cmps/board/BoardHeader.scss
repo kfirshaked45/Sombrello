@@ -1,9 +1,60 @@
 .board-header {
- 
   display: flex;
   justify-content: space-between;
   padding: 12px 10px 12px 16px;
+
+  .go-back {
+    position: absolute;
+    left: 5%;
+    font-size: 22px;
+    font-weight: 200;
+    color: #172b4d;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .title {
+    cursor: pointer;
+  }
+
+  span {
+    .title {
+      .dark {
+        color: #172b4d;
+      }
+      .light {
+        color: white;
+      }
+    }
+  }
 }
+
+.board-header-left.dark {
+  color: #172b4d;
+}
+
+.board-header-left.dark button {
+  color: #172b4d;
+}
+
+.board-header-left.dark svg {
+  color: #172b4d;
+}
+
+.board-header-right-container.dark {
+  color: #172b4d;
+}
+
+.board-header-right-container.dark button {
+  color: #172b4d;
+}
+
+.board-header-right-container.dark svg {
+  color: #172b4d;
+}
+
 .board-header button:hover {
   background-color: #a6c5e229;
 }
@@ -40,6 +91,31 @@
   width: 86px;
 }
 
+.star-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  width: 32px;
+  line-height: 32px;
+  border-radius: 3px;
+  color: #fff;
+  background-color: #ffffff3d;
+
+  .yellow-star {
+    color: #f2d600;
+  }
+
+  &:hover {
+    cursor: pointer;
+    color: #f2d600;
+
+    & > * {
+      transform: scale(1.2);
+    }
+  }
+}
+
 .filter-button {
   display: flex;
   align-items: center;
@@ -51,6 +127,7 @@
 .board-header-left {
   display: flex;
   align-items: center;
+  gap: 5px;
 }
 .board-header svg {
   color: white;

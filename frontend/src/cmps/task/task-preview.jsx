@@ -61,7 +61,8 @@ export function TaskPreview({ groupId, task }) {
         {(task.dueDate ||
           description ||
           (task.comments && task.comments.length !== 0) ||
-          (task.attachments && task.attachments.length !== 0)) && (
+          (task.attachments && task.attachments.length !== 0) ||
+          (task.members && task.members.length !== 0)) && (
           <section className="task-item-footer">
             <div className="props-icons">
               {task.dueDate && <TaskDueDate dueDate={task.dueDate} />}

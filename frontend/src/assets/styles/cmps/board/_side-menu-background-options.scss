@@ -1,0 +1,31 @@
+.side-menu-background-options {
+  height: 124px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-left: 16px;
+  padding-right: 10px;
+  padding-top: 12px;
+  gap: 8px;
+
+  .option {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    height: 100%;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+
+    .display {
+      &.colors {
+        background-image: url(https://a.trellocdn.com/prgb/dist/images/colors@2x.ec32a2ed8dd8198b8ef0.jpg);
+      }
+
+      &.photos {
+        background-image: url(https://a.trellocdn.com/prgb/dist/images/photos-thumbnail@3x.8f9c1323c9c16601a9a4.jpg);
+      }
+    }
+  }
+}

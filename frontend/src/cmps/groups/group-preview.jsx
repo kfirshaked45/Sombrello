@@ -1,4 +1,4 @@
-import { TaskList } from '../task/task-list';
+import { TaskList } from '../board/task-list';
 import { useRef, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsis } from '@fortawesome/free-solid-svg-icons';
@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { updateBoard } from '../../store/board.actions';
 
 import { boardService } from '../../services/board.service.local';
-import { TaskAdd } from '../task/task-add';
+import { TaskAdd } from '../board/task-add';
 import { ActionModal } from '../modal/action-modal.jsx';
 
 export function GroupPreview({ board, group, provided }) {
