@@ -43,9 +43,9 @@ export function TaskList({ board, group }) {
               )}
             </Draggable>
           ))}
-          <TaskAdd board={board} group={group} />
           {provided.placeholder}
         </ul>
+   
       )}
     </Droppable>
   );
