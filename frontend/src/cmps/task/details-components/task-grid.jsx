@@ -9,7 +9,7 @@ export function TaskGrid({ members, selectedMember, task, board, group, hasAttac
   return (
     <div className="task-grid ">
       <div className="task-column">
-        <TaskProps members={members} selectedMember={selectedMember} task={task} />
+        <TaskProps members={members} selectedMember={selectedMember} task={task} board={board} />
         <TaskDescription description={task?.desc} task={task} board={board} group={group} />
 
         <div className="attachments-section">

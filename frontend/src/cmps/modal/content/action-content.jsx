@@ -14,6 +14,8 @@ export function ActionContent({ action, board, task, group }) {
     contentComponent = <MemberContent board={board} task={task} group={group} dispatch={dispatch} />;
   } else if (action === 'Labels') {
     contentComponent = <LabelsContent board={board} task={task} group={group} dispatch={dispatch} />;
+  } else if (action === 'Labels ') {
+    contentComponent = <LabelsContent board={board} task={task} group={group} dispatch={dispatch} />;
   } else if (action === 'Dates') {
     contentComponent = <DateContent board={board} task={task} group={group} dispatch={dispatch} />;
   } else if (action === 'Attachments') {

@@ -14,7 +14,7 @@ export function TaskSidebar({ board, task, group, hasAttachments, width }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [selectedAction, setSelectedAction] = useState(null);
-  const actionItemRefs = useRef([]);
+  const actionButtonRef = useRef(null);
 
   const compsToDoLater = [
     { id: 1, name: 'Members', icon: <IoPersonOutline /> },
@@ -25,7 +25,6 @@ export function TaskSidebar({ board, task, group, hasAttachments, width }) {
 
   const openActionModal = (action, index) => {
     setSelectedAction(action);
-    actionItemRefs.current[index].focus();
   };
 
   const closeActionModal = () => {
@@ -53,6 +52,7 @@ export function TaskSidebar({ board, task, group, hasAttachments, width }) {
   return (
     <div className={`task-sidebar ${hasAttachments ? 'has-attachments' : ''}`}>
       <ul className="sidebar-list">
+        <p> Add to card</p>
         {compsToDoLater.map((comp, index) => (
           <li
             key={comp.id}
@@ -61,7 +61,7 @@ export function TaskSidebar({ board, task, group, hasAttachments, width }) {
             onClick={() => {
               openActionModal(comp.name, index);
             }}
-            ref={(el) => (actionItemRefs.current[index] = el)}
+            ref={actionButtonRef}
             tabIndex={0}
           >
             <span className="sidebar-icon">{comp.icon}</span>
@@ -75,10 +75,9 @@ export function TaskSidebar({ board, task, group, hasAttachments, width }) {
             board={board}
             task={task}
             group={group}
-            triggerRef={actionItemRefs.current[compsToDoLater.findIndex((comp) => comp.name === selectedAction)]}
+            triggerRef={actionButtonRef}
           />
         )}
-
         <button
           className="sidebar-item general-btn-styling"
           style={{ width: width }}

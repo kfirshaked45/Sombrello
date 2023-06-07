@@ -2,11 +2,23 @@ import { BsPlus } from 'react-icons/bs';
 import { MemberModal } from '../../modal/member-modal';
 import { TaskLabels } from './task-labels';
 import { TaskDates } from './task-dates';
+import { useRef, useState } from 'react';
+import { ActionModal } from '../../modal/action-modal';
 
-export function TaskProps({ members, selectedMember, task }) {
+export function TaskProps({ members, selectedMember, task, board, group }) {
+  const [selectedAction, setSelectedAction] = useState(null);
+  const addButtonRef = useRef(null);
+  const openActionModal = (action) => {
+    setSelectedAction(action);
+  };
+
+  const closeActionModal = () => {
+    setSelectedAction(null);
+  };
+
   return (
     <section className="task-props">
-      {members && (
+      {members.length > 0 && (
         <div className="members-wrapper">
           <h5>Members</h5>
           <div className="members">
@@ -18,26 +30,56 @@ export function TaskProps({ members, selectedMember, task }) {
               ))}
             </div>
             {selectedMember && <MemberModal member={selectedMember} />}
-            <button className="add-member">
+            <button className="add-member " ref={addButtonRef} onClick={() => openActionModal('Members')}>
               <BsPlus />
             </button>
+            {selectedAction && (
+              <ActionModal
+                action={selectedAction}
+                onClose={closeActionModal}
+                board={board}
+                task={task}
+                group={group}
+                triggerRef={addButtonRef}
+              />
+            )}
+          </div>
+        </div>
+      )}
+      {task?.labels.length > 0 && (
+        <div className="labels-wrapper">
+          <h5>Labels</h5>
+          <div className="labels">
+            <TaskLabels labels={task?.labels} />
+            <button className="add-label" onClick={() => openActionModal('Labels ')}>
+              <BsPlus />
+            </button>
+            {selectedAction && (
+              <ActionModal
+                action={selectedAction}
+                onClose={closeActionModal}
+                board={board}
+                task={task}
+                group={group}
+                triggerRef={addButtonRef}
+              />
+            )}
           </div>
         </div>
       )}
 
-      <div className="labels-wrapper">
-        <h5>Labels</h5>
-        <div className="labels">
-          <TaskLabels labels={task?.labels} />
-          <button className="add-label">
-            <BsPlus />
-          </button>
-        </div>
-      </div>
       <div className="dates-wrapper">
-        <div className="dates">
-          <TaskDates dates={task?.dates} />
-        </div>
+        <TaskDates dates={task?.dates} onClickPlus={openActionModal} />
+        {selectedAction && (
+          <ActionModal
+            action={selectedAction}
+            onClose={closeActionModal}
+            board={board}
+            task={task}
+            group={group}
+            triggerRef={addButtonRef}
+          />
+        )}
       </div>
     </section>
   );

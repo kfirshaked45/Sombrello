@@ -2,9 +2,6 @@ import React from 'react';
 import { RiAttachment2 } from 'react-icons/ri';
 
 export function TaskAttachments({ attachments }) {
-  console.log(attachments);
-  // demo attachment data
-
   return (
     <div className="task-attachments">
       <div className="attachment-header details-grid">

@@ -1,21 +1,34 @@
 import { ReactComponent as XIcon } from '../../assets/img/board/x-icon.svg';
 import { utilService } from '../../services/util.service';
-import React, { useState, useRef, useLayoutEffect } from 'react';
+import React, { useState, useRef, useLayoutEffect, useEffect } from 'react';
 import { ActionContent } from './content/action-content';
 
 export function ActionModal({ action, onClose, board, task, group, triggerRef }) {
   const [modalTopPos, setModalTopPos] = useState(null);
-  console.log(triggerRef, action);
+  const modalRef = useRef(null);
+
   useLayoutEffect(() => {
     if (triggerRef.current && triggerRef) {
       const { top, left, marginLeft } = utilService.getModalPosition(action, triggerRef);
       setModalTopPos({ top, left, marginLeft });
-      // eslint-disable-next-line react-hooks/exhaustive-deps
     }
   }, [action]);
-  // if (!modalTopPos) return;
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (modalRef.current && !modalRef.current.contains(event.target) && !event.target.classList.contains('action-modal-x')) {
+        onClose();
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [onClose]);
+
   return (
-    <div className="action-modal" style={modalTopPos}>
+    <div className="action-modal" style={modalTopPos} ref={modalRef}>
       <div className="action-header">
         <div>{action}</div>
         <XIcon onClick={onClose} className="action-modal-x" />

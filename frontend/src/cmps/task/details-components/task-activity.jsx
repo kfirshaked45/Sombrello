@@ -12,7 +12,6 @@ export function TaskActivity({ task, group, board }) {
   const dispatch = useDispatch();
   const [editorValue, setEditorValue] = useState('');
   const handleTextareaClick = () => {
-    console.log(isEditing);
     setIsEditing(true);
   };
 
