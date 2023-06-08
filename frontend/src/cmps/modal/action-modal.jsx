@@ -16,8 +16,8 @@ export function ActionModal({ action, onClose, board, task, group, triggerRef })
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (modalRef.current && !modalRef.current.contains(event.target) && !event.target.classList.contains('action-modal-x')) {
-        onClose();
+      if (modalRef.current && !modalRef.current.contains(event.target)) {
+        console.log('SHOULD CLOSE');
       }
     };
 
@@ -28,7 +28,7 @@ export function ActionModal({ action, onClose, board, task, group, triggerRef })
   }, [onClose]);
 
   return (
-    <div className="action-modal" style={modalTopPos} ref={modalRef}>
+    <div className="action-modal" style={modalTopPos} ref={modalRef} onClick={(ev) => ev.stopPropagation()}>
       <div className="action-header">
         <div>{action}</div>
         <XIcon onClick={onClose} className="action-modal-x" />

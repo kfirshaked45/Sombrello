@@ -140,7 +140,7 @@ function getModalPosition(type, ref) {
   const pos = { top: rect.top, left: rect.left };
   console.log(type, 'HERRE', pos);
   if (type === 'Members') {
-    pos.top = rect.bottom + 10;
+    pos.top = rect.bottom;
     if (window.innerWidth - rect.right < 150) {
       pos.left -= 130;
     }
@@ -169,7 +169,7 @@ function getModalPosition(type, ref) {
     // This is for the plus button, till i find a better soluation
     pos.top = rect.bottom + 10;
     if (window.innerWidth - rect.right < 150) {
-      pos.left -= 130;
+      pos.left -= 100;
     }
   }
 
@@ -178,12 +178,12 @@ function getModalPosition(type, ref) {
 
 function formatDate(dateString) {
   const date = new Date(dateString);
-  const now = new Date();
+  // const now = new Date();
 
   const options = {};
-  if (date.getFullYear() !== now.getFullYear()) {
-    options.year = 'numeric';
-  }
+  // if (date.getFullYear() !== now.getFullYear()) {
+  //   options.year = 'numeric';
+  // }
   options.month = 'short';
   options.day = 'numeric';
 
@@ -191,7 +191,6 @@ function formatDate(dateString) {
 }
 
 function hasTimestampPassed(timestamp) {
-  // console.log(Date.now() >= timestamp);
   return Date.now() >= timestamp;
 }
 

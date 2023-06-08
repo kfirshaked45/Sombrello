@@ -16,14 +16,14 @@ export function TaskSidebar({ board, task, group, hasAttachments, width }) {
   const [selectedAction, setSelectedAction] = useState(null);
   const actionButtonRef = useRef(null);
 
-  const compsToDoLater = [
+  const sideBarChoices = [
     { id: 1, name: 'Members', icon: <IoPersonOutline /> },
     { id: 2, name: 'Labels', icon: <BsTag /> },
     { id: 3, name: 'Dates', icon: <AiOutlineClockCircle /> },
     { id: 4, name: 'Attachments', icon: <RiAttachment2 /> },
   ];
 
-  const openActionModal = (action, index) => {
+  const openActionModal = (action) => {
     setSelectedAction(action);
   };
 
@@ -53,13 +53,13 @@ export function TaskSidebar({ board, task, group, hasAttachments, width }) {
     <div className={`task-sidebar ${hasAttachments ? 'has-attachments' : ''}`}>
       <ul className="sidebar-list">
         <p> Add to card</p>
-        {compsToDoLater.map((comp, index) => (
+        {sideBarChoices.map((comp, index) => (
           <li
             key={comp.id}
             className="sidebar-item"
             style={{ width: width }}
             onClick={() => {
-              openActionModal(comp.name, index);
+              openActionModal(comp.name);
             }}
             ref={actionButtonRef}
             tabIndex={0}
@@ -68,16 +68,6 @@ export function TaskSidebar({ board, task, group, hasAttachments, width }) {
             <span className="sidebar-title">{comp.name}</span>
           </li>
         ))}
-        {selectedAction && (
-          <ActionModal
-            action={selectedAction}
-            onClose={closeActionModal}
-            board={board}
-            task={task}
-            group={group}
-            triggerRef={actionButtonRef}
-          />
-        )}
         <button
           className="sidebar-item general-btn-styling"
           style={{ width: width }}
@@ -88,6 +78,16 @@ export function TaskSidebar({ board, task, group, hasAttachments, width }) {
           Delete
         </button>
       </ul>
+      {selectedAction && (
+        <ActionModal
+          action={selectedAction}
+          onClose={closeActionModal}
+          board={board}
+          task={task}
+          group={group}
+          triggerRef={actionButtonRef}
+        />
+      )}
     </div>
   );
 }

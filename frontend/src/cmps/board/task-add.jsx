@@ -20,7 +20,7 @@ export function TaskAdd({ board, group }) {
       if (g.id === group.id) {
         const updatedGroup = {
           ...g,
-          tasks: [...g.tasks, { id: utilService.makeId(), title: task }],
+          tasks: [...g.tasks, { id: utilService.makeId(), title: task, style: {} }],
         };
         return updatedGroup;
       }

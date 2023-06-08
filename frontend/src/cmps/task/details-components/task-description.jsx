@@ -1,13 +1,13 @@
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { TfiAlignLeft } from 'react-icons/tfi';
 import { useDispatch } from 'react-redux';
 import { updateBoard } from '../../../store/board.actions';
 
 export function TaskDescription({ description, task, group, board }) {
   const [isEditing, setIsEditing] = useState(false);
-
+  const descriptionRef = useRef(null);
   const dispatch = useDispatch();
   const [editorValue, setEditorValue] = useState(description);
 
@@ -18,7 +18,12 @@ export function TaskDescription({ description, task, group, board }) {
   const handleEditorChange = (value) => {
     setEditorValue(value);
   };
-
+  function handleExitKey(ev) {
+    if (ev.key === 'Escape') {
+      descriptionRef.current.blur();
+      setIsEditing(false);
+    }
+  }
   const handleEditorBlur = () => {
     setIsEditing(false);
   };
@@ -58,11 +63,26 @@ export function TaskDescription({ description, task, group, board }) {
     <div className="description">
       <div className="description-title-container details-grid">
         <TfiAlignLeft className="icon-description" />
-        <h3 className="description-title">Description</h3>
+
+        <h3 className="description-title">
+          Description{' '}
+          {!isEditing && (
+            <button className="description-edit-btn general-btn-styling" onClick={() => setIsEditing(true)}>
+              Edit
+            </button>
+          )}
+        </h3>
       </div>
       {isEditing ? (
         <div>
-          <ReactQuill className="quill-container" value={editorValue} onChange={handleEditorChange} onBlur={handleBlur} />
+          <ReactQuill
+            className="quill-container"
+            onKeyDown={handleExitKey}
+            ref={descriptionRef}
+            value={editorValue}
+            onChange={handleEditorChange}
+            onBlur={handleBlur}
+          />
 
           <div className="quill-btns-container">
             <button className="quill-save-btn" onClick={handleSave}>

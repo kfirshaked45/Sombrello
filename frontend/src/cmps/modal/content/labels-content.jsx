@@ -1,17 +1,17 @@
 import { updateBoard } from '../../../store/board.actions';
 import { ReactComponent as PenIcon } from '../../../assets/img/board/pen-icon.svg';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
 export function LabelsContent({ board, group, task, dispatch }) {
   const addLabel = (label) => {
-    if (!task.labels) {
-      task.labels = [label];
+    const updatedLabels = [...task.labels];
+    const alreadyLabeledIndex = updatedLabels.findIndex((l) => l.id === label.id);
+
+    if (alreadyLabeledIndex !== -1) {
+      updatedLabels.splice(alreadyLabeledIndex, 1);
     } else {
-      const alreadyLabeledIndex = task.labels.findIndex((l) => l.id === label.id);
-      if (alreadyLabeledIndex !== -1) {
-        task.labels.splice(alreadyLabeledIndex, 1);
-      } else {
-        task.labels.push(label);
-      }
+      updatedLabels.push({ ...label });
     }
 
     const updatedGroups = board.groups.map((g) => {
@@ -20,7 +20,7 @@ export function LabelsContent({ board, group, task, dispatch }) {
           if (t.id === task.id) {
             return {
               ...t,
-              labels: task.labels || [],
+              labels: updatedLabels,
             };
           }
           return t;
@@ -37,6 +37,9 @@ export function LabelsContent({ board, group, task, dispatch }) {
     const updatedBoard = { ...board, groups: updatedGroups };
     dispatch(updateBoard(updatedBoard));
   };
+  function isAlreadyLabeled(label, task) {
+    return task.labels.find((l) => l.id === label.id);
+  }
 
   return (
     <div className="labels-modal-container">
@@ -46,13 +49,18 @@ export function LabelsContent({ board, group, task, dispatch }) {
         {board.labels &&
           board.labels.map((label) => (
             <div className="action-label-container">
-              <input
+              <div className="action-checkbox-input">
+                {' '}
+                {isAlreadyLabeled(label, task) && <FontAwesomeIcon icon={faCheck} className="label-check-icon" />}
+              </div>
+              {/* <input
                 type="checkbox"
                 onClick={() => {
                   addLabel(label);
                 }}
                 className="action-checkbox-input"
-              />
+                checked={isAlreadyLabeled(label, task)}
+              /> */}
               <div
                 key={label.id}
                 style={{ backgroundColor: label.color }}

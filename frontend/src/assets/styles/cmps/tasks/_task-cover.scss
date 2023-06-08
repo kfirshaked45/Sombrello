@@ -17,24 +17,30 @@
 }
 
 .close-task-details-btn {
+  border-radius: 50%;
+  color: var(--ds-icon, #42526e);
+  height: 32px;
+  margin: 4px;
+  overflow: hidden;
+  padding: 4px;
   position: absolute;
-  height: 40px;
-  width: 40px;
-  right: 3px;
-  top: 2px;
+  right: 0;
+  top: 0;
+  transition: background-color 85ms, color 85ms;
+  width: 32px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: transparent;
   border: none;
-  color: $light-gray;
-  font-size: 27px;
-  padding: 6px 6px 2px;
-  margin: 4px;
-  border-radius: 50%;
-  transition: all 0.3s;
-
   &:hover {
     border-radius: 50%;
     background-color: rgba(0, 0, 0, 0.1);
   }
+}
+.close-task-details-btn svg {
+  font-size: 20px;
 }
 
 .call-to-action {
