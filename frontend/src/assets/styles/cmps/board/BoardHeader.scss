@@ -41,6 +41,8 @@
     display: inline-block;
     cursor: pointer;
     user-select: none;
+    font-size: 18px;
+    font-weight: 700;
   }
 
   span {
@@ -128,6 +130,7 @@
   line-height: 32px;
   border-radius: 3px;
   color: #fff;
+  font-size: 20px;
 
   .yellow-star {
     color: #f2d600;

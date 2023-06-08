@@ -18,14 +18,12 @@ export function TaskPreview({ board, groupId, task }) {
   const dispatch = useDispatch()
 
   function toggleIsDone(ev) {
-    // ev.stopPropagation()
-    console.log("abc")
-    console.log(ev)
+    ev.stopPropagation() // Stop event propagation
 
     const updatedDueDate = { ...task.dueDate, isDone: !task.dueDate.isDone }
     const updatedTask = { ...task, dueDate: updatedDueDate }
-    const updatedGroups = board.groups.map((group) => {
-      if (group.id === groupId) {
+    const updatedGroups = board.groups.map((g) => {
+      if (g.id === groupId) {
         const updatedGroup = {
           ...group,
           tasks: group.tasks.map((currTask) => (currTask.id === task.id ? updatedTask : currTask)),
@@ -40,6 +38,15 @@ export function TaskPreview({ board, groupId, task }) {
 
   return (
     <div className="cover-img-section">
+      {color && !imageUrl && (
+        <div
+          className="task-list-cover"
+          style={{ backgroundColor: color }}
+        ></div>
+      )}
+      {imageUrl && (
+        <img src={imageUrl} alt="Task Image" className="task-image" />
+      )}
       {color && !imageUrl && (
         <div
           className="task-list-cover"
@@ -64,59 +71,59 @@ export function TaskPreview({ board, groupId, task }) {
 
         <span className="task-item-title">{task.title}</span>
 
-        {(task.dueDate.timeStamp ||
-          description ||
-          (task.comments && task.comments.length !== 0) ||
-          (task.attachments && task.attachments.length !== 0) ||
-          (task.members && task.members.length !== 0)) && (
-          <section className="task-item-footer">
-            <div className="props-icons">
-              {task.dueDate && (
-                <TaskDueDate
-                  dueDate={task.dueDate}
-                  toggleIsDone={toggleIsDone}
-                />
-              )}
+        {task.dueDate &&
+          task.dueDate.timeStamp &&
+          (description ||
+            (task.comments && task.comments.length !== 0) ||
+            (task.attachments && task.attachments.length !== 0) ||
+            (task.members && task.members.length !== 0)) && (
+            <section className="task-item-footer">
+              <div className="props-icons" onClick={toggleIsDone}>
+                {task.dueDate && (
+                  <TaskDueDate dueDate={task.dueDate} onClick={toggleIsDone} />
+                )}
 
-              {description && (
-                <section className="description-icon">
-                  <TfiAlignLeft />
-                </section>
-              )}
+                {description && (
+                  <section className="description-icon">
+                    <TfiAlignLeft />
+                  </section>
+                )}
 
-              {task.comments && task.comments.length !== 0 && (
-                <section className="comments-icon">
-                  <GoComment />
-                  <span className="comments-count">{task.comments.length}</span>
-                </section>
-              )}
+                {task.comments && task.comments.length !== 0 && (
+                  <section className="comments-icon">
+                    <GoComment />
+                    <span className="comments-count">
+                      {task.comments.length}
+                    </span>
+                  </section>
+                )}
 
-              {task.attachments && task.attachments.length !== 0 && (
-                <section className="attachments-icon">
-                  <RiAttachment2 />
-                  <span className="attachments-count">
-                    {task.attachments.length}
-                  </span>
-                </section>
-              )}
-            </div>
-            <div className="members-icons">
-              {task.members && task.members.length !== 0 && (
-                <section className="members-img">
-                  {task.members.map((member) => (
-                    <div className="member-img" key={member._id}>
-                      <img
-                        src={member.imgUrl}
-                        alt=""
-                        referrerPolicy="no-referrer"
-                      />
-                    </div>
-                  ))}
-                </section>
-              )}
-            </div>
-          </section>
-        )}
+                {task.attachments && task.attachments.length !== 0 && (
+                  <section className="attachments-icon">
+                    <RiAttachment2 />
+                    <span className="attachments-count">
+                      {task.attachments.length}
+                    </span>
+                  </section>
+                )}
+              </div>
+              <div className="members-icons">
+                {task.members && task.members.length !== 0 && (
+                  <section className="members-img">
+                    {task.members.map((member) => (
+                      <div className="member-img" key={member._id}>
+                        <img
+                          src={member.imgUrl}
+                          alt=""
+                          referrerPolicy="no-referrer"
+                        />
+                      </div>
+                    ))}
+                  </section>
+                )}
+              </div>
+            </section>
+          )}
       </div>
     </div>
   )
