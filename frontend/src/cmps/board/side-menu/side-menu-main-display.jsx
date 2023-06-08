@@ -8,7 +8,7 @@ import '../../../assets/styles/cmps/board/_confirm-alert.scss'
 import 'react-confirm-alert/src/react-confirm-alert.css'
 
 export const SideMenuMainDisplay = ({ onChangeTitle }) => {
-  const [isConfirmationOpen, setIsConfirmationOpen] = useState(false) // Track if confirmation dialog is open
+  const [isConfirmationOpen, setIsConfirmationOpen] = useState(false)
 
   const match = useMatch('/board/:boardId')
   const boardId = match?.params?.boardId
@@ -17,12 +17,12 @@ export const SideMenuMainDisplay = ({ onChangeTitle }) => {
   const navigate = useNavigate()
 
   const handleRemoveBoard = async (boardId) => {
-    setIsConfirmationOpen(true) // Open the confirmation dialog
+    setIsConfirmationOpen(true)
 
     confirmAlert({
       title: 'Confirm Removal',
       message:
-        'Are you sure you want to remove this board? All of your data will be lost',
+        'Are you absolutely sure you want to delete this board? Please note that this action cannot be undone, and all of your data will be permanently lost.',
       buttons: [
         {
           label: 'Yes',
@@ -39,7 +39,7 @@ export const SideMenuMainDisplay = ({ onChangeTitle }) => {
         {
           label: 'No',
           onClick: () => {
-            setIsConfirmationOpen(false) // Close the confirmation dialog if user clicks "No"
+            setIsConfirmationOpen(false)
           },
         },
       ],
