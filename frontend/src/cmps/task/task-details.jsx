@@ -25,7 +25,7 @@ export function TaskDetails() {
     <Fragment>
       <BoardDetails />
       <section className="screen">
-        <section ref={screenRef} className="task-details" onClick={(ev) => ev.stopPropagation()} ariaLabel={task.title}>
+        <section ref={screenRef} className="task-details" onClick={(ev) => ev.stopPropagation()} aria-label={task.title}>
           <div className="task-details">
             <TaskCover className="cover-component" color={task.style} />
             <TaskTitleEdit task={task} board={board} taskId={taskId} group={group} />

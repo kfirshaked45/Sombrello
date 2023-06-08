@@ -140,7 +140,7 @@ function getModalPosition(type, ref) {
   const pos = { top: rect.top, left: rect.left };
   console.log(type, 'HERRE', pos);
   if (type === 'Members') {
-    pos.top = rect.bottom + 10;
+    pos.top = rect.bottom;
     if (window.innerWidth - rect.right < 150) {
       pos.left -= 130;
     }
@@ -169,7 +169,7 @@ function getModalPosition(type, ref) {
     // This is for the plus button, till i find a better soluation
     pos.top = rect.bottom + 10;
     if (window.innerWidth - rect.right < 150) {
-      pos.left -= 130;
+      pos.left -= 100;
     }
   }
 

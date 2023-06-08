@@ -8,6 +8,7 @@ export function TaskDueDate({ dueDate, onClick }) {
 
   const getIndicatorClass = () => {
     if (dueDate.isDone) return 'complete';
+
     if (utilService.hasTimestampPassed(dueDate.timeStamp)) return 'overdue';
     return 'due-soon';
   };

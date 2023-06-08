@@ -23,7 +23,7 @@ export function TaskList({ board, group }) {
   return (
     <Droppable droppableId={`${group.id}`} type="TASK">
       {(provided) => (
-        <ul className="task-list" {...provided.droppableProps} ref={provided.innerRef}>
+        <ul className="task-list u-fancy-scrollbar" {...provided.droppableProps} ref={provided.innerRef}>
           {group.tasks.map((task, index) => (
             <Draggable key={task.id} draggableId={task.id} index={index}>
               {(provided) => (

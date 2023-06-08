@@ -35,7 +35,8 @@
     display: grid;
     grid-template-columns: 3fr 1fr;
     grid-gap: 50px;
-    margin-top: 20px;
+
+    margin-bottom: 24px;
   }
 
   .task-column {
@@ -243,4 +244,29 @@
 
   width: 95%;
   flex-direction: column;
+}
+.description-title-container {
+  align-items: center;
+  padding-bottom: 8px !important;
+  padding-top: 16px !important;
+}
+.img-uploader-btn {
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  display: block;
+  line-height: 20px;
+  margin-bottom: 12px;
+  outline: none;
+  padding: 8px 12px;
+  transition-duration: 85ms;
+  transition-property: background-color, border-color, box-shadow;
+  transition-timing-function: ease;
+  border: none;
+  width: 100%;
+  color: #172b4d;
+  background-color: #fff;
+  text-align: start;
+}
+.img-uploader-btn:hover {
+  background-color: #091e4214;
 }

@@ -14,7 +14,6 @@ export function TaskPreview({ board, groupId, task }) {
   const labels = task.labels;
   const color = task.style && task.style.coverColor;
   const description = task.desc;
-
   const dispatch = useDispatch();
 
   function toggleIsDone(ev) {
@@ -51,7 +50,7 @@ export function TaskPreview({ board, groupId, task }) {
 
         <span className="task-item-title">{task.title}</span>
 
-        {(task.dueDate.timeStamp ||
+        {((task.dueDate && task.dueDate.timeStamp) ||
           description ||
           (task.comments && task.comments.length !== 0) ||
           (task.attachments && task.attachments.length !== 0) ||
