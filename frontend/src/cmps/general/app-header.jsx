@@ -83,14 +83,23 @@ export const AppHeader = ({ boardId }) => {
   return (
     <header className={`app-header ${styleClass}`} style={getStyleColor()}>
       <section className="left">
-        <Link to="/workspace">
+        <Link to="/">
           <div
-            className={`main-logo ${fontColor === 'dark' ? 'dark' : 'light'}`}
+            className={`shared-logo ${fontColor === 'dark' ? 'dark' : 'light'}`}
           >
             <img src={sombrelloLogo} alt="" />
             <h1>Sombrello</h1>
           </div>
         </Link>
+
+        <Link to="/workspace">
+          <div
+            className={`shared-logo ${fontColor === 'dark' ? 'dark' : 'light'}`}
+          >
+            <p>Workspace</p>
+          </div>
+        </Link>
+
         {headerStatus === 'board' && (
           <Fragment>
             <div
