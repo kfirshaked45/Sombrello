@@ -138,39 +138,21 @@ function reorder(array, index1, index2) {
 function getModalPosition(type, ref) {
   const rect = ref.current.getBoundingClientRect();
   const pos = { top: rect.top, left: rect.left };
-  console.log(type, 'HERRE', pos);
-  if (type === 'Members') {
-    pos.top = rect.bottom;
-    if (window.innerWidth - rect.right < 150) {
-      pos.left -= 130;
-    }
-    if (window.innerHeight - rect.bottom < 450) {
-      pos.top = rect.top - 100;
-    }
-  } else if (type === 'Labels') {
-    pos.top = rect.top - 300;
-    if (window.innerWidth - rect.right < 150) {
-      pos.left -= 130;
-    }
-  } else if (type === 'Dates') {
-    pos.top = rect.top - 200;
-    if (window.innerWidth - rect.right < 150) {
-      pos.left -= 130;
-    }
-  } else if (type === 'Attachments') {
-    pos.top = rect.bottom + 8;
-    if (window.innerWidth - rect.right < 150) {
-      pos.left -= 130;
-    }
-  } else if (type === 'Group') {
-    pos.top = rect.top + 40;
-    pos.left = rect.left + 240;
-  } else if (type === 'Labels ') {
-    // This is for the plus button, till i find a better soluation
-    pos.top = rect.bottom + 10;
-    if (window.innerWidth - rect.right < 150) {
-      pos.left -= 100;
-    }
+  const offset = window.innerWidth - rect.right < 150 ? 130 : 0;
+
+  const positionLookup = {
+    Members: { top: rect.bottom + 30, left: rect.left - offset, maxTop: rect.top - 100 },
+    'Members ': { top: rect.bottom + 20, left: rect.left - offset, maxTop: rect.top + 40 },
+    Labels: { top: rect.top - 100, left: rect.left - offset },
+    Dates: { top: rect.top - 100, left: rect.left - offset },
+    Attachments: { top: rect.bottom + 8, left: rect.left - offset },
+    Group: { top: rect.top + 40, left: rect.left + 220 },
+  };
+
+  if (positionLookup[type]) {
+    const { top, left, maxTop } = positionLookup[type];
+    pos.top = Math.min(top, maxTop || top);
+    pos.left = left;
   }
 
   return pos;

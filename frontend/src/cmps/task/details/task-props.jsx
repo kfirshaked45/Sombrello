@@ -30,7 +30,7 @@ export function TaskProps({ members, selectedMember, task, board, group }) {
               ))}
             </div>
             {selectedMember && <MemberModal member={selectedMember} />}
-            <button className="add-member " ref={addButtonRef} onClick={() => openActionModal('Members')}>
+            <button className="add-member" ref={addButtonRef} onClick={() => openActionModal('Members ')}>
               <BsPlusLg />
             </button>
           </div>
@@ -41,7 +41,7 @@ export function TaskProps({ members, selectedMember, task, board, group }) {
           <h5>Labels</h5>
           <div className="labels">
             <TaskLabels labels={task?.labels} />
-            <button className="add-label" onClick={() => openActionModal('Labels ')}>
+            <button className="add-label" onClick={() => openActionModal('Labels')}>
               <BsPlusLg />
             </button>
           </div>

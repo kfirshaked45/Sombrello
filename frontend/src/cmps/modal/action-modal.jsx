@@ -17,7 +17,7 @@ export function ActionModal({ action, onClose, board, task, group, triggerRef })
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (modalRef.current && !modalRef.current.contains(event.target)) {
-        console.log('SHOULD CLOSE');
+        onClose();
       }
     };
 
