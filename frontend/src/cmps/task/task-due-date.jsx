@@ -1,33 +1,41 @@
-import React, { useState } from 'react';
-import { BsStop } from 'react-icons/bs';
-import { AiOutlineClockCircle } from 'react-icons/ai';
-import { utilService } from '../../services/util.service';
+import React, { useState } from "react"
+import { BsStop } from "react-icons/bs"
+import { AiOutlineClockCircle } from "react-icons/ai"
+import { utilService } from "../../services/util.service"
 
-export function TaskDueDate({ dueDate, onClick }) {
-  const [isHovered, setIsHovered] = useState(false);
+export function TaskDueDate({ dueDate, toggleIsDone }) {
+  const [isHover, setIsHover] = useState(false)
 
-  const getIndicatorClass = () => {
-    if (dueDate.isDone) return 'complete';
+  function getIsDoneClass() {
+    if (dueDate.isDone) return "complete"
+    if (utilService.hasTimestampPassed(dueDate.timeStamp)) return "overdue"
+    return "due-soon"
+  }
 
-    if (utilService.hasTimestampPassed(dueDate.timeStamp)) return 'overdue';
-    return 'due-soon';
-  };
+  function toggleDate(ev) {
+    ev.stopPropagation()
+    toggleIsDone(ev)
+  }
 
-  const indicatorClass = getIndicatorClass();
+  const isDoneClass = getIsDoneClass()
 
-  if (dueDate.timeStamp === '') return null;
+  if (dueDate.timeStamp === "") return null
 
   return (
-    <li
-      className={`indicator-due-date ${indicatorClass}`}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      onClick={onClick}
+    <div
+      className={`indicator-due-date ${isDoneClass}`}
+      onMouseEnter={() => setIsHover(true)}
+      onMouseLeave={() => setIsHover(false)}
+      onClick={(ev) => toggleDate(ev)}
     >
       <span className="flex">
-        {isHovered ? <BsStop className="indicator-icon square" /> : <AiOutlineClockCircle className="indicator-icon clock" />}
+        {isHover ? (
+          <BsStop className="indicator-icon square" />
+        ) : (
+          <AiOutlineClockCircle className="indicator-icon clock" />
+        )}
         <label>{utilService.formatDate(dueDate.timeStamp)}</label>
       </span>
-    </li>
-  );
+    </div>
+  )
 }

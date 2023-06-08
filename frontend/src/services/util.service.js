@@ -178,12 +178,12 @@ function getModalPosition(type, ref) {
 
 function formatDate(dateString) {
   const date = new Date(dateString);
-  const now = new Date();
+  // const now = new Date();
 
   const options = {};
-  if (date.getFullYear() !== now.getFullYear()) {
-    options.year = 'numeric';
-  }
+  // if (date.getFullYear() !== now.getFullYear()) {
+  //   options.year = 'numeric';
+  // }
   options.month = 'short';
   options.day = 'numeric';
 
@@ -191,7 +191,6 @@ function formatDate(dateString) {
 }
 
 function hasTimestampPassed(timestamp) {
-  // console.log(Date.now() >= timestamp);
   return Date.now() >= timestamp;
 }
 
