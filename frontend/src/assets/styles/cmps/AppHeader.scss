@@ -143,17 +143,13 @@
   &.home-header {
     background-color: #fff;
 
-    .home-nav > * {
-      height: 52px;
-    }
-
-    .main-logo {
+    .main-logo.light {
       font-size: 22px;
       margin-left: 10px;
       color: #095ed8;
 
       h1 {
-        color: black;
+        color: rgb(37, 56, 88);
         font-size: 30px;
         margin-left: 11px;
       }
