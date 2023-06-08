@@ -22,7 +22,7 @@ export function TaskPreview({ board, groupId, task }) {
 
     const updatedDueDate = { ...task.dueDate, isDone: !task.dueDate.isDone }
     const updatedTask = { ...task, dueDate: updatedDueDate }
-    const updatedGroups = board.groups.map((g) => {
+    const updatedGroups = board.groups.map((group) => {
       if (g.id === groupId) {
         const updatedGroup = {
           ...group,
