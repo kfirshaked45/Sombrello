@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useMatch } from 'react-router'
 import { removeBoard } from '../../../store/board.actions'
@@ -7,6 +8,8 @@ import '../../../assets/styles/cmps/board/_confirm-alert.scss'
 import 'react-confirm-alert/src/react-confirm-alert.css'
 
 export const SideMenuMainDisplay = ({ onChangeTitle }) => {
+  const [isConfirmationOpen, setIsConfirmationOpen] = useState(false) // Track if confirmation dialog is open
+
   const match = useMatch('/board/:boardId')
   const boardId = match?.params?.boardId
   const boards = useSelector((state) => state.boardModule.boards)
@@ -14,6 +17,8 @@ export const SideMenuMainDisplay = ({ onChangeTitle }) => {
   const navigate = useNavigate()
 
   const handleRemoveBoard = async (boardId) => {
+    setIsConfirmationOpen(true) // Open the confirmation dialog
+
     confirmAlert({
       title: 'Confirm Removal',
       message:
@@ -33,9 +38,17 @@ export const SideMenuMainDisplay = ({ onChangeTitle }) => {
         },
         {
           label: 'No',
-          onClick: () => {},
+          onClick: () => {
+            setIsConfirmationOpen(false) // Close the confirmation dialog if user clicks "No"
+          },
         },
       ],
+      // Custom callback function to handle closing the confirmation dialog
+      // and enabling user interface elements
+      closeOnClickOutside: false,
+      onClose: () => {
+        setIsConfirmationOpen(false)
+      },
     })
   }
 
@@ -48,7 +61,10 @@ export const SideMenuMainDisplay = ({ onChangeTitle }) => {
         {boards.map((board) => (
           <div key={board._id}>
             {board._id === boardId && (
-              <button onClick={() => handleRemoveBoard(board._id)}>
+              <button
+                onClick={() => handleRemoveBoard(board._id)}
+                disabled={isConfirmationOpen}
+              >
                 Remove Board
               </button>
             )}
