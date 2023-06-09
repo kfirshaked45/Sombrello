@@ -14,6 +14,7 @@ import { loadBoards } from './store/board.actions'
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { Loader } from './cmps/general/loader'
+import { LoginSignup } from './pages/login-signup'
 
 export function RootCmp() {
   const match = useMatch('/board/:boardId')
@@ -39,6 +40,7 @@ export function RootCmp() {
               path={route.path}
             />
           ))}
+          <Route path="user/:status" element={<LoginSignup />} />
           <Route path="user/:id" element={<UserDetails />} />
           <Route path="board/:boardId" element={<BoardDetails />} />
           <Route
