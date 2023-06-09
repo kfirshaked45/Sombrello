@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
 export function LabelsContent({ board, group, task, dispatch }) {
-  console.log('CLICKED');
+  
   const addLabel = (label) => {
     const updatedLabels = [...task.labels];
     const alreadyLabeledIndex = updatedLabels.findIndex((l) => l.id === label.id);

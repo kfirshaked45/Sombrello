@@ -10,7 +10,7 @@ export function GroupList({ board }) {
   const dispatch = useDispatch()
 
   const handleDragEnd = (result) => {
-    // console.log(result, 'DESTINATION');
+
     if (!result.destination) {
       return // Item was dropped outside a valid droppable area
     }

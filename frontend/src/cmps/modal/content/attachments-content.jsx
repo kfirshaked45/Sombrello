@@ -2,14 +2,27 @@ import { updateBoard } from '../../../store/board.actions';
 import { ImgUploader } from '../../img-uploader';
 
 export function AttachmentsContent({ task, group, board, dispatch }) {
-  const handleAddAttachment = (attachment) => {
+  function handleAddAttachment(attachment) {
+
+    const { imgUrl, height, width, uploadedAt, imageName } = attachment; // Destructure the attachment object
+
+    // Create a new attachment object with additional details
+    const newAttachment = {
+      imgUrl,
+      height,
+      width,
+      uploadedAt, // Set the current date and time as the uploadedAt value
+      imageName, // Assuming the attachment object has a 'name' property for the image name
+      // Add other desired properties here
+    };
+
     const updatedGroups = board.groups.map((g) => {
       if (g.id === group.id) {
         const updatedTasks = g.tasks.map((t) => {
           if (t.id === task.id) {
             return {
               ...t,
-              attachments: [...(t.attachments || []), attachment],
+              attachments: [...(t.attachments || []), newAttachment],
             };
           }
           return t;
@@ -25,7 +38,7 @@ export function AttachmentsContent({ task, group, board, dispatch }) {
 
     const updatedBoard = { ...board, groups: updatedGroups };
     dispatch(updateBoard(updatedBoard));
-  };
+  }
 
   return (
     <div>

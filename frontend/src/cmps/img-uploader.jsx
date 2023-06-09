@@ -12,10 +12,24 @@ export function ImgUploader({ onUploaded }) {
 
   async function uploadImg(ev) {
     setIsUploading(true);
-    const { secure_url, height, width } = await uploadService.uploadImg(ev);
-    setImgData({ imgUrl: secure_url, width, height });
+    const { secure_url, height, width, original_filename, format } = await uploadService.uploadImg(ev);
+
+    // Generate additional properties
+    const uploadedAt = new Date(); // Current date and time
+    const imageName = original_filename + '.' + format; // Combine the original filename and format
+
+    // Create the updated image object
+    const updatedImgData = {
+      imgUrl: secure_url,
+      height,
+      width,
+      uploadedAt,
+      imageName,
+    };
+
+    setImgData(updatedImgData);
     setIsUploading(false);
-    onUploaded(secure_url);
+    onUploaded(updatedImgData);
   }
 
   function handleButtonClick() {

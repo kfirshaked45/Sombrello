@@ -6,7 +6,7 @@ import { useRef, useState } from 'react';
 import { ActionModal } from '../../modal/action-modal';
 
 export function TaskProps({ members, selectedMember, task, board, group }) {
-  console.log(task, group, board);
+
   const [selectedAction, setSelectedAction] = useState(null);
   const addButtonRef = useRef(null);
   const openActionModal = (action) => {

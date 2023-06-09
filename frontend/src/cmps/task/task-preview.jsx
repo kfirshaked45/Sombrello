@@ -10,7 +10,7 @@ import { useParams } from 'react-router';
 import { boardService } from '../../services/board.service.local';
 
 export function TaskPreview({ board, groupId, task }) {
-  const imageUrl = task.attachments && task.attachments[0];
+  const imageDetails = task.attachments && task.attachments[0];
   const labels = task.labels;
   const color = task.style && task.style.coverColor;
   const description = task.desc;
@@ -38,8 +38,8 @@ export function TaskPreview({ board, groupId, task }) {
 
   return (
     <div className="cover-img-section">
-      {imageUrl && <img src={imageUrl} alt="Task Image" className="task-image" />}
-      {color && !imageUrl && <div className="task-list-cover" style={{ backgroundColor: color }}></div>}
+      {imageDetails && <img src={imageDetails.imgUrl} alt="Task Image" className="task-image" />}
+      {color && !imageDetails && <div className="task-list-cover" style={{ backgroundColor: color }}></div>}
       <div className="task-preview">
         {labels && labels.length !== 0 && (
           <div className="task-preview-labels">
