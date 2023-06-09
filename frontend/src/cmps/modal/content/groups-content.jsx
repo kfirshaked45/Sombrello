@@ -4,6 +4,7 @@ import { utilService } from '../../../services/util.service'
 
 export function GroupsContent({ group, board, dispatch }) {
   const [showCopyListModal, setShowCopyListModal] = useState(false)
+  const [groupSortOrder, setGroupSortOrder] = useState({ [group.id]: 'asc' })
 
   async function deleteGroup() {
     const updatedGroups = board.groups.filter((g) => g.id !== group.id)
@@ -24,17 +25,48 @@ export function GroupsContent({ group, board, dispatch }) {
     setShowCopyListModal(false)
   }
 
+  function sortByTaskTitle(groupId) {
+    const currentSortOrder = groupSortOrder[groupId]
+    const newSortOrder = currentSortOrder === 'asc' ? 'desc' : 'asc'
+    setGroupSortOrder((prevGroupSortOrder) => ({
+      ...prevGroupSortOrder,
+      [groupId]: newSortOrder,
+    }))
+
+    const sortedGroups = board.groups.map((group) => {
+      if (group.id === groupId) {
+        const sortedTasks = [...group.tasks]
+        sortedTasks.sort((a, b) => {
+          const taskTitleA = a.title.toLowerCase()
+          const taskTitleB = b.title.toLowerCase()
+          if (groupSortOrder[groupId] === 'asc') {
+            return taskTitleA.localeCompare(taskTitleB)
+          } else {
+            return taskTitleB.localeCompare(taskTitleA)
+          }
+        })
+        return { ...group, tasks: sortedTasks }
+      }
+      return group
+    })
+
+    const updatedBoard = { ...board, groups: sortedGroups }
+    dispatch(updateBoard(updatedBoard))
+  }
+
   return (
     <div className="group-edit-modal">
       <div className="group-modal-top">
         <button onClick={() => setShowCopyListModal(true)}>Copy list...</button>
         <button>Add card...</button>
         <button>Move list...</button>
-        <button>Watch</button>
+        {/* <button>Watch</button> */}
       </div>
-      <button>Sort by</button>
+      <button onClick={() => sortByTaskTitle(group.id)}>
+        Sort by Task Title
+      </button>
+
       <button onClick={deleteGroup}>Delete this list</button>
-      <button>Add card...</button>
 
       {showCopyListModal && (
         <div className="copy-list-modal">
