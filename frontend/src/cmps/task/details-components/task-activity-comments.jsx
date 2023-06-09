@@ -1,12 +1,14 @@
 export function TaskActivityComments({ comments }) {
-  if (comments.length === 0) return;
+  if (!comments || comments.length === 0) return
   const getTextFromHtml = (html) => {
-    const doc = new DOMParser().parseFromString(html, 'text/html');
-    return doc.body.textContent || '';
-  };
+    const doc = new DOMParser().parseFromString(html, 'text/html')
+    return doc.body.textContent || ''
+  }
 
   // Sort comments by createdAt in descending order
-  const sortedComments = comments.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+  const sortedComments = comments.sort(
+    (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+  )
 
   return (
     <div className="activity-comments grid-details-margin">
@@ -16,5 +18,5 @@ export function TaskActivityComments({ comments }) {
         </div>
       ))}
     </div>
-  );
+  )
 }
