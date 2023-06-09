@@ -1,0 +1,210 @@
+$gray800: #2d3748;
+$gray700: #4a5568;
+$gray500: #a0aec0;
+$gray400: #cbd5e0;
+$gray100: #f7fafc;
+$gray: #dfe1e5;
+$gray-light: #fafbfc;
+$red600: #e53e3e;
+$blue400: #63b3ed;
+$blue600: #3182ce;
+$red: #f56565;
+$grayCustom: #ebecf0;
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f9fafc;
+  height: 100vh;
+
+  .form-logo {
+    font-family: CharlieDisplay-bold;
+
+    width: 40px;
+    height: 40px;
+    display: flex;
+    margin-right: 230px;
+    display: flex;
+    align-items: center;
+    margin-top: 40px;
+    color: #253858;
+
+    img {
+      margin-right: 20px;
+      width: 40px;
+    }
+
+    h1 {
+      font-size: 3.3em;
+      letter-spacing: 1px;
+      margin-top: 20px;
+    }
+  }
+
+  .or {
+    margin: 8px auto 20px;
+    font-size: 13px;
+    text-align: center;
+  }
+
+  .seperator {
+    height: 1px;
+    border-top: 1px solid hsl(0, 0%, 80%);
+    margin: 20px 0 14px;
+    padding: 0;
+    width: 100%;
+  }
+}
+
+.wrong-credentials {
+  border-radius: 3px;
+  box-shadow: rgb(9 30 66 / 28%) 0px 4px 8px -2px,
+    rgb(9 30 66 / 30%) 0px 0px 1px;
+  color: rgb(37, 56, 88);
+  font-size: 12px;
+  line-height: 20px;
+  margin-bottom: 24px;
+  padding: 16px;
+  transform: rotateX(0deg);
+  transform-origin: 50% 0px;
+  transition-property: visibility, height, margin-bottom, opacity, transform,
+    padding;
+  transition-duration: 0s, 0.2s, 0.2s, 0.2s, 0.2s;
+  transition-timing-function: ease-in-out;
+
+  &.not-visible {
+    height: 0px;
+    margin-bottom: 0px;
+    opacity: 0;
+    transform: rotateX(-90deg);
+    visibility: hidden;
+  }
+}
+
+.signup-form {
+  margin: 50px 0;
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  padding: 32px 40px;
+  background: rgb(255, 255, 255);
+  border-radius: 3px;
+  box-shadow: rgb(0 0 0 / 10%) 0px 0px 10px;
+  box-sizing: border-box;
+  color: rgb(94, 108, 132);
+  align-items: center;
+
+  h5 {
+    color: rgb(94, 108, 132);
+    font-weight: bold;
+    font-size: 1em;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  a {
+    margin: auto;
+    color: #0052cc;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  input:focus {
+    outline: none;
+    border: 2px solid black;
+  }
+
+  input[type='password'],
+  input[type='email'],
+  input[type='text'],
+  input[type='number'] {
+    padding: 0.65rem 0.5rem;
+    font-size: 14px;
+    border: 2px solid $gray;
+    background-color: $gray-light;
+    color: $gray800;
+    border-radius: 5px;
+    appearance: none;
+    color: rgb(77, 77, 77);
+    display: block;
+    width: 316px;
+    height: 40px;
+    transition: background-color, border-color 0.5s;
+
+    &:focus {
+      background-color: white;
+      border-color: $blue-main;
+    }
+  }
+
+  input[type='submit'],
+  input[type='reset'],
+  input[type='button'],
+  button {
+    padding: 0.5rem 1.25rem;
+    font-size: 1rem;
+    border-radius: 10px;
+    background-color: $gray700;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    display: inline-block;
+    transition: background-color 200ms ease-in-out, border 200ms ease-in-out,
+      transform 200ms ease-in-out;
+  }
+
+  .error {
+    font-size: 12px;
+    color: $red600;
+    margin-bottom: 15px;
+    margin-top: 3px;
+  }
+
+  button[type='submit'] {
+    margin-top: 1rem;
+    border: none;
+    font-size: 14px;
+    background-color: #0052cc;
+    color: white;
+    border-radius: 5px;
+    padding: 10px 0;
+
+    &:hover {
+      background-color: lighten(#0052cc, 8%);
+    }
+  }
+
+  .already-have-account {
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .google-btn-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 8px;
+    width: 100%;
+  }
+}
+
+.left-hero {
+  display: inline-block;
+  position: absolute;
+  width: 400px;
+  bottom: 0;
+  left: 0;
+  max-width: 30%;
+}
+
+.right-hero {
+  display: inline-block;
+  position: absolute;
+  width: 400px;
+  bottom: 0;
+  right: 0;
+  max-width: 30%;
+}
