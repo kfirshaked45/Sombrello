@@ -2,6 +2,7 @@ import React from 'react';
 import { RiAttachment2 } from 'react-icons/ri';
 
 export function TaskAttachments({ attachments }) {
+  if (attachments.length === 0) return;
   return (
     <div className="task-attachments">
       <div className="attachment-header details-grid">

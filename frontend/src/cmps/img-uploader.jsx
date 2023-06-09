@@ -10,9 +10,9 @@ export function ImgUploader({ onUploaded }) {
   const [isUploading, setIsUploading] = useState(false);
   const fileInputRef = useRef(null);
 
-  async function handleFileChange(ev) {
+  async function uploadImg(ev) {
     setIsUploading(true);
-    const { secure_url, height, width } = await uploadService.uploadImg(ev.target.files[0]);
+    const { secure_url, height, width } = await uploadService.uploadImg(ev);
     setImgData({ imgUrl: secure_url, width, height });
     setIsUploading(false);
     onUploaded(secure_url);
@@ -33,7 +33,7 @@ export function ImgUploader({ onUploaded }) {
       <button type="button" onClick={handleButtonClick} className="img-uploader-btn">
         {getUploadButtonLabel()}
       </button>
-      <input type="file" onChange={handleFileChange} accept="img/*" id="imgUpload" ref={fileInputRef} style={{ display: 'none' }} />
+      <input type="file" onChange={uploadImg} accept="img/*" id="imgUpload" ref={fileInputRef} style={{ display: 'none' }} />
     </div>
   );
 }

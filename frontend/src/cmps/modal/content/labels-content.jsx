@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
 export function LabelsContent({ board, group, task, dispatch }) {
+  console.log('CLICKED');
   const addLabel = (label) => {
     const updatedLabels = [...task.labels];
     const alreadyLabeledIndex = updatedLabels.findIndex((l) => l.id === label.id);
@@ -49,8 +50,12 @@ export function LabelsContent({ board, group, task, dispatch }) {
         {board.labels &&
           board.labels.map((label) => (
             <div className="action-label-container">
-              <div className="action-checkbox-input">
-                {' '}
+              <div
+                className="action-checkbox-input"
+                onClick={() => {
+                  addLabel(label);
+                }}
+              >
                 {isAlreadyLabeled(label, task) && <FontAwesomeIcon icon={faCheck} className="label-check-icon" />}
               </div>
               {/* <input

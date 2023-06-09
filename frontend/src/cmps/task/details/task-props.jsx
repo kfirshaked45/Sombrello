@@ -1,11 +1,12 @@
 import { BsPlus, BsPlusLg } from 'react-icons/bs';
-import { MemberModal } from '../../modal/member-modal';
+// import { MemberModal } from '../../modal/member-modal';
 import { TaskLabels } from './task-labels';
 import { TaskDates } from './task-dates';
 import { useRef, useState } from 'react';
 import { ActionModal } from '../../modal/action-modal';
 
 export function TaskProps({ members, selectedMember, task, board, group }) {
+  console.log(task, group, board);
   const [selectedAction, setSelectedAction] = useState(null);
   const addButtonRef = useRef(null);
   const openActionModal = (action) => {
@@ -29,7 +30,7 @@ export function TaskProps({ members, selectedMember, task, board, group }) {
                 </div>
               ))}
             </div>
-            {selectedMember && <MemberModal member={selectedMember} />}
+            {/* {selectedMember && <MemberModal member={selectedMember} />} */}
             <button className="add-member" ref={addButtonRef} onClick={() => openActionModal('Members ')}>
               <BsPlusLg />
             </button>

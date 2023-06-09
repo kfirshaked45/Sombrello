@@ -76,7 +76,7 @@ export function TaskDescription({ description, task, group, board }) {
       {isEditing ? (
         <div>
           <ReactQuill
-            className="quill-container"
+            className="quill-container show-description-value"
             onKeyDown={handleExitKey}
             ref={descriptionRef}
             value={editorValue}
@@ -95,13 +95,23 @@ export function TaskDescription({ description, task, group, board }) {
         </div>
       ) : (
         <div>
-          <textarea
-            onClick={handleTextareaClick}
-            placeholder={description ? description : 'Add a more detailed description..'}
-            className="main-content-text-area"
-            value={getTextFromHtml(editorValue)} // Extract plain text from HTML content
-            readOnly
-          />
+          {editorValue ? (
+            <div
+              dangerouslySetInnerHTML={{ __html: editorValue }}
+              className="grid-details-margin show-description-value"
+              onClick={() => setIsEditing(true)}
+            />
+          ) : (
+            <div>
+              <textarea
+                onClick={handleTextareaClick}
+                placeholder={description ? description : 'Add a more detailed description..'}
+                className="main-content-text-area"
+                value={getTextFromHtml(editorValue)} // Extract plain text from HTML content
+                readOnly
+              />
+            </div>
+          )}
         </div>
       )}
     </div>

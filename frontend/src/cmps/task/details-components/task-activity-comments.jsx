@@ -1,5 +1,5 @@
 export function TaskActivityComments({ comments }) {
-  if (!comments) return;
+  if (comments.length === 0) return;
   const getTextFromHtml = (html) => {
     const doc = new DOMParser().parseFromString(html, 'text/html');
     return doc.body.textContent || '';
