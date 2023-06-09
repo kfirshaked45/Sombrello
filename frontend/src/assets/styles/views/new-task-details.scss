@@ -87,7 +87,6 @@
   display: flex;
 }
 .attachment-img {
-  margin-left: 70px;
   width: 112px;
   height: 82px;
   object-fit: contain;
@@ -183,4 +182,31 @@
 }
 .description-edit-btn {
   margin-left: 7px;
+}
+.attachment-btn-container {
+  display: flex;
+  margin-bottom: 8px;
+}
+.attachment-button {
+  text-decoration: underline;
+  font-size: 14px;
+  color: #000000a3;
+}
+.attachment-date {
+  color: #000000a3;
+  font-size: 14px;
+}
+.attachment-detail-container {
+  margin-left: 16px;
+}
+.attachment-thumbnail-name {
+  font-weight: 700;
+}
+.attachment-container {
+  margin-left: 70px;
+}
+.attachment-container:hover {
+  background-color: $bgcolor-hover-color;
+  border-radius: 3px;
+  width: 95%;
 }

@@ -14,17 +14,17 @@ export function TaskAttachments({ attachments }) {
       {attachments ? (
         <ul>
           {attachments.map((attachment) => (
-            <li>
+            <li className="attachment-container" key={attachment.id}>
               <img src={`${attachment.imgUrl}`} className="attachment-img" />
-              <div>
+              <div className="attachment-detail-container">
                 <span className="attachment-thumbnail-name">{attachment.imageName}</span>
-                <div>
-                  <span>{utilService.formatDateAttachment(attachment.uploadedAt)}</span>
-                  <button>Comment</button>
-                  <button>Delete</button>
-                  <button>Edit</button>
+                <div className="attachment-btn-container">
+                  <span className="attachment-date">{utilService.formatDateAttachment(attachment.uploadedAt)}</span>
+                  <button className="attachment-button">Comment</button>
+                  <button className="attachment-button">Delete</button>
+                  <button className="attachment-button">Edit</button>
                 </div>
-                <button>Make cover</button>
+                <button className="attachment-button">Make cover</button>
               </div>
             </li>
           ))}

@@ -145,6 +145,7 @@ async function createDemoBoard() {
                 labels: [],
                 attachments: [
                   {
+                    id: 'img2',
                     imageName: 'lightning.jpg',
                     uploadedAt: '2023-06-09T13:25:27.792Z',
                     imgUrl: 'https://res.cloudinary.com/djrnw05sb/image/upload/v1685953579/trello/routing-directory_i7iskr.jpg',
@@ -209,6 +210,7 @@ async function createDemoBoard() {
                 labels: [],
                 attachments: [
                   {
+                    id: 'img10',
                     imageName: 'hourglass.jpg',
                     uploadedAt: '2023-06-09T13:25:27.792Z',
                     imgUrl: 'https://res.cloudinary.com/djrnw05sb/image/upload/v1685953580/trello/asset_6_ey9fby.jpg',
@@ -334,6 +336,7 @@ async function createDemoBoard() {
                 ],
                 attachments: [
                   {
+                    id: 'img3',
                     imageName: 'npm.jpg',
                     uploadedAt: '2023-06-09T13:25:27.792Z',
                     imgUrl: 'https://res.cloudinary.com/djrnw05sb/image/upload/v1685953581/trello/asset_7_wmthnj.png',
@@ -375,6 +378,7 @@ async function createDemoBoard() {
                 labels: [],
                 attachments: [
                   {
+                    id: 'img115',
                     imageName: 'writing.jpg',
                     uploadedAt: '2023-06-09T13:25:27.792Z',
                     imgUrl: 'https://res.cloudinary.com/djrnw05sb/image/upload/v1685953581/trello/asset_8_qxvvvi.jpg',
@@ -392,6 +396,7 @@ async function createDemoBoard() {
                 labels: [],
                 attachments: [
                   {
+                    id: 'img4',
                     imageName: 'phone.jpg',
                     uploadedAt: '2023-06-09T13:25:27.792Z',
                     imgUrl: 'https://res.cloudinary.com/djrnw05sb/image/upload/v1685953581/trello/asset_9_ho1voy.jpg',
@@ -465,6 +470,7 @@ async function createDemoBoard() {
                 labels: [],
                 attachments: [
                   {
+                    id: 'img159',
                     imageName: 'phone2.jpg',
                     uploadedAt: '2023-06-09T13:25:27.792Z',
                     imgUrl: 'https://res.cloudinary.comcom/djrnw05sb/image/upload/v1685953581/trello/asset_10_mxuike.jpg',
@@ -549,6 +555,7 @@ async function createDemoBoard() {
                 labels: [],
                 attachments: [
                   {
+                    id: 'img5',
                     imageName: 'bug.jpg',
                     uploadedAt: '2023-06-09T13:25:27.792Z',
                     imgUrl: 'https://res.cloudinary.com/djrnw05sb/image/upload/v1685953571/trello/asset_12_akveuk.jpg',
@@ -609,6 +616,7 @@ async function createDemoBoard() {
                 labels: [],
                 attachments: [
                   {
+                    id: 'img6',
                     imageName: 'npm.jpg',
                     uploadedAt: '2023-06-09T13:25:27.792Z',
                     imgUrl: 'https://res.cloudinary.com/djrnw05sb/image/upload/v1685953581/trello/asset_7_wmthnj.png',
@@ -626,6 +634,7 @@ async function createDemoBoard() {
                 labels: [],
                 attachments: [
                   {
+                    id: 'img7',
                     imageName: 'register-login-layout.jpg',
                     uploadedAt: '2023-06-09T13:25:27.792Z',
                     imgUrl: 'https://res.cloudinary.com/djrnw05sb/image/upload/v1685953571/trello/asset_11_xjhkai.jpg',
@@ -730,6 +739,7 @@ async function createDemoBoard() {
                 ],
                 attachments: [
                   {
+                    id: 'img8',
                     imageName: 'students.jpg',
                     uploadedAt: '2023-06-09T13:25:27.792Z',
                     imgUrl: 'https://res.cloudinary.com/djrnw05sb/image/upload/v1685953571/trello/asset_13_q3o5uw.jpg',
@@ -805,6 +815,7 @@ async function createDemoBoard() {
                 ],
                 attachments: [
                   {
+                    id: 'img1',
                     imageName: 'react.jpg',
                     uploadedAt: '2023-06-09T13:25:27.792Z',
                     imgUrl: 'https://res.cloudinary.com/djrnw05sb/image/upload/v1685953571/trello/asset_14_jdfund.jpg',
