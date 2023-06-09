@@ -1,10 +1,21 @@
-import React from 'react';
-import { RiAttachment2 } from 'react-icons/ri';
-import { utilService } from '../../../services/util.service';
+import React from 'react'
+import { RiAttachment2 } from 'react-icons/ri'
+import { utilService } from '../../../services/util.service'
 
 export function TaskAttachments({ attachments }) {
-  console.log(attachments);
-  if (attachments.length === 0) return;
+  console.log(attachments)
+  if (!attachments || attachments.length === 0) {
+    return (
+      <div className="task-attachments">
+        <div className="attachment-header details-grid">
+          <RiAttachment2 className="attachment-icon" />
+          <h2 className="attachment-title">Attachments</h2>
+        </div>
+        <p>No attachments</p>
+      </div>
+    )
+  }
+
   return (
     <div className="task-attachments">
       <div className="attachment-header details-grid">
@@ -33,5 +44,5 @@ export function TaskAttachments({ attachments }) {
         <p>No attachments</p>
       )}
     </div>
-  );
+  )
 }
