@@ -12,6 +12,7 @@ export const utilService = {
   dueDateFormat,
   formatDate,
   hasTimestampPassed,
+  formatDateAttachment,
 };
 
 function makeId(length = 6) {
@@ -181,4 +182,18 @@ function dueDateFormat(dueDate) {
   const options = { day: 'numeric', month: 'short' };
   const formattedDate = date.toLocaleString('en-US', options);
   return formattedDate;
+}
+function formatDateAttachment(dateStr) {
+  const date = new Date(dateStr);
+
+  const formattedDate = date.toLocaleString('en-US', {
+    month: 'long',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    hour12: true,
+  });
+
+  const formattedString = `Added at ${formattedDate} by`;
+  return formattedString;
 }

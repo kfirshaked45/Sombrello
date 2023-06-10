@@ -6,10 +6,11 @@ import { TaskSidebar } from './task-sidebar';
 import { TaskActivity } from './task-activity';
 
 export function TaskGrid({ members, selectedMember, task, board, group, hasAttachments }) {
+
   return (
     <div className="task-grid ">
       <div className="task-column">
-        <TaskProps members={members} selectedMember={selectedMember} task={task} board={board} />
+        <TaskProps members={members} selectedMember={selectedMember} task={task} board={board} group={group} />
         <TaskDescription description={task?.desc} task={task} board={board} group={group} />
 
         <div className="attachments-section">

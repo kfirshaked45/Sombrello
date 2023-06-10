@@ -22,7 +22,7 @@ export function TaskList({ board, group }) {
   }
 
   function handleTaskClicked(task) {
-    console.log("task:", task)
+ 
     navigate(`${group.id}/${task.id}`)
   }
 

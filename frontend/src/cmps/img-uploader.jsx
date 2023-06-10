@@ -10,12 +10,26 @@ export function ImgUploader({ onUploaded }) {
   const [isUploading, setIsUploading] = useState(false);
   const fileInputRef = useRef(null);
 
-  async function handleFileChange(ev) {
+  async function uploadImg(ev) {
     setIsUploading(true);
-    const { secure_url, height, width } = await uploadService.uploadImg(ev.target.files[0]);
-    setImgData({ imgUrl: secure_url, width, height });
+    const { secure_url, height, width, original_filename, format } = await uploadService.uploadImg(ev);
+
+    // Generate additional properties
+    const uploadedAt = new Date(); // Current date and time
+    const imageName = original_filename + '.' + format; // Combine the original filename and format
+
+    // Create the updated image object
+    const updatedImgData = {
+      imgUrl: secure_url,
+      height,
+      width,
+      uploadedAt,
+      imageName,
+    };
+
+    setImgData(updatedImgData);
     setIsUploading(false);
-    onUploaded(secure_url);
+    onUploaded(updatedImgData);
   }
 
   function handleButtonClick() {
@@ -33,7 +47,7 @@ export function ImgUploader({ onUploaded }) {
       <button type="button" onClick={handleButtonClick} className="img-uploader-btn">
         {getUploadButtonLabel()}
       </button>
-      <input type="file" onChange={handleFileChange} accept="img/*" id="imgUpload" ref={fileInputRef} style={{ display: 'none' }} />
+      <input type="file" onChange={uploadImg} accept="img/*" id="imgUpload" ref={fileInputRef} style={{ display: 'none' }} />
     </div>
   );
 }

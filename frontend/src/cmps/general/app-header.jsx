@@ -106,22 +106,12 @@ export const AppHeader = ({ boardId }) => {
               className={`boards ${fontColor === 'dark' ? 'dark' : 'light'}`}
               onClick={() => onOpenActionModal('Boards', boardsRef)}
               ref={boardsRef}
-            >
-              <p>Boards</p>
-              <div className="svg-container">
-                <MdKeyboardArrowDown />
-              </div>
-            </div>
+            ></div>
             <div
               className={`boards ${fontColor}`}
               onClick={() => onOpenActionModal('Starred boards', starredRef)}
               ref={starredRef}
-            >
-              <p>Starred</p>
-              <div className="svg-container">
-                <MdKeyboardArrowDown />
-              </div>
-            </div>
+            ></div>
           </Fragment>
         )}
       </section>

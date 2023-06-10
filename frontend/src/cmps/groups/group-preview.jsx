@@ -87,7 +87,7 @@ export function GroupPreview({ board, group, provided }) {
         </button>
       </div>
       <TaskList board={board} group={group} tasks={group.tasks}></TaskList>
-      <TaskAdd board={board} group={group} />
+      <TaskAdd board={board} group={group} tasks={group.tasks} />
       {modalValue && (
         <ActionModal
           action={modalValue}
