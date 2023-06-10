@@ -58,8 +58,8 @@ export function GroupsContent({ group, board, dispatch }) {
     <div className="group-edit-modal">
       <div className="group-modal-top">
         <button onClick={() => setShowCopyListModal(true)}>Copy list...</button>
-        <button>Add card...</button>
-        <button>Move list...</button>
+        {/* <button>Add card...</button>
+        <button>Move list...</button> */}
         {/* <button>Watch</button> */}
       </div>
       <button onClick={() => sortByTaskTitle(group.id)}>
