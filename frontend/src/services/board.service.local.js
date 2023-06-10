@@ -127,7 +127,7 @@ async function createDemoBoard() {
                 labels: [],
                 attachments: [],
                 dueDate: { timeStamp: '', isDone: false },
-                comments: [{ txt: 'great job!', by: 'u103', at: Date.now() }],
+                comments: [{ text: 'great job!', id: 'u103', at: Date.now() }],
               },
               {
                 title: 'Routing Directory',
@@ -162,9 +162,9 @@ async function createDemoBoard() {
                 desc: '',
                 labels: [
                   {
-                    id: "l105",
-                    title: "Design",
-                    color: "#9f8fef",
+                    id: 'l105',
+                    title: 'Design',
+                    color: '#9f8fef',
                     //purple
                   },
                 ],
@@ -253,29 +253,29 @@ async function createDemoBoard() {
                 desc: '',
                 labels: [
                   {
-                    id: "l101",
-                    title: "Feature Request",
-                    color: "#4bce97",
+                    id: 'l101',
+                    title: 'Feature Request',
+                    color: '#4bce97',
                     //green
                   },
                   {
-                    id: "l102",
-                    title: "Documentation",
-                    color: "#e2b203",
+                    id: 'l102',
+                    title: 'Documentation',
+                    color: '#e2b203',
                     //yellow
                   },
                   {
-                    id: "l104",
-                    title: "Important",
-                    color: "#f87462",
+                    id: 'l104',
+                    title: 'Important',
+                    color: '#f87462',
                     //red
                   },
                 ],
                 attachments: [],
                 dueDate: { timeStamp: 1706668800000, isDone: false },
                 comments: [
-                  { txt: 'add labels', by: 'u101', at: Date.now() - 200000 },
-                  { txt: 'done that', by: 'u103', at: Date.now() },
+                  { text: 'add labels', by: 'u101', at: Date.now() - 200000 },
+                  { text: 'done that', by: 'u103', at: Date.now() },
                 ],
               },
               {
@@ -286,15 +286,15 @@ async function createDemoBoard() {
                 desc: '',
                 labels: [
                   {
-                    id: "l101",
-                    title: "Feature Request",
-                    color: "#4bce97",
+                    id: 'l101',
+                    title: 'Feature Request',
+                    color: '#4bce97',
                     //green
                   },
                   {
-                    id: "l102",
-                    title: "Documentation",
-                    color: "#e2b203",
+                    id: 'l102',
+                    title: 'Documentation',
+                    color: '#e2b203',
                     //yellow
                   },
                 ],
@@ -310,27 +310,27 @@ async function createDemoBoard() {
                 desc: '',
                 labels: [
                   {
-                    id: "l101",
-                    title: "Feature Request",
-                    color: "#4bce97",
+                    id: 'l101',
+                    title: 'Feature Request',
+                    color: '#4bce97',
                     //green
                   },
                   {
-                    id: "l102",
-                    title: "Documentation",
-                    color: "#e2b203",
+                    id: 'l102',
+                    title: 'Documentation',
+                    color: '#e2b203',
                     //yellow
                   },
                   {
-                    id: "l104",
-                    title: "Important",
-                    color: "#f87462",
+                    id: 'l104',
+                    title: 'Important',
+                    color: '#f87462',
                     //red
                   },
                   {
-                    id: "l106",
-                    title: "Bug fix",
-                    color: "#579dff",
+                    id: 'l106',
+                    title: 'Bug fix',
+                    color: '#579dff',
                     //blue
                   },
                 ],
@@ -353,15 +353,15 @@ async function createDemoBoard() {
                 desc: '',
                 labels: [
                   {
-                    id: "l103",
-                    title: "Urgent",
-                    color: "#faa53d",
+                    id: 'l103',
+                    title: 'Urgent',
+                    color: '#faa53d',
                     //orange
                   },
                   {
-                    id: "l104",
-                    title: "Important",
-                    color: "#f87462",
+                    id: 'l104',
+                    title: 'Important',
+                    color: '#f87462',
                     //red
                   },
                 ],
@@ -427,9 +427,9 @@ async function createDemoBoard() {
                 desc: '',
                 labels: [
                   {
-                    id: "l102",
-                    title: "Documentation",
-                    color: "#e2b203",
+                    id: 'l102',
+                    title: 'Documentation',
+                    color: '#e2b203',
                     //yellow
                   },
                 ],
@@ -445,15 +445,15 @@ async function createDemoBoard() {
                 desc: 'we need to add descriptions',
                 labels: [
                   {
-                    id: "l102",
-                    title: "Documentation",
-                    color: "#e2b203",
+                    id: 'l102',
+                    title: 'Documentation',
+                    color: '#e2b203',
                     //yellow
                   },
                   {
-                    id: "l104",
-                    title: "Important",
-                    color: "#f87462",
+                    id: 'l104',
+                    title: 'Important',
+                    color: '#f87462',
                     //red
                   },
                 ],
@@ -501,21 +501,21 @@ async function createDemoBoard() {
                 desc: '',
                 labels: [
                   {
-                    id: "l101",
-                    title: "Feature Request",
-                    color: "#4bce97",
+                    id: 'l101',
+                    title: 'Feature Request',
+                    color: '#4bce97',
                     //green
                   },
                   {
-                    id: "l103",
-                    title: "Urgent",
-                    color: "#faa53d",
+                    id: 'l103',
+                    title: 'Urgent',
+                    color: '#faa53d',
                     //orange
                   },
                 ],
                 attachments: [],
                 dueDate: { timeStamp: '', isDone: false },
-                comments: [{ txt: 'add description', by: 'u101', at: Date.now() }],
+                comments: [{ text: 'add description', by: 'u101', at: Date.now() }],
               },
               {
                 title: 'making functions and mixins',
@@ -591,21 +591,21 @@ async function createDemoBoard() {
                 desc: '',
                 labels: [
                   {
-                    id: "l104",
-                    title: "Important",
-                    color: "#f87462",
+                    id: 'l104',
+                    title: 'Important',
+                    color: '#f87462',
                     //red
                   },
                   {
-                    id: "l106",
-                    title: "Bug fix",
-                    color: "#579dff",
+                    id: 'l106',
+                    title: 'Bug fix',
+                    color: '#579dff',
                     //blue
                   },
                 ],
                 attachments: [],
                 dueDate: { timeStamp: '', isDone: false },
-                comments: [{ txt: 'add due date!', by: 'u102', at: Date.now() }],
+                comments: [{ text: 'add due date!', by: 'u102', at: Date.now() }],
               },
               {
                 title: '',
@@ -658,15 +658,15 @@ async function createDemoBoard() {
                 desc: '',
                 labels: [
                   {
-                    id: "l103",
-                    title: "Urgent",
-                    color: "#faa53d",
+                    id: 'l103',
+                    title: 'Urgent',
+                    color: '#faa53d',
                     //orange
                   },
                   {
-                    id: "l104",
-                    title: "Important",
-                    color: "#f87462",
+                    id: 'l104',
+                    title: 'Important',
+                    color: '#f87462',
                     //red
                   },
                 ],
@@ -701,15 +701,15 @@ async function createDemoBoard() {
                 desc: '',
                 labels: [
                   {
-                    id: "l103",
-                    title: "Urgent",
-                    color: "#faa53d",
+                    id: 'l103',
+                    title: 'Urgent',
+                    color: '#faa53d',
                     //orange
                   },
                   {
-                    id: "l104",
-                    title: "Important",
-                    color: "#f87462",
+                    id: 'l104',
+                    title: 'Important',
+                    color: '#f87462',
                     //red
                   },
                 ],
@@ -725,15 +725,15 @@ async function createDemoBoard() {
                 desc: '',
                 labels: [
                   {
-                    id: "l103",
-                    title: "Urgent",
-                    color: "#faa53d",
+                    id: 'l103',
+                    title: 'Urgent',
+                    color: '#faa53d',
                     //orange
                   },
                   {
-                    id: "l104",
-                    title: "Important",
-                    color: "#f87462",
+                    id: 'l104',
+                    title: 'Important',
+                    color: '#f87462',
                     //red
                   },
                 ],
@@ -763,9 +763,9 @@ async function createDemoBoard() {
                 desc: '',
                 labels: [
                   {
-                    id: "l105",
-                    title: "Design",
-                    color: "#9f8fef",
+                    id: 'l105',
+                    title: 'Design',
+                    color: '#9f8fef',
                     //purple
                   },
                 ],
@@ -801,15 +801,15 @@ async function createDemoBoard() {
                 desc: '',
                 labels: [
                   {
-                    id: "l104",
-                    title: "Important",
-                    color: "#f87462",
+                    id: 'l104',
+                    title: 'Important',
+                    color: '#f87462',
                     //red
                   },
                   {
-                    id: "l106",
-                    title: "Bug fix",
-                    color: "#579dff",
+                    id: 'l106',
+                    title: 'Bug fix',
+                    color: '#579dff',
                     //blue
                   },
                 ],
@@ -831,7 +831,7 @@ async function createDemoBoard() {
         activities: [
           {
             id: 'a101',
-            txt: 'Changed Color',
+            text: 'Changed Color',
             createdAt: 154514,
             byMember: {
               fullname: 'Abi Abambi',
@@ -847,39 +847,39 @@ async function createDemoBoard() {
         ],
         labels: [
           {
-            id: "l101",
-            title: "Feature Request",
-            color: "#4bce97",
+            id: 'l101',
+            title: 'Feature Request',
+            color: '#4bce97',
             //green
           },
           {
-            id: "l102",
-            title: "Documentation",
-            color: "#e2b203",
+            id: 'l102',
+            title: 'Documentation',
+            color: '#e2b203',
             //yellow
           },
           {
-            id: "l103",
-            title: "Urgent",
-            color: "#faa53d",
+            id: 'l103',
+            title: 'Urgent',
+            color: '#faa53d',
             //orange
           },
           {
-            id: "l104",
-            title: "Important",
-            color: "#f87462",
+            id: 'l104',
+            title: 'Important',
+            color: '#f87462',
             //red
           },
           {
-            id: "l105",
-            title: "Design",
-            color: "#9f8fef",
+            id: 'l105',
+            title: 'Design',
+            color: '#9f8fef',
             //purple
           },
           {
-            id: "l106",
-            title: "Bug fix",
-            color: "#579dff",
+            id: 'l106',
+            title: 'Bug fix',
+            color: '#579dff',
             //blue
           },
         ],
@@ -986,7 +986,7 @@ async function createDemoBoard() {
         activities: [
           {
             id: 'a101',
-            txt: 'Changed Color',
+            text: 'Changed Color',
             createdAt: 154514,
             byMember: {
               fullname: 'Abi Abambi',
@@ -1125,7 +1125,7 @@ async function createDemoBoard() {
         activities: [
           {
             id: 'a101',
-            txt: 'Changed Color',
+            text: 'Changed Color',
             createdAt: 154514,
             byMember: {
               fullname: 'Abi Abambi',
@@ -1308,7 +1308,7 @@ async function createDemoBoard() {
 //       activities: [
 //         {
 //           id: 'a101',
-//           txt: 'Changed Color',
+//           text: 'Changed Color',
 //           createdAt: 154514,
 //           byMember: {
 //             fullname: 'Abi Abambi',

@@ -76,7 +76,7 @@ export function TaskDescription({ description, task, group, board }) {
       {isEditing ? (
         <div>
           <ReactQuill
-            className="quill-container show-description-value"
+            className="quill-container show-description-value u-fancy-scrollbar"
             onKeyDown={handleExitKey}
             ref={descriptionRef}
             value={editorValue}

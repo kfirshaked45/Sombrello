@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { RiAttachment2 } from 'react-icons/ri';
 import { utilService } from '../../../services/util.service';
 import { updateBoard } from '../../../store/board.actions';
 import { useDispatch } from 'react-redux';
+import { ActionModal } from '../../modal/action-modal';
 
 export function TaskAttachments({ attachments, task, board, group, setCoverImg, coverImg }) {
-  console.log(attachments);
+  const [selectedAction, setSelectedAction] = useState(null);
+  console.log(attachments, coverImg);
+  const buttonRef = useRef(null);
+  const openActionModal = (action) => {
+    setSelectedAction(action);
+  };
+
+  const closeActionModal = () => {
+    setSelectedAction(null);
+  };
+
   const dispatch = useDispatch();
   if (!attachments || attachments.length === 0) return;
 
@@ -39,7 +50,43 @@ export function TaskAttachments({ attachments, task, board, group, setCoverImg, 
 
     dispatch(updateBoard(updatedBoard));
   }
+  // function addCover(cover) {
+  //   if (!task.attachments) {
+  //     task.attachments = [cover]
+  //   } else {
+  //     const alreadyMemberIndex = task.members.findIndex(
+  //       (m) => m._id === cover._id
+  //     )
+  //     if (alreadyMemberIndex !== -1) {
+  //       task.members.splice(alreadyMemberIndex, 1)
+  //     } else {
+  //       task.members.push(cover)
+  //     }
+  //   }
 
+  //   const updatedGroups = board.groups.map((g) => {
+  //     if (g.id === group.id) {
+  //       const updatedTasks = g.tasks.map((t) => {
+  //         if (t.id === task.id) {
+  //           return {
+  //             ...t,
+  //             members: task.members || [],
+  //           }
+  //         }
+  //         return t
+  //       })
+
+  //       return {
+  //         ...g,
+  //         tasks: updatedTasks,
+  //       }
+  //     }
+  //     return g
+  //   })
+  //   const updatedBoard = { ...board, groups: updatedGroups }
+
+  //   dispatch(updateBoard(updatedBoard))
+  // }
   function handleCoverClick(imgUrl) {
     if (coverImg === imgUrl) {
       setCoverImg(null); // Remove cover image from state
@@ -67,7 +114,9 @@ export function TaskAttachments({ attachments, task, board, group, setCoverImg, 
                   <button className="attachment-button" onClick={() => deleteImg(attachment.id)}>
                     Delete
                   </button>
-                  <button className="attachment-button">Edit</button>
+                  <button className="attachment-button" ref={buttonRef} onClick={() => openActionModal('Edit Attachment')}>
+                    Edit
+                  </button>
                 </div>
                 <button className="attachment-button" onClick={() => handleCoverClick(attachment.imgUrl)}>
                   {coverImg === attachment.imgUrl ? 'Remove Cover' : 'Make Cover'}
@@ -75,6 +124,16 @@ export function TaskAttachments({ attachments, task, board, group, setCoverImg, 
               </div>
             </li>
           ))}
+          {selectedAction && (
+            <ActionModal
+              action={selectedAction}
+              onClose={closeActionModal}
+              board={board}
+              task={task}
+              group={group}
+              triggerRef={buttonRef}
+            />
+          )}
         </ul>
       ) : (
         <p>No attachments</p>

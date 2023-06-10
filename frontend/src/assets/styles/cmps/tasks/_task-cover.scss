@@ -1,6 +1,4 @@
 .task-cover {
-  height: 116px;
-
   color: white;
 
   font-size: 16px;
@@ -11,7 +9,7 @@
   box-sizing: border-box;
   background-position: center center;
   height: 160px;
-  min-height: 160px;
+
   padding: 0px;
   background-repeat: no-repeat;
 }
@@ -51,6 +49,7 @@
   right: 10px;
   padding: 6px 12px 6px 6px;
   align-items: center;
+  background-color: inherit;
 
   .cta-icon {
     margin-right: 5px;

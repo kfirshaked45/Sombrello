@@ -9,8 +9,10 @@ import { updateBoard } from '../../../store/board.actions';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { browserHistory } from 'react-router';
+import { MdCallToAction } from 'react-icons/md';
 
 export function TaskSidebar({ board, task, group, hasAttachments, width }) {
+  console.log(task);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [selectedAction, setSelectedAction] = useState(null);
@@ -45,8 +47,8 @@ export function TaskSidebar({ board, task, group, hasAttachments, width }) {
 
     const updatedBoard = { ...board, groups: updatedGroups };
 
-    await dispatch(updateBoard(updatedBoard));
     navigate(`/board/${board._id}`);
+    await dispatch(updateBoard(updatedBoard));
   }
 
   return (
@@ -68,6 +70,23 @@ export function TaskSidebar({ board, task, group, hasAttachments, width }) {
             <span className="sidebar-title">{comp.name}</span>
           </li>
         ))}
+
+        {Object.keys(task.style).length === 0 && (
+          <button
+            className="sidebar-item"
+            onClick={() => {
+              openActionModal('Cover');
+            }}
+          >
+            <span className="sidebar-icon">
+              <MdCallToAction className="cta-icon" />
+            </span>
+            <span className="sidebar-title" ref={actionButtonRef}>
+              Cover
+            </span>
+          </button>
+        )}
+
         <button
           className="sidebar-item general-btn-styling"
           style={{ width: width }}

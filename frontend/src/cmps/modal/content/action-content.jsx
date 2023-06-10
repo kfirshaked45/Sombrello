@@ -5,6 +5,8 @@ import { LabelsContent } from './labels-content';
 import { DateContent } from './date-content';
 import { AttachmentsContent } from './attachments-content';
 import { GroupsContent } from './groups-content';
+import { EditAttachment } from './edit-attachment';
+import { CoverContent } from './cover-content';
 
 const actionComponents = {
   Members: MemberContent,
@@ -13,6 +15,8 @@ const actionComponents = {
   Dates: DateContent,
   Attachments: AttachmentsContent,
   Group: GroupsContent,
+  'Edit Attachment': EditAttachment,
+  Cover: CoverContent,
 };
 
 export function ActionContent({ action, board, task, group }) {

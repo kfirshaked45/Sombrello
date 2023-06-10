@@ -59,7 +59,7 @@ export function TaskPreview({ board, groupId, task }) {
             (task.members && task.members.length !== 0)) && (
             <section className="task-item-footer">
               <div className="props-icons" onClick={toggleIsDone}>
-                {task.dueDate && <TaskDueDate dueDate={task.dueDate} onClick={toggleIsDone} />}
+                {task.dueDate && <TaskDueDate dueDate={task.dueDate} toggleIsDone={toggleIsDone} />}
 
                 {description && (
                   <section className="description-icon">
