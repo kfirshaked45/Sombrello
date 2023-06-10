@@ -122,12 +122,12 @@ export function BoardHeader({ board, changeBackground }) {
           {!board.isStarred && <TiStarOutline />}
           {board.isStarred && <TiStarFullOutline className="yellow-star" />}
         </span>
-        <button>
+        {/* <button>
           <MembersIcon />
         </button>
         <button>
           <BoardIcon /> Board
-        </button>
+        </button> */}
       </div>
       <div
         className={`board-header-right-container ${

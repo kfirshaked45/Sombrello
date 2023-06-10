@@ -99,21 +99,6 @@ export const AppHeader = ({ boardId }) => {
             <p>Workspace</p>
           </div>
         </Link>
-
-        {headerStatus === 'board' && (
-          <Fragment>
-            <div
-              className={`boards ${fontColor === 'dark' ? 'dark' : 'light'}`}
-              onClick={() => onOpenActionModal('Boards', boardsRef)}
-              ref={boardsRef}
-            ></div>
-            <div
-              className={`boards ${fontColor}`}
-              onClick={() => onOpenActionModal('Starred boards', starredRef)}
-              ref={starredRef}
-            ></div>
-          </Fragment>
-        )}
       </section>
       <nav className={`home-nav ${styleClass ? '' : 'none'}`}>
         <Link className="login" to={'/user/login'}>

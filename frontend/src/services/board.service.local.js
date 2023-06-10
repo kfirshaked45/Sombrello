@@ -162,9 +162,9 @@ async function createDemoBoard() {
                 desc: '',
                 labels: [
                   {
-                    id: 'l105',
-                    title: 'Label 5',
-                    color: '#9f8fef',
+                    id: "l105",
+                    title: "Design",
+                    color: "#9f8fef",
                     //purple
                   },
                 ],
@@ -253,21 +253,21 @@ async function createDemoBoard() {
                 desc: '',
                 labels: [
                   {
-                    id: 'l101',
-                    title: 'Label 1',
-                    color: '#4bce97',
+                    id: "l101",
+                    title: "Feature Request",
+                    color: "#4bce97",
                     //green
                   },
                   {
-                    id: 'l102',
-                    title: 'Label 2',
-                    color: '#e2b203',
+                    id: "l102",
+                    title: "Documentation",
+                    color: "#e2b203",
                     //yellow
                   },
                   {
-                    id: 'l104',
-                    title: 'Label 4',
-                    color: '#f87462',
+                    id: "l104",
+                    title: "Important",
+                    color: "#f87462",
                     //red
                   },
                 ],
@@ -286,15 +286,15 @@ async function createDemoBoard() {
                 desc: '',
                 labels: [
                   {
-                    id: 'l101',
-                    title: 'Label 1',
-                    color: '#4bce97',
+                    id: "l101",
+                    title: "Feature Request",
+                    color: "#4bce97",
                     //green
                   },
                   {
-                    id: 'l102',
-                    title: 'Label 2',
-                    color: '#e2b203',
+                    id: "l102",
+                    title: "Documentation",
+                    color: "#e2b203",
                     //yellow
                   },
                 ],
@@ -310,27 +310,27 @@ async function createDemoBoard() {
                 desc: '',
                 labels: [
                   {
-                    id: 'l101',
-                    title: 'Label 1',
-                    color: '#4bce97',
+                    id: "l101",
+                    title: "Feature Request",
+                    color: "#4bce97",
                     //green
                   },
                   {
-                    id: 'l102',
-                    title: 'Label 2',
-                    color: '#e2b203',
+                    id: "l102",
+                    title: "Documentation",
+                    color: "#e2b203",
                     //yellow
                   },
                   {
-                    id: 'l104',
-                    title: 'Label 4',
-                    color: '#f87462',
+                    id: "l104",
+                    title: "Important",
+                    color: "#f87462",
                     //red
                   },
                   {
-                    id: 'l106',
-                    title: 'Label 6',
-                    color: '#579dff',
+                    id: "l106",
+                    title: "Bug fix",
+                    color: "#579dff",
                     //blue
                   },
                 ],
@@ -353,15 +353,15 @@ async function createDemoBoard() {
                 desc: '',
                 labels: [
                   {
-                    id: 'l103',
-                    title: 'Label 3',
-                    color: '#faa53d',
+                    id: "l103",
+                    title: "Urgent",
+                    color: "#faa53d",
                     //orange
                   },
                   {
-                    id: 'l104',
-                    title: 'Label 4',
-                    color: '#f87462',
+                    id: "l104",
+                    title: "Important",
+                    color: "#f87462",
                     //red
                   },
                 ],
@@ -427,9 +427,9 @@ async function createDemoBoard() {
                 desc: '',
                 labels: [
                   {
-                    id: 'l102',
-                    title: 'Label 2',
-                    color: '#e2b203',
+                    id: "l102",
+                    title: "Documentation",
+                    color: "#e2b203",
                     //yellow
                   },
                 ],
@@ -445,15 +445,15 @@ async function createDemoBoard() {
                 desc: 'we need to add descriptions',
                 labels: [
                   {
-                    id: 'l102',
-                    title: 'Label 2',
-                    color: '#e2b203',
+                    id: "l102",
+                    title: "Documentation",
+                    color: "#e2b203",
                     //yellow
                   },
                   {
-                    id: 'l104',
-                    title: 'Label 4',
-                    color: '#f87462',
+                    id: "l104",
+                    title: "Important",
+                    color: "#f87462",
                     //red
                   },
                 ],
@@ -501,15 +501,15 @@ async function createDemoBoard() {
                 desc: '',
                 labels: [
                   {
-                    id: 'l101',
-                    title: 'Label 1',
-                    color: '#4bce97',
+                    id: "l101",
+                    title: "Feature Request",
+                    color: "#4bce97",
                     //green
                   },
                   {
-                    id: 'l103',
-                    title: 'Label 3',
-                    color: '#faa53d',
+                    id: "l103",
+                    title: "Urgent",
+                    color: "#faa53d",
                     //orange
                   },
                 ],
@@ -591,15 +591,15 @@ async function createDemoBoard() {
                 desc: '',
                 labels: [
                   {
-                    id: 'l104',
-                    title: 'Label 4',
-                    color: '#f87462',
+                    id: "l104",
+                    title: "Important",
+                    color: "#f87462",
                     //red
                   },
                   {
-                    id: 'l106',
-                    title: 'Label 6',
-                    color: '#579dff',
+                    id: "l106",
+                    title: "Bug fix",
+                    color: "#579dff",
                     //blue
                   },
                 ],
@@ -658,15 +658,15 @@ async function createDemoBoard() {
                 desc: '',
                 labels: [
                   {
-                    id: 'l103',
-                    title: 'Label 3',
-                    color: '#faa53d',
+                    id: "l103",
+                    title: "Urgent",
+                    color: "#faa53d",
                     //orange
                   },
                   {
-                    id: 'l104',
-                    title: 'Label 4',
-                    color: '#f87462',
+                    id: "l104",
+                    title: "Important",
+                    color: "#f87462",
                     //red
                   },
                 ],
@@ -701,15 +701,15 @@ async function createDemoBoard() {
                 desc: '',
                 labels: [
                   {
-                    id: 'l103',
-                    title: 'Label 3',
-                    color: '#faa53d',
+                    id: "l103",
+                    title: "Urgent",
+                    color: "#faa53d",
                     //orange
                   },
                   {
-                    id: 'l104',
-                    title: 'Label 4',
-                    color: '#f87462',
+                    id: "l104",
+                    title: "Important",
+                    color: "#f87462",
                     //red
                   },
                 ],
@@ -725,15 +725,15 @@ async function createDemoBoard() {
                 desc: '',
                 labels: [
                   {
-                    id: 'l103',
-                    title: 'Label 3',
-                    color: '#faa53d',
+                    id: "l103",
+                    title: "Urgent",
+                    color: "#faa53d",
                     //orange
                   },
                   {
-                    id: 'l104',
-                    title: 'Label 4',
-                    color: '#f87462',
+                    id: "l104",
+                    title: "Important",
+                    color: "#f87462",
                     //red
                   },
                 ],
@@ -763,9 +763,9 @@ async function createDemoBoard() {
                 desc: '',
                 labels: [
                   {
-                    id: 'l105',
-                    title: 'Label 5',
-                    color: '#9f8fef',
+                    id: "l105",
+                    title: "Design",
+                    color: "#9f8fef",
                     //purple
                   },
                 ],
@@ -801,15 +801,15 @@ async function createDemoBoard() {
                 desc: '',
                 labels: [
                   {
-                    id: 'l104',
-                    title: 'Label 4',
-                    color: '#f87462',
+                    id: "l104",
+                    title: "Important",
+                    color: "#f87462",
                     //red
                   },
                   {
-                    id: 'l106',
-                    title: 'Label 6',
-                    color: '#579dff',
+                    id: "l106",
+                    title: "Bug fix",
+                    color: "#579dff",
                     //blue
                   },
                 ],
@@ -847,39 +847,39 @@ async function createDemoBoard() {
         ],
         labels: [
           {
-            id: 'l101',
-            title: 'Label 1',
-            color: '#4bce97',
+            id: "l101",
+            title: "Feature Request",
+            color: "#4bce97",
             //green
           },
           {
-            id: 'l102',
-            title: 'Label 2',
-            color: '#e2b203',
+            id: "l102",
+            title: "Documentation",
+            color: "#e2b203",
             //yellow
           },
           {
-            id: 'l103',
-            title: 'Label 3',
-            color: '#faa53d',
+            id: "l103",
+            title: "Urgent",
+            color: "#faa53d",
             //orange
           },
           {
-            id: 'l104',
-            title: 'Label 4',
-            color: '#f87462',
+            id: "l104",
+            title: "Important",
+            color: "#f87462",
             //red
           },
           {
-            id: 'l105',
-            title: 'Label 5',
-            color: '#9f8fef',
+            id: "l105",
+            title: "Design",
+            color: "#9f8fef",
             //purple
           },
           {
-            id: 'l106',
-            title: 'Label 6',
-            color: '#579dff',
+            id: "l106",
+            title: "Bug fix",
+            color: "#579dff",
             //blue
           },
         ],
