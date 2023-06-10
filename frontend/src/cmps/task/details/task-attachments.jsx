@@ -5,12 +5,14 @@ import { updateBoard } from '../../../store/board.actions';
 import { useDispatch } from 'react-redux';
 import { ActionModal } from '../../modal/action-modal';
 
-export function TaskAttachments({ attachments, task, board, group, setCoverImg, coverImg }) {
+export function TaskAttachments({ attachments, task, board, group }) {
   const [selectedAction, setSelectedAction] = useState(null);
-  console.log(attachments, coverImg);
+  const [selectedAttachmentId, setSelectedAttachmentId] = useState(null);
+  console.log(attachments);
   const buttonRef = useRef(null);
-  const openActionModal = (action) => {
+  const openActionModal = (action, attachmentId) => {
     setSelectedAction(action);
+    setSelectedAttachmentId(attachmentId);
   };
 
   const closeActionModal = () => {
@@ -87,12 +89,46 @@ export function TaskAttachments({ attachments, task, board, group, setCoverImg, 
 
   //   dispatch(updateBoard(updatedBoard))
   // }
-  function handleCoverClick(imgUrl) {
-    if (coverImg === imgUrl) {
-      setCoverImg(null); // Remove cover image from state
+  function handleCoverClick(imgId, imgUrl) {
+    const isCurrentCover = task.style.coverImg === imgUrl;
+
+    if (isCurrentCover) {
+      updateTaskCoverImg(null); // Remove cover image from the task
     } else {
-      setCoverImg(imgUrl); // Set current image as cover
+      updateTaskCoverImg(imgUrl); // Set current image as the cover
     }
+  }
+
+  async function updateTaskCoverImg(imgUrl) {
+    const updatedTasks = group.tasks.map((t) => {
+      if (t.id === task.id) {
+        return {
+          ...t,
+          style: {
+            ...t.style,
+            coverImg: imgUrl,
+          },
+        };
+      }
+      return t;
+    });
+
+    const updatedGroups = board.groups.map((g) => {
+      if (g.id === group.id) {
+        return {
+          ...g,
+          tasks: updatedTasks,
+        };
+      }
+      return g;
+    });
+
+    const updatedBoard = {
+      ...board,
+      groups: updatedGroups,
+    };
+
+    await dispatch(updateBoard(updatedBoard));
   }
 
   return (
@@ -114,12 +150,12 @@ export function TaskAttachments({ attachments, task, board, group, setCoverImg, 
                   <button className="attachment-button" onClick={() => deleteImg(attachment.id)}>
                     Delete
                   </button>
-                  <button className="attachment-button" ref={buttonRef} onClick={() => openActionModal('Edit Attachment')}>
+                  <button className="attachment-button" ref={buttonRef} onClick={() => openActionModal('Edit Attachment', attachment.id)}>
                     Edit
                   </button>
                 </div>
-                <button className="attachment-button" onClick={() => handleCoverClick(attachment.imgUrl)}>
-                  {coverImg === attachment.imgUrl ? 'Remove Cover' : 'Make Cover'}
+                <button className="attachment-button" onClick={() => handleCoverClick(attachment.id, attachment.imgUrl)}>
+                  {task.style.coverImg === attachment.imgUrl ? 'Remove Cover' : 'Make Cover'}
                 </button>
               </div>
             </li>
@@ -129,6 +165,7 @@ export function TaskAttachments({ attachments, task, board, group, setCoverImg, 
               action={selectedAction}
               onClose={closeActionModal}
               board={board}
+              attachmentId={selectedAttachmentId}
               task={task}
               group={group}
               triggerRef={buttonRef}

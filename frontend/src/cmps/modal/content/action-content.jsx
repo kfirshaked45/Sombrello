@@ -19,9 +19,11 @@ const actionComponents = {
   Cover: CoverContent,
 };
 
-export function ActionContent({ action, board, task, group }) {
+export function ActionContent({ action, board, task, group, attachmentId, onClose }) {
   const dispatch = useDispatch();
   const ContentComponent = actionComponents[action] || null;
 
-  return ContentComponent ? <ContentComponent board={board} task={task} group={group} dispatch={dispatch} /> : null;
+  return ContentComponent ? (
+    <ContentComponent board={board} task={task} group={group} dispatch={dispatch} attachmentId={attachmentId} onClose={onClose} />
+  ) : null;
 }

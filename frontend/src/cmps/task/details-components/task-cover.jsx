@@ -15,7 +15,7 @@ export function TaskCover({ style, task, group, board }) {
   // const coverImgBackgroundColor = coverImg ? utilService.getDominantColorFromImage(coverImg) : null;
   // console.log(coverImgBackgroundColor);
 
-  const backgroundColor = style?.coverColor ?? null;
+  const backgroundColor = style?.coverImg && !style?.coverColor ? 'white' : style?.coverColor || null;
 
   function onTaskClose(ev) {
     ev.stopPropagation();
@@ -35,7 +35,7 @@ export function TaskCover({ style, task, group, board }) {
       style={{
         backgroundColor: backgroundColor,
         height: !backgroundColor && 0,
-        // backgroundImage: `url(${coverImg})`,
+        backgroundImage: `url(${style.coverImg})`,
         // Center the background image horizontally and vertically
       }}
     >

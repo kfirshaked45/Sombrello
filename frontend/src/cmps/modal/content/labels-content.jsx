@@ -2,9 +2,11 @@ import { updateBoard } from '../../../store/board.actions';
 import { ReactComponent as PenIcon } from '../../../assets/img/board/pen-icon.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { useState } from 'react';
 
 export function LabelsContent({ board, group, task, dispatch }) {
-  
+  const [searchQuery, setSearchQuery] = useState('');
+
   const addLabel = (label) => {
     const updatedLabels = [...task.labels];
     const alreadyLabeledIndex = updatedLabels.findIndex((l) => l.id === label.id);
@@ -38,49 +40,54 @@ export function LabelsContent({ board, group, task, dispatch }) {
     const updatedBoard = { ...board, groups: updatedGroups };
     dispatch(updateBoard(updatedBoard));
   };
+
   function isAlreadyLabeled(label, task) {
     return task.labels.find((l) => l.id === label.id);
   }
 
+  const filteredLabels = board.labels.filter((label) => {
+    const lowerCaseQuery = searchQuery.toLowerCase();
+    const lowerCaseTitle = label.title.toLowerCase();
+    const lowerCaseColor = label.color.toLowerCase();
+
+    return lowerCaseTitle.includes(lowerCaseQuery) || lowerCaseColor.includes(lowerCaseQuery);
+  });
+
   return (
     <div className="labels-modal-container">
-      <input type="text" placeholder="Search labels..." className="search-labels-input" />
+      <input
+        type="text"
+        placeholder="Search labels..."
+        className="search-labels-input"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+      />
       <p>Labels</p>
       <div className="action-labels-container">
-        {board.labels &&
-          board.labels.map((label) => (
-            <div className="action-label-container">
-              <div
-                className="action-checkbox-input"
-                onClick={() => {
-                  addLabel(label);
-                }}
-              >
-                {isAlreadyLabeled(label, task) && <FontAwesomeIcon icon={faCheck} className="label-check-icon" />}
-              </div>
-              {/* <input
-                type="checkbox"
-                onClick={() => {
-                  addLabel(label);
-                }}
-                className="action-checkbox-input"
-                checked={isAlreadyLabeled(label, task)}
-              /> */}
-              <div
-                key={label.id}
-                style={{ backgroundColor: label.color }}
-                className="label-color-container"
-                onClick={() => {
-                  addLabel(label);
-                }}
-              >
-                {label.title}
-              </div>
-              <button className="pen-btn general-btn-styling">
-                <PenIcon />
-              </button>
+        {filteredLabels.map((label) => (
+          <div className="action-label-container" key={label.id}>
+            <div
+              className="action-checkbox-input"
+              onClick={() => {
+                addLabel(label);
+              }}
+            >
+              {isAlreadyLabeled(label, task) && <FontAwesomeIcon icon={faCheck} className="label-check-icon" />}
             </div>
-          ))}
+            <div
+              style={{ backgroundColor: label.color }}
+              className="label-color-container"
+              onClick={() => {
+                addLabel(label);
+              }}
+            >
+              {label.title}
+            </div>
+            <button className="pen-btn general-btn-styling">
+              <PenIcon />
+            </button>
+          </div>
+        ))}
       </div>
       <button className="create-label">Create a new label</button>
     </div>
