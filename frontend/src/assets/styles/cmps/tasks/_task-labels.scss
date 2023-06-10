@@ -1,7 +1,7 @@
 .task-labels {
   display: flex;
   gap: 5px;
-
+  flex-wrap: wrap;
   .label {
     align-items: center;
     display: flex;

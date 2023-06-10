@@ -103,10 +103,13 @@
   display: flex;
 }
 .member-modal {
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 0 12px 12px;
   position: absolute;
   background-color: white;
   color: black;
-  z-index: 1;
+  z-index: 6;
   top: rem(100px);
   right: rem(-80px);
   width: rem(304px);

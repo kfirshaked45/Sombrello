@@ -1,5 +1,5 @@
-import { updateBoard } from '../../../store/board.actions';
-import { ReactComponent as PenIcon } from '../../../assets/img/board/pen-icon.svg';
+import { updateBoard } from '../../../../store/board.actions';
+import { ReactComponent as PenIcon } from '../../../../assets/img/board/pen-icon.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';

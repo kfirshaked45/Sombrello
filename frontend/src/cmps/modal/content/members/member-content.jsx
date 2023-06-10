@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { updateBoard } from '../../../store/board.actions'
+import { updateBoard } from '../../../../store/board.actions'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
 
 const fixedMembers = [

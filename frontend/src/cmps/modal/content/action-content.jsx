@@ -1,12 +1,13 @@
 import React from 'react';
-import { MemberContent } from './member-content';
+import { MemberContent } from './members/member-content';
 import { useDispatch } from 'react-redux';
-import { LabelsContent } from './labels-content';
-import { DateContent } from './date-content';
-import { AttachmentsContent } from './attachments-content';
+import { LabelsContent } from './labels/labels-content';
+import { DateContent } from './dates/date-content';
+import { AttachmentsContent } from './attachment/attachments-content';
 import { GroupsContent } from './groups-content';
-import { EditAttachment } from './edit-attachment';
+import { EditAttachment } from './attachment/edit-attachment';
 import { CoverContent } from './cover-content';
+import { EditLabel } from './labels/edit-label';
 
 const actionComponents = {
   Members: MemberContent,
@@ -17,6 +18,7 @@ const actionComponents = {
   Group: GroupsContent,
   'Edit Attachment': EditAttachment,
   Cover: CoverContent,
+  EditLabel: EditLabel,
 };
 
 export function ActionContent({ action, board, task, group, attachmentId, onClose }) {

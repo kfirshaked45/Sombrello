@@ -1,4 +1,4 @@
-import { updateBoard } from '../../../store/board.actions';
+import { updateBoard } from '../../../../store/board.actions';
 import { DateRange } from 'react-date-range';
 import React, { useState } from 'react';
 import 'react-date-range/dist/styles.css'; // main style file

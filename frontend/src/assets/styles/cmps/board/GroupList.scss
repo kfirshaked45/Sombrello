@@ -33,12 +33,15 @@
 .list-header-extras-menu {
   background-color: inherit;
   color: $list-item-clr;
-  margin-inline-end: 8px;
-  margin-block-start: 4px;
+
   border-radius: 3px;
   width: 32px;
   height: 32px;
 }
+.list-header-extras-menu:hover {
+  background-color: $ds-background-neutral-hovered;
+}
+
 .group-list-item {
   width: 272px;
   background-color: $list-item-bgclr;

@@ -1,6 +1,6 @@
-import { utilService } from '../../../services/util.service';
-import { updateBoard } from '../../../store/board.actions';
-import { ImgUploader } from '../../img-uploader';
+import { utilService } from '../../../../services/util.service';
+import { updateBoard } from '../../../../store/board.actions';
+import { ImgUploader } from '../../../img-uploader';
 
 export function AttachmentsContent({ task, group, board, dispatch }) {
   function handleAddAttachment(attachment) {

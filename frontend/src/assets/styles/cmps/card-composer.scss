@@ -6,9 +6,9 @@
   line-height: 20px;
   margin-inline-end: 4px;
 
-    &:hover{
-      background-color: #0055CC;
-    }
+  &:hover {
+    background-color: #0055cc;
+  }
 }
 
 .card-composer-add-btn:hover {
@@ -27,6 +27,8 @@
   margin-bottom: 7px;
 }
 .card-composer-textarea {
+  outline: none;
+  resize: vertical;
   overflow: hidden;
   overflow-wrap: break-word;
   height: 40px;
@@ -66,4 +68,13 @@
 }
 .open-card-plus {
   margin-inline-end: 8px;
+}
+.x-icon-card {
+  height: 32px;
+  line-height: 32px;
+  width: 32px;
+}
+.x-icon-card:hover {
+  background-color: inherit;
+  filter: brightness(80%);
 }

@@ -1,29 +1,28 @@
-import { TaskPreview } from "../task/task-preview"
-import { useState } from "react"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faPen } from "@fortawesome/free-solid-svg-icons"
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd"
-import { useDispatch } from "react-redux"
-import { updateBoard } from "../../store/board.actions"
-import { Link, Navigate, useNavigate } from "react-router-dom"
-import { TaskAdd } from "./task-add"
+import { TaskPreview } from '../task/task-preview';
+import { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPen } from '@fortawesome/free-solid-svg-icons';
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
+import { useDispatch } from 'react-redux';
+import { updateBoard } from '../../store/board.actions';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { TaskAdd, TaskAddForm } from './task-add-form';
 
-export function TaskList({ board, group }) {
-  const [hoveredIndex, setHoveredIndex] = useState(null)
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+export function TaskList({ board, group, isEditable, handleCancel }) {
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  function handleMouseEnter(index){
-    setHoveredIndex(index)
+  function handleMouseEnter(index) {
+    setHoveredIndex(index);
   }
 
-  function handleMouseLeave(){
-    setHoveredIndex(null)
+  function handleMouseLeave() {
+    setHoveredIndex(null);
   }
 
   function handleTaskClicked(task) {
- 
-    navigate(`${group.id}/${task.id}`)
+    navigate(`${group.id}/${task.id}`);
   }
 
   return (
@@ -43,16 +42,15 @@ export function TaskList({ board, group }) {
                   onClick={() => handleTaskClicked(task)}
                 >
                   <TaskPreview board={board} groupId={group.id} task={task} />
-                  {hoveredIndex === index && (
-                    <FontAwesomeIcon icon={faPen} className="task-pen" />
-                  )}
+                  {hoveredIndex === index && <FontAwesomeIcon icon={faPen} className="task-pen" />}
                 </li>
               )}
             </Draggable>
           ))}
           {provided.placeholder}
+          {isEditable && <TaskAddForm board={board} group={group} handleCancel={handleCancel} />}
         </ul>
       )}
     </Droppable>
-  )
+  );
 }

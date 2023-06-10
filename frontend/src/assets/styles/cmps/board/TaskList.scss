@@ -176,10 +176,13 @@
   box-shadow: none;
   color: $list-item-clr;
   font-weight: 600;
+  font-size: 14px;
   height: 20px;
   margin: -4px 0;
   max-height: 256px;
   min-height: 20px;
+
+  width: 224px;
   padding: 4px 8px 4px 12px;
   resize: none;
   overflow: hidden;
@@ -204,4 +207,9 @@
   background-color: var(--collapsed-background-color, var(--ds-text, #172b4d));
   color: transparent;
   border-radius: 4px;
+}
+.list-header-name:focus {
+  box-shadow: inset 0 0 0 2px #0079bf;
+  outline: none;
+  background-color: #fff;
 }

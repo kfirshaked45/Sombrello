@@ -80,8 +80,7 @@
     .boards {
       height: 30px;
       border-radius: 3px;
-      font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-        Noto Sans, Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
       display: flex;
       align-items: center;
       padding: 8px 32px 6px 12px;
@@ -187,6 +186,11 @@
 
     img {
       border-radius: 25em;
+      height: 32px;
+      object-fit: cover;
+      width: 32px;
+      margin-inline-end: 8px;
+      cursor: pointer;
     }
   }
 }

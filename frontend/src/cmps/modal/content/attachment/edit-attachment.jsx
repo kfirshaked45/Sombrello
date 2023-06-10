@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { useDispatch } from 'react-redux';
-import { updateBoard } from '../../../store/board.actions';
+import { updateBoard } from '../../../../store/board.actions';
 
 export function EditAttachment({ attachmentId, board, group, task, onClose }) {
   const dispatch = useDispatch();

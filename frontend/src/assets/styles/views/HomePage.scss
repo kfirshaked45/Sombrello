@@ -4,10 +4,9 @@
   margin: 0 auto;
 
   .background-container {
-    background: url('//images.ctfassets.net/rz1oowkt5gyp/7lTGeXbBRNRLaVk2MdBjtJ/99c266ed4cb8cc63bd0c388071f01ff6/white-wave-bg.svg')
-        center bottom -0.5px/100% 14% no-repeat scroll padding-box border-box,
-      linear-gradient(60deg, rgb(82, 67, 170), rgb(237, 80, 180)) 0% 0% / auto
-        repeat scroll padding-box border-box rgb(82, 67, 170);
+    background: url('//images.ctfassets.net/rz1oowkt5gyp/7lTGeXbBRNRLaVk2MdBjtJ/99c266ed4cb8cc63bd0c388071f01ff6/white-wave-bg.svg') center
+        bottom -0.5px/100% 14% no-repeat scroll padding-box border-box,
+      linear-gradient(60deg, rgb(82, 67, 170), rgb(237, 80, 180)) 0% 0% / auto repeat scroll padding-box border-box rgb(82, 67, 170);
   }
 
   .main-layout {
@@ -36,6 +35,7 @@
       }
 
       .demo-btn {
+        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
         appearance: none;
         -webkit-box-align: center;
         align-items: center;

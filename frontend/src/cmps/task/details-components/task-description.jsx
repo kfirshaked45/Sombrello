@@ -65,7 +65,7 @@ export function TaskDescription({ description, task, group, board }) {
         <TfiAlignLeft className="icon-description" />
 
         <h3 className="description-title">
-          Description{' '}
+          Description
           {!isEditing && (
             <button className="description-edit-btn general-btn-styling" onClick={() => setIsEditing(true)}>
               Edit
