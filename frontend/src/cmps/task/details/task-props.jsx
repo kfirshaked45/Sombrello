@@ -5,8 +5,7 @@ import { TaskDates } from './task-dates';
 import { useRef, useState } from 'react';
 import { ActionModal } from '../../modal/action-modal';
 
-export function TaskProps({ members, selectedMember, task, board, group }) {
-
+export function TaskProps({ members, task, board, group }) {
   const [selectedAction, setSelectedAction] = useState(null);
   const addButtonRef = useRef(null);
   const openActionModal = (action) => {

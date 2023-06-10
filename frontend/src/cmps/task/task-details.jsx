@@ -19,6 +19,7 @@ export function TaskDetails() {
 
   const screenRef = useRef();
   const [selectedMember, setSelectedMember] = useState(null);
+  const [coverImg, setCoverImg] = useState(null);
   if (!task) return <div>'NO TASK FOUND'</div>;
 
   return (
@@ -27,7 +28,7 @@ export function TaskDetails() {
       <section className="screen">
         <section ref={screenRef} className="task-details" onClick={(ev) => ev.stopPropagation()} aria-label={task.title}>
           <div className="task-details">
-            <TaskCover className="cover-component" color={task.style} />
+            <TaskCover className="cover-component" color={task.style} coverImg={coverImg} />
             <TaskTitleEdit task={task} board={board} taskId={taskId} group={group} />
             <TaskGrid
               members={members}
@@ -36,6 +37,8 @@ export function TaskDetails() {
               board={board}
               group={group}
               hasAttachments={hasAttachments}
+              setCoverImg={setCoverImg}
+              coverImg={coverImg}
             />
           </div>
         </section>

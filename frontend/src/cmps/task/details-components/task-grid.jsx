@@ -5,8 +5,7 @@ import { TaskDescription } from './task-description';
 import { TaskSidebar } from './task-sidebar';
 import { TaskActivity } from './task-activity';
 
-export function TaskGrid({ members, selectedMember, task, board, group, hasAttachments }) {
-
+export function TaskGrid({ members, selectedMember, task, board, group, hasAttachments, setCoverImg, coverImg }) {
   return (
     <div className="task-grid ">
       <div className="task-column">
@@ -14,7 +13,14 @@ export function TaskGrid({ members, selectedMember, task, board, group, hasAttac
         <TaskDescription description={task?.desc} task={task} board={board} group={group} />
 
         <div className="attachments-section">
-          <TaskAttachments attachments={task.attachments} />
+          <TaskAttachments
+            attachments={task.attachments}
+            task={task}
+            coverImg={coverImg}
+            board={board}
+            group={group}
+            setCoverImg={setCoverImg}
+          />
         </div>
         <TaskActivity task={task} board={board} group={group} />
       </div>

@@ -88,8 +88,9 @@
 }
 .attachment-img {
   width: 112px;
-  height: 82px;
-  object-fit: contain;
+  height: 80px;
+  border-radius: 3px;
+  object-fit: fill;
 }
 .title-icon-container {
   display: flex;
@@ -186,11 +187,15 @@
 .attachment-btn-container {
   display: flex;
   margin-bottom: 8px;
+  white-space: nowrap;
 }
 .attachment-button {
   text-decoration: underline;
   font-size: 14px;
   color: #000000a3;
+}
+.attachment-button:hover {
+  background-color: inherit;
 }
 .attachment-date {
   color: #000000a3;
@@ -204,6 +209,8 @@
 }
 .attachment-container {
   margin-left: 70px;
+  min-height: 84px;
+  margin-bottom: 8px;
 }
 .attachment-container:hover {
   background-color: $bgcolor-hover-color;

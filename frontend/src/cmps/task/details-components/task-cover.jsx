@@ -4,9 +4,13 @@ import { useNavigate } from 'react-router-dom';
 
 import { AiOutlineClose } from 'react-icons/ai';
 import { MdCallToAction } from 'react-icons/md';
+import { utilService } from '../../../services/util.service';
 
-export function TaskCover({ color }) {
+export function TaskCover({ color, coverImg }) {
+  
   const navigate = useNavigate();
+  // const coverImgBackgroundColor = coverImg ? utilService.getDominantColorFromImage(coverImg) : null;
+  // console.log(coverImgBackgroundColor);
 
   const backgroundColor = color?.coverColor ?? null;
 
@@ -16,7 +20,15 @@ export function TaskCover({ color }) {
   }
 
   return (
-    <div className="task-cover" style={{ backgroundColor: backgroundColor, height: !backgroundColor && 0 }}>
+    <div
+      className="task-cover"
+      style={{
+        backgroundColor: backgroundColor,
+        height: !backgroundColor && 0,
+        backgroundImage: `url(${coverImg})`,
+        // Center the background image horizontally and vertically
+      }}
+    >
       <div className="call-to-action">
         <MdCallToAction className="cta-icon" />
         <span className="cta-text">Cover</span>

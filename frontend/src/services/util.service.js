@@ -13,6 +13,7 @@ export const utilService = {
   formatDate,
   hasTimestampPassed,
   formatDateAttachment,
+  getDominantColorFromImage,
 };
 
 function makeId(length = 6) {
@@ -196,4 +197,52 @@ function formatDateAttachment(dateStr) {
 
   const formattedString = `Added at ${formattedDate} by`;
   return formattedString;
+}
+
+function getDominantColorFromImage(imgUrl) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.src = imgUrl;
+
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      const context = canvas.getContext('2d');
+      canvas.width = img.width;
+      canvas.height = img.height;
+      context.drawImage(img, 0, 0, img.width, img.height);
+      const imageData = context.getImageData(0, 0, img.width, img.height);
+      const pixels = imageData.data;
+
+      // Count color occurrences
+      const colorOccurrences = {};
+      for (let i = 0; i < pixels.length; i += 4) {
+        const r = pixels[i];
+        const g = pixels[i + 1];
+        const b = pixels[i + 2];
+        const rgb = `rgb(${r},${g},${b})`;
+
+        if (colorOccurrences[rgb]) {
+          colorOccurrences[rgb]++;
+        } else {
+          colorOccurrences[rgb] = 1;
+        }
+      }
+
+      // Find the dominant color
+      let dominantColor = null;
+      let maxOccurrences = 0;
+      for (const color in colorOccurrences) {
+        if (colorOccurrences[color] > maxOccurrences) {
+          dominantColor = color;
+          maxOccurrences = colorOccurrences[color];
+        }
+      }
+
+      resolve(dominantColor);
+    };
+
+    img.onerror = () => {
+      reject(new Error('Failed to load image'));
+    };
+  });
 }

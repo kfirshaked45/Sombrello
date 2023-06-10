@@ -1,8 +1,8 @@
-import { storageService } from './async-storage.service.js'
-import { utilService } from './util.service.js'
-import { userService } from './user.service.js'
+import { storageService } from './async-storage.service.js';
+import { utilService } from './util.service.js';
+import { userService } from './user.service.js';
 
-const STORAGE_KEY = 'board'
+const STORAGE_KEY = 'board';
 
 export const boardService = {
   query,
@@ -12,70 +12,68 @@ export const boardService = {
   getEmptyBoard,
   addBoardMsg,
   createDemoBoard,
-}
-window.cs = boardService
+};
+window.cs = boardService;
 
 async function query(filterBy = { txt: '', price: 0 }) {
-  var boards = await storageService.query(STORAGE_KEY)
+  var boards = await storageService.query(STORAGE_KEY);
   if (filterBy.txt) {
-    const regex = new RegExp(filterBy.txt, 'i')
-    boards = boards.filter(
-      (board) => regex.test(board.vendor) || regex.test(board.description)
-    )
+    const regex = new RegExp(filterBy.txt, 'i');
+    boards = boards.filter((board) => regex.test(board.vendor) || regex.test(board.description));
   }
   if (filterBy.price) {
-    boards = boards.filter((board) => board.price <= filterBy.price)
+    boards = boards.filter((board) => board.price <= filterBy.price);
   }
-  console.log(boards)
-  return boards
+  console.log(boards);
+  return boards;
 }
 
 function getById(boardId) {
-  return storageService.get(STORAGE_KEY, boardId)
+  return storageService.get(STORAGE_KEY, boardId);
 }
 
 async function remove(boardId) {
   // throw new Error('Nope')
-  await storageService.remove(STORAGE_KEY, boardId)
+  await storageService.remove(STORAGE_KEY, boardId);
 }
 
 async function save(board) {
-  var savedBoard
+  var savedBoard;
   if (board._id) {
-    savedBoard = await storageService.put(STORAGE_KEY, board)
+    savedBoard = await storageService.put(STORAGE_KEY, board);
   } else {
     // Later, owner is set by the backend
-    board.owner = userService.getLoggedInUser()
-    savedBoard = await storageService.post(STORAGE_KEY, board)
+    board.owner = userService.getLoggedInUser();
+    savedBoard = await storageService.post(STORAGE_KEY, board);
   }
-  return savedBoard
+  return savedBoard;
 }
 
 async function addBoardMsg(boardId, txt) {
   // Later, this is all done by the backend
-  const board = await getById(boardId)
-  if (!board.msgs) board.msgs = []
+  const board = await getById(boardId);
+  if (!board.msgs) board.msgs = [];
 
   const msg = {
     id: utilService.makeId(),
     by: userService.getLoggedInUser(),
     txt,
-  }
-  board.msgs.push(msg)
-  await storageService.put(STORAGE_KEY, board)
+  };
+  board.msgs.push(msg);
+  await storageService.put(STORAGE_KEY, board);
 
-  return msg
+  return msg;
 }
 
 function getEmptyBoard() {
   return {
     vendor: 'Susita-' + (Date.now() % 1000),
     price: utilService.getRandomIntInclusive(1000, 9000),
-  }
+  };
 }
 
 async function createDemoBoard() {
-  var boards = await storageService.query(STORAGE_KEY)
+  var boards = await storageService.query(STORAGE_KEY);
 
   if (!boards || boards.length === 0) {
     boards = [
@@ -94,20 +92,17 @@ async function createDemoBoard() {
           {
             _id: 'u101',
             fullname: 'Kfir Shaked',
-            imgUrl:
-              'https://trello-members.s3.amazonaws.com/647734a4a5064966da66d1ff/fe934ab149781128aee1cf07052df42a/original.png',
+            imgUrl: 'https://trello-members.s3.amazonaws.com/647734a4a5064966da66d1ff/fe934ab149781128aee1cf07052df42a/original.png',
           },
           {
             _id: 'u102',
             fullname: 'Ofek Rashti',
-            imgUrl:
-              'https://trello-members.s3.amazonaws.com/6477341a7c73ea6a6522a0bf/e4ccab819753313eb1cad1c7d6158cd7/original.png',
+            imgUrl: 'https://trello-members.s3.amazonaws.com/6477341a7c73ea6a6522a0bf/e4ccab819753313eb1cad1c7d6158cd7/original.png',
           },
           {
             _id: 'u103',
             fullname: 'Omer Hassin',
-            imgUrl:
-              'https://trello-members.s3.amazonaws.com/64770c06c6132f81928b9788/efeedf2ef41cde391f77cd8dbeca21e8/original.png',
+            imgUrl: 'https://trello-members.s3.amazonaws.com/64770c06c6132f81928b9788/efeedf2ef41cde391f77cd8dbeca21e8/original.png',
           },
         ],
         groups: [
@@ -153,8 +148,7 @@ async function createDemoBoard() {
                     id: 'img2',
                     imageName: 'lightning.jpg',
                     uploadedAt: '2023-06-09T13:25:27.792Z',
-                    imgUrl:
-                      'https://res.cloudinary.com/djrnw05sb/image/upload/v1685953579/trello/routing-directory_i7iskr.jpg',
+                    imgUrl: 'https://res.cloudinary.com/djrnw05sb/image/upload/v1685953579/trello/routing-directory_i7iskr.jpg',
                   },
                 ],
                 dueDate: { timeStamp: '', isDone: false },
@@ -219,8 +213,7 @@ async function createDemoBoard() {
                     id: 'img10',
                     imageName: 'hourglass.jpg',
                     uploadedAt: '2023-06-09T13:25:27.792Z',
-                    imgUrl:
-                      'https://res.cloudinary.com/djrnw05sb/image/upload/v1685953580/trello/asset_6_ey9fby.jpg',
+                    imgUrl: 'https://res.cloudinary.com/djrnw05sb/image/upload/v1685953580/trello/asset_6_ey9fby.jpg',
                   },
                 ],
                 dueDate: { timeStamp: 1672608000000, isDone: false },
@@ -346,8 +339,7 @@ async function createDemoBoard() {
                     id: 'img3',
                     imageName: 'npm.jpg',
                     uploadedAt: '2023-06-09T13:25:27.792Z',
-                    imgUrl:
-                      'https://res.cloudinary.com/djrnw05sb/image/upload/v1685953581/trello/asset_7_wmthnj.png',
+                    imgUrl: 'https://res.cloudinary.com/djrnw05sb/image/upload/v1685953581/trello/asset_7_wmthnj.png',
                   },
                 ],
                 dueDate: { timeStamp: '', isDone: false },
@@ -389,8 +381,7 @@ async function createDemoBoard() {
                     id: 'img115',
                     imageName: 'writing.jpg',
                     uploadedAt: '2023-06-09T13:25:27.792Z',
-                    imgUrl:
-                      'https://res.cloudinary.com/djrnw05sb/image/upload/v1685953581/trello/asset_8_qxvvvi.jpg',
+                    imgUrl: 'https://res.cloudinary.com/djrnw05sb/image/upload/v1685953581/trello/asset_8_qxvvvi.jpg',
                   },
                 ],
                 dueDate: { timeStamp: '', isDone: false },
@@ -408,8 +399,7 @@ async function createDemoBoard() {
                     id: 'img4',
                     imageName: 'phone.jpg',
                     uploadedAt: '2023-06-09T13:25:27.792Z',
-                    imgUrl:
-                      'https://res.cloudinary.com/djrnw05sb/image/upload/v1685953581/trello/asset_9_ho1voy.jpg',
+                    imgUrl: 'https://res.cloudinary.com/djrnw05sb/image/upload/v1685953581/trello/asset_9_ho1voy.jpg',
                   },
                 ],
                 dueDate: { timeStamp: '', isDone: false },
@@ -483,8 +473,7 @@ async function createDemoBoard() {
                     id: 'img159',
                     imageName: 'phone2.jpg',
                     uploadedAt: '2023-06-09T13:25:27.792Z',
-                    imgUrl:
-                      'https://res.cloudinary.comcom/djrnw05sb/image/upload/v1685953581/trello/asset_10_mxuike.jpg',
+                    imgUrl: 'https://res.cloudinary.com/djrnw05sb/image/upload/v1685953581/trello/asset_9_ho1voy.jpg',
                   },
                 ],
                 dueDate: { timeStamp: 1685760000000, isDone: false },
@@ -526,9 +515,7 @@ async function createDemoBoard() {
                 ],
                 attachments: [],
                 dueDate: { timeStamp: '', isDone: false },
-                comments: [
-                  { txt: 'add description', by: 'u101', at: Date.now() },
-                ],
+                comments: [{ txt: 'add description', by: 'u101', at: Date.now() }],
               },
               {
                 title: 'making functions and mixins',
@@ -571,8 +558,7 @@ async function createDemoBoard() {
                     id: 'img5',
                     imageName: 'bug.jpg',
                     uploadedAt: '2023-06-09T13:25:27.792Z',
-                    imgUrl:
-                      'https://res.cloudinary.com/djrnw05sb/image/upload/v1685953571/trello/asset_12_akveuk.jpg',
+                    imgUrl: 'https://res.cloudinary.com/djrnw05sb/image/upload/v1685953571/trello/asset_12_akveuk.jpg',
                   },
                 ],
                 dueDate: { timeStamp: '', isDone: false },
@@ -619,9 +605,7 @@ async function createDemoBoard() {
                 ],
                 attachments: [],
                 dueDate: { timeStamp: '', isDone: false },
-                comments: [
-                  { txt: 'add due date!', by: 'u102', at: Date.now() },
-                ],
+                comments: [{ txt: 'add due date!', by: 'u102', at: Date.now() }],
               },
               {
                 title: '',
@@ -635,8 +619,7 @@ async function createDemoBoard() {
                     id: 'img6',
                     imageName: 'npm.jpg',
                     uploadedAt: '2023-06-09T13:25:27.792Z',
-                    imgUrl:
-                      'https://res.cloudinary.com/djrnw05sb/image/upload/v1685953581/trello/asset_7_wmthnj.png',
+                    imgUrl: 'https://res.cloudinary.com/djrnw05sb/image/upload/v1685953581/trello/asset_7_wmthnj.png',
                   },
                 ],
                 dueDate: { timeStamp: '', isDone: false },
@@ -654,8 +637,7 @@ async function createDemoBoard() {
                     id: 'img7',
                     imageName: 'register-login-layout.jpg',
                     uploadedAt: '2023-06-09T13:25:27.792Z',
-                    imgUrl:
-                      'https://res.cloudinary.com/djrnw05sb/image/upload/v1685953571/trello/asset_11_xjhkai.jpg',
+                    imgUrl: 'https://res.cloudinary.com/djrnw05sb/image/upload/v1685953571/trello/asset_11_xjhkai.jpg',
                   },
                 ],
                 dueDate: { timeStamp: '', isDone: false },
@@ -669,8 +651,7 @@ async function createDemoBoard() {
             id: 'g105',
             tasks: [
               {
-                title:
-                  'Meeting with head manager for planning the code progress',
+                title: 'Meeting with head manager for planning the code progress',
                 id: 't501',
                 members: [],
                 style: {},
@@ -761,8 +742,7 @@ async function createDemoBoard() {
                     id: 'img8',
                     imageName: 'students.jpg',
                     uploadedAt: '2023-06-09T13:25:27.792Z',
-                    imgUrl:
-                      'https://res.cloudinary.com/djrnw05sb/image/upload/v1685953571/trello/asset_13_q3o5uw.jpg',
+                    imgUrl: 'https://res.cloudinary.com/djrnw05sb/image/upload/v1685953571/trello/asset_13_q3o5uw.jpg',
                   },
                 ],
                 dueDate: { timeStamp: '', isDone: false },
@@ -838,8 +818,7 @@ async function createDemoBoard() {
                     id: 'img1',
                     imageName: 'react.jpg',
                     uploadedAt: '2023-06-09T13:25:27.792Z',
-                    imgUrl:
-                      'https://res.cloudinary.com/djrnw05sb/image/upload/v1685953571/trello/asset_14_jdfund.jpg',
+                    imgUrl: 'https://res.cloudinary.com/djrnw05sb/image/upload/v1685953571/trello/asset_14_jdfund.jpg',
                   },
                 ],
                 dueDate: { timeStamp: '', isDone: false },
@@ -921,14 +900,12 @@ async function createDemoBoard() {
           {
             _id: 'u101',
             fullname: 'Tal Tarablus',
-            imgUrl:
-              'https://trello-members.s3.amazonaws.com/647734a4a5064966da66d1ff/fe934ab149781128aee1cf07052df42a/original.png',
+            imgUrl: 'https://trello-members.s3.amazonaws.com/647734a4a5064966da66d1ff/fe934ab149781128aee1cf07052df42a/original.png',
           },
           {
             _id: 'u102',
             fullname: 'John Smith',
-            imgUrl:
-              'https://trello-members.s3.amazonaws.com/6477341a7c73ea6a6522a0bf/e4ccab819753313eb1cad1c7d6158cd7/original.png',
+            imgUrl: 'https://trello-members.s3.amazonaws.com/6477341a7c73ea6a6522a0bf/e4ccab819753313eb1cad1c7d6158cd7/original.png',
           },
         ],
         groups: [
@@ -1058,14 +1035,12 @@ async function createDemoBoard() {
           {
             _id: 'u101',
             fullname: 'Tal Tarablus',
-            imgUrl:
-              'https://trello-members.s3.amazonaws.com/647734a4a5064966da66d1ff/fe934ab149781128aee1cf07052df42a/original.png',
+            imgUrl: 'https://trello-members.s3.amazonaws.com/647734a4a5064966da66d1ff/fe934ab149781128aee1cf07052df42a/original.png',
           },
           {
             _id: 'u102',
             fullname: 'John Smith',
-            imgUrl:
-              'https://trello-members.s3.amazonaws.com/6477341a7c73ea6a6522a0bf/e4ccab819753313eb1cad1c7d6158cd7/original.png',
+            imgUrl: 'https://trello-members.s3.amazonaws.com/6477341a7c73ea6a6522a0bf/e4ccab819753313eb1cad1c7d6158cd7/original.png',
           },
         ],
         groups: [
@@ -1183,10 +1158,10 @@ async function createDemoBoard() {
           },
         ],
       },
-    ]
+    ];
 
     for (const board of boards) {
-      await storageService.post(STORAGE_KEY, board)
+      await storageService.post(STORAGE_KEY, board);
     }
     // await storageService.post(STORAGE_KEY, board1)
     // await storageService.post(STORAGE_KEY, board2)
