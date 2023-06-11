@@ -150,12 +150,14 @@ export function TaskAttachments({ attachments, task, board, group }) {
                   <button className="attachment-button" onClick={() => deleteImg(attachment.id)}>
                     Delete
                   </button>
+                  <span className='dot-seperator'>·</span>
                   <button className="attachment-button" ref={buttonRef} onClick={() => openActionModal('Edit Attachment', attachment.id)}>
                     Edit
                   </button>
+                  <span className='dot-seperator'>·</span>
                 </div>
                 <button className="attachment-button" onClick={() => handleCoverClick(attachment.id, attachment.imgUrl)}>
-                  {task.style.coverImg === attachment.imgUrl ? 'Remove Cover' : 'Make Cover'}
+                  {task.style.coverImg === attachment.imgUrl ? 'Remove cover' : 'Make cover'}
                 </button>
               </div>
             </li>

@@ -50,13 +50,14 @@
   padding: 8px 0;
   position: relative;
 }
+
 .main-content-text-area {
   cursor: pointer;
   background-color: #091e420a;
   border: none;
   width: 95%;
   margin-left: 70px;
-  border-radius: 3px;
+  border-radius: 4px;
   box-shadow: none;
   color: var(--ds-text, inherit);
   display: block;
@@ -321,4 +322,21 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   width: 100%;
+}
+
+// .attachment-btn-container {
+//   display: flex;
+//   align-items: center;
+
+//   .dot-separator {
+//     width: 4px;
+//     height: 4px;
+//     background-color: $clr4;
+//     border-radius: 50%;
+//     margin: 0 0px;
+//   }
+// }
+
+.dot-seperator{
+  font-size: 18px;
 }
