@@ -17,24 +17,26 @@ export function ActivityDetails({ board }) {
     if (diffMinutes < 60) {
       return `${diffMinutes} min${diffMinutes !== 1 ? 's' : ''} ago`;
     } else if (diffHours < 24) {
-      return `${diffHours} hr${diffHours !== 1 ? 's' : ''} ago`;
+      return `an hour${diffHours !== 1 ? 's' : ''} ago`;
     } else if (diffDays === 1) {
-      return `Yesterday, ${createdDate.getHours()}:00`;
+      return `yesterday at${createdDate.getHours()}:${createdDate.getMinutes()}`;
     } else if (now.getFullYear() === createdDate.getFullYear()) {
       const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
       const month = monthNames[createdDate.getMonth()];
       const day = createdDate.getDate();
       const hour = createdDate.getHours();
-      return `${month} ${day}, ${hour}:00`;
+      const minutes = createdDate.getMinutes();
+      return `${month} ${day} at ${hour}:${minutes}`;
     } else {
       const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
       const month = monthNames[createdDate.getMonth()];
       const day = createdDate.getDate();
       const hour = createdDate.getHours();
-      return `${month} ${day}, ${createdDate.getFullYear()}, ${hour}:00`;
+      const minutes = createdDate.getMinutes();
+      return `${month} ${day}, ${createdDate.getFullYear()} at ${hour}:${minutes}`;
     }
   }
-
+  const sortedActivities = [...board.activities].sort((a, b) => b.createdAt - a.createdAt);
   return (
     <div className="activity-details">
       <button className="activity-top-container">
@@ -44,7 +46,7 @@ export function ActivityDetails({ board }) {
         <span className="activity-top-text">Activity</span>
       </button>
       <div className="activities-container">
-        {board.activities.map((activity) => (
+        {sortedActivities.map((activity) => (
           <div key={activity.id} className="activity-user-container">
             <img src={activity.byMember.imgUrl} alt="user-img" className="activity-user-img" />
             <div className="activity-user-text-container">

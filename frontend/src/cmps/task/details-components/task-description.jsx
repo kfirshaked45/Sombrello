@@ -66,7 +66,7 @@ export function TaskDescription({ description, task, group, board }) {
 
         <h3 className="description-title">
           Description
-          {!isEditing && (
+          {!isEditing && editorValue && (
             <button className="description-edit-btn general-btn-styling" onClick={() => setIsEditing(true)}>
               Edit
             </button>

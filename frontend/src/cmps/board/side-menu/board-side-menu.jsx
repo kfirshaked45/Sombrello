@@ -45,7 +45,7 @@ export const BoardSideMenu = ({ isOpen, onCloseSideMenu, changeBackground, board
   };
 
   return (
-    <section className={`board-side-menu ${isOpen}`}>
+    <section className={`board-side-menu ${isOpen} `}>
       <section className="header">
         {title !== 'Menu' && <IoIosArrowBack className="go-back" onClick={onGoBack} />}
         <h3>
@@ -74,9 +74,11 @@ export const BoardSideMenu = ({ isOpen, onCloseSideMenu, changeBackground, board
           </svg>
         </section>
       </section>
-      <section className="divider-side"></section>
-      {getCmp()}
-      <ActivityDetails board={board} />
+      <div className="side-menu-scroller u-fancy-scrollbar">
+        <section className="divider-side"></section>
+        {getCmp()}
+        <ActivityDetails board={board} />
+      </div>
     </section>
   );
 };

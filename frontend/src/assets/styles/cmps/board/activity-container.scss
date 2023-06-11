@@ -18,6 +18,8 @@
 .activity-user-text-container {
   word-wrap: break-word;
   margin: 0;
+
+  text-align: start;
   display: block;
   width: 239px;
 }
@@ -30,8 +32,43 @@
   padding: 8px 6px 8px 12px;
 }
 .activity-created-at {
+  color: var(--ds-text-subtle, #5e6c84);
   font-size: 12px;
   margin: 0;
   min-width: 110px;
   text-align: start;
+}
+.activity-icon {
+  font-size: 20px;
+  height: 20px;
+  color: #172b4d;
+  line-height: 20px;
+  margin-inline-end: 10px;
+}
+.activity-icon svg {
+  color: #172b4d;
+  font-size: 20px;
+  height: 20px;
+  color: #172b4d;
+  line-height: 20px;
+  font-weight: 600;
+}
+.activity-top-container {
+  color: #172b4d !important;
+  padding: 6px 6px 6px 20px !important;
+  width: 100%;
+}
+.activity-top-container:hover {
+  background-color: rgba(9, 30, 66, 0.0784313725) !important;
+}
+.activity-top-text {
+  border-radius: 3px;
+  color: var(--ds-text-subtle, inherit);
+  display: block;
+  font-weight: 600;
+  line-height: 20px;
+  text-decoration: none;
+}
+.activity-text {
+  font-size: 12px;
 }
