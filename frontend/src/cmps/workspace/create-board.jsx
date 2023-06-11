@@ -36,6 +36,15 @@ export const CreateBoard = ({ setActionModal }) => {
         'https://images.unsplash.com/photo-1470723710355-95304d8aece4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjU5OTZ8MHwxfHNlYXJjaHwyOHx8YnVpbGRpbmd8ZW58MHx8fHwxNjYzOTUyOTgw&ixlib=rb-1.2.1&q=80&w=400',
     },
   ];
+  const labels = [
+    { id: 1, color: '#4bce97', title: '' },
+    { id: 2, color: '#e2b203', title: '' },
+    { id: 3, color: '#faa53d', title: '' },
+    { id: 4, color: '#f87462', title: '' },
+    { id: 5, color: '#9f8fef', title: '' },
+    { id: 6, color: '#579dff', title: '' },
+    { id: 7, color: '#94c748', title: '' },
+  ];
   const colors = [
     'rgb(0, 121, 191)',
     'rgb(210, 144, 52)',
@@ -70,7 +79,7 @@ export const CreateBoard = ({ setActionModal }) => {
       handleCloseModal();
     }
 
-    const board = { title, style };
+    const board = { title, style, labels };
     dispatch(addBoard(board));
   };
 

@@ -10,8 +10,10 @@ export function LabelsContent({ board, group, task, dispatch }) {
   const [selectedAction, setSelectedAction] = useState();
   const [labelId, setLabelId] = useState();
   const actionButtonRef = useRef();
+  console.log(board.labels);
+
   function addLabel(label) {
-    const updatedLabels = [...task.labels];
+    const updatedLabels = [...(task.labels || [])];
 
     const alreadyLabeledIndex = updatedLabels.findIndex((l) => l.id === label.id);
 
@@ -49,20 +51,25 @@ export function LabelsContent({ board, group, task, dispatch }) {
     setSelectedAction(action);
     setLabelId(labelId);
   }
+
   function isAlreadyLabeled(label, task) {
-    return task.labels.find((l) => l.id === label.id);
+    return task.labels && task.labels.find((l) => l.id === label.id);
   }
 
-  const filteredLabels = board.labels.filter((label) => {
-    const lowerCaseQuery = searchQuery.toLowerCase();
-    const lowerCaseTitle = label.title.toLowerCase();
-    const lowerCaseColor = label.color.toLowerCase();
+  const filteredLabels = Array.isArray(board.labels)
+    ? board.labels.filter((label) => {
+        const lowerCaseQuery = searchQuery.toLowerCase();
+        const lowerCaseTitle = label.title ? label.title.toLowerCase() : '';
+        const lowerCaseColor = label.color ? label.color.toLowerCase() : '';
 
-    return lowerCaseTitle.includes(lowerCaseQuery) || lowerCaseColor.includes(lowerCaseQuery);
-  });
+        return lowerCaseTitle.includes(lowerCaseQuery) || lowerCaseColor.includes(lowerCaseQuery);
+      })
+    : [];
+
   function closeActionModal() {
     setSelectedAction(null);
   }
+
   return (
     <div>
       <div className="labels-modal-container">
