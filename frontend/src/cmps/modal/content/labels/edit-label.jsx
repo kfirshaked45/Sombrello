@@ -72,7 +72,9 @@ export function EditLabel({ board, task, group, labelId }) {
   };
 
   const handleDelete = () => {
-    // Handle delete logic here
+    const updatedLabels = board.labels.filter((label) => label.id !== labelId);
+    const updatedBoard = { ...board, labels: updatedLabels };
+    dispatch(updateBoard(updatedBoard));
   };
 
   return (
