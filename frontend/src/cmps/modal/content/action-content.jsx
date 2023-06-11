@@ -18,14 +18,22 @@ const actionComponents = {
   Group: GroupsContent,
   'Edit Attachment': EditAttachment,
   Cover: CoverContent,
-  EditLabel: EditLabel,
+  'Edit Label': EditLabel,
 };
 
-export function ActionContent({ action, board, task, group, attachmentId, onClose }) {
+export function ActionContent({ action, board, task, group, attachmentId, onClose, labelId }) {
   const dispatch = useDispatch();
   const ContentComponent = actionComponents[action] || null;
 
   return ContentComponent ? (
-    <ContentComponent board={board} task={task} group={group} dispatch={dispatch} attachmentId={attachmentId} onClose={onClose} />
+    <ContentComponent
+      board={board}
+      task={task}
+      group={group}
+      dispatch={dispatch}
+      attachmentId={attachmentId}
+      onClose={onClose}
+      labelId={labelId}
+    />
   ) : null;
 }

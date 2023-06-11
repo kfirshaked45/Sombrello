@@ -14,11 +14,11 @@
 .card-composer-add-btn:hover {
   background-color: $btn-hovered;
 }
-.card-composer-textarea-container {
-  padding: 8px 8px 4px 12px;
-  box-shadow: 0px 1px 1px rgba(9, 30, 66, 0.2509803922), 0px 0px 1px rgba(9, 30, 66, 0.3098039216);
-  border: none;
-  border-radius: 8px;
+  .card-composer-textarea-container {
+    padding: 8px 8px 4px 12px;
+    box-shadow: 0px 1px 1px rgba(9, 30, 66, 0.2509803922), 0px 0px 1px rgba(9, 30, 66, 0.3098039216);
+    border: none;
+    border-radius: 8px;
   flex-grow: 1;
   position: relative;
   z-index: 10;
@@ -58,6 +58,8 @@
   margin: 8px;
   padding: 4px 8px 4px 6px;
   text-align: left;
+  height: 28px;
+  height: 28px;
   flex-grow: 1;
   color: rgb(68, 84, 111);
   text-align: left;

@@ -3,7 +3,7 @@ import { utilService } from '../../services/util.service';
 import React, { useState, useRef, useLayoutEffect, useEffect } from 'react';
 import { ActionContent } from './content/action-content';
 
-export function ActionModal({ action, onClose, board, task, group, triggerRef, attachmentId }) {
+export function ActionModal({ action, onClose, board, task, group, triggerRef, attachmentId, labelId }) {
   const [modalTopPos, setModalTopPos] = useState(null);
   const modalRef = useRef(null);
 
@@ -33,7 +33,15 @@ export function ActionModal({ action, onClose, board, task, group, triggerRef, a
         <div>{action}</div>
         <XIcon onClick={onClose} className="action-modal-x" />
       </div>
-      <ActionContent action={action} board={board} task={task} group={group} attachmentId={attachmentId} onClose={onClose} />
+      <ActionContent
+        action={action}
+        board={board}
+        task={task}
+        group={group}
+        attachmentId={attachmentId}
+        onClose={onClose}
+        labelId={labelId}
+      />
     </div>
   );
 }

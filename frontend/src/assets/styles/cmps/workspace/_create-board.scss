@@ -4,8 +4,9 @@
   flex-direction: column;
   position: absolute;
   background-color: #fff;
-  right: 300px;
+  right: 250px;
   z-index: 100;
+  box-shadow: var(--ds-shadow-overlay, 0 8px 16px -4px rgba(9, 30, 66, 0.25), 0 0 0 1px rgba(9, 30, 66, 0.08));
 
   .new-board-container {
     width: 200px;
@@ -48,7 +49,7 @@
       display: flex;
       align-items: center;
       position: absolute;
-      top: 0;
+      top: 7px;
       right: 0;
       padding: 4px;
     }

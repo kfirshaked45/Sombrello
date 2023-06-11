@@ -40,7 +40,7 @@ export function TaskAddForm({ board, group, handleCancel }) {
 
     const updatedBoard = { ...board, groups: updatedGroups };
     setTask('');
-    handleCancel();
+
     dispatch(updateBoard(updatedBoard));
   }
 

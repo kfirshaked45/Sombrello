@@ -146,7 +146,7 @@ export function TaskAttachments({ attachments, task, board, group }) {
                 <span className="attachment-thumbnail-name">{attachment.imageName}</span>
                 <div className="attachment-btn-container">
                   <span className="attachment-date">{utilService.formatDateAttachment(attachment.uploadedAt)}</span>
-                  <button className="attachment-button">Comment</button>
+                  {/* <button className="attachment-button">Comment</button> */}
                   <button className="attachment-button" onClick={() => deleteImg(attachment.id)}>
                     Delete
                   </button>

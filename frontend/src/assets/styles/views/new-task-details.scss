@@ -90,7 +90,7 @@
   width: 112px;
   height: 80px;
   border-radius: 3px;
-  object-fit: fill;
+  object-fit: contain;
 }
 .title-icon-container {
   display: flex;
@@ -256,4 +256,34 @@
 }
 .dates-wrapper h5 {
   margin: 0 8px 4px 0;
+}
+.color-container {
+  position: relative;
+  box-sizing: border-box;
+  border-radius: 3px;
+  border: 2px px transparent solid;
+  height: 32px;
+}
+.color-container:hover {
+  filter: brightness(80%);
+}
+.label-colors-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 4px;
+  margin-bottom: 8px;
+}
+.remove-color-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.delete-btn {
+  background-color: #ca3521 !important;
+}
+.edit-label-text {
+  color: var(--ds-text-subtle, #5e6c84);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
 }

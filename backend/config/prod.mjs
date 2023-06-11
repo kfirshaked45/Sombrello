@@ -1,4 +1,4 @@
 export default {
-  dbURL: 'mongodb+srv://theUser:thePass@cluster0-klgzh.mongodb.net/test?retryWrites=true&w=majority',
+  dbURL: 'mongodb+srv://kfir:kfir123@cluster0.rryij1u.mongodb.net/?retryWrites=true&w=majority',
   dbName: 'sombrello',
 };

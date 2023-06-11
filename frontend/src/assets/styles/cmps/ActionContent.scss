@@ -3,14 +3,20 @@
   height: 32px;
   object-fit: cover;
   width: 32px;
-  margin-block-end: 4px;
+
   margin-inline-end: 8px;
 }
 .action-member {
   display: flex;
   width: 100%;
+  margin-bottom: 2px;
   align-items: center;
   padding: 4px;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
+}
+.action-member:hover {
+  background-color: #091e4214;
+  border-radius: 3px;
 }
 .action-modal {
   position: fixed;
@@ -63,6 +69,9 @@
 }
 .action-member-list {
   padding: 0;
+}
+.action-member-list h4 {
+  margin: 0 0 8px;
 }
 .action-modal-x {
   color: black;
@@ -184,6 +193,7 @@
   width: 100%;
 }
 .search-labels-input {
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
   width: 100%;
 }
 .general-btn-styling {

@@ -2,13 +2,17 @@ import { updateBoard } from '../../../../store/board.actions';
 import { ReactComponent as PenIcon } from '../../../../assets/img/board/pen-icon.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+import { ActionModal } from '../../action-modal';
 
 export function LabelsContent({ board, group, task, dispatch }) {
   const [searchQuery, setSearchQuery] = useState('');
-
-  const addLabel = (label) => {
+  const [selectedAction, setSelectedAction] = useState();
+  const [labelId, setLabelId] = useState();
+  const actionButtonRef = useRef();
+  function addLabel(label) {
     const updatedLabels = [...task.labels];
+
     const alreadyLabeledIndex = updatedLabels.findIndex((l) => l.id === label.id);
 
     if (alreadyLabeledIndex !== -1) {
@@ -39,8 +43,12 @@ export function LabelsContent({ board, group, task, dispatch }) {
 
     const updatedBoard = { ...board, groups: updatedGroups };
     dispatch(updateBoard(updatedBoard));
-  };
+  }
 
+  function handleClick(action, labelId) {
+    setSelectedAction(action);
+    setLabelId(labelId);
+  }
   function isAlreadyLabeled(label, task) {
     return task.labels.find((l) => l.id === label.id);
   }
@@ -52,44 +60,60 @@ export function LabelsContent({ board, group, task, dispatch }) {
 
     return lowerCaseTitle.includes(lowerCaseQuery) || lowerCaseColor.includes(lowerCaseQuery);
   });
-
+  function closeActionModal() {
+    setSelectedAction(null);
+  }
   return (
-    <div className="labels-modal-container">
-      <input
-        type="text"
-        placeholder="Search labels..."
-        className="search-labels-input"
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-      />
-      <p>Labels</p>
-      <div className="action-labels-container">
-        {filteredLabels.map((label) => (
-          <div className="action-label-container" key={label.id}>
-            <div
-              className="action-checkbox-input"
-              onClick={() => {
-                addLabel(label);
-              }}
-            >
-              {isAlreadyLabeled(label, task) && <FontAwesomeIcon icon={faCheck} className="label-check-icon" />}
+    <div>
+      <div className="labels-modal-container">
+        <input
+          type="text"
+          placeholder="Search labels..."
+          className="search-labels-input"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+        <p>Labels</p>
+        <div className="action-labels-container">
+          {filteredLabels.map((label) => (
+            <div className="action-label-container" key={label.id}>
+              <div
+                className="action-checkbox-input"
+                onClick={() => {
+                  addLabel(label);
+                }}
+              >
+                {isAlreadyLabeled(label, task) && <FontAwesomeIcon icon={faCheck} className="label-check-icon" />}
+              </div>
+              <div
+                style={{ backgroundColor: label.color }}
+                className="label-color-container"
+                onClick={() => {
+                  addLabel(label);
+                }}
+              >
+                {label.title}
+              </div>
+              <button className="pen-btn general-btn-styling" ref={actionButtonRef} onClick={() => handleClick('Edit Label', label.id)}>
+                <PenIcon />
+              </button>
             </div>
-            <div
-              style={{ backgroundColor: label.color }}
-              className="label-color-container"
-              onClick={() => {
-                addLabel(label);
-              }}
-            >
-              {label.title}
-            </div>
-            <button className="pen-btn general-btn-styling">
-              <PenIcon />
-            </button>
-          </div>
-        ))}
+          ))}
+        </div>
+        <button className="create-label">Create a new label</button>
       </div>
-      <button className="create-label">Create a new label</button>
+
+      {selectedAction && (
+        <ActionModal
+          action={selectedAction}
+          onClose={closeActionModal}
+          board={board}
+          task={task}
+          group={group}
+          triggerRef={actionButtonRef}
+          labelId={labelId}
+        />
+      )}
     </div>
   );
 }
