@@ -40,7 +40,8 @@ export function TaskPreview({ board, groupId, task }) {
 
   return (
     <div className="cover-img-section">
-      {/* ... */}
+      {imageDetails && <img src={imageDetails.imgUrl} alt="Task Image" className="task-image" />}
+      {color && !imageDetails && <div className="task-list-cover" style={{ backgroundColor: color }}></div>}
       <div className="task-preview">
         {taskLabels.length !== 0 && (
           <div className="task-preview-labels">
