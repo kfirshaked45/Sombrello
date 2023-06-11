@@ -4,9 +4,14 @@
   flex-direction: column;
   position: absolute;
   background-color: #fff;
-  right: 250px;
+  top: 0;
+  left: 0;
   z-index: 100;
-  box-shadow: var(--ds-shadow-overlay, 0 8px 16px -4px rgba(9, 30, 66, 0.25), 0 0 0 1px rgba(9, 30, 66, 0.08));
+  box-shadow: var(
+    --ds-shadow-overlay,
+    0 8px 16px -4px rgba(9, 30, 66, 0.25),
+    0 0 0 1px rgba(9, 30, 66, 0.08)
+  );
 
   .new-board-container {
     width: 200px;
