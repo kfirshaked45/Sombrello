@@ -107,7 +107,7 @@ export function LabelsContent({ board, group, task, dispatch }) {
             </div>
           ))}
         </div>
-        <button className="create-label" onClick={() => handleClick('Create Label')} ref={actionButtonRef}>
+        <button className="create-label" onClick={() => handleClick('Create Label')}>
           Create a new label
         </button>
       </div>

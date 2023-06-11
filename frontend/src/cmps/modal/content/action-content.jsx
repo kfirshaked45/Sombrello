@@ -23,7 +23,7 @@ const actionComponents = {
   'Create Label': CreateLabel,
 };
 
-export function ActionContent({ action, board, task, group, attachmentId, onClose, labelId }) {
+export function ActionContent({ action, board, task, group, attachmentId, onClose, labelId, modalRef }) {
   const dispatch = useDispatch();
   const ContentComponent = actionComponents[action] || null;
 
@@ -36,6 +36,7 @@ export function ActionContent({ action, board, task, group, attachmentId, onClos
       attachmentId={attachmentId}
       onClose={onClose}
       labelId={labelId}
+      modalRef={modalRef}
     />
   ) : null;
 }

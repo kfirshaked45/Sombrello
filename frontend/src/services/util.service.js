@@ -145,10 +145,12 @@ function getModalPosition(type, ref) {
   const positionLookup = {
     Members: { top: rect.bottom + 30, left: rect.left - offset, maxTop: rect.top - 100 },
     'Members ': { top: rect.bottom + 20, left: rect.left - offset, maxTop: rect.top + 40 },
-    Labels: { top: rect.top - 100, left: rect.left - offset },
+    Labels: { top: rect.top - 200, left: rect.left - offset },
     Dates: { top: rect.top - 100, left: rect.left - offset },
     Attachments: { top: rect.bottom + 8, left: rect.left - offset },
     Group: { top: rect.top + 40, left: rect.left + 220 },
+    'Create Label': { top: rect.top - 305, left: rect.left - offset - 260, maxTop: rect.top - 305 },
+    'Edit Label': { top: rect.top - 305, left: rect.left - offset - 260, maxTop: rect.top - 305 },
   };
 
   if (positionLookup[type]) {

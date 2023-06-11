@@ -41,6 +41,7 @@ export function ActionModal({ action, onClose, board, task, group, triggerRef, a
         attachmentId={attachmentId}
         onClose={onClose}
         labelId={labelId}
+        modalRef={modalRef}
       />
     </div>
   );

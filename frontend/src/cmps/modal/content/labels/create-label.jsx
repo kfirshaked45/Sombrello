@@ -67,8 +67,10 @@ export function CreateLabel({ board }) {
   return (
     <div className="pop-over-content">
       {/* Preview section */}
-      <div className="current-label" style={{ backgroundColor: selectedColor }}>
-        {title}
+      <div className="current-label-container">
+        <div className="current-label" style={{ backgroundColor: selectedColor }}>
+          {title}
+        </div>
       </div>
 
       {/* Title input */}

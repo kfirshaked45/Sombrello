@@ -76,14 +76,17 @@ export function EditLabel({ board, task, group, labelId }) {
     const updatedBoard = { ...board, labels: updatedLabels };
     dispatch(updateBoard(updatedBoard));
   };
-
+  const handleRemoveColor = () => {
+    setSelectedColor('#DFE1E6');
+  };
   return (
     <div className="pop-over-content">
-      {/* Display the label with the current color and text */}
-      <div className="current-label" style={{ backgroundColor: selectedColor }}>
-        {title}
+      <div className="current-label-container">
+        <div className="current-label" style={{ backgroundColor: selectedColor }}>
+          {title}
+        </div>
       </div>
-      {/* Title input */}
+
       <div>
         <span className="edit-label-text">Title</span>
         <input type="text" value={title} onChange={handleTitleChange} style={{ width: '100%' }} />
@@ -101,7 +104,7 @@ export function EditLabel({ board, task, group, labelId }) {
         ))}
       </div>
       {/* Remove color button */}
-      <button className="create-label remove-color-btn">
+      <button className="create-label remove-color-btn" onClick={handleRemoveColor}>
         <span style={{ marginRight: '8px' }}>X</span> Remove color
       </button>
       {/* Save and Delete buttons */}

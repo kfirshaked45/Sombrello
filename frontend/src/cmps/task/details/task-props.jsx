@@ -40,7 +40,7 @@ export function TaskProps({ members, task, board, group }) {
         <div className="labels-wrapper">
           <h5>Labels</h5>
           <div className="labels">
-            <TaskLabels labels={task?.labels} />
+            <TaskLabels labels={task?.labels} board={board} />
             <button className="add-label" onClick={() => openActionModal('Labels')}>
               <BsPlusLg />
             </button>

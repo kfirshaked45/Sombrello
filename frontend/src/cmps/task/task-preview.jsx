@@ -36,21 +36,22 @@ export function TaskPreview({ board, groupId, task }) {
     dispatch(updateBoard(updatedBoard));
   }
 
+  const taskLabels = labels ? labels.map((label) => board.labels.find((l) => l.id === label.id)) : [];
+
   return (
     <div className="cover-img-section">
-      {imageDetails && <img src={imageDetails.imgUrl} alt="Task Image" className="task-image" />}
-      {color && !imageDetails && <div className="task-list-cover" style={{ backgroundColor: color }}></div>}
+      {/* ... */}
       <div className="task-preview">
-        {labels && labels.length !== 0 && (
+        {taskLabels.length !== 0 && (
           <div className="task-preview-labels">
-            {labels.map((label, index) => (
-              <button key={index} style={{ backgroundColor: label.color }} className="group-label"></button>
-            ))}
+            {taskLabels.map((label, index) => {
+              if (!label || !label.color) return null; // Skip rendering if label or color is undefined
+              return <button key={index} style={{ backgroundColor: label.color }} className="group-label"></button>;
+            })}
           </div>
         )}
 
         <span className="task-item-title">{task.title}</span>
-
         {task.dueDate &&
           task.dueDate.timeStamp &&
           (description ||
