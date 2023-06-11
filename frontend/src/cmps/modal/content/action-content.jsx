@@ -8,6 +8,7 @@ import { GroupsContent } from './groups-content';
 import { EditAttachment } from './attachment/edit-attachment';
 import { CoverContent } from './cover-content';
 import { EditLabel } from './labels/edit-label';
+import { CreateLabel } from './labels/create-label';
 
 const actionComponents = {
   Members: MemberContent,
@@ -19,6 +20,7 @@ const actionComponents = {
   'Edit Attachment': EditAttachment,
   Cover: CoverContent,
   'Edit Label': EditLabel,
+  'Create Label': CreateLabel,
 };
 
 export function ActionContent({ action, board, task, group, attachmentId, onClose, labelId }) {

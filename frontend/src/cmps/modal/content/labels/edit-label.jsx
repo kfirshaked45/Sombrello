@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { updateBoard } from '../../../../store/board.actions';
 
@@ -37,8 +37,16 @@ export function EditLabel({ board, task, group, labelId }) {
     '#626f86',
   ];
 
-  const [selectedColor, setSelectedColor] = useState(colors[0]);
+  const [selectedColor, setSelectedColor] = useState('');
   const [title, setTitle] = useState('');
+
+  useEffect(() => {
+    const currentLabel = board.labels.find((label) => label.id === labelId);
+    if (currentLabel) {
+      setSelectedColor(currentLabel.color);
+      setTitle(currentLabel.title);
+    }
+  }, [board.labels, labelId]);
 
   const handleColorClick = (color) => {
     setSelectedColor(color);
@@ -49,32 +57,24 @@ export function EditLabel({ board, task, group, labelId }) {
   };
 
   const handleSave = () => {
-    const updatedTask = { ...task };
-    const labelIndex = updatedTask.labels.findIndex((label) => label.id === labelId);
+    const labelIndex = board.labels.findIndex((label) => label.id === labelId);
     if (labelIndex !== -1) {
-      updatedTask.labels[labelIndex] = {
-        ...updatedTask.labels[labelIndex],
-        title: title || updatedTask.labels[labelIndex].title,
-        color: selectedColor || updatedTask.labels[labelIndex].color,
+      const updatedLabels = [...board.labels];
+      updatedLabels[labelIndex] = {
+        ...updatedLabels[labelIndex],
+        title: title || updatedLabels[labelIndex].title,
+        color: selectedColor || updatedLabels[labelIndex].color,
       };
 
-      const updatedGroups = board.groups.map((g) => {
-        if (g.id === group.id) {
-          return {
-            ...g,
-            tasks: g.tasks.map((t) => (t.id === task.id ? updatedTask : t)),
-          };
-        }
-        return g;
-      });
-
-      const updatedBoard = { ...board, groups: updatedGroups };
+      const updatedBoard = { ...board, labels: updatedLabels };
       dispatch(updateBoard(updatedBoard));
     }
   };
 
   const handleDelete = () => {
-    // Handle delete logic here
+    const updatedLabels = board.labels.filter((label) => label.id !== labelId);
+    const updatedBoard = { ...board, labels: updatedLabels };
+    dispatch(updateBoard(updatedBoard));
   };
 
   return (
@@ -85,13 +85,11 @@ export function EditLabel({ board, task, group, labelId }) {
       </div>
       {/* Title input */}
       <div>
-        <span className="edit-label-text"> Title</span>
-
+        <span className="edit-label-text">Title</span>
         <input type="text" value={title} onChange={handleTitleChange} style={{ width: '100%' }} />
       </div>
       {/* Select a color */}
-      <span className="edit-label-text"> Select a color</span>
-
+      <span className="edit-label-text">Select a color</span>
       <div className="label-colors-container">
         {colors.map((color) => (
           <div
