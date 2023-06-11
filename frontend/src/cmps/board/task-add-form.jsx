@@ -6,7 +6,7 @@ import { utilService } from '../../services/util.service';
 import { updateBoard } from '../../store/board.actions';
 import { useEffect } from 'react';
 
-export function TaskAddForm({ board, group, handleCancel }) {
+export function TaskAddForm({ board, group, handleCancel, createActivity }) {
   const dispatch = useDispatch();
   const taskInputRef = useRef(null);
   const [task, setTask] = useState('');
@@ -30,15 +30,18 @@ export function TaskAddForm({ board, group, handleCancel }) {
 
     const updatedGroups = board.groups.map((g) => {
       if (g.id === group.id) {
-        return {
+        const updatedGroup = {
           ...g,
           tasks: [...g.tasks, newTask],
         };
+
+        return updatedGroup;
       }
       return g;
     });
 
-    const updatedBoard = { ...board, groups: updatedGroups };
+    const activity = createActivity(`Added task "${newTask.title}" to group ${group.title}`);
+    const updatedBoard = { ...board, groups: updatedGroups, activities: [...board.activities, activity] };
     setTask('');
 
     dispatch(updateBoard(updatedBoard));

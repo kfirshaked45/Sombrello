@@ -8,7 +8,7 @@ import { TaskAdd } from '../board/task-add-form';
 import { ActionModal } from '../modal/action-modal.jsx';
 import { TaskAddButton } from '../board/task-add-button';
 
-export function GroupPreview({ board, group, provided }) {
+export function GroupPreview({ board, group, provided, createActivity }) {
   const [title, setTitle] = useState(group.title);
   const [isTitleEditable, setIsTitleEditable] = useState(false);
   const [modalValue, setModalValue] = useState(null);
@@ -51,10 +51,11 @@ export function GroupPreview({ board, group, provided }) {
         return g;
       });
 
-      const updatedBoard = { ...board, groups: updatedGroups };
+      const activity = createActivity(`Changed group title to ${title}`);
+      const updatedBoard = { ...board, groups: updatedGroups, activities: [...board.activities, activity] };
 
       dispatch(updateBoard(updatedBoard));
-      // boardService.updateBoard(updatedBoard);
+      // Dispatch the CreateActivity action to add the activity to the board
     }
   }
 
@@ -89,8 +90,15 @@ export function GroupPreview({ board, group, provided }) {
           <FontAwesomeIcon icon={faEllipsis} />
         </button>
       </div>
-      <TaskList board={board} group={group} tasks={group.tasks} isEditable={isEditable} handleCancel={handleCancel} />
-      <TaskAddButton onAddCard={handleAddCard} />
+      <TaskList
+        board={board}
+        group={group}
+        tasks={group.tasks}
+        isEditable={isEditable}
+        handleCancel={handleCancel}
+        createActivity={createActivity}
+      />
+      {!isEditable && <TaskAddButton onAddCard={handleAddCard} />}
       {modalValue && <ActionModal action={modalValue} onClose={closeEditModal} board={board} group={group} triggerRef={textAreaInput} />}
     </div>
   );

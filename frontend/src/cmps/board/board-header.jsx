@@ -142,7 +142,7 @@ export function BoardHeader({ board, changeBackground }) {
             <BsThreeDots style={{ fontSize: '16px' }} />
           </button>
         )}
-        <BoardSideMenu isOpen={sideMenuClass} onCloseSideMenu={renderSideMenu} changeBackground={changeBackground} />
+        <BoardSideMenu isOpen={sideMenuClass} onCloseSideMenu={renderSideMenu} changeBackground={changeBackground} board={board} />
       </div>
     </div>
   );

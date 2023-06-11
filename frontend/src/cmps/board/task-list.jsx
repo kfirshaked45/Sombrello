@@ -8,7 +8,7 @@ import { updateBoard } from '../../store/board.actions';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { TaskAdd, TaskAddForm } from './task-add-form';
 
-export function TaskList({ board, group, isEditable, handleCancel }) {
+export function TaskList({ board, group, isEditable, handleCancel, createActivity }) {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -41,14 +41,14 @@ export function TaskList({ board, group, isEditable, handleCancel }) {
                   onMouseLeave={handleMouseLeave}
                   onClick={() => handleTaskClicked(task)}
                 >
-                  <TaskPreview board={board} groupId={group.id} task={task} />
+                  <TaskPreview board={board} groupId={group.id} task={task} createActivity={createActivity} />
                   {hoveredIndex === index && <FontAwesomeIcon icon={faPen} className="task-pen" />}
                 </li>
               )}
             </Draggable>
           ))}
           {provided.placeholder}
-          {isEditable && <TaskAddForm board={board} group={group} handleCancel={handleCancel} />}
+          {isEditable && <TaskAddForm board={board} group={group} handleCancel={handleCancel} createActivity={createActivity} />}
         </ul>
       )}
     </Droppable>
