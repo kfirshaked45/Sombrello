@@ -51,7 +51,8 @@
   position: relative;
 }
 .main-content-text-area {
-  background-color: var(--ds-background-neutral, #091e420a);
+  cursor: pointer;
+  background-color: #091e420a;
   border: none;
   width: 95%;
   margin-left: 70px;
@@ -64,6 +65,11 @@
   text-decoration: none;
   resize: none;
 }
+
+.main-content-text-area:hover {
+  background-color: #091e4214;
+}
+
 .details-grid {
   display: grid;
   grid-template-columns: 50px 1fr;
@@ -102,6 +108,7 @@
 }
 .quill {
   width: 95%;
+  height: 223px;
   margin-left: 70px;
   background-color: #fff;
 }
