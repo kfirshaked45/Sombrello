@@ -83,7 +83,7 @@
     .img-container {
       margin-bottom: 15px;
       img {
-        width: 835px;
+        width: 735px;
       }
     }
 
@@ -117,7 +117,8 @@
     .cards-container {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      // justify-content: space-between;
+      gap: 95px;
       max-width: 20rem;
       margin-right: 2.8125rem;
     }
