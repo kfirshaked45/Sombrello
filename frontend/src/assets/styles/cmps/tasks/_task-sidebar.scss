@@ -35,6 +35,7 @@
       transition: background-color 0.2s ease, color 0.2s ease, cursor 0.2s ease;
       cursor: pointer;
       width: calc(165px - 50px);
+
       &:hover {
         background-color: #e1e4e9;
       }
@@ -47,12 +48,19 @@
         align-self: center;
       }
 
+      
       .sidebar-title {
-        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+        Noto Sans, Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
       }
     }
   }
 }
+
+.delete-task-btn{
+  margin-top: 50px;
+}
+
 .sidebar-item:hover {
   background-color: $ds-background-neutral-hovered;
 }

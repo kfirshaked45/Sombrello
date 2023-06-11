@@ -144,8 +144,9 @@
   display: flex;
   align-items: center;
 }
+
 .date-wrapper input {
-  box-shadow: inset 0 0 0 2px var(--ds-border-selected, #0079bf);
+  border: inset 0 0 0 2px var(--ds-text, #a3a3a3);
   flex-shrink: 0;
   height: 16px;
   overflow: hidden;
@@ -153,11 +154,13 @@
   transition: all 0.2s ease-in-out;
   white-space: nowrap;
   width: 16px;
-
+  cursor: pointer;
   background-color: var(--ds-background-selected-bold, #0079bf);
 }
+
 .dates-container {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Noto Sans', 'Ubuntu', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Noto Sans", "Ubuntu", "Droid Sans", "Helvetica Neue", sans-serif;
   font-size: 14px;
   line-height: 20px;
   font-weight: 400;
@@ -230,7 +233,8 @@
 .cover-colors-container {
   webkit-overflow-scrolling: touch;
   -webkit-transform: translate3d(0, 0, 0);
-  scrollbar-color: var(--ds-background-neutral-hovered, rgba(9, 30, 66, 0.25)) var(--ds-background-neutral, rgba(255, 255, 255, 0.5));
+  scrollbar-color: var(--ds-background-neutral-hovered, rgba(9, 30, 66, 0.25))
+    var(--ds-background-neutral, rgba(255, 255, 255, 0.5));
   scrollbar-width: thin;
   display: grid;
   grid-template-columns: 1fr 1fr;
