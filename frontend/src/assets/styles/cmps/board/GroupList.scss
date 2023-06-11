@@ -83,3 +83,13 @@
   display: grid;
   grid-template-rows: auto 1fr;
 }
+
+.copy-list-modal {
+  margin-left: 10px;
+  padding-bottom: 15px;
+
+  h3 {
+    padding: 2px;
+    margin-bottom: 10px;
+  }
+}
