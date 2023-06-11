@@ -25,6 +25,10 @@
       padding: 0 6px;
       margin-left: 6px;
 
+      img {
+        border-radius: 5px;
+      }
+
       &.dark h1 {
         color: #172b4d;
 
@@ -59,9 +63,10 @@
 
       p {
         color: white;
-        margin-top: 5px;
-        font-size: 1rem;
+        margin-top: 6px;
+        font-size: 0.875rem;
         margin-left: 15px;
+        letter-spacing: 0.5px;
       }
 
       img {
