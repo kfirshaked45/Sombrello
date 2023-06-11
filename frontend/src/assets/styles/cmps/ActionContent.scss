@@ -74,7 +74,9 @@
   margin: 0 0 8px;
 }
 .action-modal-x {
-  color: black;
+  width: 8px;
+  height: 8px;
+  color: $light-gray;
   grid-column: 3;
   grid-row: 1;
   cursor: pointer;
