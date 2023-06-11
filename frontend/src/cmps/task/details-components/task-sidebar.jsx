@@ -4,6 +4,7 @@ import { BsTag } from 'react-icons/bs';
 import { AiOutlineClockCircle } from 'react-icons/ai';
 import { useDispatch } from 'react-redux';
 import { RiAttachment2 } from 'react-icons/ri';
+import { AiOutlineDelete } from 'react-icons/ai';
 import { ActionModal } from '../../modal/action-modal';
 import { updateBoard } from '../../../store/board.actions';
 import { Link } from 'react-router-dom';
@@ -88,12 +89,13 @@ export function TaskSidebar({ board, task, group, hasAttachments, width }) {
         )}
 
         <button
-          className="sidebar-item general-btn-styling"
+          className="sidebar-item delete-task-btn general-btn-styling"
           style={{ width: width }}
           onClick={() => {
             deleteTask();
           }}
         >
+          <AiOutlineDelete className="sidebar-icon"/>
           Delete
         </button>
       </ul>
