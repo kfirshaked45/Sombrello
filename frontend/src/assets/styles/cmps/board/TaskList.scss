@@ -150,10 +150,10 @@
   margin-top: 4px;
 }
 
-.members-img {
+.members-icons .members-img {
   display: flex;
   align-items: center;
-
+  gap: 3px;
   flex-wrap: wrap;
 }
 
@@ -194,13 +194,15 @@
 
   display: flex;
   flex-wrap: wrap;
-  gap: 4px;
+  align-content: flex-start;
+  
+  gap: 3px;
   margin-bottom: 0px;
 }
 
 .group-label {
-  margin-top: 4px;
-  margin-bottom: 4px;
+  margin-top: 3px;
+  margin-bottom: 3px;
   padding-right: 0;
   padding-left: 0;
   min-width: 40px;

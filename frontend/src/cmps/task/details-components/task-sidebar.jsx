@@ -88,6 +88,7 @@ export function TaskSidebar({ board, task, group, hasAttachments, width }) {
           </button>
         )}
 
+        <p>Actions</p>
         <button
           className="sidebar-item delete-task-btn general-btn-styling"
           style={{ width: width }}
