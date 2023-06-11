@@ -9,7 +9,7 @@ import { TaskDueDate } from './task-due-date';
 import { useParams } from 'react-router';
 import { boardService } from '../../services/board.service.local';
 
-export function TaskPreview({ board, groupId, task }) {
+export function TaskPreview({ board, groupId, task, createActivity }) {
   const imageDetails = task.attachments && task.attachments[0];
   const labels = task.labels;
   const color = task.style && task.style.coverColor;
@@ -32,7 +32,11 @@ export function TaskPreview({ board, groupId, task }) {
       }
       return group;
     });
-    const updatedBoard = { ...board, groups: updatedGroups };
+    const activity = createActivity(
+      `Task ${task.title} ${updatedDueDate.isDone ? 'marked as done' : 'marked as not done'} in Group ${groupId}.`
+    );
+
+    const updatedBoard = { ...board, groups: updatedGroups, activities: [...board.activities, activity] };
     dispatch(updateBoard(updatedBoard));
   }
 

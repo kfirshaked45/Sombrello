@@ -20,6 +20,7 @@
 @import 'views/UserDetails';
 @import 'views/_task-details';
 @import 'views/new-task-details.scss';
+
 @import 'views/login-signup';
 
 @import 'views/workspace';
@@ -51,3 +52,4 @@
 @import 'cmps/tasks/_task-description';
 @import 'cmps/tasks/_task-preview';
 @import 'cmps/tasks/_task-due-date';
+@import 'cmps/board/activity-container.scss';
