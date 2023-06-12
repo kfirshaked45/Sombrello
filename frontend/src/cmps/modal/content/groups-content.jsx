@@ -7,7 +7,7 @@ export function GroupsContent({ group, board, dispatch }) {
   const [groupSortOrder, setGroupSortOrder] = useState({ [group.id]: 'asc' });
 
   async function deleteGroup() {
-    const updatedGroups = board.groups.filter((g) => g.id !== group.id);
+    const updatedGroups = board.groups.filter((currentGroup) => currentGroup.id !== group.id);
     const updatedBoard = { ...board, groups: updatedGroups };
 
     await dispatch(updateBoard(updatedBoard));

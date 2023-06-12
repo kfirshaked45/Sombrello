@@ -25,7 +25,7 @@ export function MemberContent({ board, task, group, dispatch, createActivity }) 
     if (!task.members) {
       task.members = [member];
     } else {
-      const alreadyMemberIndex = task.members.findIndex((m) => m._id === member._id);
+      const alreadyMemberIndex = task.members.findIndex((currentMember) => currentMember._id === member._id);
       if (alreadyMemberIndex !== -1) {
         task.members.splice(alreadyMemberIndex, 1);
       } else {
@@ -38,24 +38,24 @@ export function MemberContent({ board, task, group, dispatch, createActivity }) 
       : `Removed ${member.fullname} from the task "${task.title}"`;
     const activity = createActivity(activityText);
 
-    const updatedGroups = board.groups.map((g) => {
-      if (g.id === group.id) {
-        const updatedTasks = g.tasks.map((t) => {
-          if (t.id === task.id) {
+    const updatedGroups = board.groups.map((currentGroup) => {
+      if (currentGroup.id === group.id) {
+        const updatedTasks = currentGroup.tasks.map((currentTask) => {
+          if (currentTask.id === task.id) {
             return {
-              ...t,
+              ...currentTask,
               members: task.members || [],
             };
           }
-          return t;
+          return currentTask;
         });
 
         return {
-          ...g,
+          ...currentGroup,
           tasks: updatedTasks,
         };
       }
-      return g;
+      return currentGroup;
     });
 
     const updatedBoard = {

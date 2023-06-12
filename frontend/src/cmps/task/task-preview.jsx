@@ -83,6 +83,7 @@ export function TaskPreview({ board, groupId, task, createActivity }) {
             {task.attachments && task.attachments.length !== 0 && (
               <section className="attachments-icon">
                 <RiAttachment2 />
+
                 <span className="attachments-count">{task.attachments.length}</span>
               </section>
             )}

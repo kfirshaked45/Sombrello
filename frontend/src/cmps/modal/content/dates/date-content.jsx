@@ -16,27 +16,27 @@ export function DateContent({ task, group, board, dispatch }) {
   };
 
   const handleSave = () => {
-    const updatedGroups = board.groups.map((g) => {
-      if (g.id === group.id) {
-        const updatedTasks = g.tasks.map((t) => {
-          if (t.id === task.id) {
+    const updatedGroups = board.groups.map((currentGroup) => {
+      if (currentGroup.id === group.id) {
+        const updatedTasks = currentGroup.tasks.map((currentTask) => {
+          if (currentTask.id === task.id) {
             return {
-              ...t,
+              ...currentTask,
               dates: {
                 startDate: dateRange.startDate,
                 endDate: dateRange.endDate,
               },
             };
           }
-          return t;
+          return currentTask;
         });
 
         return {
-          ...g,
+          ...currentGroup,
           tasks: updatedTasks,
         };
       }
-      return g;
+      return currentGroup;
     });
 
     const updatedBoard = { ...board, groups: updatedGroups };

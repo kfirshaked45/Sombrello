@@ -36,24 +36,24 @@ export function ChecklistContent({ task, board, group, onClose, createActivity }
 
     updatedTask.checklists.push(checklist); // Push the new checklist to the checklists array
 
-    const updatedGroups = board.groups.map((g) => {
-      if (g.id === group.id) {
-        const updatedTasks = g.tasks.map((t) => {
-          if (t.id === task.id) {
+    const updatedGroups = board.groups.map((currentGroup) => {
+      if (currentGroup.id === group.id) {
+        const updatedTasks = currentGroup.tasks.map((currentTask) => {
+          if (currentTask.id === task.id) {
             return {
-              ...t,
+              ...currentTask,
               checklists: updatedTask.checklists || [],
             };
           }
-          return t;
+          return currentTask;
         });
 
         return {
-          ...g,
+          ...currentGroup,
           tasks: updatedTasks,
         };
       }
-      return g;
+      return currentGroup;
     });
 
     const updatedBoard = {

@@ -10,12 +10,11 @@ export function LabelsContent({ board, group, task, dispatch }) {
   const [selectedAction, setSelectedAction] = useState();
   const [labelId, setLabelId] = useState();
   const actionButtonRef = useRef();
- 
 
   function addLabel(label) {
     const updatedLabels = [...(task.labels || [])];
 
-    const alreadyLabeledIndex = updatedLabels.findIndex((l) => l.id === label.id);
+    const alreadyLabeledIndex = updatedLabels.findIndex((currentLabel) => currentLabel.id === label.id);
 
     if (alreadyLabeledIndex !== -1) {
       updatedLabels.splice(alreadyLabeledIndex, 1);
@@ -23,24 +22,24 @@ export function LabelsContent({ board, group, task, dispatch }) {
       updatedLabels.push({ ...label });
     }
 
-    const updatedGroups = board.groups.map((g) => {
-      if (g.id === group.id) {
-        const updatedTasks = g.tasks.map((t) => {
-          if (t.id === task.id) {
+    const updatedGroups = board.groups.map((currentGroup) => {
+      if (currentGroup.id === group.id) {
+        const updatedTasks = currentGroup.tasks.map((currentTask) => {
+          if (currentTask.id === task.id) {
             return {
-              ...t,
+              ...currentTask,
               labels: updatedLabels,
             };
           }
-          return t;
+          return currentTask;
         });
 
         return {
-          ...g,
+          ...currentGroup,
           tasks: updatedTasks,
         };
       }
-      return g;
+      return currentGroup;
     });
 
     const updatedBoard = { ...board, groups: updatedGroups };
@@ -53,7 +52,7 @@ export function LabelsContent({ board, group, task, dispatch }) {
   }
 
   function isAlreadyLabeled(label, task) {
-    return task.labels && task.labels.find((l) => l.id === label.id);
+    return task.labels && task.labels.find((currentLabel) => currentLabel.id === label.id);
   }
 
   const filteredLabels = Array.isArray(board.labels)
