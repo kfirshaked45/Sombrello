@@ -10,11 +10,13 @@ import { CoverContent } from './cover-content'
 import { EditLabel } from './labels/edit-label'
 import { CreateLabel } from './labels/create-label'
 import { utilService } from '../../../services/util.service'
+import { ChecklistContent } from './check-list/checklist-content'
 
 const actionComponents = {
   Members: MemberContent,
   'Members ': MemberContent,
   Labels: LabelsContent,
+  Checklist: ChecklistContent,
   Dates: DateContent,
   Attachments: AttachmentsContent,
   Group: GroupsContent,

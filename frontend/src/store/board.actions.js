@@ -142,3 +142,19 @@ export async function onRemoveBoardOptimistic(boardId) {
     })
   }
 }
+
+export async function updateTask(task, boardId, groupId) {
+  try {
+    console.log(task)
+    const updatedBoard = await boardService.updateTask(task, boardId, groupId)
+    store.dispatch(getActionUpdateBoard(updatedBoard))
+    store.dispatch({ type: SET_BOARDS, boards: [updatedBoard] })
+
+    // TODO: add broadcast('board-update') ->  emit(change-board) client side -> server side listens to board-changes,
+    // and emits board-update to all connections except for the one who already has the updated version of the board(broadcast)
+    return updatedBoard
+  } catch (err) {
+    console.log('failed to update task', err)
+    throw new Error(err)
+  }
+}

@@ -12,6 +12,7 @@ export const boardService = {
   getEmptyBoard,
   addBoardMsg,
   createDemoBoard,
+  updateTask,
 }
 window.cs = boardService
 
@@ -71,6 +72,21 @@ function getEmptyBoard() {
   return {
     vendor: 'Susita-' + (Date.now() % 1000),
     price: utilService.getRandomIntInclusive(1000, 9000),
+  }
+}
+
+async function updateTask(taskToUpdate, boardId, groupId) {
+  try {
+    const board = await getById(boardId)
+    const groupIdx = board.groups.findIndex((group) => group.id === groupId)
+    const taskIdx = board.groups[groupIdx].tasks.findIndex(
+      (currTask) => currTask.id === taskToUpdate.id
+    )
+    // const updatedTask = { ...currTask, ...task }
+    board.groups[groupIdx].tasks.splice(taskIdx, 1, taskToUpdate)
+    return save(board)
+  } catch (err) {
+    console.log('could not update task', err)
   }
 }
 

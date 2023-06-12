@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react'
 import { IoPersonOutline } from 'react-icons/io5'
-import { BsTag } from 'react-icons/bs'
+import { BsTag, BsCheck2Square } from 'react-icons/bs'
 import { AiOutlineClockCircle } from 'react-icons/ai'
 import { useDispatch } from 'react-redux'
 import { RiAttachment2 } from 'react-icons/ri'
@@ -22,8 +22,9 @@ export function TaskSidebar({ board, task, group, hasAttachments, width }) {
   const sideBarChoices = [
     { id: 1, name: 'Members', icon: <IoPersonOutline /> },
     { id: 2, name: 'Labels', icon: <BsTag /> },
-    { id: 3, name: 'Dates', icon: <AiOutlineClockCircle /> },
-    { id: 4, name: 'Attachments', icon: <RiAttachment2 /> },
+    { id: 3, name: 'Checklist', icon: <BsCheck2Square /> },
+    { id: 4, name: 'Dates', icon: <AiOutlineClockCircle /> },
+    { id: 5, name: 'Attachments', icon: <RiAttachment2 /> },
   ]
 
   const openActionModal = (action) => {
