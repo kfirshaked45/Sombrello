@@ -87,3 +87,30 @@
     width: 161px;
   }
 }
+
+.board-preview.long-title {
+  .board-preview-details {
+    position: relative;
+
+    h3 {
+      z-index: 10;
+      position: relative;
+      padding: 8px;
+    }
+
+    .board-star {
+      position: absolute;
+      right: 5px;
+      bottom: -45px;
+      z-index: 10;
+
+      &.starred {
+        display: block;
+
+        svg {
+          color: #eed847;
+        }
+      }
+    }
+  }
+}

@@ -1,9 +1,9 @@
-import { useState } from 'react';
-import boardPreview from '../../assets/img/board-preview.svg';
-import { MdOutlineDone } from 'react-icons/md';
-import { useDispatch } from 'react-redux';
-import { addBoard } from '../../store/board.actions';
-import { AiOutlineClose } from 'react-icons/ai';
+import { useState } from 'react'
+import boardPreview from '../../assets/img/board-preview.svg'
+import { MdOutlineDone } from 'react-icons/md'
+import { useDispatch } from 'react-redux'
+import { addBoard } from '../../store/board.actions'
+import { AiOutlineClose } from 'react-icons/ai'
 
 export const CreateBoard = ({ setActionModal }) => {
   const images = [
@@ -35,7 +35,7 @@ export const CreateBoard = ({ setActionModal }) => {
       thumbnail:
         'https://images.unsplash.com/photo-1470723710355-95304d8aece4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjU5OTZ8MHwxfHNlYXJjaHwyOHx8YnVpbGRpbmd8ZW58MHx8fHwxNjYzOTUyOTgw&ixlib=rb-1.2.1&q=80&w=400',
     },
-  ];
+  ]
   const labels = [
     { id: 1, color: '#4bce97', title: '' },
     { id: 2, color: '#e2b203', title: '' },
@@ -44,7 +44,7 @@ export const CreateBoard = ({ setActionModal }) => {
     { id: 5, color: '#9f8fef', title: '' },
     { id: 6, color: '#579dff', title: '' },
     { id: 7, color: '#94c748', title: '' },
-  ];
+  ]
   const colors = [
     'rgb(0, 121, 191)',
     'rgb(210, 144, 52)',
@@ -52,40 +52,40 @@ export const CreateBoard = ({ setActionModal }) => {
     'rgb(176, 70, 50)',
     'rgb(137, 96, 158)',
     'rgb(205, 90, 145)',
-  ];
+  ]
 
-  const dispatch = useDispatch();
-  const [title, setTitle] = useState('');
-  const [backgroundColor, setBackgroundColor] = useState('');
-  const [backgroundImage, setBackgroundImage] = useState(images[0].thumbnail);
+  const dispatch = useDispatch()
+  const [title, setTitle] = useState('')
+  const [backgroundColor, setBackgroundColor] = useState('')
+  const [backgroundImage, setBackgroundImage] = useState(images[0].thumbnail)
 
   const handleChange = (e) => {
-    setTitle(e.target.value);
-  };
+    setTitle(e.target.value)
+  }
 
   const setBoardBackground = (backgroundColor, backgroundImage) => {
-    setBackgroundColor(backgroundColor);
-    setBackgroundImage(backgroundImage);
-  };
+    setBackgroundColor(backgroundColor)
+    setBackgroundImage(backgroundImage)
+  }
 
   const onCreateBoard = (ev) => {
-    ev.preventDefault();
-    let style;
+    ev.preventDefault()
+    let style
     if (backgroundImage) {
-      style = images.find((image) => image.thumbnail === backgroundImage);
-      handleCloseModal();
+      style = images.find((image) => image.thumbnail === backgroundImage)
+      handleCloseModal()
     } else {
-      style = { backgroundColor };
-      handleCloseModal();
+      style = { backgroundColor }
+      handleCloseModal()
     }
 
-    const board = { title, style, labels, activities: [] };
-    dispatch(addBoard(board));
-  };
+    const board = { title, style, labels, activities: [] }
+    dispatch(addBoard(board))
+  }
 
   const handleCloseModal = () => {
-    setActionModal(null);
-  };
+    setActionModal(null)
+  }
 
   return (
     <section className="create-board">
@@ -98,7 +98,11 @@ export const CreateBoard = ({ setActionModal }) => {
       <div
         className="new-board-container"
         style={{
-          background: `${backgroundImage ? `url("${backgroundImage}") center center / cover` : `${backgroundColor}`}`,
+          background: `${
+            backgroundImage
+              ? `url("${backgroundImage}") center center / cover`
+              : `${backgroundColor}`
+          }`,
         }}
       >
         <img src={boardPreview} alt="" />
@@ -109,7 +113,10 @@ export const CreateBoard = ({ setActionModal }) => {
           <ul className="background-images">
             {images.map((img) => (
               <li className="image-button" key={img.thumbnail}>
-                <button onClick={() => setBoardBackground(undefined, img.thumbnail)} style={{ backgroundImage: `url(${img.thumbnail})` }}>
+                <button
+                  onClick={() => setBoardBackground(undefined, img.thumbnail)}
+                  style={{ backgroundImage: `url(${img.thumbnail})` }}
+                >
                   {backgroundImage === img.thumbnail && (
                     <div className="selected">
                       <MdOutlineDone />
@@ -150,16 +157,20 @@ export const CreateBoard = ({ setActionModal }) => {
                 onChange={handleChange}
                 id="boardTitle"
                 type="text"
-                style={{ width: '100%' }}
+                style={{ width: '100%', whiteSpace: 'nowrap' }}
               />
             </label>
           </div>
 
-          <button onClick={onCreateBoard} className={`create-btn ${!title ? 'disabled' : ''}`} disabled={!title}>
+          <button
+            onClick={onCreateBoard}
+            className={`create-btn ${!title ? 'disabled' : ''}`}
+            disabled={!title}
+          >
             Create
           </button>
         </form>
       </div>
     </section>
-  );
-};
+  )
+}

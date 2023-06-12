@@ -18,7 +18,12 @@ export const BoardPreview = ({ board, onToggleStarred }) => {
   return (
     <div>
       <Link key={board._id} to={`/board/${board._id}`}>
-        <section className="board-preview" style={boardStyle}>
+        <section
+          className={`board-preview ${
+            board.title.length > 20 ? 'long-title' : ''
+          }`}
+          style={boardStyle}
+        >
           <span className="board-hover">
             <div className="board-preview-details">
               <h3>{board.title}</h3>
