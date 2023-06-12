@@ -25,24 +25,24 @@ export function EditAttachment({ attachmentId, board, group, task, onClose }) {
       return attachment;
     });
 
-    const updatedTasks = group.tasks.map((t) => {
-      if (t.id === task.id) {
+    const updatedTasks = group.tasks.map((currentTask) => {
+      if (currentTask.id === task.id) {
         return {
-          ...t,
+          ...currentTask,
           attachments: updatedAttachments,
         };
       }
-      return t;
+      return currentTask;
     });
 
-    const updatedGroups = board.groups.map((g) => {
-      if (g.id === group.id) {
+    const updatedGroups = board.groups.map((currentGroup) => {
+      if (currentGroup.id === group.id) {
         return {
-          ...g,
+          ...currentGroup,
           tasks: updatedTasks,
         };
       }
-      return g;
+      return currentGroup;
     });
 
     const updatedBoard = {

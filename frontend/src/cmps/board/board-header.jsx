@@ -124,7 +124,7 @@ export function BoardHeader({ board, changeBackground }) {
           <FilterIcon />
           <span>Filter</span>
         </button> */}
-        {/* <div className="members-img">
+        <div className="members-img">
           {members &&
             members.map((member) => (
               <div key={member._id} onClick={() => openModal(member)}>
@@ -132,7 +132,7 @@ export function BoardHeader({ board, changeBackground }) {
               </div>
             ))}
         </div>
-        {selectedMember && <MemberModal member={selectedMember} onClose={closeModal} />} */}
+        {selectedMember && <MemberModal member={selectedMember} onClose={closeModal} />}
         {/* <button className="share-btn">
           <ShareIcon />
           Share

@@ -9,15 +9,15 @@ export function CoverContent({ board, task, group }) {
     const updatedBoard = { ...board };
 
     // Update the task in the updated board data with the new coverColor
-    updatedBoard.groups.forEach((g) => {
-      if (g.id === group.id) {
-        const updatedTasks = g.tasks.map((t) => {
-          if (t.id === task.id) {
+    updatedBoard.groups.forEach((currentGroup) => {
+      if (currentGroup.id === group.id) {
+        const updatedTasks = currentGroup.tasks.map((currentTask) => {
+          if (currentTask.id === task.id) {
             return updatedTask;
           }
-          return t;
+          return currentTask;
         });
-        g.tasks = updatedTasks;
+        currentGroup.tasks = updatedTasks;
       }
     });
 
