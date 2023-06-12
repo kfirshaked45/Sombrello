@@ -67,11 +67,11 @@ export function ChecklistContent({ task, board, group, onClose, createActivity }
   }
 
   return (
-    <section className="checklist-content">
+    <section className="checklist-content" style={{ textAlign: 'start' }}>
       <form onSubmit={onAddChecklist}>
         <label htmlFor="checklist-title">Title</label>
         <input value={title} onChange={handleChange} ref={inputRef} type="text" name="title" id="checklist-title" />
-        <button>Add</button>
+        <button className="quill-save-btn">Add</button>
       </form>
     </section>
   );
