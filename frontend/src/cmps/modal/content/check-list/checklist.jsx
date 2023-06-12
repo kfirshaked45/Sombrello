@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { BsCheck2Square } from 'react-icons/bs';
+import { AiOutlineDelete } from 'react-icons/ai';
 
 export function Checklist({ checklist, task, board, group }) {
   console.log(checklist);
@@ -178,12 +179,8 @@ export function Checklist({ checklist, task, board, group }) {
               <div>
                 <span>{todo.title}</span>
                 {isHovered === todo.id && (
-                  <button
-                    className="general-btn-styling"
-                    style={{ position: 'absolute', right: '6px', height: '20px' }}
-                    onClick={() => handleTodoDelete(todo.id)}
-                  >
-                    Delete
+                  <button style={{ position: 'absolute', right: '6px', height: '20px' }} onClick={() => handleTodoDelete(todo.id)}>
+                    <AiOutlineDelete className="sidebar-icon" />
                   </button>
                 )}
               </div>
