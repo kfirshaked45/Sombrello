@@ -24,19 +24,23 @@ export function Checklist({ checklist, task, board, group }) {
       title: todoTitle,
       isDone: isDone,
     };
-    const updatedTask = { ...task };
-    const checklistIndex = updatedTask.checklists.findIndex((c) => c.id === checklist.id);
-    if (checklistIndex !== -1) {
-      updatedTask.checklists[checklistIndex].todos.push(todo);
-    }
+
+    const updatedChecklist = { ...checklist };
+    updatedChecklist.todos.push(todo); // Add the new todo to the checklist
 
     const updatedGroups = board.groups.map((g) => {
       if (g.id === group.id) {
         const updatedTasks = g.tasks.map((t) => {
           if (t.id === task.id) {
+            const updatedChecklists = t.checklists.map((c) => {
+              if (c.id === checklist.id) {
+                return updatedChecklist; // Update the specific checklist with the updated todos
+              }
+              return c;
+            });
             return {
               ...t,
-              checklists: updatedTask.checklists,
+              checklists: updatedChecklists,
             };
           }
           return t;
@@ -53,7 +57,7 @@ export function Checklist({ checklist, task, board, group }) {
     const updatedBoard = { ...board, groups: updatedGroups };
     setTodoTitle('');
     setIsEditable(true); // Keep input box open
-    inputRef.current.focus(); // Auto focus to input field after adding todo
+    inputRef.current.focus(); // Auto focus on the input field after adding a todo
     dispatch(updateBoard(updatedBoard));
   }
 
