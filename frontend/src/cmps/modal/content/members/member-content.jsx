@@ -4,6 +4,9 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons'
 import omerImg from '../../../../assets/img/omer-img.jpg'
 import ofekImg from '../../../../assets/img/user-img1.jpg'
 import kfirImg from '../../../../assets/img/kfirImg.jpg'
+import batelImg from '../../../../assets/img/batelImg.jpg'
+import danielImg from '../../../../assets/img/danielImg.png'
+import tommyImg from '../../../../assets/img/tommyImg.jpg'
 
 const fixedMembers = [
   {
@@ -20,6 +23,27 @@ const fixedMembers = [
     _id: 'u103',
     fullname: 'Omer Hassin',
     imgUrl: omerImg,
+  },
+  {
+    _id: 'u104',
+    fullname: 'Batel Katiei',
+    userName: 'Batel',
+    password: 'batel123',
+    imgUrl: batelImg,
+  },
+  {
+    _id: 'u105',
+    fullname: 'Daniel Shaked',
+    userName: 'Daniel',
+    password: 'daniel123',
+    imgUrl: danielImg,
+  },
+  {
+    _id: 'u106',
+    fullname: 'Tommy Irmia',
+    userName: 'Tommy',
+    password: 'tommy123',
+    imgUrl: tommyImg,
   },
 ]
 
