@@ -337,6 +337,61 @@
 //   }
 // }
 
-.dot-seperator{
+.dot-seperator {
   font-size: 18px;
+}
+
+.checklist-text {
+  display: flex;
+  justify-content: space-between;
+}
+.total-progress-bar {
+  background-color: #091e4214;
+  border-radius: 4px;
+  clear: both;
+  height: 8px;
+
+  overflow: hidden;
+  position: relative;
+}
+.checklist-input-box {
+  background-color: var(--ds-background-input, #fafbfc);
+  border-radius: 2px;
+  box-shadow: inset 0 0 0 2px var(--ds-border-input, #dfe1e6);
+  cursor: pointer;
+  flex-shrink: 0;
+  height: 16px;
+
+  margin: 6px;
+  text-align: center;
+
+  transition: all 0.2s ease-in-out;
+  white-space: nowrap;
+  width: 16px;
+}
+.checklist-item {
+  display: grid;
+  padding: 6px;
+  border-radius: 4px;
+  grid-template-columns: 50px 1fr;
+  width: 100%;
+  align-items: center;
+}
+.checklist-item:hover {
+  background-color: #091e420a;
+}
+.sublist-todos {
+  width: 100%;
+  grid-column: 1/-1;
+}
+.task-checklist {
+  margin-bottom: 24px;
+}
+.add-item-input {
+  overflow: hidden;
+  overflow-wrap: break-word;
+  height: 56px;
+  width: 100%;
+  box-shadow: inset 0 0 0 2px #0079bf;
+  border: none;
 }

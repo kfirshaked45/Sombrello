@@ -2,6 +2,9 @@ import { useEffect, useRef, useState } from 'react';
 import { utilService } from '../../../../services/util.service';
 import { updateBoard } from '../../../../store/board.actions';
 import { useDispatch } from 'react-redux';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { BsCheck2Square } from 'react-icons/bs';
 
 export function Checklist({ checklist, task, board, group }) {
   console.log(checklist);
@@ -132,38 +135,66 @@ export function Checklist({ checklist, task, board, group }) {
   return (
     <div>
       <div className="div-activity details-grid">
-        <div className="icon">Icon</div>
-        <h2 className="align-text">
+        <div className="icon" style={{ marginBlockStart: '7.5px' }}>
+          <BsCheck2Square />
+        </div>
+        <h2 className="align-text checklist-text">
           {checklist.title}
-          <button onClick={handleDelete}>DELETE</button>
+          <button onClick={handleDelete} className="general-btn-styling">
+            Delete
+          </button>
         </h2>
         <div className="progress-percent">{calculateProgress().toFixed(0)}%</div>
-
-        <div
-          className="sublist-progress-bar"
-          style={{
-            width: `${calculateProgress()}%`,
-            backgroundColor: calculateProgress() === 100 ? '#1F845A' : '#579DFF',
-            borderRadius: '4px',
-            height: '20px',
-          }}
-        ></div>
-        <div className="grid-details-margin"></div>
-      </div>
-      <section className="task-details-sublist ">
+        <div className="total-progress-bar">
+          <div
+            className="sublist-progress-bar"
+            style={{
+              width: `${calculateProgress()}%`,
+              backgroundColor: calculateProgress() === 100 ? '#1F845A' : '#579DFF',
+              borderRadius: '4px',
+              height: '100%',
+            }}
+          ></div>
+        </div>
+        {/* <div className="grid-details-margin"></div> */}
         <div className="sublist-todos">
           {checklist.todos.map((todo, idx) => (
-            <div key={todo.id} onMouseEnter={() => setIsHovered(todo.id)} onMouseLeave={() => setIsHovered(null)}>
-              <input type="checkbox" checked={todo.isDone} onChange={() => handleCheckboxChange(todo.id)} />
-              <span>{todo.title}</span>
-              {isHovered === todo.id && <button onClick={() => handleTodoDelete(todo.id)}>Delete</button>}
+            <div
+              className="checklist-item"
+              key={todo.id}
+              onMouseEnter={() => setIsHovered(todo.id)}
+              onMouseLeave={() => setIsHovered(null)}
+            >
+              {/* <input type="checkbox" checked={todo.isDone} onChange={() => handleCheckboxChange(todo.id)} className="checklist-input-box" /> */}
+              {/* {todo.isDone && <FontAwesomeIcon icon={faCheck} className="label-check-icon" />} */}
+              <div
+                className="action-checkbox-input"
+                onClick={() => {
+                  handleCheckboxChange(todo.id);
+                }}
+              >
+                {todo.isDone && <FontAwesomeIcon icon={faCheck} className="label-check-icon" />}
+              </div>
+              <div>
+                <span>{todo.title}</span>
+                {isHovered === todo.id && (
+                  <button
+                    className="general-btn-styling"
+                    style={{ position: 'absolute', right: '6px', height: '20px' }}
+                    onClick={() => handleTodoDelete(todo.id)}
+                  >
+                    Delete
+                  </button>
+                )}
+              </div>
             </div>
           ))}
         </div>
-
+      </div>
+      <section className="task-details-sublist ">
         {isEditable ? (
           <section>
-            <div className="add-new-item-container">
+            <div className="add-new-item-container grid-details-margin">
               <input
                 // onBlur={handleBlur}
                 autoFocus={true}
@@ -173,15 +204,20 @@ export function Checklist({ checklist, task, board, group }) {
                 ref={inputRef}
                 value={todoTitle}
                 onChange={(e) => setTodoTitle(e.target.value)}
+                className="add-item-input"
               />
-              <div>
-                <button onClick={(ev) => handleSubmit(ev)}>Add</button>
-                <button onClick={() => setIsEditable(false)}>Cancel</button>
+              <div style={{ display: 'flex' }}>
+                <button onClick={(ev) => handleSubmit(ev)} className="quill-save-btn">
+                  Add
+                </button>
+                <button onClick={() => setIsEditable(false)} className="general-btn-styling">
+                  Cancel
+                </button>
               </div>
             </div>
           </section>
         ) : (
-          <button className="add-item-btn" onClick={() => setIsEditable(true)}>
+          <button className="add-item-btn general-btn-styling grid-details-margin" onClick={() => setIsEditable(true)}>
             Add an item
           </button>
         )}
