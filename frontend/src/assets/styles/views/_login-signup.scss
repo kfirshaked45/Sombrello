@@ -23,16 +23,16 @@ $grayCustom: #ebecf0;
 
     width: 40px;
     height: 40px;
-    display: flex;
     margin-right: 230px;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     margin-top: 40px;
     color: #253858;
 
     img {
       margin-right: 20px;
       width: 40px;
+      border-radius: 5px;
     }
 
     h1 {
