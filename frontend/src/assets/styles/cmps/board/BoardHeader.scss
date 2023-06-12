@@ -100,9 +100,12 @@
 }
 .members-img img {
   height: rem(28px);
+  margin-right: 2px;
+  border-radius: 50%;
 }
 .members-img {
   display: flex;
+  margin-right: 5px;
 }
 .member-modal {
   overflow-x: hidden;

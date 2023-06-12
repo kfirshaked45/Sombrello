@@ -1,7 +1,3 @@
-import { ReactComponent as XIcon } from '../../assets/img/board/x-icon.svg';
-import { utilService } from '../../services/util.service';
-import React, { useState, useRef, useLayoutEffect, useEffect } from 'react';
-import { ActionContent } from './content/action-content';
 
 export function ActionModal({ action, onClose, board, task, group, triggerRef, attachmentId, labelId }) {
   const [modalTopPos, setModalTopPos] = useState(null);
@@ -9,9 +5,9 @@ export function ActionModal({ action, onClose, board, task, group, triggerRef, a
 
   useLayoutEffect(() => {
     if (triggerRef.current && triggerRef) {
-      setModalTopPos(null); // Reset the position state
+      setModalTopPos(null)
       const { top, left, marginLeft } = utilService.getModalPosition(action, triggerRef);
-      setModalTopPos({ top, left, marginLeft }); // Update the position state
+      setModalTopPos({ top, left, marginLeft })
     }
   }, [action, triggerRef]);
 
