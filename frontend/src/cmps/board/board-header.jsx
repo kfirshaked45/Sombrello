@@ -1,97 +1,103 @@
-import { useState, useEffect, useRef } from 'react';
-import { ReactComponent as BoardIcon } from '../../assets/img/board/board-icon.svg';
-import { useLocation } from 'react-router-dom';
-import { TiStarOutline, TiStarFullOutline } from 'react-icons/ti';
-import { useDispatch } from 'react-redux';
-import { ReactComponent as FilterIcon } from '../../assets/img/board/filter-icon.svg';
-import { BsThreeDots } from 'react-icons/bs';
-import { updateBoard } from '../../store/board.actions';
-import { ReactComponent as EmptyStarIcon } from '../../assets/img/board/empty-star.svg';
-import { ReactComponent as Member } from '../../assets/img/board/member-icon.svg';
-import { ReactComponent as MembersIcon } from '../../assets/img/board/members-icon.svg';
-import { ReactComponent as Pen } from '../../assets/img/board/pen-icon.svg';
-import { ReactComponent as ShareIcon } from '../../assets/img/board/share-icon.svg';
-import { MemberModal } from '../modal/member-modal';
-import { BoardSideMenu } from './side-menu/board-side-menu';
-import { utilService } from '../../services/util.service';
+import { useState, useEffect, useRef } from 'react'
+import { ReactComponent as BoardIcon } from '../../assets/img/board/board-icon.svg'
+import { useLocation } from 'react-router-dom'
+import { TiStarOutline, TiStarFullOutline } from 'react-icons/ti'
+import { useDispatch } from 'react-redux'
+import { ReactComponent as FilterIcon } from '../../assets/img/board/filter-icon.svg'
+import { BsThreeDots } from 'react-icons/bs'
+import { updateBoard } from '../../store/board.actions'
+import { ReactComponent as EmptyStarIcon } from '../../assets/img/board/empty-star.svg'
+import { ReactComponent as Member } from '../../assets/img/board/member-icon.svg'
+import { ReactComponent as MembersIcon } from '../../assets/img/board/members-icon.svg'
+import { ReactComponent as Pen } from '../../assets/img/board/pen-icon.svg'
+import { ReactComponent as ShareIcon } from '../../assets/img/board/share-icon.svg'
+import { MemberModal } from '../modal/member-modal'
+import { BoardSideMenu } from './side-menu/board-side-menu'
+import { utilService } from '../../services/util.service'
 
 export function BoardHeader({ board, changeBackground }) {
-  const dispatch = useDispatch();
-  const location = useLocation();
-  const members = board.members;
-  const [selectedMember, setSelectedMember] = useState(null);
-  const [sideMenuClass, setSideMenuClass] = useState('');
-  const [isEditingTitle, setIsEditingTitle] = useState(false);
-  const [editedTitle, setEditedTitle] = useState(board.title);
-  const [headerStatus, setHeaderStatus] = useState();
-  const textAreaInput = useRef(null);
+  const dispatch = useDispatch()
+  const location = useLocation()
+  const members = board.members
+  const [selectedMember, setSelectedMember] = useState(null)
+  const [sideMenuClass, setSideMenuClass] = useState('')
+  const [isEditingTitle, setIsEditingTitle] = useState(false)
+  const [editedTitle, setEditedTitle] = useState(board.title)
+  const [headerStatus, setHeaderStatus] = useState()
+  const textAreaInput = useRef(null)
 
   useEffect(() => {
-    let status;
-    if (location.pathname.includes('/board')) status = 'board';
-    setHeaderStatus(status);
-  }, [location.pathname]);
+    let status
+    if (location.pathname.includes('/board')) status = 'board'
+    setHeaderStatus(status)
+  }, [location.pathname])
 
   const openModal = (member) => {
-    setSelectedMember(member);
-  };
+    setSelectedMember(member)
+  }
 
   const renderSideMenu = () => {
-    setSideMenuClass(sideMenuClass === '' ? 'open' : '');
-  };
+    setSideMenuClass(sideMenuClass === '' ? 'open' : '')
+  }
 
   function handleHeaderClick() {
-    setIsEditingTitle(true);
-    textAreaInput.current.focus();
-    textAreaInput.current.select();
+    setIsEditingTitle(true)
+    textAreaInput.current.focus()
+    textAreaInput.current.select()
   }
 
   const toggleStarBoard = () => {
-    board.isStarred = !board.isStarred;
-    dispatch(updateBoard(board));
-  };
+    board.isStarred = !board.isStarred
+    dispatch(updateBoard(board))
+  }
 
   function resizeInput() {
-    const input = textAreaInput.current;
-    input.style.width = input.scrollWidth + 'px';
-    input.style.height = input.scrollHeight + 'px';
+    const input = textAreaInput.current
+    input.style.width = input.scrollWidth + 'px'
+    input.style.height = input.scrollHeight + 'px'
   }
 
   const closeModal = () => {
-    setSelectedMember(null);
-  };
+    setSelectedMember(null)
+  }
 
   const handleTitleChange = (e) => {
-    setEditedTitle(e.target.value);
-    resizeInput();
-  };
+    setEditedTitle(e.target.value)
+    resizeInput()
+  }
 
   const handleTitleBlur = () => {
-    setIsEditingTitle(false);
+    setIsEditingTitle(false)
 
-    const updatedBoard = { ...board, title: editedTitle };
-    dispatch(updateBoard(updatedBoard));
-  };
+    const updatedBoard = { ...board, title: editedTitle }
+    dispatch(updateBoard(updatedBoard))
+  }
 
   const getFontColor = () => {
     if (headerStatus === 'board') {
-      const isDarkBackground = utilService.isBackgroundDark(board?.style?.backgroundColor);
-      return isDarkBackground ? 'light' : 'dark';
+      const isDarkBackground = utilService.isBackgroundDark(
+        board?.style?.backgroundColor
+      )
+      return isDarkBackground ? 'light' : 'dark'
     }
-    return '';
-  };
+    return ''
+  }
 
   function handleExitKeys(ev) {
     if (ev.key === 'Escape' || ev.key === 'Enter') {
-      textAreaInput.current.blur();
+      textAreaInput.current.blur()
     }
   }
 
-  const fontColor = getFontColor();
+  const fontColor = getFontColor()
 
   return (
     <div className="board-header">
-      <div className={`board-header-left ${fontColor === 'dark' ? 'dark' : 'light'}`}>
+      <div
+        className={`board-header-left ${
+          fontColor === 'dark' ? 'dark' : 'light'
+        }`}
+      >
         {isEditingTitle ? (
           <input
             className="board-title-input"
@@ -104,7 +110,11 @@ export function BoardHeader({ board, changeBackground }) {
             ref={textAreaInput}
           />
         ) : (
-          <span className="group-list-header" onClick={handleHeaderClick} tabIndex={0}>
+          <span
+            className="group-list-header"
+            onClick={handleHeaderClick}
+            tabIndex={0}
+          >
             {editedTitle}
           </span>
         )}
@@ -119,7 +129,11 @@ export function BoardHeader({ board, changeBackground }) {
           <BoardIcon /> Board
         </button> */}
       </div>
-      <div className={`board-header-right-container ${fontColor === 'dark' ? 'dark' : 'light'}`}>
+      <div
+        className={`board-header-right-container ${
+          fontColor === 'dark' ? 'dark' : 'light'
+        }`}
+      >
         {/* <button className="filter-button">
           <FilterIcon />
           <span>Filter</span>
@@ -132,7 +146,9 @@ export function BoardHeader({ board, changeBackground }) {
               </div>
             ))}
         </div>
-        {selectedMember && <MemberModal member={selectedMember} onClose={closeModal} />}
+        {selectedMember && (
+          <MemberModal member={selectedMember} onClose={closeModal} />
+        )}
         {/* <button className="share-btn">
           <ShareIcon />
           Share
@@ -142,8 +158,13 @@ export function BoardHeader({ board, changeBackground }) {
             <BsThreeDots style={{ fontSize: '16px' }} />
           </button>
         )}
-        <BoardSideMenu isOpen={sideMenuClass} onCloseSideMenu={renderSideMenu} changeBackground={changeBackground} board={board} />
+        <BoardSideMenu
+          isOpen={sideMenuClass}
+          onCloseSideMenu={renderSideMenu}
+          changeBackground={changeBackground}
+          board={board}
+        />
       </div>
     </div>
-  );
+  )
 }
