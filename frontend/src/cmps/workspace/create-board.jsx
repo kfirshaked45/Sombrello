@@ -79,7 +79,7 @@ export const CreateBoard = ({ setActionModal }) => {
       handleCloseModal();
     }
 
-    const board = { title, style, labels };
+    const board = { title, style, labels, activities: [] };
     dispatch(addBoard(board));
   };
 

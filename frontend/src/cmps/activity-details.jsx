@@ -46,16 +46,17 @@ export function ActivityDetails({ board }) {
         <span className="activity-top-text">Activity</span>
       </button>
       <div className="activities-container">
-        {sortedActivities.map((activity) => (
-          <div key={activity.id} className="activity-user-container">
-            <img src={activity.byMember.imgUrl} alt="user-img" className="activity-user-img" />
-            <div className="activity-user-text-container">
-              <span className="activity-username">{activity.byMember.username}</span>
-              <span className="activity-text">{activity.text} </span>
+        {sortedActivities.length > 0 &&
+          sortedActivities.map((activity) => (
+            <div key={activity.id} className="activity-user-container">
+              <img src={activity.byMember.imgUrl} alt="user-img" className="activity-user-img" />
+              <div className="activity-user-text-container">
+                <span className="activity-username">{activity.byMember.username}</span>
+                <span className="activity-text">{activity.text} </span>
+              </div>
+              <div className="activity-created-at">{formatCreatedAt(activity.createdAt)}</div>
             </div>
-            <div className="activity-created-at">{formatCreatedAt(activity.createdAt)}</div>
-          </div>
-        ))}
+          ))}
       </div>
     </div>
   );
