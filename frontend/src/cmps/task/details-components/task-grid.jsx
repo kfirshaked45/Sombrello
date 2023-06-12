@@ -1,16 +1,29 @@
-import { RxActivityLog } from 'react-icons/rx';
-import { TaskAttachments } from '../details/task-attachments';
-import { TaskProps } from '../details/task-props';
-import { TaskDescription } from './task-description';
-import { TaskSidebar } from './task-sidebar';
-import { TaskActivity } from './task-activity';
+import { RxActivityLog } from 'react-icons/rx'
+import { TaskAttachments } from '../details/task-attachments'
+import { TaskProps } from '../details/task-props'
+import { TaskDescription } from './task-description'
+import { TaskSidebar } from './task-sidebar'
+import { TaskActivity } from './task-activity'
 
-export function TaskGrid({ members, task, board, group, hasAttachments, setCoverImg, coverImg }) {
+export function TaskGrid({
+  members,
+  task,
+  board,
+  group,
+  hasAttachments,
+  setCoverImg,
+  coverImg,
+}) {
   return (
     <div className="task-grid ">
       <div className="task-column">
         <TaskProps members={members} task={task} board={board} group={group} />
-        <TaskDescription description={task?.desc} task={task} board={board} group={group} />
+        <TaskDescription
+          description={task?.desc}
+          task={task}
+          board={board}
+          group={group}
+        />
 
         <div className="attachments-section">
           <TaskAttachments
@@ -34,5 +47,5 @@ export function TaskGrid({ members, task, board, group, hasAttachments, setCover
         />
       </div>
     </div>
-  );
+  )
 }
