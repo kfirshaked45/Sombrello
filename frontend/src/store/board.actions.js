@@ -1,4 +1,4 @@
-import { boardService } from '../services/board.service.local.js'
+import { boardService } from '../services/board.service.js'
 import { userService } from '../services/user.service.js'
 import { store } from './store.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
@@ -140,70 +140,5 @@ export async function onRemoveBoardOptimistic(boardId) {
     store.dispatch({
       type: UNDO_REMOVE_BOARD,
     })
-  }
-}
-
-export function addChecklist(title, taskId, groupId) {
-  return async (dispatch, getState) => {
-    const prevBoard = getState().boardModule.board
-    const board = structuredClone(prevBoard)
-    const updatedBoard = boardService.addChecklist(
-      title,
-      taskId,
-      groupId,
-      board
-    )
-    dispatch(getActionUpdateBoard(updatedBoard))
-
-    try {
-      await boardService.save(updatedBoard)
-    } catch (err) {
-      dispatch(getActionUpdateBoard({ ...prevBoard }))
-      console.log('Cannot add checklist', err)
-    }
-  }
-}
-
-export function updateTask(groupId, task, activityTxt, boardMember) {
-  return async (dispatch, getState) => {
-    const prevBoard = getState().boardModule.board
-    const board = structuredClone(prevBoard)
-    const updatedBoard = boardService.update(
-      board,
-      groupId,
-      task,
-      activityTxt,
-      boardMember
-    )
-    dispatch(getActionUpdateBoard(updatedBoard))
-
-    try {
-      await boardService.save(updatedBoard)
-    } catch (err) {
-      dispatch(getActionUpdateBoard({ ...prevBoard }))
-      console.log('Cannot update task', err)
-    }
-  }
-}
-
-export function addNewTodo(title, checkListId, taskId, groupId) {
-  return async (dispatch, getState) => {
-    const prevBoard = getState().boardModule.board
-    const board = structuredClone(prevBoard)
-    const updatedBoard = boardService.addTodo(
-      title,
-      checkListId,
-      groupId,
-      taskId,
-      board
-    )
-    dispatch(getActionUpdateBoard(updatedBoard))
-
-    try {
-      await boardService.save(updatedBoard)
-    } catch (err) {
-      dispatch(getActionUpdateBoard({ ...prevBoard }))
-      console.log('Cannot add todo', err)
-    }
   }
 }

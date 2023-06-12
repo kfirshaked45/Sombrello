@@ -13,7 +13,6 @@ export function TaskGrid({
   hasAttachments,
   setCoverImg,
   coverImg,
-  checklist,
 }) {
   return (
     <div className="task-grid ">
@@ -43,7 +42,6 @@ export function TaskGrid({
           board={board}
           group={group}
           task={task}
-          checklist={checklist}
           hasAttachments={task?.attachments?.length > 0}
           width={hasAttachments ? '100px' : '165px'}
         />

@@ -8,13 +8,10 @@ export const boardService = {
   query,
   getById,
   save,
-  update,
   remove,
   getEmptyBoard,
   addBoardMsg,
   createDemoBoard,
-  addChecklist,
-  addTodo,
 }
 window.cs = boardService
 
@@ -54,17 +51,6 @@ async function save(board) {
   return savedBoard
 }
 
-function update(board, groupId, task, activityTxt) {
-  const groupIdx = board.groups.findIndex((group) => group.id === groupId)
-  const taskIdx = board.groups[groupIdx].tasks.findIndex(
-    (currTask) => currTask.id === task.id
-  )
-  board.groups[groupIdx].tasks.splice(taskIdx, 1, task)
-  if (activityTxt) board = addActivity(activityTxt, task, board, null)
-
-  return board
-}
-
 async function addBoardMsg(boardId, txt) {
   // Later, this is all done by the backend
   const board = await getById(boardId)
@@ -86,64 +72,6 @@ function getEmptyBoard() {
     vendor: 'Susita-' + (Date.now() % 1000),
     price: utilService.getRandomIntInclusive(1000, 9000),
   }
-}
-
-function addChecklist(title, taskId, groupId, board) {
-  const checklist = {
-    id: utilService.makeId(),
-    todos: [],
-    title,
-  }
-
-  if (!board.groups) board.groups = []
-
-  const group = board.groups.find((group) => group.id === groupId)
-  const task = group.tasks.find((task) => task.id === taskId)
-  if (task.checklists) task.checklists.push(checklist)
-  else task.checklists = [checklist]
-
-  return addActivity(`added ${title} to ${task.title}`, task, board)
-}
-
-function addTodo(title, checkListId, groupId, taskId, board) {
-  const todo = {
-    id: utilService.makeId(),
-    isDone: false,
-    title,
-  }
-
-  console.log('groupId:', groupId)
-  console.log('taskId:', taskId)
-
-  const group = board.groups.find((group) => group.id === groupId)
-  const task = group.tasks.find((task) => task.id === taskId)
-  const checklist = task.checklists.find(
-    (checklist) => checklist.id === checkListId
-  )
-  checklist.todos.push(todo)
-
-  return board
-}
-
-function addActivity(txt, task, board, comment, user) {
-  const miniUser = user || userService.getLoggedInUser()
-
-  const miniTask = task ? { id: task.id, title: task.title } : null
-
-  const activity = {
-    id: utilService.makeId(),
-    txt,
-    createdAt: Date.now(),
-    byMember: miniUser,
-    task: miniTask,
-  }
-
-  if (comment) activity.comment = comment
-
-  if (board.activities) board.activities.unshift(activity)
-  else board.activities = [activity]
-
-  return board
 }
 
 async function createDemoBoard() {

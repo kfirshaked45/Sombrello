@@ -1,6 +1,5 @@
 import React from 'react'
 import { MemberContent } from './members/member-content'
-import { CheckList } from '../../board/check-list/check-list'
 import { useDispatch, useSelector } from 'react-redux'
 import { LabelsContent } from './labels/labels-content'
 import { DateContent } from './dates/date-content'
@@ -16,7 +15,6 @@ const actionComponents = {
   Members: MemberContent,
   'Members ': MemberContent,
   Labels: LabelsContent,
-  Checklist: CheckList,
   Dates: DateContent,
   Attachments: AttachmentsContent,
   Group: GroupsContent,
