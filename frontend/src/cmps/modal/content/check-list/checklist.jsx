@@ -145,6 +145,7 @@ export function Checklist({ checklist, task, board, group }) {
             Delete
           </button>
         </h2>
+
         <div className="progress-percent">{calculateProgress().toFixed(0)}%</div>
         <div className="total-progress-bar">
           <div
