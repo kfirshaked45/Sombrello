@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { ActionModal } from '../../modal/action-modal';
 
 export function TaskAttachments({ attachments, task, board, group }) {
+  console.log(task, 'TASK');
   const [selectedAction, setSelectedAction] = useState(null);
   const [selectedAttachmentId, setSelectedAttachmentId] = useState(null);
   console.log(attachments);
@@ -150,11 +151,11 @@ export function TaskAttachments({ attachments, task, board, group }) {
                   <button className="attachment-button" onClick={() => deleteImg(attachment.id)}>
                     Delete
                   </button>
-                  <span className='dot-seperator'>·</span>
+                  <span className="dot-seperator">·</span>
                   <button className="attachment-button" ref={buttonRef} onClick={() => openActionModal('Edit Attachment', attachment.id)}>
                     Edit
                   </button>
-                  <span className='dot-seperator'>·</span>
+                  <span className="dot-seperator">·</span>
                 </div>
                 <button className="attachment-button" onClick={() => handleCoverClick(attachment.id, attachment.imgUrl)}>
                   {task.style.coverImg === attachment.imgUrl ? 'Remove cover' : 'Make cover'}

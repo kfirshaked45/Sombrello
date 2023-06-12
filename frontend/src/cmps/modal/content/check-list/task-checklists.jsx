@@ -1,21 +1,15 @@
-import { TaskSublist } from './task-sublist'
+import { Checklist } from './checklist';
 
-export function TaskChecklists({ task, boardId, groupId }) {
-  // task.checklists (array)
-  if (!task.checklists.length) return <></>
+export function TaskChecklists({ task, board, group }) {
+  if (!task.checklists && task.checklists) return;
   return (
     <section className="task-details-checklists">
       {task.checklists.length &&
         task.checklists.map((checklist) => (
           <div key={checklist.id} className="task-checklist">
-            <TaskSublist
-              checklist={checklist}
-              task={task}
-              boardId={boardId}
-              groupId={groupId}
-            />
+            <Checklist checklist={checklist} task={task} board={board} group={group} />
           </div>
         ))}
     </section>
-  )
+  );
 }

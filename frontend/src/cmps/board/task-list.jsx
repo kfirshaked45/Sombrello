@@ -42,7 +42,7 @@ export function TaskList({ board, group, isEditable, handleCancel, createActivit
                   onClick={() => handleTaskClicked(task)}
                 >
                   <TaskPreview board={board} groupId={group.id} task={task} createActivity={createActivity} />
-                  {hoveredIndex === index && <FontAwesomeIcon icon={faPen} className="task-pen" />}
+                  {/* {hoveredIndex === index && <FontAwesomeIcon icon={faPen} className="task-pen" />} */}
                 </li>
               )}
             </Draggable>
