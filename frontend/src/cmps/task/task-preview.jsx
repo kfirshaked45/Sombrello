@@ -11,7 +11,7 @@ import { boardService } from '../../services/board.service.local';
 
 export function TaskPreview({ board, groupId, task, createActivity }) {
   const imageDetails = task.attachments && task.attachments[0];
-  console.log(task.attachments, 'PREVIEW ATTACHM,ENTS', task.dueDate);
+
   const labels = task.labels;
   const color = task.style && task.style.coverColor;
   const description = task.desc;

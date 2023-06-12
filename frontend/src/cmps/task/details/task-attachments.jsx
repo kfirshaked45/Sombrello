@@ -6,10 +6,10 @@ import { useDispatch } from 'react-redux';
 import { ActionModal } from '../../modal/action-modal';
 
 export function TaskAttachments({ attachments, task, board, group }) {
-  console.log(task, 'TASK');
+ 
   const [selectedAction, setSelectedAction] = useState(null);
   const [selectedAttachmentId, setSelectedAttachmentId] = useState(null);
-  console.log(attachments);
+ 
   const buttonRef = useRef(null);
   const openActionModal = (action, attachmentId) => {
     setSelectedAction(action);

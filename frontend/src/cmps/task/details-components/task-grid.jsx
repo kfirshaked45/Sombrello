@@ -15,7 +15,6 @@ export function TaskGrid({ members, task, board, group, hasAttachments, setCover
 
         <div className="attachments-section">
           <TaskAttachments
-          
             attachments={task.attachments}
             task={task}
             coverImg={coverImg}
@@ -24,7 +23,7 @@ export function TaskGrid({ members, task, board, group, hasAttachments, setCover
             setCoverImg={setCoverImg}
           />
         </div>
-        {/* <TaskChecklists task={task} board={board} group={group} /> */}
+        <TaskChecklists task={task} board={board} group={group} />
         <TaskActivity task={task} board={board} group={group} />
       </div>
       <div className="task-sidebar">

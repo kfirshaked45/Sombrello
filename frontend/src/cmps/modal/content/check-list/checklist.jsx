@@ -146,7 +146,7 @@ export function Checklist({ checklist, task, board, group }) {
                 onChange={(e) => setTodoTitle(e.target.value)}
               />
               <div>
-                <button>Add</button>
+                <button type="submit">Add</button>
                 <button onClick={() => setIsEditable(false)}>Cancel</button>
               </div>
             </form>

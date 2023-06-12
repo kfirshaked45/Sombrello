@@ -13,7 +13,7 @@ import { browserHistory } from 'react-router'
 import { MdCallToAction } from 'react-icons/md'
 
 export function TaskSidebar({ board, task, group, hasAttachments, width }) {
-  console.log(task)
+  
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const [selectedAction, setSelectedAction] = useState(null)

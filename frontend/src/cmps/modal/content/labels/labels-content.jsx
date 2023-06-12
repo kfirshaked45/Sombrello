@@ -10,7 +10,7 @@ export function LabelsContent({ board, group, task, dispatch }) {
   const [selectedAction, setSelectedAction] = useState();
   const [labelId, setLabelId] = useState();
   const actionButtonRef = useRef();
-  console.log(board.labels);
+ 
 
   function addLabel(label) {
     const updatedLabels = [...(task.labels || [])];

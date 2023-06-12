@@ -9,10 +9,11 @@ export function ActionModal({ action, onClose, board, task, group, triggerRef, a
 
   useLayoutEffect(() => {
     if (triggerRef.current && triggerRef) {
+      setModalTopPos(null); // Reset the position state
       const { top, left, marginLeft } = utilService.getModalPosition(action, triggerRef);
-      setModalTopPos({ top, left, marginLeft });
+      setModalTopPos({ top, left, marginLeft }); // Update the position state
     }
-  }, [action]);
+  }, [action, triggerRef]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -31,7 +32,7 @@ export function ActionModal({ action, onClose, board, task, group, triggerRef, a
     <div className="action-modal" style={modalTopPos} ref={modalRef} onClick={(ev) => ev.stopPropagation()}>
       <div className="action-header">
         <div>{action}</div>
-        <XIcon onClick={onClose} className="action-modal-x"/>
+        <XIcon onClick={onClose} className="action-modal-x" />
       </div>
       <ActionContent
         action={action}
