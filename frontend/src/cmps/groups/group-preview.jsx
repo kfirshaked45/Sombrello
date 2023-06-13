@@ -8,7 +8,7 @@ import { TaskAdd } from '../board/task-add-form';
 import { ActionModal } from '../modal/action-modal.jsx';
 import { TaskAddButton } from '../board/task-add-button';
 
-export function GroupPreview({ board, group, provided, createActivity }) {
+export function GroupPreview({ board, group, provided, createActivity, isAllToggled, handleToggleAllTasks }) {
   const [title, setTitle] = useState(group.title);
   const [isTitleEditable, setIsTitleEditable] = useState(false);
   const [modalValue, setModalValue] = useState(null);
@@ -97,6 +97,8 @@ export function GroupPreview({ board, group, provided, createActivity }) {
         isEditable={isEditable}
         handleCancel={handleCancel}
         createActivity={createActivity}
+        isAllToggled={isAllToggled}
+        handleToggleAllTasks={handleToggleAllTasks}
       />
       {!isEditable && <TaskAddButton onAddCard={handleAddCard} />}
       {modalValue && <ActionModal action={modalValue} onClose={closeEditModal} board={board} group={group} triggerRef={textAreaInput} />}

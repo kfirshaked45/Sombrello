@@ -202,12 +202,14 @@
 }
 
 .group-label {
+  transition: 700ms;
   margin-top: 3px;
   margin-bottom: 3px;
   padding-right: 0;
   padding-left: 0;
   min-width: 40px;
-  max-width: 40px;
+  display: flex;
+  align-items: center;
   height: 8px;
   background-color: var(--collapsed-background-color, var(--ds-text, #172b4d));
   color: transparent;
@@ -217,4 +219,25 @@
   box-shadow: inset 0 0 0 2px #0079bf;
   outline: none;
   background-color: #fff;
+}
+.label-title {
+  color: #172b4d;
+}
+.group-label-active {
+  margin-bottom: 0px;
+  border-radius: 4px;
+  padding: 0px 8px;
+  min-width: 56px;
+  max-width: 100%;
+  height: 16px;
+  box-sizing: border-box;
+  line-height: 16px;
+  color: var(--text-color);
+  font-size: 12px;
+  font-weight: 400;
+  text-align: left;
+  vertical-align: middle;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

@@ -1,7 +1,6 @@
-
 export function ActionModal({ action, onClose, board, task, group, triggerRef, attachmentId, labelId }) {
-  const [modalTopPos, setModalTopPos] = useState(null);
-  const modalRef = useRef(null);
+  const [modalTopPos, setModalTopPos] = useState(null)
+  const modalRef = useRef(null)
 
   useLayoutEffect(() => {
     if (triggerRef.current && triggerRef) {
@@ -9,20 +8,20 @@ export function ActionModal({ action, onClose, board, task, group, triggerRef, a
       const { top, left, marginLeft } = utilService.getModalPosition(action, triggerRef);
       setModalTopPos({ top, left, marginLeft })
     }
-  }, [action, triggerRef]);
+  }, [action, triggerRef])
 
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (modalRef.current && !modalRef.current.contains(event.target)) {
-        onClose();
+        onClose()
       }
-    };
+    }
 
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [onClose]);
+    }
+  }, [onClose])
 
   return (
     <div className="action-modal" style={modalTopPos} ref={modalRef} onClick={(ev) => ev.stopPropagation()}>
@@ -41,5 +40,5 @@ export function ActionModal({ action, onClose, board, task, group, triggerRef, a
         modalRef={modalRef}
       />
     </div>
-  );
+  )
 }

@@ -8,11 +8,14 @@ import { GoComment } from 'react-icons/go';
 import { TaskDueDate } from './task-due-date';
 import { useParams } from 'react-router';
 import { boardService } from '../../services/board.service.local';
+import { useState } from 'react';
 
-export function TaskPreview({ board, groupId, task, createActivity }) {
+export function TaskPreview({ board, groupId, task, createActivity, handleToggleAllTasks, isAllToggled }) {
   const imageDetails = task.attachments && task.attachments[0];
+  const [showLabels, setShowLabels] = useState(false);
 
   const labels = task.labels;
+  console.log(labels);
   const color = task.style && task.style.coverColor;
   const description = task.desc;
 
@@ -42,7 +45,11 @@ export function TaskPreview({ board, groupId, task, createActivity }) {
   }
 
   const taskLabels = labels ? labels.map((label) => board.labels.find((l) => l.id === label.id)) : [];
-
+  function handleLabelClick(ev) {
+    ev.stopPropagation();
+    setShowLabels((prevState) => !prevState);
+  }
+  console.log(showLabels);
   return (
     <div className="cover-img-section">
       {imageDetails && <img src={imageDetails.imgUrl} alt="Task Image" className="task-image" />}
@@ -52,7 +59,16 @@ export function TaskPreview({ board, groupId, task, createActivity }) {
           <div className="task-preview-labels">
             {taskLabels.map((label, index) => {
               if (!label || !label.color) return null; // Skip rendering if label or color is undefined
-              return <button key={index} style={{ backgroundColor: label.color }} className="group-label"></button>;
+              return (
+                <button
+                  key={index}
+                  style={{ backgroundColor: label.color }}
+                  className={`group-label ${isAllToggled && `group-label-active`}`}
+                  onClick={handleToggleAllTasks}
+                >
+                  {isAllToggled && <span className="label-title">{label.title}</span>}
+                </button>
+              );
             })}
           </div>
         )}

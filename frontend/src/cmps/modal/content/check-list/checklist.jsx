@@ -155,6 +155,7 @@ export function Checklist({ checklist, task, board, group }) {
               backgroundColor: calculateProgress() === 100 ? '#1F845A' : '#579DFF',
               borderRadius: '4px',
               height: '100%',
+              transition: '700ms',
             }}
           ></div>
         </div>

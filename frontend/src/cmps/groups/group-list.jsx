@@ -5,10 +5,11 @@ import { ReactComponent as Plus } from '../../assets/img/task/plus-icon.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { utilService } from '../../services/util.service';
+import { useState } from 'react';
 
 export function GroupList({ board, loggedInUser }) {
   const dispatch = useDispatch();
-
+  const [isAllToggled, setIsAllToggled] = useState(false);
   function handleDragEnd(result) {
     if (!result.destination) {
       return; // Item was dropped outside a valid droppable area
@@ -43,7 +44,10 @@ export function GroupList({ board, loggedInUser }) {
     }
     handleMoveSameTaskList(sourceGroup, result.source.index, result.destination.index);
   }
-
+  function handleToggleAllTasks(ev) {
+    ev.stopPropagation();
+    setIsAllToggled((prevState) => !prevState);
+  }
   const handleDragGroup = (result) => {
     const { source, destination } = result;
 
@@ -151,7 +155,14 @@ export function GroupList({ board, loggedInUser }) {
                   <Draggable key={group.id} draggableId={group.id} index={index}>
                     {(provided) => (
                       <li className="group-list-item" {...provided.draggableProps} ref={provided.innerRef}>
-                        <GroupPreview board={board} group={group} provided={provided} createActivity={createActivity} />
+                        <GroupPreview
+                          board={board}
+                          group={group}
+                          provided={provided}
+                          createActivity={createActivity}
+                          isAllToggled={isAllToggled}
+                          handleToggleAllTasks={handleToggleAllTasks}
+                        />
                       </li>
                     )}
                   </Draggable>
