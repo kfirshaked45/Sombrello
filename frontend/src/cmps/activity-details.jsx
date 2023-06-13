@@ -1,10 +1,6 @@
 import { RxActivityLog } from 'react-icons/rx'
 
 export function ActivityDetails({ board }) {
-  // activitiy - byMember - id - createdAt , text -
-  // by member - fullname, username,imgUrl , _id
-  //
-  //
   function formatCreatedAt(createdAt) {
     const now = new Date()
     const createdDate = new Date(createdAt)
@@ -68,6 +64,7 @@ export function ActivityDetails({ board }) {
   const sortedActivities = [...board.activities].sort(
     (a, b) => b.createdAt - a.createdAt
   )
+
   return (
     <div className="activity-details">
       <button className="activity-top-container">
@@ -78,24 +75,34 @@ export function ActivityDetails({ board }) {
       </button>
       <div className="activities-container">
         {sortedActivities.length > 0 &&
-          sortedActivities.map((activity) => (
-            <div key={activity.id} className="activity-user-container">
-              <img
-                src={activity.byMember.imgUrl}
-                alt="user-img"
-                className="activity-user-img"
-              />
-              <div className="activity-user-text-container">
-                <span className="activity-username">
-                  {activity.byMember.username}
-                </span>
-                <span className="activity-text">{activity.text} </span>
+          sortedActivities.map((activity) => {
+            const replacedText = activity.text.replace(
+              /group g(\d+)/g,
+              (match, groupId) => {
+                const group = board.groups.find((g) => g.id === `g${groupId}`)
+                return group ? `${group.title} group` : match
+              }
+            )
+
+            return (
+              <div key={activity.id} className="activity-user-container">
+                <img
+                  src={activity.byMember.imgUrl}
+                  alt="user-img"
+                  className="activity-user-img"
+                />
+                <div className="activity-user-text-container">
+                  <span className="activity-username">
+                    {activity.byMember.username}
+                  </span>
+                  <span className="activity-text">{replacedText} </span>
+                </div>
+                <div className="activity-created-at">
+                  {formatCreatedAt(activity.createdAt)}
+                </div>
               </div>
-              <div className="activity-created-at">
-                {formatCreatedAt(activity.createdAt)}
-              </div>
-            </div>
-          ))}
+            )
+          })}
       </div>
     </div>
   )
