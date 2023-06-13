@@ -51,10 +51,7 @@ export const BoardSideMenu = ({ isOpen, onCloseSideMenu, changeBackground, board
         <h3>
           {title === 'Photos by' ? (
             <Fragment>
-              {title}{' '}
-              <a href="https://unsplash.com/" target="_blank" rel="noreferrer">
-                Unsplash
-              </a>
+              {title} Unsplash
             </Fragment>
           ) : (
             title
@@ -64,7 +61,7 @@ export const BoardSideMenu = ({ isOpen, onCloseSideMenu, changeBackground, board
           <svg
             stroke="currentColor"
             fill="currentColor"
-            strokeidth="0"
+            strokeWidth="0"
             viewBox="0 0 24 24"
             height="1em"
             width="1em"
@@ -80,5 +77,5 @@ export const BoardSideMenu = ({ isOpen, onCloseSideMenu, changeBackground, board
         <ActivityDetails board={board} />
       </div>
     </section>
-  );
+  )  
 };
