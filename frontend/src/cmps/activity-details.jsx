@@ -76,6 +76,9 @@ export function ActivityDetails({ board }) {
       <div className="activities-container">
         {sortedActivities.length > 0 &&
           sortedActivities.map((activity) => {
+            if (typeof activity.text !== 'string') {
+              return null
+            }
             const replacedText = activity.text.replace(
               /group g(\d+)/g,
               (match, groupId) => {
