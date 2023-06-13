@@ -76,15 +76,17 @@ export async function addBoard(board) {
   }
 }
 
-export async function updateBoard(board) {
-  try {
-    const savedBoard = await boardService.save(board)
-    console.log('Updated Board:', savedBoard)
-    store.dispatch(getActionUpdateBoard(savedBoard))
-    return savedBoard
-  } catch (err) {
-    console.log('Cannot save board', err)
-    throw err
+export function updateBoard(board) {
+  return async (dispatch) => {
+    try {
+      const savedBoard = await boardService.save(board)
+      console.log('Updated Board:', savedBoard)
+      dispatch(getActionUpdateBoard(savedBoard)) // Dispatch the action directly inside the thunk
+      return savedBoard
+    } catch (err) {
+      console.log('Cannot save board', err)
+      throw err
+    }
   }
 }
 
