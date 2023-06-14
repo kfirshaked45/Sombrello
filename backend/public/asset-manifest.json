@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.deefbba7.css",
-    "main.js": "/static/js/main.058af833.js",
+    "main.css": "/static/css/main.fe69c720.css",
+    "main.js": "/static/js/main.3d20b40b.js",
     "static/media/danielImg.png": "/static/media/danielImg.bc4dfbf11eabfce296e5.png",
     "static/media/CharlieDisplay-Bold.ttf": "/static/media/CharlieDisplay-Bold.5a004353b62f47fcd234.ttf",
     "static/media/CharlieDisplay-Semibold.ttf": "/static/media/CharlieDisplay-Semibold.201c3bbd088f77242610.ttf",
@@ -29,11 +29,11 @@
     "static/media/filter-icon.svg": "/static/media/filter-icon.022eebd96ceb5a5a688f115224ddd648.svg",
     "static/media/arrow-down-icon.svg": "/static/media/arrow-down-icon.063cc4264200574ede0f3a0fe461c7c3.svg",
     "static/media/plus-icon.svg": "/static/media/plus-icon.c22443d0e6e1c2317243ff25dcecf366.svg",
-    "main.deefbba7.css.map": "/static/css/main.deefbba7.css.map",
-    "main.058af833.js.map": "/static/js/main.058af833.js.map"
+    "main.fe69c720.css.map": "/static/css/main.fe69c720.css.map",
+    "main.3d20b40b.js.map": "/static/js/main.3d20b40b.js.map"
   },
   "entrypoints": [
-    "static/css/main.deefbba7.css",
-    "static/js/main.058af833.js"
+    "static/css/main.fe69c720.css",
+    "static/js/main.3d20b40b.js"
   ]
 }
