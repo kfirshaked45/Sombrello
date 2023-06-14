@@ -1,5 +1,6 @@
 import { httpService } from './http.service'
 import { utilService } from './util.service'
+import userImg from '../assets/img/user-img.jpg'
 
 const fixedMembers = [
   {
