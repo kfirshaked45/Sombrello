@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useMatch } from 'react-router'
 import { removeBoard } from '../../../store/board.actions'
+import { AiOutlineDelete } from 'react-icons/ai'
+import { IoImagesOutline } from 'react-icons/io5'
 import { useNavigate } from 'react-router-dom'
 import { confirmAlert } from 'react-confirm-alert'
 import '../../../assets/styles/cmps/board/_confirm-alert.scss'
@@ -56,6 +58,7 @@ export const SideMenuMainDisplay = ({ onChangeTitle }) => {
     <section className="side-menu-main-display">
       <section className="board-menu-content-frame">
         <button onClick={() => onChangeTitle('Change background')}>
+          <IoImagesOutline />
           Change background
         </button>
         {boards.map((board) => (
@@ -65,6 +68,7 @@ export const SideMenuMainDisplay = ({ onChangeTitle }) => {
                 onClick={() => handleRemoveBoard(board._id)}
                 disabled={isConfirmationOpen}
               >
+                <AiOutlineDelete />
                 Remove Board
               </button>
             )}
