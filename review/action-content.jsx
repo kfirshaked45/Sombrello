@@ -8,18 +8,10 @@ const actionComponents = {
   Cover: CoverContent,
 };
 
-export function ActionContent({ action, board, task, group, attachmentId, onClose, labelId, modalRef }) {
+export function ActionContent({ action, board, task, group,  onClose,  modalRef }) {
   const dispatch = useDispatch();
   const ContentComponent = actionComponents[action] || null;
-  const loggedInUser = useSelector((storeState) => storeState.userModule.user);
-  function createActivity(text) {
-    return {
-      id: utilService.makeId(),
-      text,
-      createdAt: Date.now(),
-      byMember: loggedInUser,
-    };
-  }
+
 
   return ContentComponent ? (
     <ContentComponent
@@ -27,11 +19,9 @@ export function ActionContent({ action, board, task, group, attachmentId, onClos
       task={task}
       group={group}
       dispatch={dispatch}
-      attachmentId={attachmentId}
       onClose={onClose}
-      labelId={labelId}
       modalRef={modalRef}
-      createActivity={createActivity}
+    
     />
   ) : null;
 }
