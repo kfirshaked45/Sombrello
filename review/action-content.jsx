@@ -5,13 +5,12 @@ const actionComponents = {
   Dates: DateContent,
   Attachments: AttachmentsContent,
   Group: GroupsContent,
-  Cover: CoverContent,
-};
+  Cover: CoverContent
+}
 
 export function ActionContent({ action, board, task, group,  onClose,  modalRef }) {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   const ContentComponent = actionComponents[action] || null;
-
 
   return ContentComponent ? (
     <ContentComponent
@@ -21,7 +20,6 @@ export function ActionContent({ action, board, task, group,  onClose,  modalRef 
       dispatch={dispatch}
       onClose={onClose}
       modalRef={modalRef}
-    
     />
-  ) : null;
+  ) : null
 }
