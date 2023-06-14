@@ -2,7 +2,11 @@ import { showErrorMsg } from '../services/event-bus.service'
 import { BoardHeader } from '../cmps/board/board-header'
 import { GroupList } from '../cmps/groups/group-list'
 import { boardService } from '../services/board.service.local'
-import { loadBoards, updateBoard } from '../store/board.actions'
+import {
+  getActionUpdateBoard,
+  loadBoards,
+  updateBoard,
+} from '../store/board.actions'
 import { useDispatch, useSelector } from 'react-redux'
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
@@ -31,7 +35,11 @@ export function BoardDetails() {
     })
 
     socketService.on('update-board', (updatedBoard) => {
-      dispatch(updateBoard(updatedBoard))
+      console.log(
+        '🚀 ~ file: board-details.jsx:40 ~ socketService.on ~ updatedBoard:',
+        updatedBoard
+      )
+      dispatch(getActionUpdateBoard(updatedBoard))
     })
 
     return () => {

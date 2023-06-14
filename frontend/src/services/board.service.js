@@ -2,6 +2,7 @@
 import { httpService } from './http.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
+import { socketService } from './socket.service.js'
 
 const STORAGE_KEY = 'board'
 
@@ -34,6 +35,7 @@ async function save(board) {
   } else {
     savedBoard = await httpService.post('boards', board)
   }
+  socketService.emit('change-board', savedBoard)
   return savedBoard
 }
 

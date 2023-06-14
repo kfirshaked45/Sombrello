@@ -30,14 +30,16 @@ export function setupSocketAPI(http) {
       )
       socket.userId = userId
     })
-    socket.on('update-board', (board) => {
+    socket.on('change-board', (updatedBoard) => {
       logger.info(`Setting update board for socket [id: ${socket.id}]`)
-      broadcast({
-        type: 'update-board',
-        data: board,
-        room: socket.myBoardId,
-        userId: socket.userId, // Add this line to include the userId
-      })
+      socket.broadcast.to(socket.myBoardId).emit('update-board', updatedBoard)
+      // })
+      // broadcast({
+      //   type: 'update-board',
+      //   data: board,
+      //   room: socket.myBoardId,
+      //   userId: socket.userId, // Add this line to include the userId
+      // })
     })
   })
 }

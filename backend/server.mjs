@@ -3,10 +3,11 @@ import path from 'path'
 import cors from 'cors'
 import express from 'express'
 import cookieParser from 'cookie-parser'
-import { Server as SocketServer } from 'socket.io'
+import { createServer } from 'http' // Updated import
+import { Server } from 'socket.io'
 
 const app = express()
-const server = http.createServer(app)
+const server = http.createServer(app) // Create server using 'createServer'
 
 // Express App Config
 app.use(cookieParser())
@@ -31,11 +32,11 @@ import { setupAsyncLocalStorage } from './middlewares/setupAls.middleware.mjs'
 import { logger } from './services/logger.service.mjs'
 
 // Socket.io setup
-const io = new SocketServer(server, {
+const io = new Server(server, {
   cors: corsOptions,
 })
 
-setupSocketAPI(io)
+setupSocketAPI(server)
 
 // Routes
 app.all('*', setupAsyncLocalStorage)
