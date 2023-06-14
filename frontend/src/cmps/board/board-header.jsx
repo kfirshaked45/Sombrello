@@ -142,32 +142,32 @@ export function BoardHeader({ board, changeBackground }) {
         <div className="members-img">
           <img
             src={
-              'http://localhost:3000/static/media/kfirImg.529b8f065f81254bb43f.jpg'
+              'https://res.cloudinary.com/dcaqp34xm/image/upload/v1686731130/kfirImg_ekhawt.jpg'
             }
             alt="Member"
           />
           <img
             src={
-              'http://localhost:3000/static/media/user-img1.c45c54ba2d7e0d54e22e.jpg'
+              'https://res.cloudinary.com/dcaqp34xm/image/upload/v1686731130/user-img1_efdss2.jpg'
             }
             alt="Member"
           />
           <img
             src={
-              'http://localhost:3000/static/media/omer-img.adeaa4fddaaf9226ce5e.jpg'
+              'https://res.cloudinary.com/dcaqp34xm/image/upload/v1686731130/omer-img_lf2bdx.jpg'
             }
             alt="Member"
           />
           <img
-            src="http://localhost:3000/static/media/batelImg.c149f14ea13bd59484ca.jpg"
+            src="https://res.cloudinary.com/dcaqp34xm/image/upload/v1686731130/batelImg_f9evg0.jpg"
             alt="Member"
           />
           <img
-            src="http://localhost:3000/static/media/danielImg.bc4dfbf11eabfce296e5.png"
+            src="https://res.cloudinary.com/dcaqp34xm/image/upload/v1686731130/danielImg_pyvfbh.png"
             alt="member"
           />
           <img
-            src="http://localhost:3000/static/media/tommyImg.9449246a3bdf2125ad00.jpg"
+            src="https://res.cloudinary.com/dcaqp34xm/image/upload/v1686731130/tommyImg_y0eq3l.jpg"
             alt="member"
           />
         </div>
