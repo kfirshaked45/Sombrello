@@ -1,13 +1,18 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { updateBoard } from '../../../../store/board.actions'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
+import omerImg from '../../../../assets/img/omer-img.jpg'
+import ofekImg from '../../../../assets/img/user-img1.jpg'
+import kfirImg from '../../../../assets/img/kfirImg.jpg'
+import batelImg from '../../../../assets/img/batelImg.jpg'
+import danielImg from '../../../../assets/img/danielImg.png'
+import tommyImg from '../../../../assets/img/tommyImg.jpg'
 
 const fixedMembers = [
   {
     _id: 'u101',
     fullname: 'Kfir Shaked',
-    imgUrl:
-      'https://res.cloudinary.com/dcaqp34xm/image/upload/v1686731130/kfirImg_ekhawt.jpg',
+    imgUrl: kfirImg,
   },
   {
     _id: 'u102',
@@ -18,32 +23,28 @@ const fixedMembers = [
   {
     _id: 'u103',
     fullname: 'Omer Hassin',
-    imgUrl:
-      'https://res.cloudinary.com/dcaqp34xm/image/upload/v1686731130/omer-img_lf2bdx.jpg',
+    imgUrl: omerImg,
   },
   {
     _id: 'u104',
     fullname: 'Batel Katiei',
     userName: 'Batel',
     password: 'batel123',
-    imgUrl:
-      'https://res.cloudinary.com/dcaqp34xm/image/upload/v1686731130/batelImg_f9evg0.jpg',
+    imgUrl: batelImg,
   },
   {
     _id: 'u105',
     fullname: 'Daniel Shaked',
     userName: 'Daniel',
     password: 'daniel123',
-    imgUrl:
-      'https://res.cloudinary.com/dcaqp34xm/image/upload/v1686731130/danielImg_pyvfbh.png',
+    imgUrl: danielImg,
   },
   {
     _id: 'u106',
     fullname: 'Tommy Irmia',
     userName: 'Tommy',
     password: 'tommy123',
-    imgUrl:
-      'https://res.cloudinary.com/dcaqp34xm/image/upload/v1686731130/tommyImg_y0eq3l.jpg',
+    imgUrl: tommyImg,
   },
 ]
 
