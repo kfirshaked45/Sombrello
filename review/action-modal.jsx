@@ -1,11 +1,10 @@
-export function ActionModal({ action, onClose, board, task, group, triggerRef, attachmentId, labelId }) {
+export function ActionModal({ action, onClose, board, task, group, triggerRef }) {
   const [modalTopPos, setModalTopPos] = useState(null)
   const modalRef = useRef(null)
 
   useLayoutEffect(() => {
     if (triggerRef.current && triggerRef) {
-      setModalTopPos(null)
-      const { top, left, marginLeft } = utilService.getModalPosition(action, triggerRef);
+      const { top, left, marginLeft } = utilService.getModalPosition(action, triggerRef)
       setModalTopPos({ top, left, marginLeft })
     }
   }, [action, triggerRef])
@@ -34,9 +33,7 @@ export function ActionModal({ action, onClose, board, task, group, triggerRef, a
         board={board}
         task={task}
         group={group}
-        attachmentId={attachmentId}
         onClose={onClose}
-        labelId={labelId}
         modalRef={modalRef}
       />
     </div>
