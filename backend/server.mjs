@@ -11,7 +11,7 @@ const server = http.createServer(app) // Create server using 'createServer'
 
 // Express App Config
 app.use(cookieParser())
-app.use(express.json({ limit: '100mb' }))
+app.use(express.json({ limit: '200mb' }))
 
 // CORS configuration
 const corsOptions = {
